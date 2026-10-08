@@ -239,8 +239,11 @@ export class TownScene extends Phaser.Scene {
     this.lastWidth=width;this.lastHeight=height;
     this.cameras.main.setViewport(0,0,width,height);
     const available=Math.min(width/1024,height/640);
-    // Mobile uses native 1x and pan; narrow desktop inspector uses a documented nearest-neighbor fit.
-    const zoom=this.manualZoom || (width<600 ? 1 : available>=1 ? Math.max(1,Math.floor(available)) : available);
+    // Fit must show the complete town on phones; 1x/2x/3x remain explicit close-up choices.
+    // Leave room for map tools/legend on narrow views and protect rounded map edges.
+    const fitHeight=Math.max(1,height-(width<600?144:2));
+    const fitted=available>=1 ? Math.floor(available) : Math.min(Math.max(1,width-2)/1024,fitHeight/640);
+    const zoom=this.manualZoom || fitted;
     this.cameras.main.setZoom(zoom).centerOn(512,320);
     if(this.selected) {
       const index=this.playback.run.residents.findIndex(p=>p.id===this.selected);
@@ -260,8 +263,10 @@ export class TownScene extends Phaser.Scene {
   }
   private clampCamera() {
     const cam=this.cameras.main,w=cam.width/cam.zoom,h=cam.height/cam.zoom;
-    cam.scrollX=Math.round(w>=1024?(1024-w)/2:Phaser.Math.Clamp(cam.scrollX,0,1024-w));
-    cam.scrollY=Math.round(h>=640?(640-h)/2:Phaser.Math.Clamp(cam.scrollY,0,640-h));
+    // Phaser zooms around the viewport center; scroll is measured before that transform.
+    const centerX=cam.scrollX+cam.width/2,centerY=cam.scrollY+cam.height/2;
+    cam.scrollX=Math.round((w>=1024?512:Phaser.Math.Clamp(centerX,w/2,1024-w/2))-cam.width/2);
+    cam.scrollY=Math.round((h>=640?320:Phaser.Math.Clamp(centerY,h/2,640-h/2))-cam.height/2);
   }
   center(index:number) { const p=this.playback.position(index).position;this.cameras.main.centerOn(p.x,p.y);this.clampCamera(); }
   update(_time:number,delta:number) {

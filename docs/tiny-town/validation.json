@@ -3,7 +3,7 @@
     "pythonTests":  16,
     "environmentFileReadByAgent":  false,
     "frontendUnitTests":  17,
-    "browserTests":  11,
+    "browserTests":  16,
     "visualRegressionCases":  10,
     "limitation":  "No real API run performed; Jev adapter verified with stubs. Windows Chromium baselines require intentional review before updates.",
     "blockingAuditFindings":  [
@@ -22,8 +22,12 @@
                    "Failed hour preserves previous recording",
                    "Self-contained file export with zero external requests",
                    "Art builder verifies 30 unique deterministic 64px portraits, preserved outfit colors and 2220 nonempty animation cells",
-                   "Portrait/landscape polish inspected on desktop, mobile and worst-case action screenshots"
+                   "Portrait/landscape polish inspected on desktop, mobile and worst-case action screenshots",
+                   "Mobile Fit regression reproduced before fix; camera projection edges, Safari selector font/width, zoom/recenter and pan limits tested at 375, 390 and 430px",
+                   "WebKit viewport-height changes, selection and portrait/landscape rotation",
+                   "Chromium runs serialized after concurrent render-heavy contexts caused timeouts; original 30-second test timeout and all assertions retained"
                ],
     "typescriptBuild":  "passed",
-    "dependencyAudit":  "0 vulnerabilities"
+    "dependencyAudit":  "0 vulnerabilities",
+    "mobileWebKitTests":  5
 }

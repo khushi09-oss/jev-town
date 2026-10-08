@@ -188,5 +188,8 @@ function renderUI() {
 startScene();renderUI();
 window.__town={ready:()=>scene.ready,seek:(t)=>playback.seek(t),state:()=>({time:playback.time,playing:playback.playing,speed:playback.speed,loop:playback.loop,selected,following:scene.following,
   camera:{width:scene.cameras.main.width,height:scene.cameras.main.height,scaleWidth:scene.scale.width,scaleHeight:scene.scale.height,
-    scrollX:scene.cameras.main.scrollX,scrollY:scene.cameras.main.scrollY,zoom:scene.cameras.main.zoom},
+      scrollX:scene.cameras.main.scrollX,scrollY:scene.cameras.main.scrollY,zoom:scene.cameras.main.zoom,
+      left:scene.cameras.main.getWorldPoint(0,0).x,top:scene.cameras.main.getWorldPoint(0,0).y,
+      right:scene.cameras.main.getWorldPoint(scene.cameras.main.width,scene.cameras.main.height).x,
+      bottom:scene.cameras.main.getWorldPoint(scene.cameras.main.width,scene.cameras.main.height).y},
   mode:playback.run.mode,counts:playback.counts(),people:scene.inspect(),stats:playback.run.residents.map((_,i)=>playback.stats(i))})};

@@ -116,7 +116,7 @@ The browser validates sequences, identity sets, finite bounded stats/confidence,
 
 `simulation/world-layout.json` preserves the supplied 64×40 layout and 16-pixel tiles. `world.py` authors connected roads, bridge-only crossing, fountain/crop obstacles and explicit indoor door corridors. Every action has 30 unique anchors: communal bakery seats, workshop/garden/market stations, small social groups, park waypoints, and five beds per cottage. Outdoor paths cannot cross building fronts/roofs; indoor routes enter through authored doors. Selecting a sleeper or their home reveals the beds.
 
-Desktop has a 64-pixel header, 88-pixel playback area and 320-pixel inspector. Mobile has a 56-pixel header, 128-pixel toolbar to preserve 40-pixel controls, native 1× pan and a sheet capped at 45% height. Full-map fit uses integer zoom whenever possible; narrow desktop windows use nearest-neighbor fractional fit. Camera offsets are rounded. Zoom options are 1×/2×/3×.
+Desktop has a 64-pixel header, 88-pixel playback area and 320-pixel inspector. Mobile has a 56-pixel header, 128-pixel toolbar to preserve 40-pixel controls and a sheet capped at 45% height. Fit shows the whole town by default on phones; choose 1×/2×/3× for close-ups and drag to explore. Full-map fit uses integer zoom whenever possible and nearest-neighbor fractional fit on smaller viewports. A one-pixel gutter protects the map edges from rounded camera transforms. The mobile zoom selector has explicit readable text, including in Safari.
 
 Space toggles playback outside form controls; Escape closes overlays; arrows pan the focused map and cancel follow. Population rows provide equivalent keyboard selection and sorting. Reduced motion disables camera easing and cosmetic idle bobbing. Captions report observed actions/locations, never invented dialogue or Jev explanations. Sound and live transport are out of scope.
 
@@ -153,6 +153,8 @@ Set-Location ..
 python town.py --mock --no-show --output-dir .\.artifacts\export
 npm --prefix frontend run test:browser
 npm --prefix frontend run test:visual
+npm --prefix frontend exec -- playwright install webkit
+npm --prefix frontend run test:mobile
 ```
 
 Coverage includes clamping, fallback/error distinctions, payloads/redaction/invalid responses/retries, recording continuity and atomic failure, all-action capacity, bridge/path obstacles, pause/seek/end/loop/speed, keyboard/follow/pan, mobile/reduced motion, hostile names, invalid imports, offline HTML and fixed screenshots. No real Jev calls are made. The original project has no Python lint/type-check configuration; the frontend build runs strict TypeScript checking.
