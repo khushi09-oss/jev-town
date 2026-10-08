@@ -20,7 +20,9 @@
                    "Jev payload, invalid choice/confidence, retry exhaustion, key redaction",
                    "Error fallback separate from low-confidence fallback",
                    "Failed hour preserves previous recording",
-                   "Self-contained file export with zero external requests"
+                   "Self-contained file export with zero external requests",
+                   "Art builder verifies 30 unique deterministic 64px portraits, preserved outfit colors and 2220 nonempty animation cells",
+                   "Portrait/landscape polish inspected on desktop, mobile and worst-case action screenshots"
                ],
     "typescriptBuild":  "passed",
     "dependencyAudit":  "0 vulnerabilities"

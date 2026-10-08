@@ -93,10 +93,14 @@ def resident(look, direction, pose, phase):
         rect((6, 2, 16, 3), '#467b9c')
         rect((8 if direction != 'left' else 3, 6,
               20 if direction != 'left' else 15, 7), '#243e53')
-    if look['id'] == 'npc05' or style == 'beard':
-        rect((8, 17, 9, 22), '#344d3d')
-        rect((14, 17, 15, 22), '#344d3d')
-        rect((8, 22, 15, 25), '#344d3d')
+    if style in ('short', 'bun', 'cap') and direction != 'back':
+        rect((10, 18, 13, 20), '#eee0c4')
+        rect((10, 18, 10, 18), shade(shirt, 1.15))
+    if style in ('curls', 'beard'):
+        bib = '#304e56' if style == 'curls' else '#344d3d'
+        rect((8, 17, 9, 22), bib)
+        rect((14, 17, 15, 22), bib)
+        rect((8, 22, 15, 25), bib)
         rect((9, 18, 9, 18), '#e0c788')
         rect((14, 18, 14, 18), '#e0c788')
     # Distinct held props and active gestures, not action-colored replacements.
@@ -137,58 +141,95 @@ def resident(look, direction, pose, phase):
 
 
 def portrait(look):
-    im = Image.new('RGBA', (64,64), '#d6d1b4')
+    backgrounds = ['#b5c0a4', '#dcc093', '#cec9b1', '#acc3c7', '#d4b5b7', '#c5c697']
+    im = Image.new('RGBA', (64,64), backgrounds[int(look['id'][3:]) % 6])
     d = ImageDraw.Draw(im)
     skin, hair, outfit = look['skin'], look['hair'], look['outfit']
+    style = look['hairStyle']
     rng = random.Random(look['id'])
-    d.ellipse((7,45,59,88), fill=INK)
-    d.ellipse((9,46,57,85), fill=shade(outfit,.7))
-    d.polygon([(19,46),(44,46),(52,64),(12,64)], fill=outfit)
-    d.rectangle((26,38,38,49), fill=shade(skin,.8))
-    d.ellipse((12,6,52,47), fill=hair)
-    if look['hairStyle'] in ('curls','beard'):
-        for _ in range(40):
-            x,y=rng.randint(10,47),rng.randint(4,36)
-            d.ellipse((x-3,y-3,x+4,y+4), fill=shade(hair,rng.choice([.7,1,1.35])))
-    d.ellipse((19,13,46,45),fill=shade(skin,.8))
-    d.ellipse((20,13,44,43),fill=skin)
-    d.polygon([(22,16),(41,16),(43,30),(38,40),(25,39),(21,29)], fill=shade(skin,1.08))
-    d.rectangle((23,24,27,25),fill=shade(hair,.7))
-    d.rectangle((36,24,40,25),fill=shade(hair,.7))
-    for x in (24,37):
-        d.rectangle((x,27,x+3,30),fill=INK)
-        d.point((x+1,27),fill='#fff3db')
-    d.line((31,28,30,33,33,33),fill=shade(skin,.7))
-    d.line((28,37,35,37),fill='#8d5143')
-    d.line((29,38,33,38),fill='#efc197')
-    d.rectangle((21,33,24,34),fill='#cf8b6b')
-    d.rectangle((39,33,42,34),fill='#cf8b6b')
-    # Hair frames the face; outfit cues remain identical to the full-body rig.
-    if look['hairStyle']=='bob':
-        d.polygon([(15,13),(21,8),(42,8),(50,17),(49,39),(44,43),(43,21),(22,20),(20,40),(15,37)], fill=hair)
-        d.line((17,17,17,34),fill=shade(hair,1.6),width=2)
-    elif look['hairStyle']=='bun':
-        d.ellipse((22,1,40,15),fill=hair)
-        d.polygon([(16,17),(21,9),(41,10),(47,20),(40,16),(23,17)],fill=hair)
-        d.line((23,11,36,10),fill=shade(hair,1.1),width=2)
-    elif look['hairStyle']=='cap':
-        d.pieslice((12,3,52,31),180,360,fill='#315d7c')
-        d.rectangle((13,15,53,19),fill='#243e53')
-        d.line((22,7,41,7),fill='#467b9c',width=2)
+    # Three-quarter bust, stepped silhouettes and clustered highlights at native 64px.
+    d.polygon([(7,64),(10,52),(20,46),(27,44),(42,45),(54,51),(59,64)], fill=INK)
+    d.polygon([(9,64),(12,53),(22,48),(43,48),(52,53),(57,64)], fill=shade(outfit,.72))
+    d.polygon([(17,64),(19,51),(26,47),(43,48),(49,64)], fill=outfit)
+    d.polygon([(27,40),(40,39),(40,48),(35,52),(27,48)], fill=shade(skin,.78))
+    d.polygon([(29,41),(38,41),(38,48),(34,49),(29,47)], fill=skin)
+    if style in ('short', 'bun', 'cap'):
+        d.polygon([(26,49),(34,52),(41,48),(43,64),(24,64)], fill='#eee0c4')
+        d.polygon([(22,48),(26,49),(28,55),(23,53),(20,59),(17,64),(19,51)], fill=shade(outfit,1.15))
+        d.polygon([(41,48),(44,49),(48,64),(43,64),(40,54)], fill=shade(outfit,.85))
+        for y in (54,59): d.rectangle((21,y,22,y+1), fill='#d9b66e')
+    d.line((13,55,15,63), fill=shade(outfit,1.13), width=2)
+    d.line((51,55,52,63), fill=shade(outfit,.6), width=2)
+    d.ellipse((12,6,52,48), fill=shade(hair,.6))
+    d.ellipse((14,7,51,47), fill=hair)
+    if style in ('curls','beard'):
+        for _ in range(48):
+            x,y=rng.randint(11,48),rng.randint(5,37)
+            d.ellipse((x-3,y-3,x+4,y+4), fill=shade(hair,.72))
+            d.ellipse((x-2,y-3,x+2,y+1), fill=shade(hair,rng.choice([1,1.35,1.55])))
+    d.ellipse((18,26,24,35), fill=shade(skin,.8))
+    d.ellipse((45,25,50,34), fill=shade(skin,.82))
+    d.polygon([(23,14),(40,12),(47,20),(47,34),(42,42),(34,45),(26,42),(21,34),(21,23)], fill=shade(skin,.76))
+    d.polygon([(24,15),(39,14),(44,20),(45,33),(40,40),(33,42),(26,39),(23,32),(23,23)], fill=skin)
+    d.polygon([(26,17),(38,16),(41,21),(40,31),(34,35),(26,31),(24,24)], fill=shade(skin,1.12))
+    # Raised brows and large warm eyes, with a smaller far eye.
+    d.line((25,24,29,23,31,24), fill=shade(hair,.7))
+    d.line((38,23,42,23,44,24), fill=shade(hair,.7))
+    for x,w in ((25,5),(39,4)):
+        d.rectangle((x,27,x+w,32), fill=INK)
+        d.rectangle((x,28,x+w,31), fill='#f2e5c8')
+        d.rectangle((x+2,27,x+w-1,32), fill='#614733')
+        d.rectangle((x+3,28,x+w-1,31), fill=INK)
+        d.point((x+2,28), fill='#fff6de')
+    d.line((35,29,34,34,37,34), fill=shade(skin,.72))
+    d.point((36,32), fill=shade(skin,1.23))
+    d.line((30,37,33,38,39,36), fill='#804c3b')
+    d.line((33,39,37,38), fill=shade(skin,1.23))
+    d.rectangle((25,34,28,35), fill=shade(skin,.94))
+    d.rectangle((41,33,43,34), fill=shade(skin,.94))
+    if style=='bob':
+        d.polygon([(14,17),(21,8),(40,7),(51,16),(51,39),(47,44),(44,39),(46,22),(38,16),(32,21),(24,19),(21,39),(16,40)], fill=hair)
+        for x,y in ((18,18),(22,13),(30,12),(42,13),(48,22)):
+            d.line((x,y,x-1,y+9), fill=shade(hair,1.5))
+    elif style=='bun':
+        d.ellipse((20,0,38,13),fill=shade(hair,.7))
+        d.ellipse((22,1,37,10),fill=hair)
+        d.polygon([(16,21),(20,12),(31,9),(43,13),(49,23),(42,19),(35,14),(26,21),(21,29),(18,34)],fill=hair)
+        for points in ((22,6,30,3,34,5),(20,17,26,13,32,12),(35,12,40,15,44,20)):
+            d.line(points,fill=shade(hair,1.18))
+        d.line((18,24,19,31),fill=shade(hair,1.15),width=2)
+    elif style=='cap':
+        d.polygon([(15,16),(16,10),(22,5),(34,3),(45,7),(50,15),(47,18),(17,18)],fill='#243e53')
+        d.polygon([(17,14),(20,9),(28,5),(38,5),(46,10),(48,15)],fill='#315d7c')
+        d.line((22,9,28,6,36,6),fill='#5689a5',width=2)
+        d.polygon([(17,15),(43,15),(55,18),(54,21),(31,20),(19,18)],fill='#243e53')
+        d.line((32,17,50,18),fill='#467b9c')
+        d.polygon([(21,20),(27,19),(26,23),(22,24)],fill=hair)
     else:
-        for _ in range(26):
-            x,y=rng.randint(16,44),rng.randint(7,17)
+        for _ in range(22):
+            x,y=rng.randint(17,45),rng.randint(8,17)
             d.ellipse((x-3,y-3,x+3,y+3),fill=shade(hair,rng.choice([.8,1,1.4])))
-        if look['hairStyle']=='beard':
-            d.polygon([(21,34),(26,41),(37,43),(45,34),(43,43),(31,49),(22,43)],fill=hair)
-            d.line((28,37,35,37),fill=INK)
-    if look['hairStyle']=='beard':
-        d.rectangle((19,47,23,62),fill='#344d3d')
-        d.rectangle((43,47,47,62),fill='#344d3d')
-        d.rectangle((22,56,45,63),fill='#344d3d')
-    if look['id']=='npc00':
-        d.rectangle((18,49,22,63),fill='#304e56')
-        d.rectangle((43,49,47,63),fill='#304e56')
+        d.polygon([(20,16),(28,12),(36,13),(31,19),(26,18),(22,24)],fill=hair)
+        if style=='curls':
+            for x,y in ((16,26),(17,34),(46,30),(46,38)):
+                d.ellipse((x-2,y-2,x+3,y+3),fill=shade(hair,.8))
+                d.point((x,y-1),fill=shade(hair,1.4))
+            for x in (21,47):
+                d.rectangle((x,33,x+1,36),fill='#cba75c')
+                d.point((x,33),fill='#f0d78d')
+        if style=='beard':
+            d.polygon([(23,34),(28,40),(37,41),(46,33),(45,43),(36,48),(28,46),(23,41)],fill=hair)
+            for x,y in ((25,38),(28,43),(32,44),(39,42),(43,37)):
+                d.line((x,y,x+1,y+2),fill=shade(hair,1.4))
+            d.line((31,38,38,37),fill=INK)
+            d.line((33,38,37,38),fill='#f3ddbc')
+    if style in ('curls','beard'):
+        bib = '#304e56' if style=='curls' else '#344d3d'
+        d.rectangle((20,49,23,63),fill=bib)
+        d.rectangle((43,49,46,63),fill=bib)
+        d.rectangle((22,57,45,63),fill=bib)
+        for x in (22,44): d.rectangle((x,52,x+1,53),fill='#d5b56b')
+        d.line((28,60,39,60),fill=shade(bib,1.45))
     return im
 
 
@@ -203,19 +244,26 @@ def main():
                   'work': {'start':40,'length':16,'fps':6},
                   'socialize': {'start':56,'length':16,'fps':4},
                   'sleep': {'start':72,'length':2,'fps':1}}
+    portrait_signatures = set()
     for i, look in enumerate(looks):
         frames = [resident(look,d,'walk',p) for d in ('down','left','right','back') for p in range(4)]
         frames += [resident(look,d,'idle',p) for d in ('down','left','right','back') for p in range(2)]
         frames += [resident(look,d,act,p) for act in ('eat','work','socialize')
                    for d in ('down','left','right','back') for p in range(4)]
         frames += [resident(look,'down','sleep',p) for p in range(2)]
+        assert len(frames) == 74 and all(frame.size == (24,32) and frame.getbbox() for frame in frames)
         for f, frame in enumerate(frames):
             sheet.paste(frame,(f*24,i*32))
         face=portrait(look)
+        assert face.size == (64,64) and face.tobytes() == portrait(look).tobytes(), 'Portrait must be deterministic'
+        colors = {color for _, color in face.getcolors(64 * 64)}
+        assert ImageColor.getrgb(look['outfit']) + (255,) in colors, 'Portrait must retain outfit color'
+        portrait_signatures.add(face.tobytes())
         portraits.paste(face,((i%6)*64,(i//6)*64))
         if i<6:
             preview.paste(face.resize((96,96),Image.Resampling.NEAREST),(i*96,0))
             preview.paste(frames[16].resize((48,64),Image.Resampling.NEAREST),(i*96+24,108))
+    assert len(portrait_signatures) == 30, 'Every resident must have a distinct portrait'
     sheet.save(OUT/'residents.png')
     portraits.save(OUT/'portraits.png')
     preview.save(OUT/'identity-review.png')
@@ -227,6 +275,9 @@ def main():
     for i,(name,size) in enumerate(zip(objects,sizes)):
         x,y=i%4,i//4
         cell=source.crop((round(x*source.width/4),round(y*source.height/4),round((x+1)*source.width/4),round((y+1)*source.height/4)))
+        if name in ('flowers', 'bench', 'table'):
+            # The tall trees/fountain above bleed into these cells; discard that strip.
+            cell = cell.crop((0, cell.height // 4, cell.width, cell.height))
         alpha=cell.getchannel('A')
         bbox=alpha.point(lambda v:255 if v>100 else 0).getbbox()
         assert bbox, f'Missing {name}'
