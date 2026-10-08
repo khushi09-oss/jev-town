@@ -92,6 +92,8 @@ On phones, **Fit** shows the complete town, with space for the map tools and act
 
 Residents now meet in small conversation groups. Select someone to see who they are meeting, then click a partner's portrait to visit them. Chat gestures start when neighbors arrive, with one speech bubble at a time per group; seeking reconstructs the same meeting. The inspector and population drawer explain each resident's personality in plain language, and hovering a resident shows their name and trait.
 
+The **day summary** highlights the residents with the most recorded hours socializing, working and resting. Ties are shown together, with larger groups expandable. Select a portrait to jump to that resident's first matching moment and inspect it with playback paused. Highlights use the full saved day and applied actions, alongside the personality breakdown and hourly charts.
+
 ## Test it
 
 Run from the root, with the virtual environment active:

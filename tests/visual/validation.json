@@ -2,8 +2,8 @@
   "realJevCalls": 0,
   "pythonTests": 20,
   "environmentFileReadByAgent": false,
-  "frontendUnitTests": 27,
-  "browserTests": 22,
+  "frontendUnitTests": 31,
+  "browserTests": 26,
   "visualRegressionCases": 12,
   "limitation": "No real Jev calls or physical iPhone test. Reviewed Windows Chromium screenshots; Safari coverage uses Playwright WebKit. Existing concept-art differences remain.",
   "blockingAuditFindings": [],
@@ -31,9 +31,17 @@
     "Unknown/self/duplicate/asymmetric/distant/overlapping/fallback/group conversation metadata rejected",
     "Conversation names escaped in captions, partner controls and history",
     "Full seed-7 mock export retains identical identities, choices, confidence, fallback and before/after stats",
-    "Paused DOM controls have zero content mutations; redundant frame writes removed after reproducing missed WebKit clicks"
+    "Paused DOM controls have zero content mutations; redundant frame writes removed after reproducing missed WebKit clicks",
+    "Full-day highlights count applied actions, including error-mock; rejected low-confidence choices do not count",
+    "All tied leaders retained in stable ID order; empty categories show no invented winners",
+    "30-way ties expand without page overflow; shifted clocks use elapsed ticks",
+    "Highlight keyboard selection pauses, seeks to first matching interval and focuses resident controls",
+    "Highlight names escaped; opening summary preserves paused replay state and makes no decision requests",
+    "Desktop/mobile offline export highlights agree with the saved simulation; zero external requests or page errors",
+    "Approved interaction export deployed to Pages and verified against its HTML hash with mobile WebKit"
   ],
   "typescriptBuild": "passed",
   "dependencyAudit": "0 vulnerabilities",
-  "mobileWebKitTests": 9
+  "mobileWebKitTests": 13,
+  "browserRunNote": "Full Chromium run: 25 passed, one existing playback check timed out; unchanged targeted rerun passed. No timeout or assertion weakened."
 }

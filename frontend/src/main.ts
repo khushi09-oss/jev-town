@@ -9,6 +9,7 @@ import sample30 from './fixture-30.json';
 import portraits from './assets/portraits.png?url';
 import tokens from './design-tokens.json';
 import { personalities } from './personality';
+import { dayHighlights } from './summary';
 
 declare global {
   interface Window {
@@ -143,6 +144,17 @@ function renderPopulation() {
   if(focusResident)document.querySelector<HTMLButtonElement>(`[data-resident="${focusResident}"]`)?.focus({preventScroll:true});
 }
 function renderSummary() {
+  const highlights=dayHighlights(playback.run).map(highlight=>{
+    const activity={socialize:'socializing',work:'working',sleep:'resting'}[highlight.action];
+    const buttons=highlight.winners.map(winner=>{
+      const identity=playback.run.residents.find(p=>p.id===winner.id)!;
+      return `<button class="highlight-resident" data-highlight-resident="${identity.id}" data-highlight-tick="${winner.tick}" aria-label="Watch ${escapeHTML(identity.name)} ${activity}">${portrait(identity)}<span>${escapeHTML(identity.name)}</span></button>`;
+    });
+    return `<article class="day-highlight" data-highlight-action="${highlight.action}"><h4>${icon(highlight.action)}${highlight.title}</h4>
+      <p class="highlight-hours">${highlight.hours} <span>recorded ${highlight.hours===1?'hour':'hours'} ${activity}</span></p>
+      ${buttons.length?`<p class="highlight-tie">${buttons.length>1?`${buttons.length} residents share the lead.`:'One resident leads the day.'}</p><div class="highlight-people">${buttons.slice(0,3).join('')}</div>
+      ${buttons.length>3?`<details class="highlight-more"><summary>Show ${buttons.length-3} more tied residents</summary><div class="highlight-people">${buttons.slice(3).join('')}</div></details>`:''}`:`<p class="muted">No recorded ${activity}.</p>`}</article>`;
+  }).join('');
   const count=playback.run.residents.length;
   const hours=playback.run.frames.map(f=>{
     const counts=Object.fromEntries(actions.map(a=>[a,f.residents.filter(p=>p.decision.appliedAction===a).length]));
@@ -153,7 +165,13 @@ function renderSummary() {
     const entries=playback.run.frames.flatMap(f=>f.residents.filter(p=>ids.has(p.id)));
     return `<tr><th>${trait}<small>${entries.length} decisions</small></th>${actions.map(a=>`<td>${entries.length?Math.round(entries.filter(p=>p.decision.appliedAction===a).length/entries.length*100):0}%</td>`).join('')}</tr>`;
   });
-  $('#summary-content').innerHTML=`<h3>Action share by personality</h3><div class="table-scroll"><table><thead><tr><th>Trait</th>${actions.map(a=>`<th>${a}</th>`).join('')}</tr></thead><tbody>${groups.join('')}</tbody></table></div><h3>Hour by hour</h3><p class="small muted">Right column: average hunger / energy / mood after each hour.</p>${hours.join('')}<p>Low-confidence fallbacks: ${playback.run.frames.flatMap(f=>f.residents).filter(p=>p.decision.fellBack).length}. Error-mock decisions: ${playback.run.frames.flatMap(f=>f.residents).filter(p=>p.decision.errorCode).length}.</p>`;
+  $('#summary-content').innerHTML=`<h3>Day highlights</h3><p class="muted">The full recorded day, counted from applied actions. Select a neighbor to watch their first matching moment.</p><div class="day-highlights">${highlights}</div>
+    <h3>Action share by personality</h3><div class="table-scroll"><table><thead><tr><th>Trait</th>${actions.map(a=>`<th>${a}</th>`).join('')}</tr></thead><tbody>${groups.join('')}</tbody></table></div><h3>Hour by hour</h3><p class="small muted">Right column: average hunger / energy / mood after each hour.</p>${hours.join('')}<p>Low-confidence fallbacks: ${playback.run.frames.flatMap(f=>f.residents).filter(p=>p.decision.fellBack).length}. Error-mock decisions: ${playback.run.frames.flatMap(f=>f.residents).filter(p=>p.decision.errorCode).length}.</p>`;
+  $('#summary-content').querySelectorAll<HTMLButtonElement>('[data-highlight-resident]').forEach(button=>button.onclick=()=>{
+    playback.playing=false;playback.seek(Number(button.dataset.highlightTick)+.99);scene.following=false;
+    $<HTMLDialogElement>('#summary').close();
+    selectResident(playback.run.residents.find(p=>p.id===button.dataset.highlightResident)!);
+  });
 }
 function showError(message:string) {
   const status=$('#status');status.hidden=false;status.textContent=message;

@@ -14,7 +14,7 @@
     "Specified 0.35 night overlay is gentler than the board",
     "Native desktop fit retains sage margins"
   ],
-  "version": 4,
+  "version": 5,
   "viewports": [
     {
       "height": 900,
@@ -52,7 +52,7 @@
     },
     {
       "file": "frontend/browser-tests/replay.spec.ts-snapshots/desktop-summary-win32.png",
-      "sha256": "29f650c6ba62713f577b73615edf7ce75064c17b437e6294e52a387afee25760"
+      "sha256": "cd60292245f0928f7a6b2fe91fd3e154e1aa6352e74f78a47f95bce39b51e467"
     },
     {
       "file": "frontend/browser-tests/replay.spec.ts-snapshots/mobile-bea-win32.png",
@@ -72,7 +72,7 @@
     },
     {
       "file": "frontend/browser-tests/replay.spec.ts-snapshots/mobile-summary-win32.png",
-      "sha256": "d71fa85ae2c40bad031c27cb56ebb0d39905d1eaa619c94c9a48affde3d5c8f6"
+      "sha256": "0ec5f9e0b37ea6a9121e81a1891e4514bb0ae5c5c6ecb561d1640decf3823a0e"
     }
   ],
   "date": "2026-10-08",
@@ -80,5 +80,5 @@
   "status": "agent-inspected mobile overview and Safari zoom correction; pending user device review",
   "schemaVersion": 1,
   "worldId": "tiny-town-v1",
-  "change": "Reviewed personality descriptions, compact recorded conversations, arrival-aware bubbles and named partner controls; 12 fixed screenshots."
+  "change": "Reviewed applied-action day highlights, truthful tied leaders and clickable paused replay moments; only desktop/mobile summary screenshots changed."
 }
