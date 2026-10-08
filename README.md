@@ -47,7 +47,9 @@ All traits prioritize hunger above 60, then exhaustion below 30 energy or sleep 
 
 Wandering lowers mood by 4 and working by 6, so NPCs need company again over time. Socializing raises mood by 22. Sleep restores 25 energy without increasing mood. These consequences apply equally to all traits and are controlled by Python, not Jev.
 
-The chart aggregates actual actions after the confidence fallback. Personality effects with real Jev have not yet been measured; an ordinary full run makes about 720 API requests.
+The chart aggregates actual actions after the confidence fallback. An ordinary full run makes about 720 API requests.
+
+A small real Jev check on October 8, 2026 used identical stats (hour 14, hunger 30, energy 45, mood 60, money 40) for each trait, twice. Lazy NPCs chose sleep (confidence 0.91, 0.90), social NPCs chose socialize (0.70, 0.68), and workaholics chose work (0.71, 0.76). No choice triggered fallback. This verifies personality differences in that scenario; the revised full-day balance has only been tested offline.
 
 ## Tests
 
