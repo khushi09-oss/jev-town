@@ -3,7 +3,7 @@
     "pythonTests":  16,
     "environmentFileReadByAgent":  false,
     "frontendUnitTests":  17,
-    "browserTests":  11,
+    "browserTests":  16,
     "visualRegressionCases":  10,
     "limitation":  "No real API run performed; Jev adapter verified with stubs. Windows Chromium baselines require intentional review before updates.",
     "blockingAuditFindings":  [
@@ -23,8 +23,11 @@
                    "Self-contained file export with zero external requests",
                    "Art builder verifies 30 unique deterministic 64px portraits, preserved outfit colors and 2220 nonempty animation cells",
                    "Portrait/landscape polish inspected on desktop, mobile and worst-case action screenshots",
-                   "Repository relocation: unittest discovery, art/world/fixture generators, strict build and all 11 browser checks passed without snapshot updates"
+                   "Repository relocation: unittest discovery, art/world/fixture generators, strict build and all 11 browser checks passed without snapshot updates",
+                   "Mobile Fit reproduced before fix; projected map edges, readable Safari zoom, three phone widths, viewport-height changes, rotation and zoom/pan limits",
+                   "Chromium render-heavy browser contexts serialized; original test timeouts/assertions retained"
                ],
     "typescriptBuild":  "passed",
-    "dependencyAudit":  "0 vulnerabilities"
+    "dependencyAudit":  "0 vulnerabilities",
+    "mobileWebKitTests":  5
 }

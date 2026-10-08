@@ -73,6 +73,8 @@ Open the URL printed by Vite. **Load recording** opens a generated `run.json`; i
 
 Space toggles playback, Escape closes panels, and arrow keys pan the focused map. Zoom, follow, seek, speed, restart and loop all reuse the same recording. Reduced motion is supported.
 
+On phones, **Fit** shows the complete town, with space for the map tools and action legend. Choose **1×/2×/3×** and drag for close-ups; **Recenter** returns to Fit. The zoom dropdown stays readable in Safari, and resizing or rotating the browser preserves the view.
+
 ## Test it
 
 Run from the root, with the virtual environment active:
@@ -86,6 +88,13 @@ npx playwright install chromium
 Set-Location ..
 python town.py --mock --no-show --output-dir .\.artifacts\export
 npm --prefix frontend run test:browser
+```
+
+For the Safari/WebKit mobile regressions:
+
+```powershell
+npm --prefix frontend exec -- playwright install webkit
+npm --prefix frontend run test:mobile
 ```
 
 Checks cover decisions and errors, all 30 residents choosing each action, path obstacles and the bridge, deterministic playback, keyboard/mobile controls, imported files and offline HTML. Fixed Windows/Chromium screenshots cover desktop 1440×900 and mobile 390×844. Reports and baseline hashes live in `tests/visual/`.

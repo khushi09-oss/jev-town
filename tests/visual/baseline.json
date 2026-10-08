@@ -14,7 +14,7 @@
                                        "Specified 0.35 night overlay is gentler than the board",
                                        "Native desktop fit retains sage margins"
                                    ],
-    "version":  2,
+    "version":  3,
     "viewports":  [
                       {
                           "height":  900,
@@ -47,15 +47,15 @@
                             "file":  "frontend/browser-tests/replay.spec.ts-snapshots/desktop-summary-win32.png"
                         },
                         {
-                            "sha256":  "4f2933ff352ae60a8b483536658edeb173f21b400481bce42bffff7509db5dd9",
+                            "sha256":  "9b04cba56f36b7ef347d742bd64217dd276a59cf36a93e83769822163f000d84",
                             "file":  "frontend/browser-tests/replay.spec.ts-snapshots/mobile-bea-win32.png"
                         },
                         {
-                            "sha256":  "8fef3ff6115cdf9c8007c0a3b169e4b27bc7eb6ed19072afdc9b380dda910f07",
+                            "sha256":  "c79076632610b9fde0cc4f28ef18ca2494068341627eabd89aeb64da58b02e29",
                             "file":  "frontend/browser-tests/replay.spec.ts-snapshots/mobile-day-win32.png"
                         },
                         {
-                            "sha256":  "b2e4619514222dd71061ac5f5ea156338c363eb63a130d7676eca4de19512bf5",
+                            "sha256":  "e5373c972fbcd0f8a91c696ba8a9d3c3625c112962a61caf577a071b49746dca",
                             "file":  "frontend/browser-tests/replay.spec.ts-snapshots/mobile-night-win32.png"
                         },
                         {
@@ -69,7 +69,7 @@
                     ],
     "date":  "2026-10-08",
     "referenceSha256":  "a516f799b1d42aae47362d10baaa5df64869f5a41166fc892d6564a64aeb2038",
-    "status":  "agent-inspected portrait and landscape polish; pending user visual review",
+    "status":  "agent-inspected mobile overview and Safari zoom correction; pending user device review",
     "schemaVersion":  1,
     "worldId":  "tiny-town-v1"
 }
