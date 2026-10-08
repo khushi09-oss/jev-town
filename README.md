@@ -45,7 +45,9 @@ The default town has 10 lazy, 10 social, and 10 workaholic NPCs. Each request in
 
 All traits prioritize hunger above 60, then exhaustion below 30 energy or sleep from 22:00 to 05:00. Otherwise, company below 50 mood and work below 30 money are the ordinary preferences. Wandering fills the remaining time. These are explicit rules in the offline stand-in and instructions to Jev; real model choices can differ. Confidence below the configured cutoff still falls back to wandering.
 
-The original action consequences remain unchanged. The chart aggregates actual actions after the confidence fallback. Personality effects with real Jev have not yet been measured; an ordinary full run makes about 720 API requests.
+Wandering lowers mood by 4 and working by 6, so NPCs need company again over time. Socializing raises mood by 22. Sleep restores 25 energy without increasing mood. These consequences apply equally to all traits and are controlled by Python, not Jev.
+
+The chart aggregates actual actions after the confidence fallback. Personality effects with real Jev have not yet been measured; an ordinary full run makes about 720 API requests.
 
 ## Tests
 
