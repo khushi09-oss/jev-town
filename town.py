@@ -34,11 +34,11 @@ ACTIONS = {
 
 # (hunger, energy, mood, money) change per action
 EFFECTS = {
-    "eat": (-40, 5, 5, -5),
-    "work": (10, -15, -5, 20),
-    "sleep": (5, 35, 2, 0),
-    "socialize": (8, -5, 20, -3),
-    "wander": (5, -2, 3, 0),
+    "eat": (-40, 5, 3, -5),
+    "work": (10, -15, -6, 20),
+    "sleep": (6, 25, 0, 0),
+    "socialize": (8, -6, 22, -4),
+    "wander": (6, -4, -4, 0),
 }
 
 

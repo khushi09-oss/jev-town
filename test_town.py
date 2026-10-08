@@ -5,6 +5,22 @@ import town
 
 
 class PersonalityTests(unittest.TestCase):
+    def test_wandering_creates_a_recurring_need_for_company(self):
+        npc = town.NPC('npc', trait='social', hunger=10, energy=80, mood=86, money=50)
+        actions = []
+        with patch('town.KEY', None):
+            for hour in range(8, 17):
+                town.step(npc, hour)
+                actions.append(npc.last)
+        self.assertEqual(actions[0], 'wander')
+        self.assertGreaterEqual(actions.count('socialize'), 2)
+
+    def test_sleep_restores_energy_without_boosting_mood(self):
+        npc = town.NPC('npc', hunger=20, energy=20, mood=40)
+        with patch('town.KEY', None):
+            town.step(npc, 0)
+        self.assertEqual((npc.hunger, npc.energy, npc.mood), (26, 45, 40))
+
     def test_identical_stats_produce_different_personality_choices(self):
         choices = [town.mock_decide(town.NPC('npc', trait=trait,
                    hunger=30, energy=45, mood=60, money=40), 14)[0]
@@ -43,7 +59,7 @@ class PersonalityTests(unittest.TestCase):
             self.assertEqual(town.step(npc, 14), 0.1)
         self.assertTrue(npc.fell_back)
         self.assertEqual(npc.last, 'wander')
-        self.assertEqual((npc.hunger, npc.mood, npc.money), (100, 100, 0))
+        self.assertEqual((npc.hunger, npc.mood, npc.money), (100, 95, 0))
 
     def test_simulation_records_balanced_traits_and_action_totals(self):
         with patch('town.KEY', None), patch('town.export_html'), patch('town.plot') as plot:
