@@ -2,6 +2,8 @@
 
 A cozy pixel town of 30 autonomous human residents. Watch them eat, work, sleep, socialize and wander; select a neighbor, inspect their needs, follow them, or open the population and day summary.
 
+**[Open the live town](https://khushi09-oss.github.io/jev-town/)** — a free, public replay of the included mock simulation. No installation or API key required.
+
 Python chooses actions, applies effects and assigns destinations. The TypeScript/Vite/Phaser viewer only replays a recording. Playback, seek, speed, loop, restart and screenshots make zero Jev decisions. No backend is needed.
 
 ## See the town
@@ -23,6 +25,8 @@ The latest visual pass adds expressive eyes, layered hair and matching jacket/ov
 <img src="frontend/browser-tests/replay.spec.ts-snapshots/mobile-bea-win32.png" alt="Tiny Town on mobile with Bea selected and playback controls visible" width="390">
 
 ## Try it (PowerShell)
+
+The hosted version uses GitHub Pages, serving only `index.html` and `.nojekyll` from the `gh-pages` branch. It contains the same self-contained replay as `town.html`. New exports must be published to that branch; merging source changes alone does not update the live town. It does not run Python or make live Jev decisions.
 
 The included `town.html` is a complete seeded **mock simulation**, with recording, engine, styles and artwork embedded. It opens without a server, key, CDN or sibling-file fetch:
 
