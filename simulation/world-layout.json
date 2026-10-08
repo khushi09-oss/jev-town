@@ -1,0 +1,329 @@
+{
+  "version": 1,
+  "worldId": "tiny-town-v1",
+  "coordinates": "tile units; rectangles x,y,width,height; pixel anchors = tile center *16",
+  "sizeTiles": [
+    64,
+    40
+  ],
+  "buildings": [
+    {
+      "id": "home-01",
+      "kind": "cottage",
+      "footprintTiles": [
+        4,
+        3,
+        7,
+        6
+      ],
+      "doorTile": [
+        7,
+        9
+      ],
+      "capacity": 5,
+      "interiorRestSlots": 5
+    },
+    {
+      "id": "home-02",
+      "kind": "cottage",
+      "footprintTiles": [
+        12,
+        3,
+        7,
+        6
+      ],
+      "doorTile": [
+        15,
+        9
+      ],
+      "capacity": 5,
+      "interiorRestSlots": 5
+    },
+    {
+      "id": "home-03",
+      "kind": "cottage",
+      "footprintTiles": [
+        20,
+        3,
+        7,
+        6
+      ],
+      "doorTile": [
+        23,
+        9
+      ],
+      "capacity": 5,
+      "interiorRestSlots": 5
+    },
+    {
+      "id": "home-04",
+      "kind": "cottage",
+      "footprintTiles": [
+        28,
+        3,
+        7,
+        6
+      ],
+      "doorTile": [
+        31,
+        9
+      ],
+      "capacity": 5,
+      "interiorRestSlots": 5
+    },
+    {
+      "id": "home-05",
+      "kind": "cottage",
+      "footprintTiles": [
+        36,
+        3,
+        7,
+        6
+      ],
+      "doorTile": [
+        39,
+        9
+      ],
+      "capacity": 5,
+      "interiorRestSlots": 5
+    },
+    {
+      "id": "home-06",
+      "kind": "cottage",
+      "footprintTiles": [
+        44,
+        3,
+        7,
+        6
+      ],
+      "doorTile": [
+        47,
+        9
+      ],
+      "capacity": 5,
+      "interiorRestSlots": 5
+    },
+    {
+      "id": "bakery",
+      "kind": "bakery",
+      "footprintTiles": [
+        3,
+        13,
+        10,
+        7
+      ],
+      "doorTile": [
+        8,
+        20
+      ],
+      "capacity": 30
+    },
+    {
+      "id": "workshop",
+      "kind": "workshop",
+      "footprintTiles": [
+        4,
+        26,
+        11,
+        9
+      ],
+      "doorTile": [
+        15,
+        30
+      ],
+      "capacity": 30
+    },
+    {
+      "id": "garden",
+      "kind": "garden",
+      "footprintTiles": [
+        29,
+        27,
+        14,
+        8
+      ],
+      "doorTile": [
+        35,
+        26
+      ],
+      "capacity": 30
+    }
+  ],
+  "regions": [
+    {
+      "id": "square",
+      "rectTiles": [
+        20,
+        14,
+        16,
+        10
+      ],
+      "fountainRectTiles": [
+        26,
+        17,
+        3,
+        3
+      ]
+    },
+    {
+      "id": "park",
+      "rectTiles": [
+        44,
+        15,
+        10,
+        11
+      ]
+    },
+    {
+      "id": "stream",
+      "rectTiles": [
+        57,
+        0,
+        3,
+        40
+      ]
+    },
+    {
+      "id": "east-bank",
+      "rectTiles": [
+        60,
+        0,
+        4,
+        40
+      ]
+    }
+  ],
+  "roads": [
+    {
+      "id": "north-road",
+      "widthTiles": 3,
+      "pointsTiles": [
+        [
+          3,
+          11
+        ],
+        [
+          53,
+          11
+        ]
+      ]
+    },
+    {
+      "id": "central-road",
+      "widthTiles": 3,
+      "pointsTiles": [
+        [
+          18,
+          11
+        ],
+        [
+          18,
+          36
+        ],
+        [
+          52,
+          36
+        ]
+      ]
+    },
+    {
+      "id": "square-approach",
+      "widthTiles": 3,
+      "pointsTiles": [
+        [
+          8,
+          21
+        ],
+        [
+          18,
+          21
+        ],
+        [
+          20,
+          21
+        ]
+      ]
+    },
+    {
+      "id": "east-road",
+      "widthTiles": 2,
+      "pointsTiles": [
+        [
+          36,
+          21
+        ],
+        [
+          55,
+          21
+        ],
+        [
+          55,
+          36
+        ],
+        [
+          52,
+          36
+        ]
+      ]
+    },
+    {
+      "id": "garden-approach",
+      "widthTiles": 2,
+      "pointsTiles": [
+        [
+          18,
+          25
+        ],
+        [
+          35,
+          25
+        ],
+        [
+          35,
+          26
+        ]
+      ]
+    },
+    {
+      "id": "bridge-path",
+      "widthTiles": 2,
+      "pointsTiles": [
+        [
+          55,
+          23
+        ],
+        [
+          62,
+          23
+        ]
+      ]
+    }
+  ],
+  "bridge": {
+    "rectTiles": [
+      56,
+      22,
+      5,
+      3
+    ],
+    "crossingY": 23
+  },
+  "spawn": {
+    "defaultRegion": "square",
+    "layout": "grid with unique feet positions"
+  },
+  "anchorRules": {
+    "home": "five indoor beds per home; separate exterior door from interior coordinates",
+    "eat": "30 seats distributed between bakery patio and cottage kitchens",
+    "work": "30 stations spread among workshop, garden and a proposed market counter at square edge",
+    "socialize": "30 slots in square and cafe groups, 2-4 people per group",
+    "wander": "reachable road/park tiles excluding obstacles and water"
+  },
+  "navigation": "derive walkable grid from roads/region ground; block structures/fountain/water except bridge; connect each door and all anchors; validate routes before art placement",
+  "notes": [
+    "The north road must connect to every cottage door via a short spur.",
+    "Garden is a walkable region with internal crop collision rows, not a fully blocked structure.",
+    "A door at footprint edge needs an adjacent outdoor walkable tile.",
+    "Exact bench/seat/crop anchors must be authored and saved in the asset manifest; region capacity is a requirement, not an existing anchor implementation."
+  ]
+}

@@ -1,0 +1,27 @@
+﻿{
+    "realJevCalls":  0,
+    "pythonTests":  16,
+    "environmentFileReadByAgent":  false,
+    "frontendUnitTests":  17,
+    "browserTests":  11,
+    "visualRegressionCases":  10,
+    "limitation":  "No real API run performed; Jev adapter verified with stubs. Windows Chromium baselines require intentional review before updates.",
+    "blockingAuditFindings":  [
+
+                              ],
+    "date":  "2026-10-08",
+    "tested":  [
+                   "30 residents at every action; spaced work/wander anchors",
+                   "Deterministic seek, pause, speed, loop, restart and final boundary",
+                   "Bridge-only crossing and blocked footprints",
+                   "Inspector selection/follow/cutaway, keyboard/pan/reduced motion",
+                   "390x844 mobile bottom sheet and reachable controls",
+                   "Invalid imports preserve previous recording; hostile names escaped",
+                   "Jev payload, invalid choice/confidence, retry exhaustion, key redaction",
+                   "Error fallback separate from low-confidence fallback",
+                   "Failed hour preserves previous recording",
+                   "Self-contained file export with zero external requests"
+               ],
+    "typescriptBuild":  "passed",
+    "dependencyAudit":  "0 vulnerabilities"
+}

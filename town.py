@@ -6,6 +6,8 @@ Provider is swappable via JEV_URL / JEV_AUTH (check your provider's docs for
 the exact URL and auth header).
 """
 import os
+import math
+import sys
 import random
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -14,21 +16,35 @@ from dataclasses import dataclass
 import requests
 from dotenv import load_dotenv
 
-load_dotenv()  # reads a .env file in this folder, if there is one
+MOCK_REQUESTED = os.getenv('JEV_MOCK') == '1' or '--mock' in sys.argv
+if not MOCK_REQUESTED:
+    load_dotenv()  # legacy local configuration; explicit mock runs never open .env
 
 URL = os.getenv("JEV_URL", "https://api.typesafe.ai/v1/systemone")
-KEY = os.getenv("JEV_KEY")
+KEY = None if MOCK_REQUESTED else os.getenv("JEV_KEY")
 AUTH = os.getenv("JEV_AUTH", f"Bearer {KEY}")  # Inworld uses "Basic <creds>"
 MODEL = os.getenv("JEV_MODEL", "jev-latest")
 MIN_CONFIDENCE = float(os.getenv("JEV_MIN_CONF", "0.2"))  # below this, wander instead
 TRAITS = ("lazy", "social", "workaholic")
+SOCIAL_MOOD = float(os.getenv('JEV_SOCIAL_MOOD', '85'))
+LAZY_REST = float(os.getenv('JEV_LAZY_REST', '60'))
+LAZY_WORK_MONEY = float(os.getenv('JEV_LAZY_WORK_MONEY', '15'))
+for threshold in (SOCIAL_MOOD, LAZY_REST, LAZY_WORK_MONEY, MIN_CONFIDENCE):
+    if not math.isfinite(threshold):
+        raise ValueError('Decision thresholds must be finite')
+if not (0 <= SOCIAL_MOOD <= 100 and 0 <= LAZY_REST <= 100 and
+        LAZY_WORK_MONEY >= 0 and 0 <= MIN_CONFIDENCE <= 1):
+    raise ValueError('Decision threshold out of range')
+ERROR_FALLBACK = os.getenv('JEV_ERROR_FALLBACK', 'stop')
+if ERROR_FALLBACK not in ('stop', 'mock'):
+    raise ValueError('JEV_ERROR_FALLBACK must be stop or mock')
 
 # The choice set Jev picks from. Descriptions are what Jev actually reads.
 ACTIONS = {
     "eat": "Go eat. Choose this when hunger is above 60.",
-    "work": "Go to work and earn money. Choose this when money is below 30 and energy is above 40. Workaholics prefer work whenever energy is above 40, even with enough money. Lazy people work only when money is below 15.",
-    "sleep": "Sleep. Choose this when energy is below 30, or when the hour is at least 22 or below 6. Lazy people also rest when energy is below 60.",
-    "socialize": "Hang out with others. Choose this when mood is below 50 and energy is above 30. Social people seek company whenever mood is below 85 and energy is above 30.",
+    "work": f"Go to work and earn money. Choose this when money is below 30 and energy is above 40. Workaholics prefer work whenever energy is above 40, even with enough money. Lazy people work only when money is below {LAZY_WORK_MONEY:g}.",
+    "sleep": f"Sleep. Choose this when energy is below 30, or when the hour is at least 22 or below 6. Lazy people also rest when energy is below {LAZY_REST:g}.",
+    "socialize": f"Hang out with others. Choose this when mood is below 50 and energy is above 30. Social people seek company whenever mood is below {SOCIAL_MOOD:g} and energy is above 30.",
     "wander": "Stroll around. Choose this ONLY when nothing else is needed: hunger, energy, mood and money are all fine.",
 }
 
@@ -40,6 +56,26 @@ EFFECTS = {
     "socialize": (8, -6, 22, -4),
     "wander": (6, -4, -4, 0),
 }
+EFFECTS_PRESETS = {'lively': EFFECTS, 'legacy': {
+    'eat': (-40, 5, 5, -5), 'work': (10, -15, -5, 20),
+    'sleep': (5, 35, 2, 0), 'socialize': (8, -5, 20, -3), 'wander': (5, -2, 3, 0)}}
+EFFECTS_PRESET = os.getenv('JEV_EFFECTS_PRESET', 'lively')
+if EFFECTS_PRESET not in EFFECTS_PRESETS:
+    raise ValueError('JEV_EFFECTS_PRESET must be lively or legacy')
+EFFECTS = EFFECTS_PRESETS[EFFECTS_PRESET]
+
+
+class DecisionError(RuntimeError):
+    def __init__(self, code, message):
+        self.code = code
+        super().__init__(message)
+
+
+def safe_message(text):
+    for secret in (AUTH, KEY):
+        if secret:
+            text = text.replace(secret, '[redacted]')
+    return text[:512]
 
 
 @dataclass
@@ -52,6 +88,10 @@ class NPC:
     last: str = "-"
     fell_back: bool = False
     trait: str = "lazy"
+    chosen_action: str | None = None
+    confidence: float | None = None
+    decision_source: str = 'mock'
+    error_code: str | None = None
 
 
 def clamp(x):
@@ -64,12 +104,12 @@ def mock_decide(npc, hour):
         return "eat", 0.9
     if npc.energy < 30 or hour >= 22 or hour < 6:
         return "sleep", 0.9
-    if npc.trait == "lazy" and npc.energy < 60:
+    if npc.trait == "lazy" and npc.energy < LAZY_REST:
         return "sleep", 0.8
-    if npc.mood < (85 if npc.trait == "social" else 50) and npc.energy > 30:
+    if npc.mood < (SOCIAL_MOOD if npc.trait == "social" else 50) and npc.energy > 30:
         return "socialize", 0.8
     if npc.energy > 40 and (npc.trait == "workaholic" or
-                           npc.money < (15 if npc.trait == "lazy" else 30)):
+                           npc.money < (LAZY_WORK_MONEY if npc.trait == "lazy" else 30)):
         return "work", 0.7
     return "wander", 0.6
 
@@ -96,27 +136,51 @@ def jev_decide(npc, hour):
         },
     }
     for attempt in range(6):
-        r = requests.post(
-            URL, json=body, timeout=60,
-            headers={"Authorization": AUTH, "Content-Type": "application/json"},
-        )
+        try:
+            r = requests.post(
+                URL, json=body, timeout=60,
+                headers={"Authorization": AUTH, "Content-Type": "application/json"},
+            )
+        except requests.RequestException as error:
+            raise DecisionError('network_error', 'Jev request failed; the last valid recording is unchanged.') from None
         if r.status_code in (429, 503, 529):  # rate limited / overloaded: back off
             try:
                 wait = float(r.headers.get("Retry-After", ""))
             except ValueError:
                 wait = 2 ** attempt
-            time.sleep(wait)
+            if not math.isfinite(wait) or wait < 0:
+                wait = 2 ** attempt
+            if attempt < 5:
+                time.sleep(min(wait, 60))
             continue
         if not r.ok:
-            raise RuntimeError(f"{r.status_code} from {URL}: {r.text}")
-        ans = r.json()["answers"]["next_action"]
-        return ans["choice"], ans["confidence"]
-    r.raise_for_status()  # still limited after all retries: raise the error
+            raise DecisionError(f'http_{r.status_code}', f"{r.status_code} from Jev: {safe_message(r.text)}")
+        try:
+            ans = r.json()["answers"]["next_action"]
+            action, confidence = ans['choice'], ans['confidence']
+            if (action not in ACTIONS or isinstance(confidence, bool) or
+                not isinstance(confidence, (int, float)) or not math.isfinite(confidence)
+                or not 0 <= confidence <= 1):
+                raise ValueError('Invalid action or confidence')
+        except (ValueError, KeyError, TypeError):
+            raise DecisionError('invalid_response', 'Jev returned an invalid choice or confidence.') from None
+        return action, confidence
+    raise DecisionError('retries_exhausted', 'Jev is still rate limited or unavailable after six attempts.')
 
 
 def step(npc, hour):
-    action, conf = (jev_decide if KEY else mock_decide)(npc, hour)
-    npc.fell_back = conf < MIN_CONFIDENCE
+    npc.error_code = None
+    npc.decision_source = 'jev' if KEY else 'mock'
+    try:
+        action, conf = (jev_decide if KEY else mock_decide)(npc, hour)
+        npc.chosen_action, npc.confidence = action, conf
+    except DecisionError as error:
+        if ERROR_FALLBACK != 'mock':
+            raise
+        action, conf = mock_decide(npc, hour)
+        npc.decision_source, npc.error_code = 'error-mock', error.code
+        npc.chosen_action, npc.confidence = None, None
+    npc.fell_back = npc.decision_source != 'error-mock' and conf < MIN_CONFIDENCE
     if npc.fell_back:
         action = "wander"
     dh, de, dm, dmoney = EFFECTS[action]
@@ -208,7 +272,7 @@ def export_html(frames, history, path="town.html"):
     print(f"Saved {path} - open it in your browser to watch the town")
 
 
-def plot(history):
+def plot(history, path='town.png', show=True):
     """Top: what the town is doing each hour. Bottom: average NPC stats."""
     import matplotlib.pyplot as plt  # pip install matplotlib
 
@@ -247,21 +311,37 @@ def plot(history):
     traits.legend(ncol=5, fontsize=8)
 
     fig.tight_layout()
-    fig.savefig("town.png", dpi=150)
-    plt.show()
+    fig.savefig(path, dpi=150)
+    if show:
+        plt.show()
+    else:
+        plt.close(fig)
 
 
-def main(n_npcs=30, ticks=24):
-    names = [f"npc{i:02d}" for i in range(n_npcs)]
-    town = [NPC(n, hunger=random.randint(10, 80), energy=random.randint(30, 90),
-                trait=TRAITS[i % len(TRAITS)]) for i, n in enumerate(names)]
+def main(n_npcs=30, ticks=24, *, seed=7, output_dir='.', show_chart=True):
+    from dataclasses import replace
+    from pathlib import Path
+    from simulation.identities import manifest
+    from simulation.recording import start_recording, append_frame, write_recording
+    from simulation.exports import export_replay
+    if not 1 <= ticks <= 24:
+        raise ValueError('ticks must be between 1 and 24')
+    identities = manifest(n_npcs)
+    rng = random.Random(seed)
+    town = [NPC(p['id'], hunger=rng.randint(10, 80), energy=rng.randint(30, 90),
+                trait=p['trait']) for p in identities]
+    recording = start_recording(town, identities, seed, 'jev' if KEY else 'mock')
     history = []
     frames = []  # what every NPC did each hour, for the animation
     for tick in range(ticks):
         hour = tick % 24
         # all NPCs decide in parallel; Jev's speed is the whole point
         with ThreadPoolExecutor(max_workers=int(os.getenv("JEV_WORKERS", "4"))) as pool:
-            confs = list(pool.map(lambda n: step(n, hour), town))
+            # Mutate private copies only. A failed decision cannot partially commit the hour.
+            next_town = [replace(n) for n in town]
+            confs = list(pool.map(lambda n: step(n, hour), next_town))
+        append_frame(recording, town, next_town, tick)
+        town = next_town
         counts = {}
         trait_counts = {trait: {} for trait in TRAITS}
         for n in town:
@@ -280,9 +360,29 @@ def main(n_npcs=30, ticks=24):
             "energy": sum(n.energy for n in town) / len(town),
             "mood": sum(n.mood for n in town) / len(town),
         })
-    export_html(frames, history)
-    plot(history)
+    output = Path(output_dir)
+    output.mkdir(parents=True, exist_ok=True)
+    if ticks == 24:
+        write_recording(recording, output / 'run.json')
+        if not export_replay(recording, output / 'town.html'):
+            export_html(frames, history, str(output / 'town.html'))
+    else:
+        export_html(frames, history, str(output / 'town.html'))
+    plot(history, path=str(output / 'town.png'), show=show_chart)
+    return recording
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    parser = argparse.ArgumentParser(description='Tiny Town: Jev or mock recording and exports')
+    parser.add_argument('--mock', action='store_true', help='Never use Jev or require a key')
+    parser.add_argument('--no-show', action='store_true', help='Save chart without opening a window')
+    parser.add_argument('--seed', type=int, default=7)
+    parser.add_argument('--output-dir', default='.')
+    args = parser.parse_args()
+    if args.mock:
+        KEY = None
+    try:
+        main(seed=args.seed, output_dir=args.output_dir, show_chart=not args.no_show)
+    except (DecisionError, ValueError) as error:
+        parser.exit(1, f'Town stopped: {safe_message(str(error))}\n')

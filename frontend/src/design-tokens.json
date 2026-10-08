@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "colors": {
+    "uiCream": "#F7EDD8",
+    "uiBorder": "#CDBC9B",
+    "ink": "#332A23",
+    "mutedInk": "#776A59",
+    "grass": "#8B9D62",
+    "grassLight": "#ACB87A",
+    "treeDark": "#345844",
+    "treeLight": "#678449",
+    "roof": "#B85E43",
+    "path": "#D9BB85",
+    "stone": "#AAA58E",
+    "water": "#6097AA",
+    "nightSurface": "#192E43",
+    "nightTint": "#182D52",
+    "lamp": "#FFD17A",
+    "actionEat": "#D9A45C",
+    "actionWork": "#B9654E",
+    "actionSleep": "#7B83AD",
+    "actionSocialize": "#6C9A87",
+    "actionWander": "#9EA477"
+  },
+  "type": {
+    "heading": "Georgia, serif",
+    "body": "system-ui, sans-serif",
+    "bodyPx": 14,
+    "titlePx": 24,
+    "residentNamePx": 22
+  },
+  "layout": {
+    "headerPx": 64,
+    "playbackPx": 88,
+    "inspectorPx": 320,
+    "panelPaddingPx": 16,
+    "gapPx": 12,
+    "controlMinHeightPx": 40,
+    "borderPx": 1
+  },
+  "world": {
+    "tilePx": 16,
+    "columns": 64,
+    "rows": 40,
+    "spriteCellPx": [
+      24,
+      32
+    ],
+    "portraitPx": [
+      64,
+      64
+    ],
+    "zoomStops": [
+      1,
+      2,
+      3
+    ]
+  },
+  "motion": {
+    "hourPlaybackSecondsAt1x": 12,
+    "departureStaggerFraction": 0.15,
+    "baseWalkWorldPxPerSecond": 48,
+    "maxWalkWorldPxPerSecond": 180,
+    "cameraEaseMs": 300,
+    "nightPeakAlpha": 0.35
+  }
+}
