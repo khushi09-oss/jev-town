@@ -21,13 +21,14 @@ KEY = os.getenv("JEV_KEY")
 AUTH = os.getenv("JEV_AUTH", f"Bearer {KEY}")  # Inworld uses "Basic <creds>"
 MODEL = os.getenv("JEV_MODEL", "jev-latest")
 MIN_CONFIDENCE = float(os.getenv("JEV_MIN_CONF", "0.2"))  # below this, wander instead
+TRAITS = ("lazy", "social", "workaholic")
 
 # The choice set Jev picks from. Descriptions are what Jev actually reads.
 ACTIONS = {
     "eat": "Go eat. Choose this when hunger is above 60.",
-    "work": "Go to work and earn money. Choose this when money is below 30 and energy is above 40.",
-    "sleep": "Sleep. Choose this when energy is below 30, or when the hour is between 22 and 6.",
-    "socialize": "Hang out with others. Choose this when mood is below 50 and energy is above 30.",
+    "work": "Go to work and earn money. Choose this when money is below 30 and energy is above 40. Workaholics prefer work whenever energy is above 40, even with enough money. Lazy people work only when money is below 15.",
+    "sleep": "Sleep. Choose this when energy is below 30, or when the hour is at least 22 or below 6. Lazy people also rest when energy is below 60.",
+    "socialize": "Hang out with others. Choose this when mood is below 50 and energy is above 30. Social people seek company whenever mood is below 85 and energy is above 30.",
     "wander": "Stroll around. Choose this ONLY when nothing else is needed: hunger, energy, mood and money are all fine.",
 }
 
@@ -50,6 +51,7 @@ class NPC:
     money: int = 20
     last: str = "-"
     fell_back: bool = False
+    trait: str = "lazy"
 
 
 def clamp(x):
@@ -58,15 +60,18 @@ def clamp(x):
 
 def mock_decide(npc, hour):
     """Rule-based stand-in so the sim runs without an API key."""
-    if npc.hunger > 70:
+    if npc.hunger > 60:
         return "eat", 0.9
-    if npc.energy < 25 or hour >= 23 or hour < 6:
+    if npc.energy < 30 or hour >= 22 or hour < 6:
         return "sleep", 0.9
-    if npc.mood < 35:
+    if npc.trait == "lazy" and npc.energy < 60:
+        return "sleep", 0.8
+    if npc.mood < (85 if npc.trait == "social" else 50) and npc.energy > 30:
         return "socialize", 0.8
-    if npc.money < 15:
+    if npc.energy > 40 and (npc.trait == "workaholic" or
+                           npc.money < (15 if npc.trait == "lazy" else 30)):
         return "work", 0.7
-    return random.choice(["work", "socialize", "wander"]), 0.6
+    return "wander", 0.6
 
 
 def jev_decide(npc, hour):
@@ -80,11 +85,12 @@ def jev_decide(npc, hour):
             "mood_0_to_100": npc.mood,
             "money": npc.money,
             "did_last_tick": npc.last,
+            "personality": npc.trait,
         },
         "questions": {
             "next_action": {
                 "type": "choice",
-                "instructions": "What should this person do next?",
+                "instructions": "What should this person do next? Prioritize hunger above 60, then energy below 30 or nighttime sleep, before personality preferences.",
                 "criteria": ACTIONS,
             }
         },
@@ -207,7 +213,7 @@ def plot(history):
     import matplotlib.pyplot as plt  # pip install matplotlib
 
     x = list(range(len(history)))
-    fig, (top, bottom) = plt.subplots(2, 1, figsize=(11, 8), sharex=True)
+    fig, (top, bottom, traits) = plt.subplots(3, 1, figsize=(11, 11))
 
     stack = [0] * len(history)
     for action in ACTIONS:
@@ -226,6 +232,20 @@ def plot(history):
     bottom.set_xticklabels([f"{h['hour']:02d}" for h in history])
     bottom.legend(fontsize=8)
 
+    totals = {trait: {action: sum(h["trait_counts"][trait].get(action, 0)
+                                for h in history) for action in ACTIONS}
+              for trait in TRAITS}
+    stack = [0.0] * len(TRAITS)
+    for action in ACTIONS:
+        shares = [100 * totals[trait][action] / max(1, sum(totals[trait].values()))
+                  for trait in TRAITS]
+        traits.bar(TRAITS, shares, bottom=stack, label=action)
+        stack = [s + v for s, v in zip(stack, shares)]
+    traits.set_ylabel("action share (%)")
+    traits.set_ylim(0, 100)
+    traits.set_title("How each personality spends the day")
+    traits.legend(ncol=5, fontsize=8)
+
     fig.tight_layout()
     fig.savefig("town.png", dpi=150)
     plt.show()
@@ -233,7 +253,8 @@ def plot(history):
 
 def main(n_npcs=30, ticks=24):
     names = [f"npc{i:02d}" for i in range(n_npcs)]
-    town = [NPC(n, hunger=random.randint(10, 80), energy=random.randint(30, 90)) for n in names]
+    town = [NPC(n, hunger=random.randint(10, 80), energy=random.randint(30, 90),
+                trait=TRAITS[i % len(TRAITS)]) for i, n in enumerate(names)]
     history = []
     frames = []  # what every NPC did each hour, for the animation
     for tick in range(ticks):
@@ -242,8 +263,11 @@ def main(n_npcs=30, ticks=24):
         with ThreadPoolExecutor(max_workers=int(os.getenv("JEV_WORKERS", "4"))) as pool:
             confs = list(pool.map(lambda n: step(n, hour), town))
         counts = {}
+        trait_counts = {trait: {} for trait in TRAITS}
         for n in town:
             counts[n.last] = counts.get(n.last, 0) + 1
+            group = trait_counts[n.trait]
+            group[n.last] = group.get(n.last, 0) + 1
         avg_conf = sum(confs) / len(confs)
         frames.append([n.last for n in town])
         fb = sum(n.fell_back for n in town)
@@ -251,6 +275,7 @@ def main(n_npcs=30, ticks=24):
         history.append({
             "hour": hour,
             "counts": counts,
+            "trait_counts": trait_counts,
             "hunger": sum(n.hunger for n in town) / len(town),
             "energy": sum(n.energy for n in town) / len(town),
             "mood": sum(n.mood for n in town) / len(town),
