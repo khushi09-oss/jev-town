@@ -1,66 +1,109 @@
 # Tiny Town
 
-A cozy pixel town of 30 autonomous human residents. Watch them eat, work, sleep, socialize and wander; select a neighbor, inspect their needs, follow them, or open the population and day summary.
+A cozy pixel town of 30 residents who decide whether to eat, work, sleep, socialize or wander. Select someone to see their personality and needs, follow them around town, or watch the day unfold.
 
-**[Open the live town](https://khushi09-oss.github.io/jev-town/)** — a free, public replay of the included mock simulation. No installation or API key required.
+**[Play Tiny Town in your browser](https://khushi09-oss.github.io/jev-town/)** · No installation or API key needed.
 
-Python chooses actions, applies effects and assigns destinations. The TypeScript/Vite/Phaser viewer only replays a recording. Playback, seek, speed, loop, restart and screenshots make zero Jev decisions. No backend is needed.
+Python runs the simulation. Jev chooses actions; Python applies their consequences and destinations. The browser replays a saved day. Playback controls never call Jev.
 
-## See the town
+## A look around
 
-Screenshots from the seeded, staged mock replay used for visual testing.
+Daytime, with Bea selected:
 
-The latest visual pass adds expressive eyes, layered hair and matching jacket/overall details to all 30 portraits, with fuller flower borders, grass clusters and stone-lined riverbanks. Original identities, homes and replay routes remain stable.
+![Tiny Town during the day with Bea's portrait and needs](frontend/browser-tests/replay.spec.ts-snapshots/desktop-bea-win32.png)
 
-**Daytime — select a resident to see their portrait, personality, needs and day.**
+Nighttime, with warm windows and street lamps:
 
-![Tiny Town during the day with Bea selected and her resident inspector open](frontend/browser-tests/replay.spec.ts-snapshots/desktop-bea-win32.png)
+![Tiny Town at night](frontend/browser-tests/replay.spec.ts-snapshots/desktop-night-win32.png)
 
-**Nighttime — residents head home, with warm windows and street lamps.**
+Mobile:
 
-![Tiny Town at 23:00 with illuminated cottages and street lamps](frontend/browser-tests/replay.spec.ts-snapshots/desktop-night-win32.png)
+<img src="frontend/browser-tests/replay.spec.ts-snapshots/mobile-bea-win32.png" alt="Tiny Town on mobile with the resident inspector and playback controls" width="390">
 
-**Mobile — pan around the town and inspect residents in the bottom sheet.**
+These screenshots use a staged mock recording for visual testing. The live site and example export use a complete mock simulation.
 
-<img src="frontend/browser-tests/replay.spec.ts-snapshots/mobile-bea-win32.png" alt="Tiny Town on mobile with Bea selected and playback controls visible" width="390">
+## Run it locally
 
-## Try it (PowerShell)
-
-The hosted version uses GitHub Pages, serving only `index.html` and `.nojekyll` from the `gh-pages` branch. It contains the same self-contained replay as `town.html`. New exports must be published to that branch; merging source changes alone does not update the live town. It does not run Python or make live Jev decisions.
-
-The included `town.html` is a complete seeded **mock simulation**, with recording, engine, styles and artwork embedded. It opens without a server, key, CDN or sibling-file fetch:
+Open the included example without installing anything:
 
 ```powershell
-Start-Process .\town.html
+Start-Process .\examples\town.html
 ```
 
-`town.png` is its chart; `run.json` is its portable recording. Previous exports were backed up locally under `.artifacts/legacy-exports` during the upgrade.
-
-## Develop or generate a recording
-
-Validated with Node 24.11.1 and Python 3.14. Reuse the existing virtual environment if installed. From the root:
+To generate your own day, install Python and Node.js. Tested with Python 3.14 and Node 24.11.1. From the project root:
 
 ```powershell
+python -m venv .venv
 .\.venv\Scripts\Activate.ps1
-python -m pip install requests python-dotenv matplotlib
+python -m pip install -r requirements.txt
 npm --prefix frontend ci
 npm --prefix frontend run build
 python town.py --mock --no-show --seed 7
 Start-Process .\town.html
 ```
 
-`--mock` bypasses both Jev and `.env` loading. `--no-show` saves the chart without a blocking window. `--output-dir .\my-run` writes the three exports elsewhere. If `frontend/dist` is absent, Python explicitly reports that it is using the retained legacy five-zone self-contained exporter, `export_html(frames, history, path)`.
+Each run creates `town.html` (offline replay), `town.png` (chart) and `run.json` (recording). These root outputs are ignored by Git; the committed sample lives in `examples/`. Use `--output-dir .\my-run` to save elsewhere.
 
-```powershell
-Set-Location .\frontend
-npm run dev
+`--mock` skips Jev and `.env` loading. `--no-show` saves the chart without opening a blocking window. Without a frontend build, Python reports that it is using the retained legacy animation exporter.
+
+## Where things live
+
+```text
+jev-town/
+├── town.py              # Run the simulation and export a day
+├── requirements.txt     # Python dependencies
+├── simulation/          # Identities, world, recordings and exports
+├── frontend/            # TypeScript/Vite/Phaser replay, UI and game art
+├── scripts/             # Rebuild navigation, artwork and test recordings
+├── tests/               # Python tests, occupancy fixtures and visual reports
+├── assets/              # Original art source and design references
+├── examples/            # One ready-to-open replay, chart and recording
+└── README.md
 ```
 
-Open the local URL printed by Vite. Development starts with an explicitly labeled **Mock · sample** recording staged for art review, rather than claiming those actions came from Jev or the mock policy. `?stage=six` opens the six-resident neighborhood. Use **Load recording** to open Python's `run.json`. Invalid imports leave the current replay available.
+The frontend keeps its browser tests and screenshot baselines alongside its code. Runtime artwork is in `frontend/src/assets/`; original scenery is in `assets/source/`, with the design board and resident preview in `assets/reference/`. Only this README is tracked among Markdown files. Local handoff documents and `AGENTS.md` stay private to the workspace.
 
-## Jev configuration
+## Work on the viewer
 
-The existing `python town.py` entrypoint, TypeSafe endpoint, request shape and four-worker default remain. With no key, it still uses mock decisions. Normal CLI runs retain local `.env` loading; keep that file private. Never put credentials in browser code, recordings, source, screenshots or chat. Example settings, with a placeholder key:
+```powershell
+npm --prefix frontend run dev
+```
+
+Open the URL printed by Vite. **Load recording** opens a generated `run.json`; invalid files leave the previous replay usable. `?stage=six` shows the six-resident art checkpoint.
+
+Space toggles playback, Escape closes panels, and arrow keys pan the focused map. Zoom, follow, seek, speed, restart and loop all reuse the same recording. Reduced motion is supported.
+
+## Test it
+
+Run from the root, with the virtual environment active:
+
+```powershell
+python -m unittest -v
+npm --prefix frontend test
+npm --prefix frontend run build
+Set-Location .\frontend
+npx playwright install chromium
+Set-Location ..
+python town.py --mock --no-show --output-dir .\.artifacts\export
+npm --prefix frontend run test:browser
+```
+
+Checks cover decisions and errors, all 30 residents choosing each action, path obstacles and the bridge, deterministic playback, keyboard/mobile controls, imported files and offline HTML. Fixed Windows/Chromium screenshots cover desktop 1440×900 and mobile 390×844. Reports and baseline hashes live in `tests/visual/`.
+
+To rebuild generated game data and artwork after editing their sources:
+
+```powershell
+python scripts/build_world.py
+python scripts/build_art.py
+python scripts/make_visual_fixture.py
+```
+
+The scripts reuse the original scenery atlas; they do not call an image service. Art provenance is recorded in `frontend/src/assets/LICENSES.json`.
+
+<details>
+<summary><strong>Use Jev instead of mock decisions</strong></summary>
+
+Keep your TypeSafe key in a local `.env` file. Never commit it or place it in browser code, screenshots or recordings. Example settings use a placeholder key:
 
 ```text
 JEV_KEY=<your TypeSafe key>
@@ -80,87 +123,23 @@ Remove-Item Env:JEV_MOCK -ErrorAction SilentlyContinue
 python town.py --no-show
 ```
 
-A full real run makes about **720 decisions**, plus retries. `JEV_MOCK=1` forces offline mode before module import. HTTP 429/503/529 retries are limited to six attempts, requests time out after 60 seconds, and numeric `Retry-After` waits are honored up to a 60-second cap. Diagnostic body messages redact the configured key and authorization value. Invalid choices/confidence are errors.
+With no key, the CLI uses mock decisions. A real 24-hour run makes about 720 requests, plus retries. HTTP 429/503/529 retries are bounded to six attempts, with 60-second request timeouts and numeric Retry-After waits capped at 60 seconds. Diagnostics redact the configured key.
 
-Low confidence applies `wander` and sets `fellBack`. HTTP/schema failures stop by default, preserving previous complete exports. Explicit `JEV_ERROR_FALLBACK=mock` recovery records `decisionSource=error-mock`, `errorCode`, and null API choice/confidence; it is separate from confidence fallback and the run is labeled mixed. Hourly decisions mutate private NPC copies; the hour commits only when every result succeeds.
+Lazy residents favor rest, social residents seek company, and workaholics favor work. `lively` effects make mood decline during work and wandering; `legacy` restores the original effects. Needs are clamped to 0–100 and money stays nonnegative.
 
-## People and effects
+Low confidence applies wander and records `fellBack`. HTTP/schema errors stop by default and preserve the previous complete recording. Explicit `JEV_ERROR_FALLBACK=mock` recovery records a separate error-mock source and error code, with no valid API choice/confidence.
 
-Stable IDs remain `npc00`–`npc29`. The supplied design explicitly maps the first six to Bea/social/teal curls, Milo/workaholic/rust, Ada/lazy/silver bun, Finn/social/blue cap, Noor/workaholic/plum bob, and Otto/lazy/ginger overalls. This replaces the previous ID-to-trait order. All 30 looks, names and homes are authored in `simulation/identities.py`; each cottage houses five residents with individual bed slots.
+</details>
 
-| Trait | Default preference |
-|---|---|
-| Lazy | Rest below 60 energy; work below 15 money with energy above 40 |
-| Social | Seek company below 85 mood with energy above 30 |
-| Workaholic | Work with energy above 40 even with enough money |
+<details>
+<summary><strong>Replay format, hosting and visual limits</strong></summary>
 
-Hunger above 60 takes priority, followed by energy below 30 or sleep between 22:00 and 05:00. Configurable thresholds also appear in Jev's criteria. The earlier six-call real Jev comparison chose sleep/socialize/work for these matched-stat traits; no billed experiment was made for this visual upgrade.
+The version-1 recording contains stable identities, initial state and 24 ordered frames: 25 boundaries. Each frame records before/after stats, chosen/applied action, confidence, fallback/error metadata and a Python destination. The browser validates the recording and reconstructs shortest routes deterministically. It never applies effects. Needs commit at each hour boundary; t=24 shows the final state.
 
-`lively` retains the already-implemented rebalancing; `legacy` restores the original effects. All traits share consequences:
+The world uses 64×40 tiles at 16 pixels each. Every action has 30 distinct destinations, including individual beds in six shared cottages. Four-direction sprites and matching portraits retain each resident's appearance. Selecting a sleeper reveals their home interior.
 
-| Action | Hunger | Energy | Mood | Money |
-|---|---:|---:|---:|---:|
-| Eat | -40 | +5 | +3 | -5 |
-| Work | +10 | -15 | -6 | +20 |
-| Sleep | +6 | +25 | 0 | 0 |
-| Socialize | +8 | -6 | +22 | -4 |
-| Wander | +6 | -4 | -4 | 0 |
+GitHub Pages serves the approved self-contained replay from `gh-pages/index.html`, alongside `.nojekyll`. It hosts no Python service or API key. New exports must be published to that branch; merging source changes alone does not update the live site.
 
-Needs stay within 0–100 and money stays at least zero. No debt or new eligibility restriction is introduced.
+The artwork remains simpler than the concept faces, terrain is visibly gridded, landscaping is less organic, and the specified night tint is gentler than the board. Desktop fit can leave sage margins. The roughly 2.4 MB inline Phaser bundle produces an expected Vite size warning. Screenshot baselines lock the inspected implementation rather than claiming exact concept-board parity.
 
-## Recording and playback
-
-`schemaVersion=1` records run ID, seed, mode, world ID, 24 hours, start hour, immutable identities, initial snapshot and 24 ordered frames: **25 boundaries**. Each frame contains BEFORE stats, chosen/applied action, confidence, separate fallback/error metadata, AFTER stats and a Python destination. Interval `[h,h+1)` shows before stats; after stats commit at h+1. At t=24 the final stats and completed-day state are shown. Loop reuses the same day.
-
-The browser validates sequences, identity sets, finite bounded stats/confidence, continuity and walkable destinations. Deterministic four-direction shortest routes start at the initial position or preceding destination. Seek reconstructs directly from time/seed/ID. Stagger uses the first 15% of a 12-second hour at 1×. Travel starts at 48 world pixels/second and compresses up to 180 to arrive before the final 5%; routes beyond that cap are rejected. The viewer applies no effects.
-
-`simulation/world-layout.json` preserves the supplied 64×40 layout and 16-pixel tiles. `world.py` authors connected roads, bridge-only crossing, fountain/crop obstacles and explicit indoor door corridors. Every action has 30 unique anchors: communal bakery seats, workshop/garden/market stations, small social groups, park waypoints, and five beds per cottage. Outdoor paths cannot cross building fronts/roofs; indoor routes enter through authored doors. Selecting a sleeper or their home reveals the beds.
-
-Desktop has a 64-pixel header, 88-pixel playback area and 320-pixel inspector. Mobile has a 56-pixel header, 128-pixel toolbar to preserve 40-pixel controls, native 1× pan and a sheet capped at 45% height. Full-map fit uses integer zoom whenever possible; narrow desktop windows use nearest-neighbor fractional fit. Camera offsets are rounded. Zoom options are 1×/2×/3×.
-
-Space toggles playback outside form controls; Escape closes overlays; arrows pan the focused map and cancel follow. Population rows provide equivalent keyboard selection and sorting. Reduced motion disables camera easing and cosmetic idle bobbing. Captions report observed actions/locations, never invented dialogue or Jev explanations. Sound and live transport are out of scope.
-
-## Art and locked screenshots
-
-The scene uses separate assets, never the concept board as a background. `art/source/scenery-atlas.png` retains the original generated scenery family. `scripts/build_art.py` authors native resident/portrait art and slices scenery into independent objects and cottage roof/front layers. Each person has **74 native 24×32 cells**: four-direction walking, idle, eat, work and social gestures, plus two sleep poses. All 30 portraits are 64×64 and use the same hair, skin and outfits as their sprites. Dimensions, pivots, animation rates, anchors and provenance are in `frontend/src/assets/manifest.json` and `LICENSES.json`. No commercial game assets were extracted.
-
-The handoff is mirrored locally in `docs/tiny-town`. Its Markdown and root `AGENTS.md` stay ignored; only this root README is intended for GitHub. The original art board remains a reference image, and its numerical constraints are retained in tracked JSON files.
-
-Fixed **1440×900** and **390×844** screenshots cover 14:00, selected Bea, 23:00, population and summary. Baselines live in `frontend/browser-tests/replay.spec.ts-snapshots`, with hashes in `docs/tiny-town/baseline.json`. They lock the agent-inspected implementation, not a claim of user-approved visual parity. Comparisons use pinned Windows/Chromium tooling.
-
-Remaining visual differences: human sprites/portraits are simpler than the concept faces; ground, garden and bridge are more visibly gridded; landscaping composition is less organic; the specified 0.35 night overlay is gentler than the board. Native 1× fit leaves sage margins on large desktop screens. These are explicit differences, not hidden placeholder substitutions.
-
-## Tests (PowerShell, from root)
-
-To regenerate the navigation grid, original human rigs, and staged visual fixtures after editing their Python sources, install Pillow in the virtual environment and run:
-
-```powershell
-python -m pip install Pillow
-python scripts/build_world.py
-python scripts/build_art.py
-python scripts/make_visual_fixture.py
-```
-
-The scenery source atlas stays in `art/source`; these commands do not regenerate it or call an image service.
-
-```powershell
-python -m unittest -v
-npm --prefix frontend test
-npm --prefix frontend run build
-Set-Location .\frontend
-npx playwright install chromium
-Set-Location ..
-python town.py --mock --no-show --output-dir .\.artifacts\export
-npm --prefix frontend run test:browser
-npm --prefix frontend run test:visual
-```
-
-Coverage includes clamping, fallback/error distinctions, payloads/redaction/invalid responses/retries, recording continuity and atomic failure, all-action capacity, bridge/path obstacles, pause/seek/end/loop/speed, keyboard/follow/pan, mobile/reduced motion, hostile names, invalid imports, offline HTML and fixed screenshots. No real Jev calls are made. The original project has no Python lint/type-check configuration; the frontend build runs strict TypeScript checking.
-
-Vite reports the expected large-bundle warning: Phaser plus inline assets make a roughly 2.4 MB script needed for the self-contained export. No warning threshold or test was disabled. Update screenshots only after intentional visual review:
-
-```powershell
-npm --prefix frontend run test:visual -- --update-snapshots
-```
-
-Technical references: [Phaser 3.90 configuration](https://docs.phaser.io/api-documentation/3.90.0/typedef/types-core), [cameras](https://docs.phaser.io/phaser/concepts/cameras), [Vite](https://vite.dev/guide/), [Playwright visual comparisons](https://playwright.dev/docs/test-snapshots). Installed Phaser source was inspected for manual resize behavior.
+</details>

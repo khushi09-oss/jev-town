@@ -1,6 +1,6 @@
 r"""Author original resident rigs/terrain and slice the generated scenery family.
 
-Source retained in art/source. All production pixels are nearest-neighbor sampled.
+Source retained in assets/source. All production pixels are nearest-neighbor sampled.
 Run from project root: .\.venv\Scripts\python.exe scripts/build_art.py
 """
 import json
@@ -266,8 +266,8 @@ def main():
     assert len(portrait_signatures) == 30, 'Every resident must have a distinct portrait'
     sheet.save(OUT/'residents.png')
     portraits.save(OUT/'portraits.png')
-    preview.save(OUT/'identity-review.png')
-    source=Image.open(ROOT/'art/source/scenery-atlas.png').convert('RGBA')
+    preview.save(ROOT/'assets/reference/residents.png')
+    source=Image.open(ROOT/'assets/source/scenery-atlas.png').convert('RGBA')
     objects=['home-01','home-02','home-03','home-04','home-05','home-06','bakery','workshop',
              'tree-large','tree-medium','tree-small','fountain','bench','lamp','flowers','table']
     sizes=[(112,96)]*6+[(160,112),(176,144),(80,96),(64,80),(48,64),(56,64),(40,24),(16,48),(32,24),(40,32)]
@@ -291,7 +291,7 @@ def main():
             roof.paste(crop.crop((0,0,size[0],56)),(0,0))
             front.paste(crop.crop((0,56,size[0],size[1])),(0,56))
             roof.save(OUT/f'{name}-roof.png');front.save(OUT/f'{name}-front.png')
-        scenery[name]={'path':f'{name}.png','size':size,'authorship':'Generated original scenery family; see art/source/scenery-atlas.png'}
+        scenery[name]={'path':f'{name}.png','size':size,'authorship':'Generated original scenery family; see assets/source/scenery-atlas.png'}
     from simulation.world import destination
     atlas={'version':1,'framesPerResident':74,'frameSize':[24,32],'feetPivot':[12,31],
            'collisionFootprint':[10,6],'animations':animations,'residents':looks,

@@ -388,7 +388,7 @@
         112,
         96
       ],
-      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+      "authorship": "Generated original scenery family; see assets/source/scenery-atlas.png"
     },
     "home-02": {
       "path": "home-02.png",
@@ -396,7 +396,7 @@
         112,
         96
       ],
-      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+      "authorship": "Generated original scenery family; see assets/source/scenery-atlas.png"
     },
     "home-03": {
       "path": "home-03.png",
@@ -404,7 +404,7 @@
         112,
         96
       ],
-      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+      "authorship": "Generated original scenery family; see assets/source/scenery-atlas.png"
     },
     "home-04": {
       "path": "home-04.png",
@@ -412,7 +412,7 @@
         112,
         96
       ],
-      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+      "authorship": "Generated original scenery family; see assets/source/scenery-atlas.png"
     },
     "home-05": {
       "path": "home-05.png",
@@ -420,7 +420,7 @@
         112,
         96
       ],
-      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+      "authorship": "Generated original scenery family; see assets/source/scenery-atlas.png"
     },
     "home-06": {
       "path": "home-06.png",
@@ -428,7 +428,7 @@
         112,
         96
       ],
-      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+      "authorship": "Generated original scenery family; see assets/source/scenery-atlas.png"
     },
     "bakery": {
       "path": "bakery.png",
@@ -436,7 +436,7 @@
         160,
         112
       ],
-      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+      "authorship": "Generated original scenery family; see assets/source/scenery-atlas.png"
     },
     "workshop": {
       "path": "workshop.png",
@@ -444,7 +444,7 @@
         176,
         144
       ],
-      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+      "authorship": "Generated original scenery family; see assets/source/scenery-atlas.png"
     },
     "tree-large": {
       "path": "tree-large.png",
@@ -452,7 +452,7 @@
         80,
         96
       ],
-      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+      "authorship": "Generated original scenery family; see assets/source/scenery-atlas.png"
     },
     "tree-medium": {
       "path": "tree-medium.png",
@@ -460,7 +460,7 @@
         64,
         80
       ],
-      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+      "authorship": "Generated original scenery family; see assets/source/scenery-atlas.png"
     },
     "tree-small": {
       "path": "tree-small.png",
@@ -468,7 +468,7 @@
         48,
         64
       ],
-      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+      "authorship": "Generated original scenery family; see assets/source/scenery-atlas.png"
     },
     "fountain": {
       "path": "fountain.png",
@@ -476,7 +476,7 @@
         56,
         64
       ],
-      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+      "authorship": "Generated original scenery family; see assets/source/scenery-atlas.png"
     },
     "bench": {
       "path": "bench.png",
@@ -484,7 +484,7 @@
         40,
         24
       ],
-      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+      "authorship": "Generated original scenery family; see assets/source/scenery-atlas.png"
     },
     "lamp": {
       "path": "lamp.png",
@@ -492,7 +492,7 @@
         16,
         48
       ],
-      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+      "authorship": "Generated original scenery family; see assets/source/scenery-atlas.png"
     },
     "flowers": {
       "path": "flowers.png",
@@ -500,7 +500,7 @@
         32,
         24
       ],
-      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+      "authorship": "Generated original scenery family; see assets/source/scenery-atlas.png"
     },
     "table": {
       "path": "table.png",
@@ -508,7 +508,7 @@
         40,
         32
       ],
-      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+      "authorship": "Generated original scenery family; see assets/source/scenery-atlas.png"
     }
   },
   "interactionAnchors": {
