@@ -1,10 +1,12 @@
 # Tiny Town
 
-A cozy pixel town of 30 residents who decide whether to eat, work, sleep, socialize or wander. Select someone to see their personality and needs, follow them around town, or watch the day unfold.
+Tiny Town is a cozy little village where 30 neighbors live their own lives, with no player telling them what to do. Watch them eat, work, sleep, chat and wander as their needs and personalities shape the day.
+
+![Animated preview of 30 residents going about their day in Tiny Town](assets/tiny-town.gif)
+
+*A glimpse of the town, recorded from a mock simulation.*
 
 **[Play Tiny Town in your browser](https://khushi09-oss.github.io/jev-town/)** · No installation or API key needed.
-
-Python runs the simulation. Jev chooses actions; Python applies their consequences and destinations. The browser replays a saved day. Playback controls never call Jev.
 
 ## A look around
 
@@ -64,6 +66,8 @@ jev-town/
 The frontend keeps its browser tests and screenshot baselines alongside its code. Runtime artwork is in `frontend/src/assets/`; original scenery is in `assets/source/`, with the design board and resident preview in `assets/reference/`. Only this README is tracked among Markdown files. Local handoff documents and `AGENTS.md` stay private to the workspace.
 
 ## Work on the viewer
+
+Python runs the simulation. Jev chooses actions; Python applies their consequences and destinations. The browser replays a saved day. Playback controls never call Jev.
 
 ```powershell
 npm --prefix frontend run dev
