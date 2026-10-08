@@ -9,3 +9,9 @@ __pycache__/
 *.key
 *.[mM][dD]
 ![rR][eE][aA][dD][mM][eE].[mM][dD]
+node_modules/
+frontend/dist/
+frontend/test-results/
+frontend/playwright-report/
+.artifacts/
+docs/tiny-town/*.md

@@ -1,0 +1,75 @@
+﻿{
+    "seed":  7,
+    "tooling":  {
+                    "playwright":  "1.64.0",
+                    "browser":  "Chromium 156",
+                    "platform":  "Windows",
+                    "node":  "24.11.1",
+                    "phaser":  "3.90.0"
+                },
+    "remainingVisualDifferences":  [
+                                       "Simpler authored human portraits and silhouettes than concept faces",
+                                       "More visibly gridded terrain, garden and bridge",
+                                       "Less dense and organic landscaping",
+                                       "Specified 0.35 night overlay is gentler than the board",
+                                       "Native desktop fit retains sage margins"
+                                   ],
+    "version":  1,
+    "viewports":  [
+                      {
+                          "height":  900,
+                          "width":  1440
+                      },
+                      {
+                          "height":  844,
+                          "width":  390
+                      }
+                  ],
+    "screenshots":  [
+                        {
+                            "sha256":  "7465c73b87677f9e821e0120dbf18a00e3147d4666da9a9ca34e5d1869f11596",
+                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/desktop-bea-win32.png"
+                        },
+                        {
+                            "sha256":  "729cfb34cf2f03e907cc27e1986f25388ca5006129c9aaf1db1dc4dee9874357",
+                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/desktop-day-win32.png"
+                        },
+                        {
+                            "sha256":  "662a452c7076cedd1cd9f36366d1e79e83b8ba51bd1f5d6b350efabb5fc110a1",
+                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/desktop-night-win32.png"
+                        },
+                        {
+                            "sha256":  "f06e08a9ae4e9a0da11bb6682a6d6bceae9e9850dabef73b1f67f998ee3b3e55",
+                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/desktop-population-win32.png"
+                        },
+                        {
+                            "sha256":  "3422e19b1670ec7ae98a35854ba54717901f692c8cb24d7d1d87343276ea4614",
+                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/desktop-summary-win32.png"
+                        },
+                        {
+                            "sha256":  "35bf10752f71297d7041f31192d9bb0f5360c219ef5916d4b242564ac8fffcfe",
+                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/mobile-bea-win32.png"
+                        },
+                        {
+                            "sha256":  "faf2055856921fe2caf1df69f6ef7bef9f59ab1671a22183ac888d7807838c99",
+                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/mobile-day-win32.png"
+                        },
+                        {
+                            "sha256":  "f75c1bd28e575e62214d1d220802ef84a004ce372b8789ca06c5825e287d4439",
+                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/mobile-night-win32.png"
+                        },
+                        {
+                            "sha256":  "5ea63861ea5c77265b4221b38cf8d4d00d47fff329624fe5ef30d5921b2b992f",
+                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/mobile-population-win32.png"
+                        },
+                        {
+                            "sha256":  "d71fa85ae2c40bad031c27cb56ebb0d39905d1eaa619c94c9a48affde3d5c8f6",
+                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/mobile-summary-win32.png"
+                        }
+                    ],
+    "date":  "2026-10-08",
+    "referenceSha256":  "a516f799b1d42aae47362d10baaa5df64869f5a41166fc892d6564a64aeb2038",
+    "status":  "agent-inspected implementation; pending user visual review",
+    "schemaVersion":  1,
+    "worldId":  "tiny-town-v1"
+}

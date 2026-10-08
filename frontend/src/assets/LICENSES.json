@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "scenery": {
+    "authorship": "Original generated scenery atlas made for this project with OpenAI image generation on 2026-10-08; the user's design board was supplied as the style reference.",
+    "source": "art/source/scenery-atlas.png",
+    "production": "Isolated crops sampled to native pixel dimensions by scripts/build_art.py; cottage roof/front layers are separate.",
+    "license": "Project-original generated artwork; no third-party game assets or purchased asset packs. Use under the project owner's chosen distribution terms."
+  },
+  "residentsAndPortraits": {
+    "authorship": "Original deterministic pixel rigs, facial features, clothing, terrain and action props authored in scripts/build_art.py and TownScene.ts.",
+    "source": "scripts/build_art.py; simulation/identities.py",
+    "license": "Project-original authored art; no third-party game assets."
+  },
+  "reference": {
+    "source": "User-supplied tiny-town-handoff/mockups/design-board.png",
+    "usage": "Design reference only; never used as the replay background."
+  },
+  "software": [
+    {"name": "Phaser", "version": "3.90.0", "license": "MIT", "source": "https://github.com/phaserjs/phaser"},
+    {"name": "Zod", "version": "4.6.5", "license": "MIT", "source": "https://github.com/colinhacks/zod"}
+  ]
+}

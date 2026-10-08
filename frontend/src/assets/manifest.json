@@ -1,0 +1,1427 @@
+{
+  "version": 1,
+  "framesPerResident": 74,
+  "frameSize": [
+    24,
+    32
+  ],
+  "feetPivot": [
+    12,
+    31
+  ],
+  "collisionFootprint": [
+    10,
+    6
+  ],
+  "animations": {
+    "walk": {
+      "start": 0,
+      "length": 16,
+      "fps": 8
+    },
+    "idle": {
+      "start": 16,
+      "length": 8,
+      "fps": 2
+    },
+    "eat": {
+      "start": 24,
+      "length": 16,
+      "fps": 4
+    },
+    "work": {
+      "start": 40,
+      "length": 16,
+      "fps": 6
+    },
+    "socialize": {
+      "start": 56,
+      "length": 16,
+      "fps": 4
+    },
+    "sleep": {
+      "start": 72,
+      "length": 2,
+      "fps": 1
+    }
+  },
+  "residents": [
+    {
+      "id": "npc00",
+      "name": "Bea",
+      "trait": "social",
+      "appearanceId": "resident-00",
+      "homeId": "home-01",
+      "hair": "#3b241d",
+      "skin": "#b77d54",
+      "outfit": "#398477",
+      "hairStyle": "curls"
+    },
+    {
+      "id": "npc01",
+      "name": "Milo",
+      "trait": "workaholic",
+      "appearanceId": "resident-01",
+      "homeId": "home-02",
+      "hair": "#673a25",
+      "skin": "#dfab7d",
+      "outfit": "#b45e42",
+      "hairStyle": "short"
+    },
+    {
+      "id": "npc02",
+      "name": "Ada",
+      "trait": "lazy",
+      "appearanceId": "resident-02",
+      "homeId": "home-03",
+      "hair": "#bbb9ac",
+      "skin": "#e6b889",
+      "outfit": "#c8a14e",
+      "hairStyle": "bun"
+    },
+    {
+      "id": "npc03",
+      "name": "Finn",
+      "trait": "social",
+      "appearanceId": "resident-03",
+      "homeId": "home-04",
+      "hair": "#252a30",
+      "skin": "#dca16a",
+      "outfit": "#eadac0",
+      "hairStyle": "cap"
+    },
+    {
+      "id": "npc04",
+      "name": "Noor",
+      "trait": "workaholic",
+      "appearanceId": "resident-04",
+      "homeId": "home-05",
+      "hair": "#33252f",
+      "skin": "#b77b56",
+      "outfit": "#8d496b",
+      "hairStyle": "bob"
+    },
+    {
+      "id": "npc05",
+      "name": "Otto",
+      "trait": "lazy",
+      "appearanceId": "resident-05",
+      "homeId": "home-06",
+      "hair": "#ac532c",
+      "skin": "#d99c71",
+      "outfit": "#65835b",
+      "hairStyle": "beard"
+    },
+    {
+      "id": "npc06",
+      "name": "June",
+      "trait": "social",
+      "appearanceId": "resident-06",
+      "homeId": "home-01",
+      "hair": "#3b241d",
+      "skin": "#c48a60",
+      "outfit": "#a97c54",
+      "hairStyle": "curls"
+    },
+    {
+      "id": "npc07",
+      "name": "Theo",
+      "trait": "workaholic",
+      "appearanceId": "resident-07",
+      "homeId": "home-02",
+      "hair": "#673a25",
+      "skin": "#dba574",
+      "outfit": "#78924c",
+      "hairStyle": "short"
+    },
+    {
+      "id": "npc08",
+      "name": "Iris",
+      "trait": "lazy",
+      "appearanceId": "resident-08",
+      "homeId": "home-03",
+      "hair": "#bbb9ac",
+      "skin": "#bd825f",
+      "outfit": "#b77581",
+      "hairStyle": "bun"
+    },
+    {
+      "id": "npc09",
+      "name": "Sam",
+      "trait": "social",
+      "appearanceId": "resident-09",
+      "homeId": "home-04",
+      "hair": "#252a30",
+      "skin": "#e6b889",
+      "outfit": "#6f6e96",
+      "hairStyle": "cap"
+    },
+    {
+      "id": "npc10",
+      "name": "Lena",
+      "trait": "workaholic",
+      "appearanceId": "resident-10",
+      "homeId": "home-05",
+      "hair": "#33252f",
+      "skin": "#9f694a",
+      "outfit": "#bf9954",
+      "hairStyle": "bob"
+    },
+    {
+      "id": "npc11",
+      "name": "Hugo",
+      "trait": "lazy",
+      "appearanceId": "resident-11",
+      "homeId": "home-06",
+      "hair": "#ac532c",
+      "skin": "#c48a60",
+      "outfit": "#668aaa",
+      "hairStyle": "beard"
+    },
+    {
+      "id": "npc12",
+      "name": "Mae",
+      "trait": "social",
+      "appearanceId": "resident-12",
+      "homeId": "home-01",
+      "hair": "#3b241d",
+      "skin": "#bd825f",
+      "outfit": "#78924c",
+      "hairStyle": "curls"
+    },
+    {
+      "id": "npc13",
+      "name": "Eli",
+      "trait": "workaholic",
+      "appearanceId": "resident-13",
+      "homeId": "home-02",
+      "hair": "#673a25",
+      "skin": "#e6b889",
+      "outfit": "#b77581",
+      "hairStyle": "short"
+    },
+    {
+      "id": "npc14",
+      "name": "Rosa",
+      "trait": "lazy",
+      "appearanceId": "resident-14",
+      "homeId": "home-03",
+      "hair": "#bbb9ac",
+      "skin": "#9f694a",
+      "outfit": "#6f6e96",
+      "hairStyle": "bun"
+    },
+    {
+      "id": "npc15",
+      "name": "Arun",
+      "trait": "social",
+      "appearanceId": "resident-15",
+      "homeId": "home-04",
+      "hair": "#252a30",
+      "skin": "#c48a60",
+      "outfit": "#bf9954",
+      "hairStyle": "cap"
+    },
+    {
+      "id": "npc16",
+      "name": "Hazel",
+      "trait": "workaholic",
+      "appearanceId": "resident-16",
+      "homeId": "home-05",
+      "hair": "#33252f",
+      "skin": "#dba574",
+      "outfit": "#668aaa",
+      "hairStyle": "bob"
+    },
+    {
+      "id": "npc17",
+      "name": "Kit",
+      "trait": "lazy",
+      "appearanceId": "resident-17",
+      "homeId": "home-06",
+      "hair": "#ac532c",
+      "skin": "#bd825f",
+      "outfit": "#a97c54",
+      "hairStyle": "beard"
+    },
+    {
+      "id": "npc18",
+      "name": "Nina",
+      "trait": "social",
+      "appearanceId": "resident-18",
+      "homeId": "home-01",
+      "hair": "#3b241d",
+      "skin": "#9f694a",
+      "outfit": "#b77581",
+      "hairStyle": "curls"
+    },
+    {
+      "id": "npc19",
+      "name": "Owen",
+      "trait": "workaholic",
+      "appearanceId": "resident-19",
+      "homeId": "home-02",
+      "hair": "#673a25",
+      "skin": "#c48a60",
+      "outfit": "#6f6e96",
+      "hairStyle": "short"
+    },
+    {
+      "id": "npc20",
+      "name": "Pia",
+      "trait": "lazy",
+      "appearanceId": "resident-20",
+      "homeId": "home-03",
+      "hair": "#bbb9ac",
+      "skin": "#dba574",
+      "outfit": "#bf9954",
+      "hairStyle": "bun"
+    },
+    {
+      "id": "npc21",
+      "name": "Remy",
+      "trait": "social",
+      "appearanceId": "resident-21",
+      "homeId": "home-04",
+      "hair": "#252a30",
+      "skin": "#bd825f",
+      "outfit": "#668aaa",
+      "hairStyle": "cap"
+    },
+    {
+      "id": "npc22",
+      "name": "Sage",
+      "trait": "workaholic",
+      "appearanceId": "resident-22",
+      "homeId": "home-05",
+      "hair": "#33252f",
+      "skin": "#e6b889",
+      "outfit": "#a97c54",
+      "hairStyle": "bob"
+    },
+    {
+      "id": "npc23",
+      "name": "Tess",
+      "trait": "lazy",
+      "appearanceId": "resident-23",
+      "homeId": "home-06",
+      "hair": "#ac532c",
+      "skin": "#9f694a",
+      "outfit": "#78924c",
+      "hairStyle": "beard"
+    },
+    {
+      "id": "npc24",
+      "name": "Uma",
+      "trait": "social",
+      "appearanceId": "resident-24",
+      "homeId": "home-01",
+      "hair": "#3b241d",
+      "skin": "#dba574",
+      "outfit": "#6f6e96",
+      "hairStyle": "curls"
+    },
+    {
+      "id": "npc25",
+      "name": "Vera",
+      "trait": "workaholic",
+      "appearanceId": "resident-25",
+      "homeId": "home-02",
+      "hair": "#673a25",
+      "skin": "#bd825f",
+      "outfit": "#bf9954",
+      "hairStyle": "short"
+    },
+    {
+      "id": "npc26",
+      "name": "Wren",
+      "trait": "lazy",
+      "appearanceId": "resident-26",
+      "homeId": "home-03",
+      "hair": "#bbb9ac",
+      "skin": "#e6b889",
+      "outfit": "#668aaa",
+      "hairStyle": "bun"
+    },
+    {
+      "id": "npc27",
+      "name": "Yara",
+      "trait": "social",
+      "appearanceId": "resident-27",
+      "homeId": "home-04",
+      "hair": "#252a30",
+      "skin": "#9f694a",
+      "outfit": "#a97c54",
+      "hairStyle": "cap"
+    },
+    {
+      "id": "npc28",
+      "name": "Zoe",
+      "trait": "workaholic",
+      "appearanceId": "resident-28",
+      "homeId": "home-05",
+      "hair": "#33252f",
+      "skin": "#c48a60",
+      "outfit": "#78924c",
+      "hairStyle": "bob"
+    },
+    {
+      "id": "npc29",
+      "name": "Luca",
+      "trait": "lazy",
+      "appearanceId": "resident-29",
+      "homeId": "home-06",
+      "hair": "#ac532c",
+      "skin": "#dba574",
+      "outfit": "#b77581",
+      "hairStyle": "beard"
+    }
+  ],
+  "portraitSize": [
+    64,
+    64
+  ],
+  "scenery": {
+    "home-01": {
+      "path": "home-01.png",
+      "size": [
+        112,
+        96
+      ],
+      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+    },
+    "home-02": {
+      "path": "home-02.png",
+      "size": [
+        112,
+        96
+      ],
+      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+    },
+    "home-03": {
+      "path": "home-03.png",
+      "size": [
+        112,
+        96
+      ],
+      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+    },
+    "home-04": {
+      "path": "home-04.png",
+      "size": [
+        112,
+        96
+      ],
+      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+    },
+    "home-05": {
+      "path": "home-05.png",
+      "size": [
+        112,
+        96
+      ],
+      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+    },
+    "home-06": {
+      "path": "home-06.png",
+      "size": [
+        112,
+        96
+      ],
+      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+    },
+    "bakery": {
+      "path": "bakery.png",
+      "size": [
+        160,
+        112
+      ],
+      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+    },
+    "workshop": {
+      "path": "workshop.png",
+      "size": [
+        176,
+        144
+      ],
+      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+    },
+    "tree-large": {
+      "path": "tree-large.png",
+      "size": [
+        80,
+        96
+      ],
+      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+    },
+    "tree-medium": {
+      "path": "tree-medium.png",
+      "size": [
+        64,
+        80
+      ],
+      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+    },
+    "tree-small": {
+      "path": "tree-small.png",
+      "size": [
+        48,
+        64
+      ],
+      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+    },
+    "fountain": {
+      "path": "fountain.png",
+      "size": [
+        56,
+        64
+      ],
+      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+    },
+    "bench": {
+      "path": "bench.png",
+      "size": [
+        40,
+        24
+      ],
+      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+    },
+    "lamp": {
+      "path": "lamp.png",
+      "size": [
+        16,
+        48
+      ],
+      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+    },
+    "flowers": {
+      "path": "flowers.png",
+      "size": [
+        32,
+        24
+      ],
+      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+    },
+    "table": {
+      "path": "table.png",
+      "size": [
+        40,
+        32
+      ],
+      "authorship": "Generated original scenery family; see art/source/scenery-atlas.png"
+    }
+  },
+  "interactionAnchors": {
+    "eat": [
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-00",
+        "x": 72,
+        "y": 344
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-01",
+        "x": 88,
+        "y": 344
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-02",
+        "x": 104,
+        "y": 344
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-03",
+        "x": 120,
+        "y": 344
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-04",
+        "x": 136,
+        "y": 344
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-05",
+        "x": 152,
+        "y": 344
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-06",
+        "x": 168,
+        "y": 344
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-07",
+        "x": 184,
+        "y": 344
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-08",
+        "x": 200,
+        "y": 344
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-09",
+        "x": 216,
+        "y": 344
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-10",
+        "x": 72,
+        "y": 376
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-11",
+        "x": 88,
+        "y": 376
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-12",
+        "x": 104,
+        "y": 376
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-13",
+        "x": 120,
+        "y": 376
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-14",
+        "x": 136,
+        "y": 376
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-15",
+        "x": 152,
+        "y": 376
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-16",
+        "x": 168,
+        "y": 376
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-17",
+        "x": 184,
+        "y": 376
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-18",
+        "x": 200,
+        "y": 376
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-19",
+        "x": 216,
+        "y": 376
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-20",
+        "x": 72,
+        "y": 408
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-21",
+        "x": 88,
+        "y": 408
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-22",
+        "x": 104,
+        "y": 408
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-23",
+        "x": 120,
+        "y": 408
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-24",
+        "x": 136,
+        "y": 408
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-25",
+        "x": 152,
+        "y": 408
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-26",
+        "x": 168,
+        "y": 408
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-27",
+        "x": 184,
+        "y": 408
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-28",
+        "x": 200,
+        "y": 408
+      },
+      {
+        "locationId": "bakery",
+        "anchorId": "bakery-eat-29",
+        "x": 216,
+        "y": 408
+      }
+    ],
+    "work": [
+      {
+        "locationId": "workshop",
+        "anchorId": "workshop-work-00",
+        "x": 264,
+        "y": 440
+      },
+      {
+        "locationId": "workshop",
+        "anchorId": "workshop-work-01",
+        "x": 296,
+        "y": 440
+      },
+      {
+        "locationId": "workshop",
+        "anchorId": "workshop-work-02",
+        "x": 264,
+        "y": 472
+      },
+      {
+        "locationId": "workshop",
+        "anchorId": "workshop-work-03",
+        "x": 296,
+        "y": 472
+      },
+      {
+        "locationId": "workshop",
+        "anchorId": "workshop-work-04",
+        "x": 264,
+        "y": 504
+      },
+      {
+        "locationId": "workshop",
+        "anchorId": "workshop-work-05",
+        "x": 296,
+        "y": 504
+      },
+      {
+        "locationId": "workshop",
+        "anchorId": "workshop-work-06",
+        "x": 264,
+        "y": 536
+      },
+      {
+        "locationId": "workshop",
+        "anchorId": "workshop-work-07",
+        "x": 296,
+        "y": 536
+      },
+      {
+        "locationId": "workshop",
+        "anchorId": "workshop-work-08",
+        "x": 264,
+        "y": 568
+      },
+      {
+        "locationId": "workshop",
+        "anchorId": "workshop-work-09",
+        "x": 296,
+        "y": 568
+      },
+      {
+        "locationId": "garden",
+        "anchorId": "garden-work-10",
+        "x": 504,
+        "y": 456
+      },
+      {
+        "locationId": "garden",
+        "anchorId": "garden-work-11",
+        "x": 552,
+        "y": 456
+      },
+      {
+        "locationId": "garden",
+        "anchorId": "garden-work-12",
+        "x": 600,
+        "y": 456
+      },
+      {
+        "locationId": "garden",
+        "anchorId": "garden-work-13",
+        "x": 648,
+        "y": 456
+      },
+      {
+        "locationId": "garden",
+        "anchorId": "garden-work-14",
+        "x": 504,
+        "y": 488
+      },
+      {
+        "locationId": "garden",
+        "anchorId": "garden-work-15",
+        "x": 552,
+        "y": 488
+      },
+      {
+        "locationId": "garden",
+        "anchorId": "garden-work-16",
+        "x": 600,
+        "y": 488
+      },
+      {
+        "locationId": "garden",
+        "anchorId": "garden-work-17",
+        "x": 648,
+        "y": 488
+      },
+      {
+        "locationId": "garden",
+        "anchorId": "garden-work-18",
+        "x": 504,
+        "y": 520
+      },
+      {
+        "locationId": "garden",
+        "anchorId": "garden-work-19",
+        "x": 552,
+        "y": 520
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-work-20",
+        "x": 360,
+        "y": 344
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-work-21",
+        "x": 392,
+        "y": 344
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-work-22",
+        "x": 424,
+        "y": 344
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-work-23",
+        "x": 456,
+        "y": 344
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-work-24",
+        "x": 488,
+        "y": 344
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-work-25",
+        "x": 360,
+        "y": 376
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-work-26",
+        "x": 392,
+        "y": 376
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-work-27",
+        "x": 424,
+        "y": 376
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-work-28",
+        "x": 456,
+        "y": 376
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-work-29",
+        "x": 488,
+        "y": 376
+      }
+    ],
+    "sleep": [
+      {
+        "locationId": "home-01",
+        "anchorId": "home-01-sleep-00",
+        "x": 88,
+        "y": 104
+      },
+      {
+        "locationId": "home-02",
+        "anchorId": "home-02-sleep-01",
+        "x": 216,
+        "y": 104
+      },
+      {
+        "locationId": "home-03",
+        "anchorId": "home-03-sleep-02",
+        "x": 344,
+        "y": 104
+      },
+      {
+        "locationId": "home-04",
+        "anchorId": "home-04-sleep-03",
+        "x": 472,
+        "y": 104
+      },
+      {
+        "locationId": "home-05",
+        "anchorId": "home-05-sleep-04",
+        "x": 600,
+        "y": 104
+      },
+      {
+        "locationId": "home-06",
+        "anchorId": "home-06-sleep-05",
+        "x": 728,
+        "y": 104
+      },
+      {
+        "locationId": "home-01",
+        "anchorId": "home-01-sleep-06",
+        "x": 120,
+        "y": 104
+      },
+      {
+        "locationId": "home-02",
+        "anchorId": "home-02-sleep-07",
+        "x": 248,
+        "y": 104
+      },
+      {
+        "locationId": "home-03",
+        "anchorId": "home-03-sleep-08",
+        "x": 376,
+        "y": 104
+      },
+      {
+        "locationId": "home-04",
+        "anchorId": "home-04-sleep-09",
+        "x": 504,
+        "y": 104
+      },
+      {
+        "locationId": "home-05",
+        "anchorId": "home-05-sleep-10",
+        "x": 632,
+        "y": 104
+      },
+      {
+        "locationId": "home-06",
+        "anchorId": "home-06-sleep-11",
+        "x": 760,
+        "y": 104
+      },
+      {
+        "locationId": "home-01",
+        "anchorId": "home-01-sleep-12",
+        "x": 152,
+        "y": 104
+      },
+      {
+        "locationId": "home-02",
+        "anchorId": "home-02-sleep-13",
+        "x": 280,
+        "y": 104
+      },
+      {
+        "locationId": "home-03",
+        "anchorId": "home-03-sleep-14",
+        "x": 408,
+        "y": 104
+      },
+      {
+        "locationId": "home-04",
+        "anchorId": "home-04-sleep-15",
+        "x": 536,
+        "y": 104
+      },
+      {
+        "locationId": "home-05",
+        "anchorId": "home-05-sleep-16",
+        "x": 664,
+        "y": 104
+      },
+      {
+        "locationId": "home-06",
+        "anchorId": "home-06-sleep-17",
+        "x": 792,
+        "y": 104
+      },
+      {
+        "locationId": "home-01",
+        "anchorId": "home-01-sleep-18",
+        "x": 88,
+        "y": 136
+      },
+      {
+        "locationId": "home-02",
+        "anchorId": "home-02-sleep-19",
+        "x": 216,
+        "y": 136
+      },
+      {
+        "locationId": "home-03",
+        "anchorId": "home-03-sleep-20",
+        "x": 344,
+        "y": 136
+      },
+      {
+        "locationId": "home-04",
+        "anchorId": "home-04-sleep-21",
+        "x": 472,
+        "y": 136
+      },
+      {
+        "locationId": "home-05",
+        "anchorId": "home-05-sleep-22",
+        "x": 600,
+        "y": 136
+      },
+      {
+        "locationId": "home-06",
+        "anchorId": "home-06-sleep-23",
+        "x": 728,
+        "y": 136
+      },
+      {
+        "locationId": "home-01",
+        "anchorId": "home-01-sleep-24",
+        "x": 120,
+        "y": 136
+      },
+      {
+        "locationId": "home-02",
+        "anchorId": "home-02-sleep-25",
+        "x": 248,
+        "y": 136
+      },
+      {
+        "locationId": "home-03",
+        "anchorId": "home-03-sleep-26",
+        "x": 376,
+        "y": 136
+      },
+      {
+        "locationId": "home-04",
+        "anchorId": "home-04-sleep-27",
+        "x": 504,
+        "y": 136
+      },
+      {
+        "locationId": "home-05",
+        "anchorId": "home-05-sleep-28",
+        "x": 632,
+        "y": 136
+      },
+      {
+        "locationId": "home-06",
+        "anchorId": "home-06-sleep-29",
+        "x": 760,
+        "y": 136
+      }
+    ],
+    "socialize": [
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-00",
+        "x": 344,
+        "y": 232
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-01",
+        "x": 360,
+        "y": 232
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-02",
+        "x": 344,
+        "y": 264
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-03",
+        "x": 360,
+        "y": 264
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-04",
+        "x": 408,
+        "y": 232
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-05",
+        "x": 424,
+        "y": 232
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-06",
+        "x": 408,
+        "y": 264
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-07",
+        "x": 424,
+        "y": 264
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-08",
+        "x": 472,
+        "y": 232
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-09",
+        "x": 488,
+        "y": 232
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-10",
+        "x": 472,
+        "y": 264
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-11",
+        "x": 488,
+        "y": 264
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-12",
+        "x": 536,
+        "y": 232
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-13",
+        "x": 552,
+        "y": 232
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-14",
+        "x": 536,
+        "y": 264
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-15",
+        "x": 552,
+        "y": 264
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-16",
+        "x": 344,
+        "y": 344
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-17",
+        "x": 360,
+        "y": 344
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-18",
+        "x": 344,
+        "y": 376
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-19",
+        "x": 360,
+        "y": 376
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-20",
+        "x": 408,
+        "y": 344
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-21",
+        "x": 424,
+        "y": 344
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-22",
+        "x": 408,
+        "y": 376
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-23",
+        "x": 424,
+        "y": 376
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-24",
+        "x": 472,
+        "y": 344
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-25",
+        "x": 488,
+        "y": 344
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-26",
+        "x": 472,
+        "y": 376
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-27",
+        "x": 488,
+        "y": 376
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-28",
+        "x": 536,
+        "y": 344
+      },
+      {
+        "locationId": "square",
+        "anchorId": "square-socialize-29",
+        "x": 552,
+        "y": 344
+      }
+    ],
+    "wander": [
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-00",
+        "x": 744,
+        "y": 408
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-01",
+        "x": 808,
+        "y": 248
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-02",
+        "x": 840,
+        "y": 280
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-03",
+        "x": 712,
+        "y": 312
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-04",
+        "x": 744,
+        "y": 344
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-05",
+        "x": 776,
+        "y": 376
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-06",
+        "x": 808,
+        "y": 408
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-07",
+        "x": 712,
+        "y": 248
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-08",
+        "x": 744,
+        "y": 280
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-09",
+        "x": 776,
+        "y": 312
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-10",
+        "x": 808,
+        "y": 344
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-11",
+        "x": 840,
+        "y": 376
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-12",
+        "x": 712,
+        "y": 408
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-13",
+        "x": 776,
+        "y": 248
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-14",
+        "x": 808,
+        "y": 280
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-15",
+        "x": 840,
+        "y": 312
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-16",
+        "x": 712,
+        "y": 344
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-17",
+        "x": 744,
+        "y": 376
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-18",
+        "x": 776,
+        "y": 408
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-19",
+        "x": 840,
+        "y": 248
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-20",
+        "x": 712,
+        "y": 280
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-21",
+        "x": 744,
+        "y": 312
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-22",
+        "x": 776,
+        "y": 344
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-23",
+        "x": 808,
+        "y": 376
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-24",
+        "x": 840,
+        "y": 408
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-25",
+        "x": 744,
+        "y": 248
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-26",
+        "x": 776,
+        "y": 280
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-27",
+        "x": 808,
+        "y": 312
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-28",
+        "x": 840,
+        "y": 344
+      },
+      {
+        "locationId": "park",
+        "anchorId": "park-wander-29",
+        "x": 712,
+        "y": 376
+      }
+    ]
+  },
+  "license": "Project-original authored pixel rigs and generated scenery; no commercial game assets."
+}

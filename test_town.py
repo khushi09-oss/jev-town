@@ -1,6 +1,8 @@
 import unittest
+import os
 from unittest.mock import Mock, patch
 
+os.environ['JEV_MOCK'] = '1'
 import town
 
 
