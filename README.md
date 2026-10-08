@@ -24,6 +24,17 @@ Mobile:
 
 These screenshots use a staged mock recording for visual testing. The live site and example export use a complete mock simulation.
 
+## How it works
+
+- **Jev chooses an action.** Each hour, a resident's hunger, energy, mood, money, personality and the time are sent to Jev. It picks eat, work, sleep, socialize or wander and returns a confidence score. It produces no dialogue or explanation.
+- **Python runs the world.** Eating lowers hunger; working earns money and uses energy. These consequences live in ordinary, testable Python code. Jev has no memory between requests, so everything it needs to know must be sent again next hour.
+- **Personality changes the choice.** Social residents seek company sooner, lazy residents rest sooner, and workaholics favor work. Comparing different traits with identical needs helps reveal their effect.
+- **Clear options matter.** Descriptions such as "eat when hunger is above 60" give the decision model a clearer boundary than "eat when hungry." The option descriptions are a central part of how the town behaves.
+- **Uncertainty and failure are separate.** Low confidence can trigger a fallback action. API failures stop the run by default; optional mock recovery is explicitly marked. Both are recorded so the viewer can distinguish them.
+- **Simulate once, watch many times.** A full day is 30 residents × 24 hours: 720 decisions. Python saves the day, and the browser replays that recording. Pausing, seeking or replaying makes no new Jev calls.
+
+The public demo uses mock decisions. Nothing trains or learns during a run; this is a small decision-model experiment, with no claim that Jev outperforms other approaches.
+
 ## Run it locally
 
 Open the included example without installing anything:
