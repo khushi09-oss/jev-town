@@ -23,9 +23,9 @@
                    "Self-contained file export with zero external requests",
                    "Art builder verifies 30 unique deterministic 64px portraits, preserved outfit colors and 2220 nonempty animation cells",
                    "Portrait/landscape polish inspected on desktop, mobile and worst-case action screenshots",
-                   "Mobile Fit regression reproduced before fix; camera projection edges, Safari selector font/width, zoom/recenter and pan limits tested at 375, 390 and 430px",
-                   "WebKit viewport-height changes, selection and portrait/landscape rotation",
-                   "Chromium runs serialized after concurrent render-heavy contexts caused timeouts; original 30-second test timeout and all assertions retained"
+                   "Repository relocation: unittest discovery, art/world/fixture generators, strict build and all 11 browser checks passed without snapshot updates",
+                   "Mobile Fit reproduced before fix; projected map edges, readable Safari zoom, three phone widths, viewport-height changes, rotation and zoom/pan limits",
+                   "Chromium render-heavy browser contexts serialized; original test timeouts/assertions retained"
                ],
     "typescriptBuild":  "passed",
     "dependencyAudit":  "0 vulnerabilities",

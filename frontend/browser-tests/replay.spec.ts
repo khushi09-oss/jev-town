@@ -76,7 +76,7 @@ test('self-contained file replay opens offline without any requests',async({page
 test('all 30 residents can occupy each action without overlapping anchors',async({page})=>{
   await ready(page);
   for(const action of ['eat','work','sleep','socialize','wander']){
-    const run=JSON.parse(readFileSync(resolve(`../fixtures/occupancy-${action}.json`),'utf8'));
+    const run=JSON.parse(readFileSync(resolve(`../tests/fixtures/occupancy-${action}.json`),'utf8'));
     await page.locator('#recording').setInputFiles({name:`${action}.json`,mimeType:'application/json',buffer:Buffer.from(JSON.stringify(run))});
     await expect(page.getByRole('status')).toBeHidden();await page.waitForFunction(()=>window.__town?.ready());await seek(page,14.99);
     const state=await page.evaluate(()=>window.__town!.state()) as any;
@@ -95,7 +95,7 @@ test('all 30 residents can occupy each action without overlapping anchors',async
 });
 test('recorded names are text, never executable markup',async({page})=>{
   await ready(page);
-  const run=JSON.parse(readFileSync(resolve('../fixtures/neighborhood-30.json'),'utf8'));
+  const run=JSON.parse(readFileSync(resolve('src/fixture-30.json'),'utf8'));
   run.residents[0].name='<img src=x onerror="window.PWNED=1">';
   await page.locator('#recording').setInputFiles({name:'text.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(run))});
   await page.waitForFunction(()=>window.__town?.ready());await page.getByRole('button',{name:'30 residents'}).click();
