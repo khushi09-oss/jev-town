@@ -2,6 +2,7 @@
 import json
 import os
 from .world import destination
+from .interactions import plan_interactions
 
 
 def stats(npc):
@@ -26,6 +27,7 @@ def append_frame(recording, before, after, tick):
                             'appliedAction': new.last, 'fellBack': new.fell_back,
                             'decisionSource': new.decision_source, 'errorCode': new.error_code},
                         'destination': destination(i,new.last,tick,recording['seed'])})
+    plan_interactions(entries, tick, recording['seed'])
     recording['frames'].append({'tick':tick,'clockHour':tick%24,'sequence':tick+1,'residents':entries})
     if any(n.decision_source=='error-mock' for n in after):
         recording['mode']='mixed'

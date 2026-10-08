@@ -4,6 +4,7 @@ import tokens from './design-tokens.json';
 import world from './world.json';
 import type { Identity } from './contracts';
 import type { Point } from './contracts';
+import { personalities } from './personality';
 
 const urls = import.meta.glob('./assets/*.png', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
 const hex = (color: string) => parseInt(color.slice(1), 16);
@@ -12,6 +13,7 @@ const rng = (seed: number) => () => { seed = (Math.imul(seed, 1664525) + 1013904
 export class TownScene extends Phaser.Scene {
   people: Phaser.GameObjects.Sprite[] = [];
   shadows: Phaser.GameObjects.Ellipse[] = [];
+  bubbles: Phaser.GameObjects.Graphics[] = [];
   houses = new Map<string, Phaser.GameObjects.Image>();
   fronts = new Map<string, Phaser.GameObjects.Image>();
   interiors = new Map<string, Phaser.GameObjects.Graphics>();
@@ -50,7 +52,18 @@ export class TownScene extends Phaser.Scene {
       const sprite = this.add.sprite(0, 0, 'residents', row * 74 + 16).setOrigin(.5, 31 / 32);
       sprite.setInteractive({ useHandCursor: true });
       sprite.on('pointerup', (pointer:Phaser.Input.Pointer) => {if(pointer.getDistance()<6)this.onSelect(identity);});
+      sprite.on('pointerover', () => {
+        this.tooltip.setText(`${identity.name} · ${personalities[identity.trait].label}`).setPosition(sprite.x,sprite.y-52).setVisible(true);
+      });
+      sprite.on('pointerout', () => this.tooltip.setVisible(false));
       this.people.push(sprite);
+      const bubble = this.add.graphics().setVisible(false);
+      bubble.fillStyle(0x332a23); bubble.fillRoundedRect(-10,-45,20,13,3);
+      bubble.fillStyle(0xf7edd8); bubble.fillRoundedRect(-9,-44,18,11,2);
+      bubble.fillTriangle(-4,-33,0,-29,2,-33);
+      bubble.fillStyle(0x332a23);
+      for (const x of [-5,0,5]) bubble.fillRect(x,-39,2,2);
+      this.bubbles.push(bubble);
     });
     this.selection = this.add.ellipse(0, 0, 22, 9).setStrokeStyle(2, 0xf7edd8).setVisible(false);
     this.nameplate = this.add.text(0, 0, '', { fontFamily: 'Georgia', fontSize: '14px', color: '#332a23',
@@ -290,15 +303,16 @@ export class TownScene extends Phaser.Scene {
       const identity=this.playback.run.residents[i],entry=this.playback.entry(i);
       const {position,facing,moving}=this.playback.position(i);
       const action=entry.decision.appliedAction;
+      const partners=action==='socialize' ? this.playback.conversation(i) : [];
       const seconds=this.playback.time*12+((this.playback.run.seed+i*17)%31+31)%31/31;
       const row=Number(identity.appearanceId.slice(-2))*74;
       let frame:number;
       if(moving) frame=facing*4+Math.floor(seconds*8)%4;
-      else if(action==='wander')frame=16+facing*2+(this.reducedMotion?0:Math.floor(seconds*2)%2);
+      else if(action==='wander' || action==='socialize'&&entry.interaction!==undefined&&!partners.length)frame=16+facing*2+(this.reducedMotion?0:Math.floor(seconds*2)%2);
       else {
         let direction=action==='sleep'?0:facing;
         if(action==='socialize') {
-          const neighbors=this.playback.run.residents.map((_,j)=>j).filter(j=>j!==i&&Math.floor(j/4)===Math.floor(i/4)&&this.playback.entry(j).decision.appliedAction==='socialize');
+          const neighbors=partners.map(p=>this.playback.run.residents.indexOf(p));
           if(neighbors.length) {
             const nearest=neighbors.sort((a,b)=>{
               const pa=this.playback.position(a).position,pb=this.playback.position(b).position;
@@ -315,9 +329,14 @@ export class TownScene extends Phaser.Scene {
       const hidden=action==='sleep'&&!moving&&identity.homeId!==selectedHome;
       sprite.setVisible(!hidden);
       this.shadows[i].setPosition(position.x,position.y-1).setDepth(position.y).setVisible(!hidden&&action!=='sleep');
+      // One speaker at a time keeps crowded conversations readable.
+      const group=[identity.id,...partners.map(p=>p.id)].sort();
+      const turn=this.reducedMotion?0:(Math.floor(this.playback.time*12/1.5)+this.playback.run.seed+Number(group[0].slice(-2)))%group.length;
+      this.bubbles[i].setPosition(position.x,position.y).setDepth(position.y+2)
+        .setVisible(partners.length>0 && group[turn]===identity.id);
       if(i===selectedIndex) {
         this.selection.setPosition(position.x,position.y).setDepth(position.y+.5).setVisible(true);
-        this.nameplate.setText(identity.name).setPosition(position.x,position.y-34).setDepth(10003).setVisible(true);
+        this.nameplate.setText(`${identity.name} · ${personalities[identity.trait].label}`).setPosition(position.x,position.y-(partners.length?50:34)).setDepth(10003).setVisible(true);
         if(this.following) {
           const cam=this.cameras.main,targetX=position.x-cam.width/(2*cam.zoom),targetY=position.y-cam.height/(2*cam.zoom);
           const ease=this.reducedMotion ? 1 : Math.min(1,delta/300);
@@ -328,5 +347,6 @@ export class TownScene extends Phaser.Scene {
     if(selectedIndex<0) {this.selection.setVisible(false);this.nameplate.setVisible(false);}
     this.clampCamera();
   }
-  inspect() { return this.people.map((sprite,i)=>({id:this.playback.run.residents[i].id,x:sprite.x,y:sprite.y,frame:sprite.frame.name,visible:sprite.visible})); }
+  inspect() { return this.people.map((sprite,i)=>({id:this.playback.run.residents[i].id,x:sprite.x,y:sprite.y,frame:sprite.frame.name,visible:sprite.visible,
+    chattingWith:this.playback.conversation(i).map(p=>p.id),bubbleVisible:this.bubbles[i].visible})); }
 }

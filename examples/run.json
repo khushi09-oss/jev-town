@@ -437,8 +437,8 @@
         "money": 20
       },
       "position": {
-        "x": 344,
-        "y": 344
+        "x": 328,
+        "y": 296
       }
     },
     {
@@ -450,8 +450,8 @@
         "money": 20
       },
       "position": {
-        "x": 360,
-        "y": 344
+        "x": 344,
+        "y": 296
       }
     },
     {
@@ -463,8 +463,8 @@
         "money": 20
       },
       "position": {
-        "x": 344,
-        "y": 376
+        "x": 328,
+        "y": 328
       }
     },
     {
@@ -476,8 +476,8 @@
         "money": 20
       },
       "position": {
-        "x": 360,
-        "y": 376
+        "x": 344,
+        "y": 328
       }
     },
     {
@@ -489,8 +489,8 @@
         "money": 20
       },
       "position": {
-        "x": 408,
-        "y": 344
+        "x": 376,
+        "y": 296
       }
     },
     {
@@ -502,8 +502,8 @@
         "money": 20
       },
       "position": {
-        "x": 424,
-        "y": 344
+        "x": 392,
+        "y": 296
       }
     },
     {
@@ -515,8 +515,8 @@
         "money": 20
       },
       "position": {
-        "x": 408,
-        "y": 376
+        "x": 376,
+        "y": 328
       }
     },
     {
@@ -528,8 +528,8 @@
         "money": 20
       },
       "position": {
-        "x": 424,
-        "y": 376
+        "x": 392,
+        "y": 328
       }
     },
     {
@@ -541,8 +541,8 @@
         "money": 20
       },
       "position": {
-        "x": 472,
-        "y": 344
+        "x": 488,
+        "y": 296
       }
     },
     {
@@ -554,8 +554,8 @@
         "money": 20
       },
       "position": {
-        "x": 488,
-        "y": 344
+        "x": 504,
+        "y": 296
       }
     },
     {
@@ -567,8 +567,8 @@
         "money": 20
       },
       "position": {
-        "x": 472,
-        "y": 376
+        "x": 488,
+        "y": 328
       }
     },
     {
@@ -580,8 +580,8 @@
         "money": 20
       },
       "position": {
-        "x": 488,
-        "y": 376
+        "x": 504,
+        "y": 328
       }
     },
     {
@@ -594,7 +594,7 @@
       },
       "position": {
         "x": 536,
-        "y": 344
+        "y": 296
       }
     },
     {
@@ -607,7 +607,7 @@
       },
       "position": {
         "x": 552,
-        "y": 344
+        "y": 296
       }
     }
   ],
@@ -644,7 +644,8 @@
             "anchorId": "home-01-sleep-00",
             "x": 88,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -673,7 +674,8 @@
             "anchorId": "home-02-sleep-01",
             "x": 216,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -702,7 +704,8 @@
             "anchorId": "home-03-sleep-02",
             "x": 344,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -731,7 +734,8 @@
             "anchorId": "bakery-eat-03",
             "x": 120,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -760,7 +764,8 @@
             "anchorId": "home-05-sleep-04",
             "x": 600,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -789,7 +794,8 @@
             "anchorId": "home-06-sleep-05",
             "x": 728,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -818,7 +824,8 @@
             "anchorId": "bakery-eat-06",
             "x": 168,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -847,7 +854,8 @@
             "anchorId": "home-02-sleep-07",
             "x": 248,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -876,7 +884,8 @@
             "anchorId": "bakery-eat-08",
             "x": 200,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -905,7 +914,8 @@
             "anchorId": "home-04-sleep-09",
             "x": 504,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -934,7 +944,8 @@
             "anchorId": "home-05-sleep-10",
             "x": 632,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -963,7 +974,8 @@
             "anchorId": "bakery-eat-11",
             "x": 88,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -992,7 +1004,8 @@
             "anchorId": "home-01-sleep-12",
             "x": 152,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -1021,7 +1034,8 @@
             "anchorId": "home-02-sleep-13",
             "x": 280,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -1050,7 +1064,8 @@
             "anchorId": "home-03-sleep-14",
             "x": 408,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -1079,7 +1094,8 @@
             "anchorId": "home-04-sleep-15",
             "x": 536,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -1108,7 +1124,8 @@
             "anchorId": "home-05-sleep-16",
             "x": 664,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -1137,7 +1154,8 @@
             "anchorId": "home-06-sleep-17",
             "x": 792,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -1166,7 +1184,8 @@
             "anchorId": "bakery-eat-18",
             "x": 200,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -1195,7 +1214,8 @@
             "anchorId": "bakery-eat-19",
             "x": 216,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -1224,7 +1244,8 @@
             "anchorId": "home-03-sleep-20",
             "x": 344,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -1253,7 +1274,8 @@
             "anchorId": "home-04-sleep-21",
             "x": 472,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -1282,7 +1304,8 @@
             "anchorId": "home-05-sleep-22",
             "x": 600,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -1311,7 +1334,8 @@
             "anchorId": "home-06-sleep-23",
             "x": 728,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -1340,7 +1364,8 @@
             "anchorId": "home-01-sleep-24",
             "x": 120,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -1369,7 +1394,8 @@
             "anchorId": "home-02-sleep-25",
             "x": 248,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -1398,7 +1424,8 @@
             "anchorId": "home-03-sleep-26",
             "x": 376,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -1427,7 +1454,8 @@
             "anchorId": "bakery-eat-27",
             "x": 184,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -1456,7 +1484,8 @@
             "anchorId": "home-05-sleep-28",
             "x": 632,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -1485,7 +1514,8 @@
             "anchorId": "bakery-eat-29",
             "x": 216,
             "y": 408
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -1521,7 +1551,8 @@
             "anchorId": "home-01-sleep-00",
             "x": 88,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -1550,7 +1581,8 @@
             "anchorId": "home-02-sleep-01",
             "x": 216,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -1579,7 +1611,8 @@
             "anchorId": "home-03-sleep-02",
             "x": 344,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -1608,7 +1641,8 @@
             "anchorId": "home-04-sleep-03",
             "x": 472,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -1637,7 +1671,8 @@
             "anchorId": "bakery-eat-04",
             "x": 136,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -1666,7 +1701,8 @@
             "anchorId": "home-06-sleep-05",
             "x": 728,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -1695,7 +1731,8 @@
             "anchorId": "home-01-sleep-06",
             "x": 120,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -1724,7 +1761,8 @@
             "anchorId": "home-02-sleep-07",
             "x": 248,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -1753,7 +1791,8 @@
             "anchorId": "home-03-sleep-08",
             "x": 376,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -1782,7 +1821,8 @@
             "anchorId": "home-04-sleep-09",
             "x": 504,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -1811,7 +1851,8 @@
             "anchorId": "home-05-sleep-10",
             "x": 632,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -1840,7 +1881,8 @@
             "anchorId": "home-06-sleep-11",
             "x": 760,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -1869,7 +1911,8 @@
             "anchorId": "home-01-sleep-12",
             "x": 152,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -1898,7 +1941,8 @@
             "anchorId": "home-02-sleep-13",
             "x": 280,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -1927,7 +1971,8 @@
             "anchorId": "home-03-sleep-14",
             "x": 408,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -1956,7 +2001,8 @@
             "anchorId": "bakery-eat-15",
             "x": 152,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -1985,7 +2031,8 @@
             "anchorId": "home-05-sleep-16",
             "x": 664,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -2014,7 +2061,8 @@
             "anchorId": "home-06-sleep-17",
             "x": 792,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -2043,7 +2091,8 @@
             "anchorId": "home-01-sleep-18",
             "x": 88,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -2072,7 +2121,8 @@
             "anchorId": "home-02-sleep-19",
             "x": 216,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -2101,7 +2151,8 @@
             "anchorId": "home-03-sleep-20",
             "x": 344,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -2130,7 +2181,8 @@
             "anchorId": "home-04-sleep-21",
             "x": 472,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -2159,7 +2211,8 @@
             "anchorId": "home-05-sleep-22",
             "x": 600,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -2188,7 +2241,8 @@
             "anchorId": "home-06-sleep-23",
             "x": 728,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -2217,7 +2271,8 @@
             "anchorId": "home-01-sleep-24",
             "x": 120,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -2246,7 +2301,8 @@
             "anchorId": "home-02-sleep-25",
             "x": 248,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -2275,7 +2331,8 @@
             "anchorId": "home-03-sleep-26",
             "x": 376,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -2304,7 +2361,8 @@
             "anchorId": "home-04-sleep-27",
             "x": 504,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -2333,7 +2391,8 @@
             "anchorId": "home-05-sleep-28",
             "x": 632,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -2362,7 +2421,8 @@
             "anchorId": "home-06-sleep-29",
             "x": 760,
             "y": 136
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -2398,7 +2458,8 @@
             "anchorId": "bakery-eat-00",
             "x": 72,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -2427,7 +2488,8 @@
             "anchorId": "home-02-sleep-01",
             "x": 216,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -2456,7 +2518,8 @@
             "anchorId": "home-03-sleep-02",
             "x": 344,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -2485,7 +2548,8 @@
             "anchorId": "home-04-sleep-03",
             "x": 472,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -2514,7 +2578,8 @@
             "anchorId": "home-05-sleep-04",
             "x": 600,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -2543,7 +2608,8 @@
             "anchorId": "home-06-sleep-05",
             "x": 728,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -2572,7 +2638,8 @@
             "anchorId": "home-01-sleep-06",
             "x": 120,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -2601,7 +2668,8 @@
             "anchorId": "home-02-sleep-07",
             "x": 248,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -2630,7 +2698,8 @@
             "anchorId": "home-03-sleep-08",
             "x": 376,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -2659,7 +2728,8 @@
             "anchorId": "home-04-sleep-09",
             "x": 504,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -2688,7 +2758,8 @@
             "anchorId": "home-05-sleep-10",
             "x": 632,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -2717,7 +2788,8 @@
             "anchorId": "home-06-sleep-11",
             "x": 760,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -2746,7 +2818,8 @@
             "anchorId": "home-01-sleep-12",
             "x": 152,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -2775,7 +2848,8 @@
             "anchorId": "home-02-sleep-13",
             "x": 280,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -2804,7 +2878,8 @@
             "anchorId": "home-03-sleep-14",
             "x": 408,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -2833,7 +2908,8 @@
             "anchorId": "home-04-sleep-15",
             "x": 536,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -2862,7 +2938,8 @@
             "anchorId": "home-05-sleep-16",
             "x": 664,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -2891,7 +2968,8 @@
             "anchorId": "home-06-sleep-17",
             "x": 792,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -2920,7 +2998,8 @@
             "anchorId": "home-01-sleep-18",
             "x": 88,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -2949,7 +3028,8 @@
             "anchorId": "home-02-sleep-19",
             "x": 216,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -2978,7 +3058,8 @@
             "anchorId": "bakery-eat-20",
             "x": 72,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -3007,7 +3088,8 @@
             "anchorId": "home-04-sleep-21",
             "x": 472,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -3036,7 +3118,8 @@
             "anchorId": "home-05-sleep-22",
             "x": 600,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -3065,7 +3148,8 @@
             "anchorId": "home-06-sleep-23",
             "x": 728,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -3094,7 +3178,8 @@
             "anchorId": "home-01-sleep-24",
             "x": 120,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -3123,7 +3208,8 @@
             "anchorId": "home-02-sleep-25",
             "x": 248,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -3152,7 +3238,8 @@
             "anchorId": "home-03-sleep-26",
             "x": 376,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -3181,7 +3268,8 @@
             "anchorId": "home-04-sleep-27",
             "x": 504,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -3210,7 +3298,8 @@
             "anchorId": "bakery-eat-28",
             "x": 200,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -3239,7 +3328,8 @@
             "anchorId": "home-06-sleep-29",
             "x": 760,
             "y": 136
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -3275,7 +3365,8 @@
             "anchorId": "home-01-sleep-00",
             "x": 88,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -3304,7 +3395,8 @@
             "anchorId": "home-02-sleep-01",
             "x": 216,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -3333,7 +3425,8 @@
             "anchorId": "home-03-sleep-02",
             "x": 344,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -3362,7 +3455,8 @@
             "anchorId": "home-04-sleep-03",
             "x": 472,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -3391,7 +3485,8 @@
             "anchorId": "home-05-sleep-04",
             "x": 600,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -3420,7 +3515,8 @@
             "anchorId": "home-06-sleep-05",
             "x": 728,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -3449,7 +3545,8 @@
             "anchorId": "home-01-sleep-06",
             "x": 120,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -3478,7 +3575,8 @@
             "anchorId": "home-02-sleep-07",
             "x": 248,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -3507,7 +3605,8 @@
             "anchorId": "home-03-sleep-08",
             "x": 376,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -3536,7 +3635,8 @@
             "anchorId": "home-04-sleep-09",
             "x": 504,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -3565,7 +3665,8 @@
             "anchorId": "home-05-sleep-10",
             "x": 632,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -3594,7 +3695,8 @@
             "anchorId": "home-06-sleep-11",
             "x": 760,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -3623,7 +3725,8 @@
             "anchorId": "home-01-sleep-12",
             "x": 152,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -3652,7 +3755,8 @@
             "anchorId": "home-02-sleep-13",
             "x": 280,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -3681,7 +3785,8 @@
             "anchorId": "home-03-sleep-14",
             "x": 408,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -3710,7 +3815,8 @@
             "anchorId": "home-04-sleep-15",
             "x": 536,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -3739,7 +3845,8 @@
             "anchorId": "home-05-sleep-16",
             "x": 664,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -3768,7 +3875,8 @@
             "anchorId": "home-06-sleep-17",
             "x": 792,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -3797,7 +3905,8 @@
             "anchorId": "home-01-sleep-18",
             "x": 88,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -3826,7 +3935,8 @@
             "anchorId": "home-02-sleep-19",
             "x": 216,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -3855,7 +3965,8 @@
             "anchorId": "home-03-sleep-20",
             "x": 344,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -3884,7 +3995,8 @@
             "anchorId": "home-04-sleep-21",
             "x": 472,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -3913,7 +4025,8 @@
             "anchorId": "home-05-sleep-22",
             "x": 600,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -3942,7 +4055,8 @@
             "anchorId": "home-06-sleep-23",
             "x": 728,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -3971,7 +4085,8 @@
             "anchorId": "home-01-sleep-24",
             "x": 120,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -4000,7 +4115,8 @@
             "anchorId": "home-02-sleep-25",
             "x": 248,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -4029,7 +4145,8 @@
             "anchorId": "home-03-sleep-26",
             "x": 376,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -4058,7 +4175,8 @@
             "anchorId": "home-04-sleep-27",
             "x": 504,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -4087,7 +4205,8 @@
             "anchorId": "home-05-sleep-28",
             "x": 632,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -4116,7 +4235,8 @@
             "anchorId": "home-06-sleep-29",
             "x": 760,
             "y": 136
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -4152,7 +4272,8 @@
             "anchorId": "home-01-sleep-00",
             "x": 88,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -4181,7 +4302,8 @@
             "anchorId": "home-02-sleep-01",
             "x": 216,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -4210,7 +4332,8 @@
             "anchorId": "home-03-sleep-02",
             "x": 344,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -4239,7 +4362,8 @@
             "anchorId": "home-04-sleep-03",
             "x": 472,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -4268,7 +4392,8 @@
             "anchorId": "home-05-sleep-04",
             "x": 600,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -4297,7 +4422,8 @@
             "anchorId": "home-06-sleep-05",
             "x": 728,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -4326,7 +4452,8 @@
             "anchorId": "home-01-sleep-06",
             "x": 120,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -4355,7 +4482,8 @@
             "anchorId": "home-02-sleep-07",
             "x": 248,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -4384,7 +4512,8 @@
             "anchorId": "home-03-sleep-08",
             "x": 376,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -4413,7 +4542,8 @@
             "anchorId": "home-04-sleep-09",
             "x": 504,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -4442,7 +4572,8 @@
             "anchorId": "home-05-sleep-10",
             "x": 632,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -4471,7 +4602,8 @@
             "anchorId": "home-06-sleep-11",
             "x": 760,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -4500,7 +4632,8 @@
             "anchorId": "home-01-sleep-12",
             "x": 152,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -4529,7 +4662,8 @@
             "anchorId": "bakery-eat-13",
             "x": 120,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -4558,7 +4692,8 @@
             "anchorId": "home-03-sleep-14",
             "x": 408,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -4587,7 +4722,8 @@
             "anchorId": "home-04-sleep-15",
             "x": 536,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -4616,7 +4752,8 @@
             "anchorId": "bakery-eat-16",
             "x": 168,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -4645,7 +4782,8 @@
             "anchorId": "home-06-sleep-17",
             "x": 792,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -4674,7 +4812,8 @@
             "anchorId": "home-01-sleep-18",
             "x": 88,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -4703,7 +4842,8 @@
             "anchorId": "home-02-sleep-19",
             "x": 216,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -4732,7 +4872,8 @@
             "anchorId": "home-03-sleep-20",
             "x": 344,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -4761,7 +4902,8 @@
             "anchorId": "home-04-sleep-21",
             "x": 472,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -4790,7 +4932,8 @@
             "anchorId": "home-05-sleep-22",
             "x": 600,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -4819,7 +4962,8 @@
             "anchorId": "home-06-sleep-23",
             "x": 728,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -4848,7 +4992,8 @@
             "anchorId": "home-01-sleep-24",
             "x": 120,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -4877,7 +5022,8 @@
             "anchorId": "home-02-sleep-25",
             "x": 248,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -4906,7 +5052,8 @@
             "anchorId": "home-03-sleep-26",
             "x": 376,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -4935,7 +5082,8 @@
             "anchorId": "home-04-sleep-27",
             "x": 504,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -4964,7 +5112,8 @@
             "anchorId": "home-05-sleep-28",
             "x": 632,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -4993,7 +5142,8 @@
             "anchorId": "home-06-sleep-29",
             "x": 760,
             "y": 136
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -5029,7 +5179,8 @@
             "anchorId": "home-01-sleep-00",
             "x": 88,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -5058,7 +5209,8 @@
             "anchorId": "home-02-sleep-01",
             "x": 216,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -5087,7 +5239,8 @@
             "anchorId": "home-03-sleep-02",
             "x": 344,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -5116,7 +5269,8 @@
             "anchorId": "bakery-eat-03",
             "x": 120,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -5145,7 +5299,8 @@
             "anchorId": "home-05-sleep-04",
             "x": 600,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -5174,7 +5329,8 @@
             "anchorId": "home-06-sleep-05",
             "x": 728,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -5203,7 +5359,8 @@
             "anchorId": "home-01-sleep-06",
             "x": 120,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -5232,7 +5389,8 @@
             "anchorId": "home-02-sleep-07",
             "x": 248,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -5261,7 +5419,8 @@
             "anchorId": "home-03-sleep-08",
             "x": 376,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -5290,7 +5449,8 @@
             "anchorId": "home-04-sleep-09",
             "x": 504,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -5319,7 +5479,8 @@
             "anchorId": "home-05-sleep-10",
             "x": 632,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -5348,7 +5509,8 @@
             "anchorId": "home-06-sleep-11",
             "x": 760,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -5377,7 +5539,8 @@
             "anchorId": "home-01-sleep-12",
             "x": 152,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -5406,7 +5569,8 @@
             "anchorId": "home-02-sleep-13",
             "x": 280,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -5435,7 +5599,8 @@
             "anchorId": "home-03-sleep-14",
             "x": 408,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -5464,7 +5629,8 @@
             "anchorId": "home-04-sleep-15",
             "x": 536,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -5493,7 +5659,8 @@
             "anchorId": "home-05-sleep-16",
             "x": 664,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -5522,7 +5689,8 @@
             "anchorId": "home-06-sleep-17",
             "x": 792,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -5551,7 +5719,8 @@
             "anchorId": "home-01-sleep-18",
             "x": 88,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -5580,7 +5749,8 @@
             "anchorId": "bakery-eat-19",
             "x": 216,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -5609,7 +5779,8 @@
             "anchorId": "home-03-sleep-20",
             "x": 344,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -5638,7 +5809,8 @@
             "anchorId": "bakery-eat-21",
             "x": 88,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -5667,7 +5839,8 @@
             "anchorId": "bakery-eat-22",
             "x": 104,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -5696,7 +5869,8 @@
             "anchorId": "home-06-sleep-23",
             "x": 728,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -5725,7 +5899,8 @@
             "anchorId": "home-01-sleep-24",
             "x": 120,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -5754,7 +5929,8 @@
             "anchorId": "home-02-sleep-25",
             "x": 248,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -5783,7 +5959,8 @@
             "anchorId": "bakery-eat-26",
             "x": 168,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -5812,7 +5989,8 @@
             "anchorId": "bakery-eat-27",
             "x": 184,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -5841,7 +6019,8 @@
             "anchorId": "home-05-sleep-28",
             "x": 632,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -5870,7 +6049,8 @@
             "anchorId": "home-06-sleep-29",
             "x": 760,
             "y": 136
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -5903,9 +6083,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-00",
+            "anchorId": "square-socialize-npc00",
             "x": 344,
             "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc03",
+              "npc09",
+              "npc15"
+            ]
           }
         },
         {
@@ -5935,7 +6123,8 @@
             "anchorId": "bakery-eat-01",
             "x": 88,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -5964,7 +6153,8 @@
             "anchorId": "park-wander-02",
             "x": 840,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -5990,9 +6180,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-03",
+            "anchorId": "square-socialize-npc03",
             "x": 360,
-            "y": 264
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc00",
+              "npc09",
+              "npc15"
+            ]
           }
         },
         {
@@ -6022,7 +6220,8 @@
             "anchorId": "workshop-work-04",
             "x": 264,
             "y": 504
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -6051,7 +6250,8 @@
             "anchorId": "park-wander-05",
             "x": 808,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -6080,7 +6280,8 @@
             "anchorId": "bakery-eat-06",
             "x": 168,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -6109,7 +6310,8 @@
             "anchorId": "workshop-work-07",
             "x": 296,
             "y": 536
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -6138,7 +6340,8 @@
             "anchorId": "park-wander-08",
             "x": 744,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -6164,9 +6367,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-09",
-            "x": 488,
-            "y": 232
+            "anchorId": "square-socialize-npc09",
+            "x": 344,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc00",
+              "npc03",
+              "npc15"
+            ]
           }
         },
         {
@@ -6196,7 +6407,8 @@
             "anchorId": "garden-work-10",
             "x": 504,
             "y": 456
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -6225,7 +6437,8 @@
             "anchorId": "park-wander-11",
             "x": 712,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -6254,7 +6467,8 @@
             "anchorId": "bakery-eat-12",
             "x": 104,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -6283,7 +6497,8 @@
             "anchorId": "garden-work-13",
             "x": 648,
             "y": 456
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -6312,7 +6527,8 @@
             "anchorId": "park-wander-14",
             "x": 808,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -6338,9 +6554,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-15",
-            "x": 552,
+            "anchorId": "square-socialize-npc15",
+            "x": 360,
             "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc00",
+              "npc03",
+              "npc09"
+            ]
           }
         },
         {
@@ -6370,7 +6594,8 @@
             "anchorId": "garden-work-16",
             "x": 600,
             "y": 488
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -6399,7 +6624,8 @@
             "anchorId": "bakery-eat-17",
             "x": 184,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -6425,9 +6651,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-18",
-            "x": 344,
-            "y": 376
+            "anchorId": "square-socialize-npc18",
+            "x": 408,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc21",
+              "npc24",
+              "npc27"
+            ]
           }
         },
         {
@@ -6457,7 +6691,8 @@
             "anchorId": "garden-work-19",
             "x": 552,
             "y": 520
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -6486,7 +6721,8 @@
             "anchorId": "park-wander-20",
             "x": 712,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -6512,9 +6748,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-21",
+            "anchorId": "square-socialize-npc21",
             "x": 424,
-            "y": 344
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc18",
+              "npc24",
+              "npc27"
+            ]
           }
         },
         {
@@ -6544,7 +6788,8 @@
             "anchorId": "square-work-22",
             "x": 424,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -6573,7 +6818,8 @@
             "anchorId": "park-wander-23",
             "x": 840,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -6599,9 +6845,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-24",
-            "x": 472,
-            "y": 344
+            "anchorId": "square-socialize-npc24",
+            "x": 408,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc18",
+              "npc21",
+              "npc27"
+            ]
           }
         },
         {
@@ -6631,7 +6885,8 @@
             "anchorId": "square-work-25",
             "x": 360,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -6660,7 +6915,8 @@
             "anchorId": "park-wander-26",
             "x": 776,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -6686,9 +6942,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-27",
-            "x": 488,
-            "y": 376
+            "anchorId": "square-socialize-npc27",
+            "x": 424,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc18",
+              "npc21",
+              "npc24"
+            ]
           }
         },
         {
@@ -6718,7 +6982,8 @@
             "anchorId": "square-work-28",
             "x": 456,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -6747,7 +7012,8 @@
             "anchorId": "park-wander-29",
             "x": 744,
             "y": 248
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -6783,7 +7049,8 @@
             "anchorId": "workshop-work-00",
             "x": 264,
             "y": 440
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -6812,7 +7079,8 @@
             "anchorId": "workshop-work-01",
             "x": 296,
             "y": 440
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -6841,7 +7109,8 @@
             "anchorId": "park-wander-02",
             "x": 744,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -6870,7 +7139,8 @@
             "anchorId": "workshop-work-03",
             "x": 296,
             "y": 472
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -6899,7 +7169,8 @@
             "anchorId": "workshop-work-04",
             "x": 264,
             "y": 504
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -6928,7 +7199,8 @@
             "anchorId": "park-wander-05",
             "x": 840,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -6954,9 +7226,15 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-06",
-            "x": 408,
-            "y": 264
+            "anchorId": "square-socialize-npc06",
+            "x": 344,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc12"
+            ]
           }
         },
         {
@@ -6986,7 +7264,8 @@
             "anchorId": "workshop-work-07",
             "x": 296,
             "y": 536
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -7015,7 +7294,8 @@
             "anchorId": "bakery-eat-08",
             "x": 200,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -7044,7 +7324,8 @@
             "anchorId": "bakery-eat-09",
             "x": 216,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -7073,7 +7354,8 @@
             "anchorId": "bakery-eat-10",
             "x": 72,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -7102,7 +7384,8 @@
             "anchorId": "park-wander-11",
             "x": 744,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -7128,9 +7411,15 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-12",
-            "x": 536,
+            "anchorId": "square-socialize-npc12",
+            "x": 360,
             "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc06"
+            ]
           }
         },
         {
@@ -7160,7 +7449,8 @@
             "anchorId": "garden-work-13",
             "x": 648,
             "y": 456
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -7189,7 +7479,8 @@
             "anchorId": "park-wander-14",
             "x": 712,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -7218,7 +7509,8 @@
             "anchorId": "garden-work-15",
             "x": 552,
             "y": 488
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -7247,7 +7539,8 @@
             "anchorId": "garden-work-16",
             "x": 600,
             "y": 488
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -7276,7 +7569,8 @@
             "anchorId": "park-wander-17",
             "x": 808,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -7305,7 +7599,8 @@
             "anchorId": "bakery-eat-18",
             "x": 200,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -7334,7 +7629,8 @@
             "anchorId": "garden-work-19",
             "x": 552,
             "y": 520
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -7363,7 +7659,8 @@
             "anchorId": "park-wander-20",
             "x": 776,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -7392,7 +7689,8 @@
             "anchorId": "square-work-21",
             "x": 392,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -7421,7 +7719,8 @@
             "anchorId": "square-work-22",
             "x": 424,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -7450,7 +7749,8 @@
             "anchorId": "bakery-eat-23",
             "x": 120,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -7479,7 +7779,8 @@
             "anchorId": "bakery-eat-24",
             "x": 136,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -7508,7 +7809,8 @@
             "anchorId": "bakery-eat-25",
             "x": 152,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -7537,7 +7839,8 @@
             "anchorId": "park-wander-26",
             "x": 840,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -7566,7 +7869,8 @@
             "anchorId": "square-work-27",
             "x": 424,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -7595,7 +7899,8 @@
             "anchorId": "square-work-28",
             "x": 456,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -7624,7 +7929,8 @@
             "anchorId": "bakery-eat-29",
             "x": 216,
             "y": 408
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -7657,9 +7963,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-00",
+            "anchorId": "square-socialize-npc00",
             "x": 344,
             "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc03",
+              "npc21",
+              "npc27"
+            ]
           }
         },
         {
@@ -7689,7 +8003,8 @@
             "anchorId": "workshop-work-01",
             "x": 296,
             "y": 440
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -7718,7 +8033,8 @@
             "anchorId": "bakery-eat-02",
             "x": 104,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -7744,9 +8060,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-03",
+            "anchorId": "square-socialize-npc03",
             "x": 360,
-            "y": 264
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc00",
+              "npc21",
+              "npc27"
+            ]
           }
         },
         {
@@ -7776,7 +8100,8 @@
             "anchorId": "bakery-eat-04",
             "x": 136,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -7805,7 +8130,8 @@
             "anchorId": "bakery-eat-05",
             "x": 152,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -7834,7 +8160,8 @@
             "anchorId": "workshop-work-06",
             "x": 264,
             "y": 536
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -7863,7 +8190,8 @@
             "anchorId": "bakery-eat-07",
             "x": 184,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -7892,7 +8220,8 @@
             "anchorId": "workshop-work-08",
             "x": 264,
             "y": 568
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -7921,7 +8250,8 @@
             "anchorId": "workshop-work-09",
             "x": 296,
             "y": 568
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -7950,7 +8280,8 @@
             "anchorId": "garden-work-10",
             "x": 504,
             "y": 456
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -7979,7 +8310,8 @@
             "anchorId": "bakery-eat-11",
             "x": 88,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -8008,7 +8340,8 @@
             "anchorId": "garden-work-12",
             "x": 600,
             "y": 456
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -8037,7 +8370,8 @@
             "anchorId": "garden-work-13",
             "x": 648,
             "y": 456
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -8066,7 +8400,8 @@
             "anchorId": "bakery-eat-14",
             "x": 136,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -8095,7 +8430,8 @@
             "anchorId": "bakery-eat-15",
             "x": 152,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -8124,7 +8460,8 @@
             "anchorId": "garden-work-16",
             "x": 600,
             "y": 488
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -8153,7 +8490,8 @@
             "anchorId": "park-wander-17",
             "x": 712,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -8182,7 +8520,8 @@
             "anchorId": "garden-work-18",
             "x": 504,
             "y": 520
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -8211,7 +8550,8 @@
             "anchorId": "garden-work-19",
             "x": 552,
             "y": 520
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -8240,7 +8580,8 @@
             "anchorId": "park-wander-20",
             "x": 840,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -8266,9 +8607,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-21",
-            "x": 424,
-            "y": 344
+            "anchorId": "square-socialize-npc21",
+            "x": 344,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc00",
+              "npc03",
+              "npc27"
+            ]
           }
         },
         {
@@ -8298,7 +8647,8 @@
             "anchorId": "square-work-22",
             "x": 424,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -8327,7 +8677,8 @@
             "anchorId": "park-wander-23",
             "x": 776,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -8356,7 +8707,8 @@
             "anchorId": "square-work-24",
             "x": 488,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -8385,7 +8737,8 @@
             "anchorId": "square-work-25",
             "x": 360,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -8414,7 +8767,8 @@
             "anchorId": "park-wander-26",
             "x": 744,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -8440,9 +8794,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-27",
-            "x": 488,
-            "y": 376
+            "anchorId": "square-socialize-npc27",
+            "x": 360,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc00",
+              "npc03",
+              "npc21"
+            ]
           }
         },
         {
@@ -8472,7 +8834,8 @@
             "anchorId": "square-work-28",
             "x": 456,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -8501,7 +8864,8 @@
             "anchorId": "square-work-29",
             "x": 488,
             "y": 376
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -8537,7 +8901,8 @@
             "anchorId": "bakery-eat-00",
             "x": 72,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -8566,7 +8931,8 @@
             "anchorId": "workshop-work-01",
             "x": 296,
             "y": 440
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -8595,7 +8961,8 @@
             "anchorId": "park-wander-02",
             "x": 712,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -8624,7 +8991,8 @@
             "anchorId": "workshop-work-03",
             "x": 296,
             "y": 472
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -8653,7 +9021,8 @@
             "anchorId": "workshop-work-04",
             "x": 264,
             "y": 504
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -8682,7 +9051,8 @@
             "anchorId": "park-wander-05",
             "x": 808,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -8708,9 +9078,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-06",
-            "x": 408,
-            "y": 264
+            "anchorId": "square-socialize-npc06",
+            "x": 344,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc09",
+              "npc12",
+              "npc13"
+            ]
           }
         },
         {
@@ -8740,7 +9118,8 @@
             "anchorId": "workshop-work-07",
             "x": 296,
             "y": 536
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -8769,7 +9148,8 @@
             "anchorId": "park-wander-08",
             "x": 776,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -8795,9 +9175,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-09",
-            "x": 488,
+            "anchorId": "square-socialize-npc09",
+            "x": 360,
             "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc06",
+              "npc12",
+              "npc13"
+            ]
           }
         },
         {
@@ -8827,7 +9215,8 @@
             "anchorId": "garden-work-10",
             "x": 504,
             "y": 456
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -8856,7 +9245,8 @@
             "anchorId": "garden-work-11",
             "x": 552,
             "y": 456
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -8882,9 +9272,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-12",
-            "x": 536,
-            "y": 232
+            "anchorId": "square-socialize-npc12",
+            "x": 344,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc06",
+              "npc09",
+              "npc13"
+            ]
           }
         },
         {
@@ -8911,9 +9309,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-13",
-            "x": 552,
-            "y": 232
+            "anchorId": "square-socialize-npc13",
+            "x": 360,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc06",
+              "npc09",
+              "npc12"
+            ]
           }
         },
         {
@@ -8943,7 +9349,8 @@
             "anchorId": "park-wander-14",
             "x": 840,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -8969,9 +9376,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-15",
-            "x": 552,
-            "y": 264
+            "anchorId": "square-socialize-npc15",
+            "x": 408,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc16",
+              "npc18",
+              "npc19"
+            ]
           }
         },
         {
@@ -8998,9 +9413,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-16",
-            "x": 344,
-            "y": 344
+            "anchorId": "square-socialize-npc16",
+            "x": 424,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc15",
+              "npc18",
+              "npc19"
+            ]
           }
         },
         {
@@ -9030,7 +9453,8 @@
             "anchorId": "park-wander-17",
             "x": 776,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -9056,9 +9480,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-18",
-            "x": 344,
-            "y": 376
+            "anchorId": "square-socialize-npc18",
+            "x": 408,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc15",
+              "npc16",
+              "npc19"
+            ]
           }
         },
         {
@@ -9085,9 +9517,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-19",
-            "x": 360,
-            "y": 376
+            "anchorId": "square-socialize-npc19",
+            "x": 424,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc15",
+              "npc16",
+              "npc18"
+            ]
           }
         },
         {
@@ -9117,7 +9557,8 @@
             "anchorId": "park-wander-20",
             "x": 744,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -9146,7 +9587,8 @@
             "anchorId": "square-work-21",
             "x": 392,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -9172,9 +9614,15 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-22",
-            "x": 408,
-            "y": 376
+            "anchorId": "square-socialize-npc22",
+            "x": 472,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc24"
+            ]
           }
         },
         {
@@ -9204,7 +9652,8 @@
             "anchorId": "park-wander-23",
             "x": 840,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -9230,9 +9679,15 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-24",
-            "x": 472,
-            "y": 344
+            "anchorId": "square-socialize-npc24",
+            "x": 488,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc22"
+            ]
           }
         },
         {
@@ -9262,7 +9717,8 @@
             "anchorId": "square-work-25",
             "x": 360,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -9291,7 +9747,8 @@
             "anchorId": "park-wander-26",
             "x": 808,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -9320,7 +9777,8 @@
             "anchorId": "square-work-27",
             "x": 424,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -9349,7 +9807,8 @@
             "anchorId": "bakery-eat-28",
             "x": 200,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -9378,7 +9837,8 @@
             "anchorId": "park-wander-29",
             "x": 744,
             "y": 344
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -9414,7 +9874,8 @@
             "anchorId": "workshop-work-00",
             "x": 264,
             "y": 440
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -9440,9 +9901,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-01",
-            "x": 360,
+            "anchorId": "square-socialize-npc01",
+            "x": 344,
             "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc04",
+              "npc07",
+              "npc10"
+            ]
           }
         },
         {
@@ -9472,7 +9941,8 @@
             "anchorId": "park-wander-02",
             "x": 744,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -9501,7 +9971,8 @@
             "anchorId": "park-wander-03",
             "x": 808,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -9527,9 +9998,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-04",
-            "x": 408,
+            "anchorId": "square-socialize-npc04",
+            "x": 360,
             "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc01",
+              "npc07",
+              "npc10"
+            ]
           }
         },
         {
@@ -9559,7 +10038,8 @@
             "anchorId": "park-wander-05",
             "x": 712,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -9588,7 +10068,8 @@
             "anchorId": "workshop-work-06",
             "x": 264,
             "y": 536
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -9614,9 +10095,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-07",
-            "x": 424,
+            "anchorId": "square-socialize-npc07",
+            "x": 344,
             "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc01",
+              "npc04",
+              "npc10"
+            ]
           }
         },
         {
@@ -9646,7 +10135,8 @@
             "anchorId": "park-wander-08",
             "x": 808,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -9675,7 +10165,8 @@
             "anchorId": "workshop-work-09",
             "x": 296,
             "y": 568
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -9701,9 +10192,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-10",
-            "x": 472,
+            "anchorId": "square-socialize-npc10",
+            "x": 360,
             "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc01",
+              "npc04",
+              "npc07"
+            ]
           }
         },
         {
@@ -9733,7 +10232,8 @@
             "anchorId": "park-wander-11",
             "x": 776,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -9762,7 +10262,8 @@
             "anchorId": "garden-work-12",
             "x": 600,
             "y": 456
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -9791,7 +10292,8 @@
             "anchorId": "bakery-eat-13",
             "x": 120,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -9820,7 +10322,8 @@
             "anchorId": "park-wander-14",
             "x": 712,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -9849,7 +10352,8 @@
             "anchorId": "garden-work-15",
             "x": 552,
             "y": 488
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -9878,7 +10382,8 @@
             "anchorId": "bakery-eat-16",
             "x": 168,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -9907,7 +10412,8 @@
             "anchorId": "park-wander-17",
             "x": 840,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -9936,7 +10442,8 @@
             "anchorId": "garden-work-18",
             "x": 504,
             "y": 520
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -9965,7 +10472,8 @@
             "anchorId": "bakery-eat-19",
             "x": 216,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -9994,7 +10502,8 @@
             "anchorId": "bakery-eat-20",
             "x": 72,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -10023,7 +10532,8 @@
             "anchorId": "park-wander-21",
             "x": 840,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -10052,7 +10562,8 @@
             "anchorId": "bakery-eat-22",
             "x": 104,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -10081,7 +10592,8 @@
             "anchorId": "park-wander-23",
             "x": 744,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -10110,7 +10622,8 @@
             "anchorId": "square-work-24",
             "x": 488,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -10136,9 +10649,16 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-25",
-            "x": 488,
-            "y": 344
+            "anchorId": "square-socialize-npc25",
+            "x": 408,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc26",
+              "npc28"
+            ]
           }
         },
         {
@@ -10165,9 +10685,16 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-26",
-            "x": 472,
-            "y": 376
+            "anchorId": "square-socialize-npc26",
+            "x": 424,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc25",
+              "npc28"
+            ]
           }
         },
         {
@@ -10197,7 +10724,8 @@
             "anchorId": "park-wander-27",
             "x": 744,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -10223,9 +10751,16 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-28",
-            "x": 536,
-            "y": 344
+            "anchorId": "square-socialize-npc28",
+            "x": 408,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc25",
+              "npc26"
+            ]
           }
         },
         {
@@ -10255,7 +10790,8 @@
             "anchorId": "park-wander-29",
             "x": 808,
             "y": 312
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -10291,7 +10827,8 @@
             "anchorId": "park-wander-00",
             "x": 744,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -10320,7 +10857,8 @@
             "anchorId": "bakery-eat-01",
             "x": 88,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -10346,9 +10884,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-02",
+            "anchorId": "square-socialize-npc02",
             "x": 344,
-            "y": 264
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc05",
+              "npc08",
+              "npc11"
+            ]
           }
         },
         {
@@ -10378,7 +10924,8 @@
             "anchorId": "bakery-eat-03",
             "x": 120,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -10407,7 +10954,8 @@
             "anchorId": "workshop-work-04",
             "x": 264,
             "y": 504
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -10433,9 +10981,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-05",
-            "x": 424,
+            "anchorId": "square-socialize-npc05",
+            "x": 360,
             "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc02",
+              "npc08",
+              "npc11"
+            ]
           }
         },
         {
@@ -10465,7 +11021,8 @@
             "anchorId": "park-wander-06",
             "x": 808,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -10494,7 +11051,8 @@
             "anchorId": "workshop-work-07",
             "x": 296,
             "y": 536
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -10520,9 +11078,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-08",
-            "x": 472,
-            "y": 232
+            "anchorId": "square-socialize-npc08",
+            "x": 344,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc02",
+              "npc05",
+              "npc11"
+            ]
           }
         },
         {
@@ -10552,7 +11118,8 @@
             "anchorId": "park-wander-09",
             "x": 744,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -10581,7 +11148,8 @@
             "anchorId": "garden-work-10",
             "x": 504,
             "y": 456
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -10607,9 +11175,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-11",
-            "x": 488,
+            "anchorId": "square-socialize-npc11",
+            "x": 360,
             "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc02",
+              "npc05",
+              "npc08"
+            ]
           }
         },
         {
@@ -10639,7 +11215,8 @@
             "anchorId": "park-wander-12",
             "x": 712,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -10668,7 +11245,8 @@
             "anchorId": "garden-work-13",
             "x": 648,
             "y": 456
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -10694,9 +11272,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-14",
-            "x": 536,
-            "y": 264
+            "anchorId": "square-socialize-npc14",
+            "x": 408,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc17",
+              "npc23",
+              "npc29"
+            ]
           }
         },
         {
@@ -10726,7 +11312,8 @@
             "anchorId": "park-wander-15",
             "x": 808,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -10755,7 +11342,8 @@
             "anchorId": "garden-work-16",
             "x": 600,
             "y": 488
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -10781,9 +11369,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-17",
-            "x": 360,
-            "y": 344
+            "anchorId": "square-socialize-npc17",
+            "x": 424,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc14",
+              "npc23",
+              "npc29"
+            ]
           }
         },
         {
@@ -10813,7 +11409,8 @@
             "anchorId": "park-wander-18",
             "x": 776,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -10842,7 +11439,8 @@
             "anchorId": "garden-work-19",
             "x": 552,
             "y": 520
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -10871,7 +11469,8 @@
             "anchorId": "square-work-20",
             "x": 360,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -10900,7 +11499,8 @@
             "anchorId": "bakery-eat-21",
             "x": 88,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -10929,7 +11529,8 @@
             "anchorId": "square-work-22",
             "x": 424,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -10955,9 +11556,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-23",
-            "x": 424,
-            "y": 376
+            "anchorId": "square-socialize-npc23",
+            "x": 408,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc14",
+              "npc17",
+              "npc29"
+            ]
           }
         },
         {
@@ -10987,7 +11596,8 @@
             "anchorId": "park-wander-24",
             "x": 840,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -11016,7 +11626,8 @@
             "anchorId": "square-work-25",
             "x": 360,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -11045,7 +11656,8 @@
             "anchorId": "square-work-26",
             "x": 392,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -11074,7 +11686,8 @@
             "anchorId": "bakery-eat-27",
             "x": 184,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -11103,7 +11716,8 @@
             "anchorId": "square-work-28",
             "x": 456,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -11129,9 +11743,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-29",
-            "x": 552,
-            "y": 344
+            "anchorId": "square-socialize-npc29",
+            "x": 424,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc14",
+              "npc17",
+              "npc23"
+            ]
           }
         }
       ]
@@ -11168,7 +11790,8 @@
             "anchorId": "park-wander-00",
             "x": 808,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -11197,7 +11820,8 @@
             "anchorId": "workshop-work-01",
             "x": 296,
             "y": 440
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -11226,7 +11850,8 @@
             "anchorId": "workshop-work-02",
             "x": 264,
             "y": 472
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -11255,7 +11880,8 @@
             "anchorId": "park-wander-03",
             "x": 744,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -11284,7 +11910,8 @@
             "anchorId": "park-wander-04",
             "x": 776,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -11313,7 +11940,8 @@
             "anchorId": "workshop-work-05",
             "x": 296,
             "y": 504
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -11342,7 +11970,8 @@
             "anchorId": "bakery-eat-06",
             "x": 168,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -11371,7 +12000,8 @@
             "anchorId": "park-wander-07",
             "x": 744,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -11400,7 +12030,8 @@
             "anchorId": "park-wander-08",
             "x": 776,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -11429,7 +12060,8 @@
             "anchorId": "park-wander-09",
             "x": 808,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -11458,7 +12090,8 @@
             "anchorId": "bakery-eat-10",
             "x": 72,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -11487,7 +12120,8 @@
             "anchorId": "park-wander-11",
             "x": 744,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -11516,7 +12150,8 @@
             "anchorId": "bakery-eat-12",
             "x": 104,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -11545,7 +12180,8 @@
             "anchorId": "park-wander-13",
             "x": 808,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -11574,7 +12210,8 @@
             "anchorId": "garden-work-14",
             "x": 504,
             "y": 488
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -11603,7 +12240,8 @@
             "anchorId": "park-wander-15",
             "x": 712,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -11632,7 +12270,8 @@
             "anchorId": "park-wander-16",
             "x": 744,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -11661,7 +12300,8 @@
             "anchorId": "garden-work-17",
             "x": 648,
             "y": 488
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -11690,7 +12330,8 @@
             "anchorId": "park-wander-18",
             "x": 840,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -11719,7 +12360,8 @@
             "anchorId": "park-wander-19",
             "x": 712,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -11745,10 +12387,11 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-20",
-            "x": 408,
-            "y": 344
-          }
+            "anchorId": "square-socialize-npc20",
+            "x": 344,
+            "y": 232
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -11777,7 +12420,8 @@
             "anchorId": "park-wander-21",
             "x": 776,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -11806,7 +12450,8 @@
             "anchorId": "park-wander-22",
             "x": 808,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -11835,7 +12480,8 @@
             "anchorId": "square-work-23",
             "x": 456,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -11864,7 +12510,8 @@
             "anchorId": "park-wander-24",
             "x": 744,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -11893,7 +12540,8 @@
             "anchorId": "bakery-eat-25",
             "x": 152,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -11922,7 +12570,8 @@
             "anchorId": "bakery-eat-26",
             "x": 168,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -11951,7 +12600,8 @@
             "anchorId": "park-wander-27",
             "x": 840,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -11980,7 +12630,8 @@
             "anchorId": "park-wander-28",
             "x": 712,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -12009,7 +12660,8 @@
             "anchorId": "park-wander-29",
             "x": 776,
             "y": 248
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -12045,7 +12697,8 @@
             "anchorId": "park-wander-00",
             "x": 712,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -12074,7 +12727,8 @@
             "anchorId": "park-wander-01",
             "x": 744,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -12103,7 +12757,8 @@
             "anchorId": "park-wander-02",
             "x": 776,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -12132,7 +12787,8 @@
             "anchorId": "park-wander-03",
             "x": 808,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -12161,7 +12817,8 @@
             "anchorId": "park-wander-04",
             "x": 840,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -12190,7 +12847,8 @@
             "anchorId": "park-wander-05",
             "x": 712,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -12219,7 +12877,8 @@
             "anchorId": "park-wander-06",
             "x": 776,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -12248,7 +12907,8 @@
             "anchorId": "bakery-eat-07",
             "x": 184,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -12277,7 +12937,8 @@
             "anchorId": "park-wander-08",
             "x": 840,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -12306,7 +12967,8 @@
             "anchorId": "bakery-eat-09",
             "x": 216,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -12335,7 +12997,8 @@
             "anchorId": "garden-work-10",
             "x": 504,
             "y": 456
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -12364,7 +13027,8 @@
             "anchorId": "park-wander-11",
             "x": 776,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -12393,7 +13057,8 @@
             "anchorId": "park-wander-12",
             "x": 840,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -12422,7 +13087,8 @@
             "anchorId": "park-wander-13",
             "x": 712,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -12451,7 +13117,8 @@
             "anchorId": "park-wander-14",
             "x": 744,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -12480,7 +13147,8 @@
             "anchorId": "park-wander-15",
             "x": 776,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -12509,7 +13177,8 @@
             "anchorId": "park-wander-16",
             "x": 808,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -12538,7 +13207,8 @@
             "anchorId": "bakery-eat-17",
             "x": 184,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -12567,7 +13237,8 @@
             "anchorId": "bakery-eat-18",
             "x": 200,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -12596,7 +13267,8 @@
             "anchorId": "park-wander-19",
             "x": 776,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -12625,7 +13297,8 @@
             "anchorId": "park-wander-20",
             "x": 808,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -12654,7 +13327,8 @@
             "anchorId": "park-wander-21",
             "x": 840,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -12683,7 +13357,8 @@
             "anchorId": "park-wander-22",
             "x": 712,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -12712,7 +13387,8 @@
             "anchorId": "park-wander-23",
             "x": 744,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -12741,7 +13417,8 @@
             "anchorId": "bakery-eat-24",
             "x": 136,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -12770,7 +13447,8 @@
             "anchorId": "square-work-25",
             "x": 360,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -12799,7 +13477,8 @@
             "anchorId": "park-wander-26",
             "x": 712,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -12828,7 +13507,8 @@
             "anchorId": "park-wander-27",
             "x": 744,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -12857,7 +13537,8 @@
             "anchorId": "park-wander-28",
             "x": 776,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -12886,7 +13567,8 @@
             "anchorId": "park-wander-29",
             "x": 808,
             "y": 408
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -12919,10 +13601,11 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-00",
+            "anchorId": "square-socialize-npc00",
             "x": 344,
             "y": 232
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -12951,7 +13634,8 @@
             "anchorId": "park-wander-01",
             "x": 808,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -12980,7 +13664,8 @@
             "anchorId": "park-wander-02",
             "x": 840,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -13009,7 +13694,8 @@
             "anchorId": "park-wander-03",
             "x": 712,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -13038,7 +13724,8 @@
             "anchorId": "bakery-eat-04",
             "x": 136,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -13067,7 +13754,8 @@
             "anchorId": "bakery-eat-05",
             "x": 152,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -13096,7 +13784,8 @@
             "anchorId": "park-wander-06",
             "x": 808,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -13125,7 +13814,8 @@
             "anchorId": "park-wander-07",
             "x": 712,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -13154,7 +13844,8 @@
             "anchorId": "bakery-eat-08",
             "x": 200,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -13183,7 +13874,8 @@
             "anchorId": "park-wander-09",
             "x": 776,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -13212,7 +13904,8 @@
             "anchorId": "home-05-sleep-10",
             "x": 632,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -13241,7 +13934,8 @@
             "anchorId": "bakery-eat-11",
             "x": 88,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -13270,7 +13964,8 @@
             "anchorId": "park-wander-12",
             "x": 712,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -13299,7 +13994,8 @@
             "anchorId": "park-wander-13",
             "x": 776,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -13328,7 +14024,8 @@
             "anchorId": "bakery-eat-14",
             "x": 136,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -13357,7 +14054,8 @@
             "anchorId": "bakery-eat-15",
             "x": 152,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -13386,7 +14084,8 @@
             "anchorId": "park-wander-16",
             "x": 712,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -13415,7 +14114,8 @@
             "anchorId": "park-wander-17",
             "x": 744,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -13444,7 +14144,8 @@
             "anchorId": "park-wander-18",
             "x": 776,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -13473,7 +14174,8 @@
             "anchorId": "park-wander-19",
             "x": 840,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -13502,7 +14204,8 @@
             "anchorId": "park-wander-20",
             "x": 712,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -13531,7 +14234,8 @@
             "anchorId": "park-wander-21",
             "x": 744,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -13560,7 +14264,8 @@
             "anchorId": "park-wander-22",
             "x": 776,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -13589,7 +14294,8 @@
             "anchorId": "bakery-eat-23",
             "x": 120,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -13618,7 +14324,8 @@
             "anchorId": "park-wander-24",
             "x": 840,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -13647,7 +14354,8 @@
             "anchorId": "home-02-sleep-25",
             "x": 248,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -13676,7 +14384,8 @@
             "anchorId": "park-wander-26",
             "x": 776,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -13705,7 +14414,8 @@
             "anchorId": "park-wander-27",
             "x": 808,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -13734,7 +14444,8 @@
             "anchorId": "park-wander-28",
             "x": 840,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -13763,7 +14474,8 @@
             "anchorId": "bakery-eat-29",
             "x": 216,
             "y": 408
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -13799,7 +14511,8 @@
             "anchorId": "bakery-eat-00",
             "x": 72,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -13828,7 +14541,8 @@
             "anchorId": "park-wander-01",
             "x": 840,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -13857,7 +14571,8 @@
             "anchorId": "bakery-eat-02",
             "x": 104,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -13883,9 +14598,16 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-03",
-            "x": 360,
-            "y": 264
+            "anchorId": "square-socialize-npc03",
+            "x": 344,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc21",
+              "npc27"
+            ]
           }
         },
         {
@@ -13915,7 +14637,8 @@
             "anchorId": "park-wander-04",
             "x": 808,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -13944,7 +14667,8 @@
             "anchorId": "park-wander-05",
             "x": 840,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -13973,7 +14697,8 @@
             "anchorId": "park-wander-06",
             "x": 712,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -14002,7 +14727,8 @@
             "anchorId": "park-wander-07",
             "x": 744,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -14031,7 +14757,8 @@
             "anchorId": "park-wander-08",
             "x": 808,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -14060,7 +14787,8 @@
             "anchorId": "park-wander-09",
             "x": 840,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -14089,7 +14817,8 @@
             "anchorId": "garden-work-10",
             "x": 504,
             "y": 456
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -14118,7 +14847,8 @@
             "anchorId": "park-wander-11",
             "x": 744,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -14147,7 +14877,8 @@
             "anchorId": "park-wander-12",
             "x": 776,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -14176,7 +14907,8 @@
             "anchorId": "home-02-sleep-13",
             "x": 280,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -14205,7 +14937,8 @@
             "anchorId": "park-wander-14",
             "x": 712,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -14234,7 +14967,8 @@
             "anchorId": "park-wander-15",
             "x": 744,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -14263,7 +14997,8 @@
             "anchorId": "home-05-sleep-16",
             "x": 664,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -14292,7 +15027,8 @@
             "anchorId": "park-wander-17",
             "x": 808,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -14321,7 +15057,8 @@
             "anchorId": "park-wander-18",
             "x": 840,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -14350,7 +15087,8 @@
             "anchorId": "home-02-sleep-19",
             "x": 216,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -14379,7 +15117,8 @@
             "anchorId": "park-wander-20",
             "x": 776,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -14405,9 +15144,16 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-21",
-            "x": 424,
-            "y": 344
+            "anchorId": "square-socialize-npc21",
+            "x": 360,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc03",
+              "npc27"
+            ]
           }
         },
         {
@@ -14437,7 +15183,8 @@
             "anchorId": "home-05-sleep-22",
             "x": 600,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -14466,7 +15213,8 @@
             "anchorId": "park-wander-23",
             "x": 712,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -14495,7 +15243,8 @@
             "anchorId": "park-wander-24",
             "x": 744,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -14524,7 +15273,8 @@
             "anchorId": "square-work-25",
             "x": 360,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -14553,7 +15303,8 @@
             "anchorId": "park-wander-26",
             "x": 840,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -14579,9 +15330,16 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-27",
-            "x": 488,
-            "y": 376
+            "anchorId": "square-socialize-npc27",
+            "x": 344,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc03",
+              "npc21"
+            ]
           }
         },
         {
@@ -14611,7 +15369,8 @@
             "anchorId": "bakery-eat-28",
             "x": 200,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -14640,7 +15399,8 @@
             "anchorId": "park-wander-29",
             "x": 776,
             "y": 344
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -14676,7 +15436,8 @@
             "anchorId": "park-wander-00",
             "x": 712,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -14705,7 +15466,8 @@
             "anchorId": "home-02-sleep-01",
             "x": 216,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -14734,7 +15496,8 @@
             "anchorId": "park-wander-02",
             "x": 776,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -14763,7 +15526,8 @@
             "anchorId": "park-wander-03",
             "x": 840,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -14792,7 +15556,8 @@
             "anchorId": "park-wander-04",
             "x": 712,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -14821,7 +15586,8 @@
             "anchorId": "park-wander-05",
             "x": 744,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -14847,9 +15613,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-06",
-            "x": 408,
-            "y": 264
+            "anchorId": "square-socialize-npc06",
+            "x": 344,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc09",
+              "npc12",
+              "npc15"
+            ]
           }
         },
         {
@@ -14879,7 +15653,8 @@
             "anchorId": "park-wander-07",
             "x": 808,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -14908,7 +15683,8 @@
             "anchorId": "park-wander-08",
             "x": 840,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -14934,9 +15710,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-09",
-            "x": 488,
+            "anchorId": "square-socialize-npc09",
+            "x": 360,
             "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc06",
+              "npc12",
+              "npc15"
+            ]
           }
         },
         {
@@ -14966,7 +15750,8 @@
             "anchorId": "park-wander-10",
             "x": 776,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -14995,7 +15780,8 @@
             "anchorId": "park-wander-11",
             "x": 808,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -15021,9 +15807,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-12",
-            "x": 536,
-            "y": 232
+            "anchorId": "square-socialize-npc12",
+            "x": 344,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc06",
+              "npc09",
+              "npc15"
+            ]
           }
         },
         {
@@ -15053,7 +15847,8 @@
             "anchorId": "garden-work-13",
             "x": 648,
             "y": 456
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -15082,7 +15877,8 @@
             "anchorId": "park-wander-14",
             "x": 744,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -15108,9 +15904,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-15",
-            "x": 552,
+            "anchorId": "square-socialize-npc15",
+            "x": 360,
             "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc06",
+              "npc09",
+              "npc12"
+            ]
           }
         },
         {
@@ -15140,7 +15944,8 @@
             "anchorId": "garden-work-16",
             "x": 600,
             "y": 488
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -15169,7 +15974,8 @@
             "anchorId": "park-wander-17",
             "x": 712,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -15195,9 +16001,15 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-18",
-            "x": 344,
-            "y": 376
+            "anchorId": "square-socialize-npc18",
+            "x": 408,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc24"
+            ]
           }
         },
         {
@@ -15227,7 +16039,8 @@
             "anchorId": "garden-work-19",
             "x": 552,
             "y": 520
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -15256,7 +16069,8 @@
             "anchorId": "home-03-sleep-20",
             "x": 344,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -15285,7 +16099,8 @@
             "anchorId": "park-wander-21",
             "x": 712,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -15314,7 +16129,8 @@
             "anchorId": "square-work-22",
             "x": 424,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -15343,7 +16159,8 @@
             "anchorId": "park-wander-23",
             "x": 776,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -15369,9 +16186,15 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-24",
-            "x": 472,
-            "y": 344
+            "anchorId": "square-socialize-npc24",
+            "x": 424,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc18"
+            ]
           }
         },
         {
@@ -15401,7 +16224,8 @@
             "anchorId": "park-wander-25",
             "x": 840,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -15430,7 +16254,8 @@
             "anchorId": "home-03-sleep-26",
             "x": 376,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -15459,7 +16284,8 @@
             "anchorId": "park-wander-27",
             "x": 776,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -15488,7 +16314,8 @@
             "anchorId": "park-wander-28",
             "x": 808,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -15517,7 +16344,8 @@
             "anchorId": "park-wander-29",
             "x": 840,
             "y": 312
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -15553,7 +16381,8 @@
             "anchorId": "park-wander-00",
             "x": 776,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -15582,7 +16411,8 @@
             "anchorId": "workshop-work-01",
             "x": 296,
             "y": 440
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -15611,7 +16441,8 @@
             "anchorId": "park-wander-02",
             "x": 840,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -15640,7 +16471,8 @@
             "anchorId": "park-wander-03",
             "x": 712,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -15669,7 +16501,8 @@
             "anchorId": "home-05-sleep-04",
             "x": 600,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -15698,7 +16531,8 @@
             "anchorId": "park-wander-05",
             "x": 808,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -15727,7 +16561,8 @@
             "anchorId": "park-wander-06",
             "x": 840,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -15756,7 +16591,8 @@
             "anchorId": "home-02-sleep-07",
             "x": 248,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -15785,7 +16621,8 @@
             "anchorId": "park-wander-08",
             "x": 744,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -15814,7 +16651,8 @@
             "anchorId": "park-wander-09",
             "x": 776,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -15840,9 +16678,15 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-10",
-            "x": 472,
-            "y": 264
+            "anchorId": "square-socialize-npc10",
+            "x": 344,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc25"
+            ]
           }
         },
         {
@@ -15872,7 +16716,8 @@
             "anchorId": "park-wander-11",
             "x": 712,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -15901,7 +16746,8 @@
             "anchorId": "park-wander-12",
             "x": 744,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -15930,7 +16776,8 @@
             "anchorId": "bakery-eat-13",
             "x": 120,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -15959,7 +16806,8 @@
             "anchorId": "park-wander-14",
             "x": 808,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -15988,7 +16836,8 @@
             "anchorId": "park-wander-15",
             "x": 840,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -16017,7 +16866,8 @@
             "anchorId": "bakery-eat-16",
             "x": 168,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -16046,7 +16896,8 @@
             "anchorId": "home-06-sleep-17",
             "x": 792,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -16075,7 +16926,8 @@
             "anchorId": "park-wander-18",
             "x": 808,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -16104,7 +16956,8 @@
             "anchorId": "bakery-eat-19",
             "x": 216,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -16133,7 +16986,8 @@
             "anchorId": "bakery-eat-20",
             "x": 72,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -16162,7 +17016,8 @@
             "anchorId": "park-wander-21",
             "x": 744,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -16191,7 +17046,8 @@
             "anchorId": "bakery-eat-22",
             "x": 104,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -16220,7 +17076,8 @@
             "anchorId": "park-wander-23",
             "x": 840,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -16249,7 +17106,8 @@
             "anchorId": "park-wander-24",
             "x": 712,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -16275,9 +17133,15 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-25",
-            "x": 488,
-            "y": 344
+            "anchorId": "square-socialize-npc25",
+            "x": 360,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc10"
+            ]
           }
         },
         {
@@ -16307,7 +17171,8 @@
             "anchorId": "park-wander-26",
             "x": 776,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -16336,7 +17201,8 @@
             "anchorId": "park-wander-27",
             "x": 808,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -16365,7 +17231,8 @@
             "anchorId": "home-05-sleep-28",
             "x": 632,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -16394,7 +17261,8 @@
             "anchorId": "park-wander-29",
             "x": 744,
             "y": 280
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -16430,7 +17298,8 @@
             "anchorId": "park-wander-00",
             "x": 840,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -16459,7 +17328,8 @@
             "anchorId": "bakery-eat-01",
             "x": 88,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -16488,7 +17358,8 @@
             "anchorId": "home-03-sleep-02",
             "x": 344,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -16517,7 +17388,8 @@
             "anchorId": "bakery-eat-03",
             "x": 120,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -16546,7 +17418,8 @@
             "anchorId": "workshop-work-04",
             "x": 264,
             "y": 504
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -16575,7 +17448,8 @@
             "anchorId": "home-06-sleep-05",
             "x": 728,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -16604,7 +17478,8 @@
             "anchorId": "park-wander-06",
             "x": 744,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -16630,9 +17505,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-07",
-            "x": 424,
-            "y": 264
+            "anchorId": "square-socialize-npc07",
+            "x": 344,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc13",
+              "npc16",
+              "npc22"
+            ]
           }
         },
         {
@@ -16662,7 +17545,8 @@
             "anchorId": "home-03-sleep-08",
             "x": 376,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -16691,7 +17575,8 @@
             "anchorId": "park-wander-09",
             "x": 840,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -16720,7 +17605,8 @@
             "anchorId": "bakery-eat-10",
             "x": 72,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -16749,7 +17635,8 @@
             "anchorId": "home-06-sleep-11",
             "x": 760,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -16778,7 +17665,8 @@
             "anchorId": "park-wander-12",
             "x": 808,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -16804,9 +17692,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-13",
-            "x": 552,
+            "anchorId": "square-socialize-npc13",
+            "x": 360,
             "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc07",
+              "npc16",
+              "npc22"
+            ]
           }
         },
         {
@@ -16836,7 +17732,8 @@
             "anchorId": "home-03-sleep-14",
             "x": 408,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -16865,7 +17762,8 @@
             "anchorId": "park-wander-15",
             "x": 744,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -16891,9 +17789,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-16",
+            "anchorId": "square-socialize-npc16",
             "x": 344,
-            "y": 344
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc07",
+              "npc13",
+              "npc22"
+            ]
           }
         },
         {
@@ -16923,7 +17829,8 @@
             "anchorId": "park-wander-17",
             "x": 840,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -16952,7 +17859,8 @@
             "anchorId": "park-wander-18",
             "x": 712,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -16981,7 +17889,8 @@
             "anchorId": "garden-work-19",
             "x": 552,
             "y": 520
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -17010,7 +17919,8 @@
             "anchorId": "park-wander-20",
             "x": 776,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -17039,7 +17949,8 @@
             "anchorId": "bakery-eat-21",
             "x": 88,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -17065,9 +17976,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-22",
-            "x": 408,
-            "y": 376
+            "anchorId": "square-socialize-npc22",
+            "x": 360,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc07",
+              "npc13",
+              "npc16"
+            ]
           }
         },
         {
@@ -17097,7 +18016,8 @@
             "anchorId": "home-06-sleep-23",
             "x": 728,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -17126,7 +18046,8 @@
             "anchorId": "park-wander-24",
             "x": 776,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -17155,7 +18076,8 @@
             "anchorId": "bakery-eat-25",
             "x": 152,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -17184,7 +18106,8 @@
             "anchorId": "park-wander-26",
             "x": 840,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -17213,7 +18136,8 @@
             "anchorId": "bakery-eat-27",
             "x": 184,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -17242,7 +18166,8 @@
             "anchorId": "square-work-28",
             "x": 456,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -17271,7 +18196,8 @@
             "anchorId": "home-06-sleep-29",
             "x": 760,
             "y": 136
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -17307,7 +18233,8 @@
             "anchorId": "park-wander-00",
             "x": 744,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -17333,9 +18260,16 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-01",
-            "x": 360,
+            "anchorId": "square-socialize-npc01",
+            "x": 344,
             "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc04",
+              "npc28"
+            ]
           }
         },
         {
@@ -17365,7 +18299,8 @@
             "anchorId": "park-wander-02",
             "x": 808,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -17394,7 +18329,8 @@
             "anchorId": "park-wander-03",
             "x": 840,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -17420,9 +18356,16 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-04",
-            "x": 408,
+            "anchorId": "square-socialize-npc04",
+            "x": 360,
             "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc01",
+              "npc28"
+            ]
           }
         },
         {
@@ -17452,7 +18395,8 @@
             "anchorId": "park-wander-05",
             "x": 744,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -17481,7 +18425,8 @@
             "anchorId": "bakery-eat-06",
             "x": 168,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -17510,7 +18455,8 @@
             "anchorId": "workshop-work-07",
             "x": 296,
             "y": 536
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -17539,7 +18485,8 @@
             "anchorId": "park-wander-08",
             "x": 712,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -17568,7 +18515,8 @@
             "anchorId": "park-wander-09",
             "x": 744,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -17597,7 +18545,8 @@
             "anchorId": "park-wander-10",
             "x": 776,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -17626,7 +18575,8 @@
             "anchorId": "park-wander-11",
             "x": 808,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -17655,7 +18605,8 @@
             "anchorId": "bakery-eat-12",
             "x": 104,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -17684,7 +18635,8 @@
             "anchorId": "park-wander-13",
             "x": 744,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -17713,7 +18665,8 @@
             "anchorId": "park-wander-14",
             "x": 776,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -17742,7 +18695,8 @@
             "anchorId": "park-wander-15",
             "x": 808,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -17771,7 +18725,8 @@
             "anchorId": "park-wander-16",
             "x": 840,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -17800,7 +18755,8 @@
             "anchorId": "park-wander-17",
             "x": 712,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -17829,7 +18785,8 @@
             "anchorId": "park-wander-18",
             "x": 776,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -17858,7 +18815,8 @@
             "anchorId": "home-02-sleep-19",
             "x": 216,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -17887,7 +18845,8 @@
             "anchorId": "park-wander-20",
             "x": 840,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -17916,7 +18875,8 @@
             "anchorId": "park-wander-21",
             "x": 712,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -17945,7 +18905,8 @@
             "anchorId": "park-wander-22",
             "x": 744,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -17974,7 +18935,8 @@
             "anchorId": "park-wander-23",
             "x": 776,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -18003,7 +18965,8 @@
             "anchorId": "park-wander-24",
             "x": 840,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -18032,7 +18995,8 @@
             "anchorId": "park-wander-25",
             "x": 712,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -18061,7 +19025,8 @@
             "anchorId": "bakery-eat-26",
             "x": 168,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -18090,7 +19055,8 @@
             "anchorId": "park-wander-27",
             "x": 776,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -18116,9 +19082,16 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-28",
-            "x": 536,
-            "y": 344
+            "anchorId": "square-socialize-npc28",
+            "x": 344,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc01",
+              "npc04"
+            ]
           }
         },
         {
@@ -18148,7 +19121,8 @@
             "anchorId": "park-wander-29",
             "x": 840,
             "y": 408
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -18181,9 +19155,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-00",
+            "anchorId": "square-socialize-npc00",
             "x": 344,
             "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc02",
+              "npc05",
+              "npc08"
+            ]
           }
         },
         {
@@ -18213,7 +19195,8 @@
             "anchorId": "park-wander-01",
             "x": 840,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -18239,9 +19222,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-02",
-            "x": 344,
-            "y": 264
+            "anchorId": "square-socialize-npc02",
+            "x": 360,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc00",
+              "npc05",
+              "npc08"
+            ]
           }
         },
         {
@@ -18271,7 +19262,8 @@
             "anchorId": "park-wander-03",
             "x": 744,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -18300,7 +19292,8 @@
             "anchorId": "bakery-eat-04",
             "x": 136,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -18326,9 +19319,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-05",
-            "x": 424,
-            "y": 232
+            "anchorId": "square-socialize-npc05",
+            "x": 344,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc00",
+              "npc02",
+              "npc08"
+            ]
           }
         },
         {
@@ -18358,7 +19359,8 @@
             "anchorId": "park-wander-06",
             "x": 840,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -18387,7 +19389,8 @@
             "anchorId": "bakery-eat-07",
             "x": 184,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -18413,9 +19416,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-08",
-            "x": 472,
-            "y": 232
+            "anchorId": "square-socialize-npc08",
+            "x": 360,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc00",
+              "npc02",
+              "npc05"
+            ]
           }
         },
         {
@@ -18445,7 +19456,8 @@
             "anchorId": "park-wander-09",
             "x": 808,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -18474,7 +19486,8 @@
             "anchorId": "park-wander-10",
             "x": 840,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -18500,9 +19513,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-11",
-            "x": 488,
-            "y": 264
+            "anchorId": "square-socialize-npc11",
+            "x": 408,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc14",
+              "npc19",
+              "npc20"
+            ]
           }
         },
         {
@@ -18532,7 +19553,8 @@
             "anchorId": "park-wander-12",
             "x": 744,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -18561,7 +19583,8 @@
             "anchorId": "park-wander-13",
             "x": 808,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -18587,9 +19610,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-14",
-            "x": 536,
-            "y": 264
+            "anchorId": "square-socialize-npc14",
+            "x": 424,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc11",
+              "npc19",
+              "npc20"
+            ]
           }
         },
         {
@@ -18619,7 +19650,8 @@
             "anchorId": "park-wander-15",
             "x": 712,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -18648,7 +19680,8 @@
             "anchorId": "park-wander-16",
             "x": 744,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -18677,7 +19710,8 @@
             "anchorId": "bakery-eat-17",
             "x": 184,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -18706,7 +19740,8 @@
             "anchorId": "park-wander-18",
             "x": 808,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -18732,9 +19767,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-19",
-            "x": 360,
-            "y": 376
+            "anchorId": "square-socialize-npc19",
+            "x": 408,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc11",
+              "npc14",
+              "npc20"
+            ]
           }
         },
         {
@@ -18761,9 +19804,17 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-20",
-            "x": 408,
-            "y": 344
+            "anchorId": "square-socialize-npc20",
+            "x": 424,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc11",
+              "npc14",
+              "npc19"
+            ]
           }
         },
         {
@@ -18793,7 +19844,8 @@
             "anchorId": "park-wander-21",
             "x": 776,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -18822,7 +19874,8 @@
             "anchorId": "park-wander-22",
             "x": 808,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -18848,9 +19901,16 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-23",
-            "x": 424,
-            "y": 376
+            "anchorId": "square-socialize-npc23",
+            "x": 472,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc26",
+              "npc29"
+            ]
           }
         },
         {
@@ -18880,7 +19940,8 @@
             "anchorId": "park-wander-24",
             "x": 712,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -18909,7 +19970,8 @@
             "anchorId": "park-wander-25",
             "x": 776,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -18935,9 +19997,16 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-26",
-            "x": 472,
-            "y": 376
+            "anchorId": "square-socialize-npc26",
+            "x": 488,
+            "y": 232
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc23",
+              "npc29"
+            ]
           }
         },
         {
@@ -18967,7 +20036,8 @@
             "anchorId": "park-wander-27",
             "x": 840,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -18996,7 +20066,8 @@
             "anchorId": "park-wander-28",
             "x": 712,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -19022,9 +20093,16 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-29",
-            "x": 552,
-            "y": 344
+            "anchorId": "square-socialize-npc29",
+            "x": 472,
+            "y": 264
+          },
+          "interaction": {
+            "kind": "conversation",
+            "partnerIds": [
+              "npc23",
+              "npc26"
+            ]
           }
         }
       ]
@@ -19061,7 +20139,8 @@
             "anchorId": "home-01-sleep-00",
             "x": 88,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -19090,7 +20169,8 @@
             "anchorId": "park-wander-01",
             "x": 712,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -19119,7 +20199,8 @@
             "anchorId": "park-wander-02",
             "x": 776,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -19148,7 +20229,8 @@
             "anchorId": "park-wander-03",
             "x": 808,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -19177,7 +20259,8 @@
             "anchorId": "park-wander-04",
             "x": 840,
             "y": 312
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -19206,7 +20289,8 @@
             "anchorId": "park-wander-05",
             "x": 712,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -19235,7 +20319,8 @@
             "anchorId": "park-wander-06",
             "x": 744,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -19264,7 +20349,8 @@
             "anchorId": "park-wander-07",
             "x": 776,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -19293,7 +20379,8 @@
             "anchorId": "bakery-eat-08",
             "x": 200,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -19322,7 +20409,8 @@
             "anchorId": "bakery-eat-09",
             "x": 216,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -19351,7 +20439,8 @@
             "anchorId": "home-05-sleep-10",
             "x": 632,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -19380,7 +20469,8 @@
             "anchorId": "park-wander-11",
             "x": 776,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -19409,7 +20499,8 @@
             "anchorId": "park-wander-12",
             "x": 808,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -19438,7 +20529,8 @@
             "anchorId": "home-02-sleep-13",
             "x": 280,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -19467,7 +20559,8 @@
             "anchorId": "park-wander-14",
             "x": 744,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -19496,7 +20589,8 @@
             "anchorId": "bakery-eat-15",
             "x": 152,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -19525,7 +20619,8 @@
             "anchorId": "home-05-sleep-16",
             "x": 664,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -19551,10 +20646,11 @@
           },
           "destination": {
             "locationId": "square",
-            "anchorId": "square-socialize-17",
-            "x": 360,
-            "y": 344
-          }
+            "anchorId": "square-socialize-npc17",
+            "x": 344,
+            "y": 232
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -19583,7 +20679,8 @@
             "anchorId": "bakery-eat-18",
             "x": 200,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -19612,7 +20709,8 @@
             "anchorId": "garden-work-19",
             "x": 552,
             "y": 520
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -19641,7 +20739,8 @@
             "anchorId": "park-wander-20",
             "x": 808,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -19670,7 +20769,8 @@
             "anchorId": "park-wander-21",
             "x": 840,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -19699,7 +20799,8 @@
             "anchorId": "home-05-sleep-22",
             "x": 600,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -19728,7 +20829,8 @@
             "anchorId": "bakery-eat-23",
             "x": 120,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -19757,7 +20859,8 @@
             "anchorId": "bakery-eat-24",
             "x": 136,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -19786,7 +20889,8 @@
             "anchorId": "home-02-sleep-25",
             "x": 248,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -19815,7 +20919,8 @@
             "anchorId": "park-wander-26",
             "x": 712,
             "y": 248
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -19844,7 +20949,8 @@
             "anchorId": "park-wander-27",
             "x": 744,
             "y": 280
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -19873,7 +20979,8 @@
             "anchorId": "bakery-eat-28",
             "x": 200,
             "y": 408
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -19902,7 +21009,8 @@
             "anchorId": "bakery-eat-29",
             "x": 216,
             "y": 408
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -19938,7 +21046,8 @@
             "anchorId": "bakery-eat-00",
             "x": 72,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -19967,7 +21076,8 @@
             "anchorId": "home-02-sleep-01",
             "x": 216,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -19996,7 +21106,8 @@
             "anchorId": "bakery-eat-02",
             "x": 104,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -20025,7 +21136,8 @@
             "anchorId": "home-04-sleep-03",
             "x": 472,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -20054,7 +21166,8 @@
             "anchorId": "home-05-sleep-04",
             "x": 600,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -20083,7 +21196,8 @@
             "anchorId": "bakery-eat-05",
             "x": 152,
             "y": 344
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -20112,7 +21226,8 @@
             "anchorId": "home-01-sleep-06",
             "x": 120,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -20141,7 +21256,8 @@
             "anchorId": "home-02-sleep-07",
             "x": 248,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -20170,7 +21286,8 @@
             "anchorId": "home-03-sleep-08",
             "x": 376,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -20199,7 +21316,8 @@
             "anchorId": "home-04-sleep-09",
             "x": 504,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -20228,7 +21346,8 @@
             "anchorId": "home-05-sleep-10",
             "x": 632,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -20257,7 +21376,8 @@
             "anchorId": "bakery-eat-11",
             "x": 88,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -20286,7 +21406,8 @@
             "anchorId": "home-01-sleep-12",
             "x": 152,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -20315,7 +21436,8 @@
             "anchorId": "home-02-sleep-13",
             "x": 280,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -20344,7 +21466,8 @@
             "anchorId": "bakery-eat-14",
             "x": 136,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -20373,7 +21496,8 @@
             "anchorId": "home-04-sleep-15",
             "x": 536,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -20402,7 +21526,8 @@
             "anchorId": "home-05-sleep-16",
             "x": 664,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -20431,7 +21556,8 @@
             "anchorId": "home-06-sleep-17",
             "x": 792,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -20460,7 +21586,8 @@
             "anchorId": "home-01-sleep-18",
             "x": 88,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -20489,7 +21616,8 @@
             "anchorId": "home-02-sleep-19",
             "x": 216,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -20518,7 +21646,8 @@
             "anchorId": "home-03-sleep-20",
             "x": 344,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -20547,7 +21676,8 @@
             "anchorId": "home-04-sleep-21",
             "x": 472,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -20576,7 +21706,8 @@
             "anchorId": "home-05-sleep-22",
             "x": 600,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -20605,7 +21736,8 @@
             "anchorId": "home-06-sleep-23",
             "x": 728,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -20634,7 +21766,8 @@
             "anchorId": "home-01-sleep-24",
             "x": 120,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -20663,7 +21796,8 @@
             "anchorId": "home-02-sleep-25",
             "x": 248,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -20692,7 +21826,8 @@
             "anchorId": "home-03-sleep-26",
             "x": 376,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -20721,7 +21856,8 @@
             "anchorId": "home-04-sleep-27",
             "x": 504,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -20750,7 +21886,8 @@
             "anchorId": "home-05-sleep-28",
             "x": 632,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -20779,7 +21916,8 @@
             "anchorId": "home-06-sleep-29",
             "x": 760,
             "y": 136
-          }
+          },
+          "interaction": null
         }
       ]
     },
@@ -20815,7 +21953,8 @@
             "anchorId": "home-01-sleep-00",
             "x": 88,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc01",
@@ -20844,7 +21983,8 @@
             "anchorId": "home-02-sleep-01",
             "x": 216,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc02",
@@ -20873,7 +22013,8 @@
             "anchorId": "home-03-sleep-02",
             "x": 344,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc03",
@@ -20902,7 +22043,8 @@
             "anchorId": "home-04-sleep-03",
             "x": 472,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc04",
@@ -20931,7 +22073,8 @@
             "anchorId": "home-05-sleep-04",
             "x": 600,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc05",
@@ -20960,7 +22103,8 @@
             "anchorId": "home-06-sleep-05",
             "x": 728,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc06",
@@ -20989,7 +22133,8 @@
             "anchorId": "home-01-sleep-06",
             "x": 120,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc07",
@@ -21018,7 +22163,8 @@
             "anchorId": "home-02-sleep-07",
             "x": 248,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc08",
@@ -21047,7 +22193,8 @@
             "anchorId": "home-03-sleep-08",
             "x": 376,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc09",
@@ -21076,7 +22223,8 @@
             "anchorId": "home-04-sleep-09",
             "x": 504,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc10",
@@ -21105,7 +22253,8 @@
             "anchorId": "home-05-sleep-10",
             "x": 632,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc11",
@@ -21134,7 +22283,8 @@
             "anchorId": "home-06-sleep-11",
             "x": 760,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc12",
@@ -21163,7 +22313,8 @@
             "anchorId": "home-01-sleep-12",
             "x": 152,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc13",
@@ -21192,7 +22343,8 @@
             "anchorId": "bakery-eat-13",
             "x": 120,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc14",
@@ -21221,7 +22373,8 @@
             "anchorId": "home-03-sleep-14",
             "x": 408,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc15",
@@ -21250,7 +22403,8 @@
             "anchorId": "home-04-sleep-15",
             "x": 536,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc16",
@@ -21279,7 +22433,8 @@
             "anchorId": "bakery-eat-16",
             "x": 168,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc17",
@@ -21308,7 +22463,8 @@
             "anchorId": "home-06-sleep-17",
             "x": 792,
             "y": 104
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc18",
@@ -21337,7 +22493,8 @@
             "anchorId": "home-01-sleep-18",
             "x": 88,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc19",
@@ -21366,7 +22523,8 @@
             "anchorId": "bakery-eat-19",
             "x": 216,
             "y": 376
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc20",
@@ -21395,7 +22553,8 @@
             "anchorId": "home-03-sleep-20",
             "x": 344,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc21",
@@ -21424,7 +22583,8 @@
             "anchorId": "home-04-sleep-21",
             "x": 472,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc22",
@@ -21453,7 +22613,8 @@
             "anchorId": "home-05-sleep-22",
             "x": 600,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc23",
@@ -21482,7 +22643,8 @@
             "anchorId": "home-06-sleep-23",
             "x": 728,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc24",
@@ -21511,7 +22673,8 @@
             "anchorId": "home-01-sleep-24",
             "x": 120,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc25",
@@ -21540,7 +22703,8 @@
             "anchorId": "home-02-sleep-25",
             "x": 248,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc26",
@@ -21569,7 +22733,8 @@
             "anchorId": "home-03-sleep-26",
             "x": 376,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc27",
@@ -21598,7 +22763,8 @@
             "anchorId": "home-04-sleep-27",
             "x": 504,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc28",
@@ -21627,7 +22793,8 @@
             "anchorId": "home-05-sleep-28",
             "x": 632,
             "y": 136
-          }
+          },
+          "interaction": null
         },
         {
           "id": "npc29",
@@ -21656,7 +22823,8 @@
             "anchorId": "home-06-sleep-29",
             "x": 760,
             "y": 136
-          }
+          },
+          "interaction": null
         }
       ]
     }

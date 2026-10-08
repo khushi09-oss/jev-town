@@ -8,6 +8,7 @@ import sample6 from './fixture-6.json';
 import sample30 from './fixture-30.json';
 import portraits from './assets/portraits.png?url';
 import tokens from './design-tokens.json';
+import { personalities } from './personality';
 
 declare global {
   interface Window {
@@ -31,6 +32,10 @@ const labels: Record<Action,string> = {eat:'Eating',work:'Working',sleep:'Sleepi
 const escapeHTML = (value: string) => value.replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]!));
 const places: Record<string,string> = {bakery:'the bakery',square:'the town square',workshop:'the workshop',garden:'the garden',park:'the park'};
 const $ = <T extends HTMLElement = HTMLElement>(selector:string) => document.querySelector<T>(selector)!;
+const setText = (selector: string, value: string) => {
+  const element=$(selector);
+  if(element.textContent!==value)element.textContent=value;
+};
 const app=$('#app');
 app.innerHTML=`
   <header><h1>${icon('home')} Tiny Town</h1><div class="clock" id="clock">Day 1 · 14:00</div>
@@ -71,23 +76,41 @@ function closeInspector() {
   $('#inspector').hidden=true;$('#main').classList.remove('has-inspector');
   $('#canvas-host').focus();
 }
+function partnerNames(entry: ReturnType<Playback['entry']>) {
+  return (entry.interaction?.partnerIds ?? []).map(id=>playback.run.residents.find(p=>p.id===id)!.name).map(escapeHTML).join(', ');
+}
+function activityCaption(index: number) {
+  const entry=playback.entry(index),action=entry.decision.appliedAction;
+  const location=places[entry.destination.locationId]||`their cottage (${playback.run.residents[index].homeId.slice(-2)})`;
+  const names=partnerNames(entry);
+  if(action==='socialize' && names) {
+    const active=playback.conversation(index);
+    if(active.length)return `Chatting with ${active.map(p=>escapeHTML(p.name)).join(', ')} at ${location}.`;
+    return `${playback.arrived(index)?'Waiting':'Walking'} to meet ${names} at ${location}.`;
+  }
+  if(!playback.arrived(index))return `Heading to ${location}.`;
+  return `${labels[action]} at ${location}.`;
+}
 function renderInspector() {
   const index=playback.run.residents.findIndex(p=>p.id===selected);
   if(index<0)return;
   const identity=playback.run.residents[index],entry=playback.entry(index),stats=playback.stats(index),decision=entry.decision;
   const accordion=$<HTMLDetailsElement>('#decision-details')?.open;
   const focusId=document.activeElement instanceof HTMLElement && $('#inspector').contains(document.activeElement) ? document.activeElement.id : null;
-  const location=places[entry.destination.locationId]||`their cottage (${identity.homeId.slice(-2)})`;
+  const partners=playback.partners(index);
   const events=playback.run.frames.slice(Math.max(0,playback.hour-3),playback.hour+1).map(f=>({hour:f.clockHour,entry:f.residents[index]})).reverse();
   $('#inspector').innerHTML=`<div class="inspector-top"><div class="identity">${portrait(identity,true)}<div><h2>${escapeHTML(identity.name)}</h2><p>Resident ${index+1}</p><span class="trait">${identity.trait}</span></div></div><button id="close-inspector" aria-label="Close resident inspector">${icon('close')}</button></div>
     <button id="follow" aria-pressed="${scene.following}">${icon('follow')}<span>${scene.following?'Following':'Follow resident'}</span></button>
-    <section><h3>Currently</h3><div class="current-action">${icon(decision.appliedAction)}<strong>${labels[decision.appliedAction]}</strong></div><p class="caption">${labels[decision.appliedAction]} at ${location}.</p></section>
+    <p class="personality-note">${personalities[identity.trait].description}</p>
+    <section><h3>Currently</h3><div class="current-action">${icon(decision.appliedAction)}<strong>${labels[decision.appliedAction]}</strong></div><p class="caption">${activityCaption(index)}</p>
+    ${partners.length?`<div class="conversation-partners" aria-label="Conversation partners">${partners.map(p=>`<button id="visit-${p.id}" data-partner="${p.id}" aria-label="Visit ${escapeHTML(p.name)}">${portrait(p)}<span>${escapeHTML(p.name)}</span></button>`).join('')}</div>`:''}</section>
     <section><h3>Needs</h3>${(['hunger','energy','mood'] as const).map(key=>`<div class="need"><label for="${key}-bar">${key==='hunger'?'Hunger ↑':key[0].toUpperCase()+key.slice(1)}</label><meter id="${key}-bar" min="0" max="100" value="${stats[key]}"></meter><span>${stats[key]}%</span></div>`).join('')}<p class="money">Money <strong>${stats.money}</strong></p><p class="muted small">Higher hunger means hungrier. Needs update on the hour.</p></section>
     <section><h3>Today</h3><div class="resident-timeline">${playback.run.frames.map(f=>`<span title="${f.clockHour}:00 — ${labels[f.residents[index].decision.appliedAction]}" style="background:var(--${f.residents[index].decision.appliedAction})"></span>`).join('')}</div><div class="timeline-captions"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div></section>
-    <section><h3>Observed events</h3><ol class="events">${events.map(e=>`<li><time>${String(e.hour).padStart(2,'0')}:00</time> ${labels[e.entry.decision.appliedAction]} at ${places[e.entry.destination.locationId]||'home'}</li>`).join('')}</ol></section>
+    <section><h3>Recorded activities</h3><ol class="events">${events.map(e=>`<li><time>${String(e.hour).padStart(2,'0')}:00</time> ${labels[e.entry.decision.appliedAction]}${partnerNames(e.entry)?' with '+partnerNames(e.entry):''} at ${places[e.entry.destination.locationId]||'home'}</li>`).join('')}</ol></section>
     <details id="decision-details" ${accordion?'open':''}><summary>Decision details</summary><dl><dt>Chosen action</dt><dd>${decision.chosenAction||'No valid API choice'}</dd><dt>Confidence</dt><dd>${decision.confidence===null?'Unavailable':decision.confidence.toFixed(2)}</dd><dt>Confidence fallback</dt><dd>${decision.fellBack?'Wander applied':'None'}</dd><dt>Source</dt><dd>${decision.decisionSource}</dd><dt>Error fallback</dt><dd>${escapeHTML(decision.errorCode||'None')}</dd></dl></details>`;
   $('#close-inspector').onclick=closeInspector;
   $('#follow').onclick=()=>{scene.following=!scene.following;renderInspector();if(scene.following)scene.center(index);};
+  $('#inspector').querySelectorAll<HTMLButtonElement>('[data-partner]').forEach(button=>button.onclick=()=>selectResident(playback.run.residents.find(p=>p.id===button.dataset.partner)!));
   if(focusId)document.getElementById(focusId)?.focus({preventScroll:true});
 }
 function startScene() {
@@ -112,7 +135,7 @@ function renderPopulation() {
     const value=(p:Identity)=>order==='action'?playback.entry(playback.run.residents.indexOf(p)).decision.appliedAction:order==='trait'?p.trait:p.name;
     return value(a).localeCompare(value(b))||a.name.localeCompare(b.name);
   });
-  $('#resident-list').innerHTML=people.map(p=>{const i=playback.run.residents.indexOf(p);return `<button class="resident-row" data-resident="${p.id}">${portrait(p)}<span><strong>${escapeHTML(p.name)}</strong><small>${p.trait}</small></span><span class="row-action">${icon(playback.entry(i).decision.appliedAction)}${labels[playback.entry(i).decision.appliedAction]}</span></button>`;}).join('');
+  $('#resident-list').innerHTML=people.map(p=>{const i=playback.run.residents.indexOf(p);return `<button class="resident-row" data-resident="${p.id}">${portrait(p)}<span><strong>${escapeHTML(p.name)}</strong><small>${p.trait}</small><span class="resident-preference">${personalities[p.trait].description}</span></span><span class="row-action">${icon(playback.entry(i).decision.appliedAction)}${labels[playback.entry(i).decision.appliedAction]}</span></button>`;}).join('');
   $('#resident-list').querySelectorAll<HTMLButtonElement>('button').forEach(button=>button.onclick=()=>{
     $<HTMLDialogElement>('#population').close();selectResident(playback.run.residents.find(p=>p.id===button.dataset.resident)!);
     scene.center(playback.run.residents.findIndex(p=>p.id===selected));
@@ -169,17 +192,22 @@ document.addEventListener('keydown',e=>{
 function renderUI() {
   const raw=playback.run.startHour+playback.time,clock=raw%24,h=Math.floor(clock),m=Math.floor((clock-h)*60);
   const time=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
-  $('#clock').textContent=`Day ${Math.floor(raw/24)+1} · ${time}${playback.time===24?' · complete':''}`;
-  $('#current-time').textContent=time;
+  setText('#clock',`Day ${Math.floor(raw/24)+1} · ${time}${playback.time===24?' · complete':''}`);
+  setText('#current-time',time);
   document.body.classList.toggle('night',nightAlpha(clock)>.12);
-  $('#mode').textContent=playback.run.fixtureKind==='staged'?'Mock · sample':playback.run.mode==='jev'?'Jev replay':playback.run.mode==='mixed'?'Mixed replay':'Mock replay';
-  $('#population-count').textContent=`${playback.run.residents.length} residents`;
-  $('#play').innerHTML=`${icon(playback.playing?'pause':'play')}<span>${playback.playing?'Pause':'Play'}</span>`;
-  $('#play').setAttribute('aria-label',playback.playing?'Pause':'Play');
+  setText('#mode',playback.run.fixtureKind==='staged'?'Mock · sample':playback.run.mode==='jev'?'Jev replay':playback.run.mode==='mixed'?'Mixed replay':'Mock replay');
+  setText('#population-count',`${playback.run.residents.length} residents`);
+  const playLabel=playback.playing?'Pause':'Play';
+  if($('#play').getAttribute('aria-label')!==playLabel){
+    $('#play').innerHTML=`${icon(playback.playing?'pause':'play')}<span>${playLabel}</span>`;
+    $('#play').setAttribute('aria-label',playLabel);
+  }
   if(document.activeElement!==$('#seek'))$<HTMLInputElement>('#seek').value=String(playback.time);
-  $('#follow-state').textContent=scene?.following?`Following ${playback.run.residents.find(p=>p.id===selected)?.name}`:'Observing the town';
+  setText('#follow-state',scene?.following?`Following ${playback.run.residents.find(p=>p.id===selected)?.name}`:'Observing the town');
   document.querySelectorAll<HTMLButtonElement>('[data-speed]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.speed)===playback.speed)));
-  const key=`${playback.run.runId}:${playback.hour}:${selected}:${playback.time===24}`;
+  const selectedIndex=playback.run.residents.findIndex(p=>p.id===selected);
+  const activity=selectedIndex>=0 ? activityCaption(selectedIndex) : '';
+  const key=`${playback.run.runId}:${playback.hour}:${selected}:${playback.time===24}:${activity}`;
   if(key!==lastViewKey){lastViewKey=key;const counts=playback.counts();$('#legend').innerHTML=actions.map(a=>`<span>${icon(a)}<span>${a[0].toUpperCase()+a.slice(1)}</span><b>${counts[a]}</b></span>`).join('');if(selected)renderInspector();}
   const popKey=`${playback.run.runId}:${playback.hour}`;
   if(popKey!==lastPopulationKey && $<HTMLDialogElement>('#population').open){lastPopulationKey=popKey;renderPopulation();}

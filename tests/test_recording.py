@@ -92,6 +92,11 @@ class RecordingTests(unittest.TestCase):
                 previous=saved['frames'][h-1]['residents'][i]['after'] if h else saved['initialSnapshot'][i]['stats']
                 self.assertEqual(resident['before'],previous)
                 self.assertTrue(all(0<=resident['after'][key]<=100 for key in ('hunger','energy','mood')))
+                if resident['interaction']:
+                    self.assertEqual(resident['decision']['appliedAction'], 'socialize')
+                    for partner in resident['interaction']['partnerIds']:
+                        other=next(p for p in frame['residents'] if p['id']==partner)
+                        self.assertIn(resident['id'],other['interaction']['partnerIds'])
         serialized=json.dumps(saved)
         for forbidden in ('Authorization','JEV_KEY','Bearer','api.typesafe.ai'):
             self.assertNotIn(forbidden,serialized)

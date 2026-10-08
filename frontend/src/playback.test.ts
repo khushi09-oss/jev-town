@@ -7,6 +7,25 @@ import { route } from './routes';
 import world from './world.json';
 
 describe('versioned recording',()=>{
+  it('loads older v1 recordings without inventing conversation partners',()=>{
+    const legacy=structuredClone(parseRun(sample));
+    for(const frame of legacy.frames)for(const entry of frame.residents)delete entry.interaction;
+    const p=new Playback(parseRun(legacy));p.seek(14.99);
+    expect(p.partners(0)).toEqual([]);expect(p.conversation(0)).toEqual([]);
+  });
+  it.each(['unknown','self','duplicate','asymmetric','distant','overlap','fallback','group'])('rejects %s conversation metadata',reason=>{
+    const bad=structuredClone(parseRun(sample)),entries=bad.frames[14].residents;
+    const first=entries[0],partner=entries.find(p=>p.id===first.interaction!.partnerIds[0])!;
+    if(reason==='unknown')first.interaction!.partnerIds[0]='npc99';
+    if(reason==='self')first.interaction!.partnerIds[0]=first.id;
+    if(reason==='duplicate')first.interaction!.partnerIds[1]=first.interaction!.partnerIds[0];
+    if(reason==='asymmetric')partner.interaction=null;
+    if(reason==='distant')partner.destination.x=first.destination.x+64;
+    if(reason==='overlap')Object.assign(partner.destination,first.destination);
+    if(reason==='fallback')Object.assign(first.decision,{appliedAction:'wander',fellBack:true});
+    if(reason==='group')partner.interaction!.partnerIds=['npc00'];
+    expect(()=>parseRun(bad)).toThrow();
+  });
   it('accepts 24 intervals and 25 boundaries for 30 stable people',()=>{
     const run=parseRun(sample);expect(run.frames).toHaveLength(24);expect(run.residents).toHaveLength(30);
     const playback=new Playback(run);playback.seek(0);expect(playback.stats(0)).toEqual(run.initialSnapshot[0].stats);
@@ -26,6 +45,18 @@ describe('versioned recording',()=>{
   });
 });
 describe('deterministic replay',()=>{
+  it('conversations wait for arrival and reconstruct identically after seeking',()=>{
+    const p=new Playback(parseRun(sample));p.seek(14.99);
+    expect(p.conversation(0).map(q=>q.id)).toEqual(p.entry(0).interaction!.partnerIds);
+    const partners=p.conversation(0);
+    p.seek(3);p.seek(14.99);expect(p.conversation(0)).toEqual(partners);
+    p.seek(14.1);
+    for(let i=0;i<30;i++)for(const partner of p.conversation(i)){
+      expect(p.arrived(i)).toBe(true);expect(p.arrived(p.run.residents.indexOf(partner))).toBe(true);
+    }
+    expect(p.run.residents.some((_,i)=>p.partners(i).length>0&&!p.arrived(i))).toBe(true);
+    const state=p.conversation(0);p.advance(1);expect(p.conversation(0)).toEqual(state);
+  });
   it('pause freezes clock and reconstructed positions',()=>{
     const p=new Playback(parseRun(six));const before=p.position(0);p.advance(10);
     expect(p.time).toBe(14.75);expect(p.position(0)).toEqual(before);

@@ -94,8 +94,10 @@ def destination(index, action, tick, seed):
     elif action == 'socialize':
         # Eight small conversational clusters; four uniquely spaced feet per cluster.
         group, seat = index // 4, index % 4
-        tile, location = (21 + group % 4 * 4 + seat % 2,
-                          14 + group // 4 * 7 + seat // 2 * 2), 'square'
+        # Keep the lower groups beside the fountain, above the square work stations.
+        x, y = [(21,14),(25,14),(29,14),(33,14),
+                (20,18),(23,18),(30,18),(33,18)][group]
+        tile, location = (x + seat % 2, y + seat // 2 * 2), 'square'
     elif action == 'wander':
         choices = [(x, y) for x in range(44, 54, 2) for y in range(15, 26, 2)]
         # Thirty distinct park slots, with room for each resident's full silhouette.

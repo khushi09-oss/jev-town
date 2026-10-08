@@ -19,6 +19,18 @@ export class Playback {
   get hour() { return Math.min(23, Math.floor(this.time)); }
   entry(index: number): Entry { return this.run.frames[this.hour].residents[index]; }
   stats(index: number) { return this.time === 24 ? this.entry(index).after : this.entry(index).before; }
+  arrived(index: number) {
+    const {position} = this.position(index), target = this.entry(index).destination;
+    return Math.hypot(position.x-target.x, position.y-target.y) < .5;
+  }
+  partners(index: number) {
+    const ids = this.entry(index).interaction?.partnerIds ?? [];
+    return this.run.residents.filter(p => ids.includes(p.id));
+  }
+  conversation(index: number) {
+    if (!this.arrived(index)) return [];
+    return this.partners(index).filter(p => this.arrived(this.run.residents.indexOf(p)));
+  }
   position(index: number): { position: Point; facing: number; moving: boolean } {
     const h = this.hour, entry = this.entry(index);
     const start = h ? this.run.frames[h - 1].residents[index].destination : this.run.initialSnapshot[index].position;
