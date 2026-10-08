@@ -14,7 +14,9 @@ const resident = z.object({ id: z.string().regex(/^npc\d{2}$/), name: z.string()
   trait: z.enum(['lazy', 'social', 'workaholic']), appearanceId: z.string().regex(/^resident-\d{2}$/),
   homeId: z.string().regex(/^home-0[1-6]$/) });
 const entry = z.object({ id: z.string(), before: stats, after: stats, decision,
-  destination: point.extend({ locationId: z.string(), anchorId: z.string() }) });
+  destination: point.extend({ locationId: z.string(), anchorId: z.string() }),
+  interaction: z.object({kind: z.literal('conversation'),
+    partnerIds: z.array(z.string().regex(/^npc\d{2}$/)).min(1).max(3)}).nullable().optional() });
 const schema = z.object({ schemaVersion: z.literal(1), runId: z.string(), seed: z.number().int(),
   mode: z.enum(['mock', 'jev', 'mixed']), fixtureKind: z.enum(['staged', 'simulation']).optional(),
   hours: z.literal(24), startHour: z.number().int().min(0).max(23), worldId: z.literal('tiny-town-v1'),
@@ -53,6 +55,22 @@ export function parseRun(input: unknown): Run {
           throw Error('Stats are discontinuous at an hour boundary');
       }
       if (!onGround(p.destination)) throw Error('Destination is not walkable');
+      if (p.interaction) {
+        const partners = p.interaction.partnerIds;
+        if (p.decision.appliedAction !== 'socialize' || p.destination.locationId !== 'square' ||
+            new Set(partners).size !== partners.length || partners.includes(p.id))
+          throw Error('Invalid conversation participants');
+        for (const id of partners) {
+          const other = frame.residents.find(q => q.id === id);
+          if (!other?.interaction || other.decision.appliedAction !== 'socialize' ||
+              other.destination.locationId !== 'square' ||
+              (other.destination.x===p.destination.x && other.destination.y===p.destination.y) ||
+              Math.abs(other.destination.x-p.destination.x)>16 || Math.abs(other.destination.y-p.destination.y)>32 ||
+              !other.interaction.partnerIds.includes(p.id) ||
+              [...other.interaction.partnerIds, other.id].sort().join() !== [...partners,p.id].sort().join())
+            throw Error('Conversation partners must share a reciprocal nearby group');
+        }
+      }
       if (p.decision.decisionSource === 'error-mock') {
         if (!p.decision.errorCode || p.decision.chosenAction !== null || p.decision.confidence !== null || p.decision.fellBack)
           throw Error('Error fallback must be separate from a model choice');

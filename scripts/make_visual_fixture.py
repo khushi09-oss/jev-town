@@ -7,6 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from simulation.identities import manifest
 from simulation.world import destination, point
+from simulation.interactions import plan_interactions
 
 
 def fixture(count, forced_action=None):
@@ -33,6 +34,7 @@ def fixture(count, forced_action=None):
                 'fellBack':False,'decisionSource':'mock','errorCode':None},
                 'destination':destination(i,action,tick,7)})
             stats[p['id']]=after
+        plan_interactions(residents, tick, 7)
         frames.append({'tick':tick,'clockHour':tick,'sequence':tick+1,'residents':residents})
     return {'schemaVersion':1,'runId':f'visual-sample-{count}-v1','seed':7,'mode':'mock',
             'fixtureKind':'staged','hours':24,'startHour':0,'worldId':'tiny-town-v1',

@@ -81,6 +81,7 @@ test('all 30 residents can occupy each action without overlapping anchors',async
     await expect(page.getByRole('status')).toBeHidden();await page.waitForFunction(()=>window.__town?.ready());await seek(page,14.99);
     const state=await page.evaluate(()=>window.__town!.state()) as any;
     expect(state.counts[action]).toBe(30);expect(new Set(state.people.map((p:any)=>`${p.x},${p.y}`)).size).toBe(30);
+      if(action==='socialize')expect(state.people.filter((p:any)=>p.bubbleVisible)).toHaveLength(8);
       if(action!=='sleep')expect(state.people.filter((p:any)=>p.visible)).toHaveLength(30);
       if(action==='work'||action==='wander') for(let i=0;i<30;i++)for(let j=i+1;j<30;j++){
         const a=state.people[i],b=state.people[j];expect((a.x-b.x)**2+(a.y-b.y)**2).toBeGreaterThanOrEqual(32**2);

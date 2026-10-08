@@ -12,7 +12,7 @@ Tiny Town is a cozy little village where 30 neighbors live their own lives, with
 
 Daytime, with Bea selected:
 
-![Tiny Town during the day with Bea's portrait and needs](frontend/browser-tests/replay.spec.ts-snapshots/desktop-bea-win32.png)
+![Tiny Town during the day with Bea's personality and conversation partners](frontend/browser-tests/interactions.spec.ts-snapshots/conversation-1440-win32.png)
 
 Nighttime, with warm windows and street lamps:
 
@@ -20,7 +20,7 @@ Nighttime, with warm windows and street lamps:
 
 Mobile:
 
-<img src="frontend/browser-tests/replay.spec.ts-snapshots/mobile-bea-win32.png" alt="Tiny Town on mobile with the resident inspector and playback controls" width="390">
+<img src="frontend/browser-tests/interactions.spec.ts-snapshots/conversation-390-win32.png" alt="Tiny Town on mobile with personality details, conversation partners and playback controls" width="390">
 
 These screenshots use a staged mock recording for visual testing. The live site and example export use a complete mock simulation.
 
@@ -78,6 +78,8 @@ Open the URL printed by Vite. **Load recording** opens a generated `run.json`; i
 Space toggles playback, Escape closes panels, and arrow keys pan the focused map. Zoom, follow, seek, speed, restart and loop all reuse the same recording. Reduced motion is supported.
 
 On phones, **Fit** shows the complete town, with space for the map tools and action legend. Choose **1×/2×/3×** and drag for close-ups; **Recenter** returns to Fit. The zoom dropdown stays readable in Safari, and resizing or rotating the browser preserves the view.
+
+Residents now meet in small conversation groups. Select someone to see who they are meeting, then click a partner's portrait to visit them. Chat gestures start when neighbors arrive, with one speech bubble at a time per group; seeking reconstructs the same meeting. The inspector and population drawer explain each resident's personality in plain language, and hovering a resident shows their name and trait.
 
 ## Test it
 
@@ -148,6 +150,8 @@ Low confidence applies wander and records `fellBack`. HTTP/schema errors stop by
 <summary><strong>Replay format, hosting and visual limits</strong></summary>
 
 The version-1 recording contains stable identities, initial state and 24 ordered frames: 25 boundaries. Each frame records before/after stats, chosen/applied action, confidence, fallback/error metadata and a Python destination. The browser validates the recording and reconstructs shortest routes deterministically. It never applies effects. Needs commit at each hour boundary; t=24 shows the final state.
+
+New recordings also include an optional per-resident `interaction`: either `null` or `{"kind":"conversation","partnerIds":["npc05"]}`. Python groups simultaneous applied socializing actions by stable ID into nearby groups of two to four, avoiding a lone final group; a sole socializer has no partners. This adds no decisions, effects or persistent friendships. The browser checks reciprocal groups and shows chats only after arrival. Older version-1 recordings without this field still load and show their recorded actions without inventing partners.
 
 The world uses 64×40 tiles at 16 pixels each. Every action has 30 distinct destinations, including individual beds in six shared cottages. Four-direction sprites and matching portraits retain each resident's appearance. Selecting a sleeper reveals their home interior.
 

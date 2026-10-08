@@ -1,75 +1,84 @@
-﻿{
-    "seed":  7,
-    "tooling":  {
-                    "playwright":  "1.64.0",
-                    "browser":  "Chromium 156",
-                    "platform":  "Windows",
-                    "node":  "24.11.1",
-                    "phaser":  "3.90.0"
-                },
-    "remainingVisualDifferences":  [
-                                       "Authored portraits and silhouettes remain simpler than concept faces",
-                                       "Terrain, garden and bridge remain visibly gridded",
-                                       "Landscape composition is less organic than the concept board",
-                                       "Specified 0.35 night overlay is gentler than the board",
-                                       "Native desktop fit retains sage margins"
-                                   ],
-    "version":  3,
-    "viewports":  [
-                      {
-                          "height":  900,
-                          "width":  1440
-                      },
-                      {
-                          "height":  844,
-                          "width":  390
-                      }
-                  ],
-    "screenshots":  [
-                        {
-                            "sha256":  "1000e1daba4808e3a25aad20dc43e7efa773ea734681396e1e0c44a54242758f",
-                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/desktop-bea-win32.png"
-                        },
-                        {
-                            "sha256":  "038168ddc4fdff8b6f292c19b043707a93cf66dd3b8cc3cc1567070940b4e410",
-                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/desktop-day-win32.png"
-                        },
-                        {
-                            "sha256":  "4cdbafdd0eb4788ae04d16d1f7cf779ac9cb9d0d58c2afb22431056179be2dc1",
-                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/desktop-night-win32.png"
-                        },
-                        {
-                            "sha256":  "40cd81134da68d780b7591ca67d8903dab901cc4cea7ca5ec291043e77f9cd8d",
-                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/desktop-population-win32.png"
-                        },
-                        {
-                            "sha256":  "3abefdf964c885ef918aee5d58b494626a3da9bbd83f4cb81bb6546c2a116b55",
-                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/desktop-summary-win32.png"
-                        },
-                        {
-                            "sha256":  "9b04cba56f36b7ef347d742bd64217dd276a59cf36a93e83769822163f000d84",
-                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/mobile-bea-win32.png"
-                        },
-                        {
-                            "sha256":  "c79076632610b9fde0cc4f28ef18ca2494068341627eabd89aeb64da58b02e29",
-                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/mobile-day-win32.png"
-                        },
-                        {
-                            "sha256":  "e5373c972fbcd0f8a91c696ba8a9d3c3625c112962a61caf577a071b49746dca",
-                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/mobile-night-win32.png"
-                        },
-                        {
-                            "sha256":  "a417b0414656f1b8c992836e6e1cef8b2e309026616088f8a7b0c9caaa1137f1",
-                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/mobile-population-win32.png"
-                        },
-                        {
-                            "sha256":  "d71fa85ae2c40bad031c27cb56ebb0d39905d1eaa619c94c9a48affde3d5c8f6",
-                            "file":  "frontend/browser-tests/replay.spec.ts-snapshots/mobile-summary-win32.png"
-                        }
-                    ],
-    "date":  "2026-10-08",
-    "referenceSha256":  "a516f799b1d42aae47362d10baaa5df64869f5a41166fc892d6564a64aeb2038",
-    "status":  "agent-inspected mobile overview and Safari zoom correction; pending user device review",
-    "schemaVersion":  1,
-    "worldId":  "tiny-town-v1"
+{
+  "seed": 7,
+  "tooling": {
+    "playwright": "1.64.0",
+    "browser": "Chromium 156",
+    "platform": "Windows",
+    "node": "24.11.1",
+    "phaser": "3.90.0"
+  },
+  "remainingVisualDifferences": [
+    "Authored portraits and silhouettes remain simpler than concept faces",
+    "Terrain, garden and bridge remain visibly gridded",
+    "Landscape composition is less organic than the concept board",
+    "Specified 0.35 night overlay is gentler than the board",
+    "Native desktop fit retains sage margins"
+  ],
+  "version": 4,
+  "viewports": [
+    {
+      "height": 900,
+      "width": 1440
+    },
+    {
+      "height": 844,
+      "width": 390
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "frontend/browser-tests/interactions.spec.ts-snapshots/conversation-1440-win32.png",
+      "sha256": "20a85dbd2a9476de29f22d75e2b020396693c6d3944a5ea3f13d86bfbc6620e4"
+    },
+    {
+      "file": "frontend/browser-tests/interactions.spec.ts-snapshots/conversation-390-win32.png",
+      "sha256": "325dd0f571ae821d6b5e095d8714878cccb5c28d226e6517944ad7f7e562c47e"
+    },
+    {
+      "file": "frontend/browser-tests/replay.spec.ts-snapshots/desktop-bea-win32.png",
+      "sha256": "fde705808dffb8105bc2eb00476c153768f5c9845a69352b8d7a8254993618c4"
+    },
+    {
+      "file": "frontend/browser-tests/replay.spec.ts-snapshots/desktop-day-win32.png",
+      "sha256": "d4fa8e4b71ad7a257ff08da1e646bee15f3ac2ad6b2789c3e795c85f058afcda"
+    },
+    {
+      "file": "frontend/browser-tests/replay.spec.ts-snapshots/desktop-night-win32.png",
+      "sha256": "b91ee0942d4e424e72174fda101e37e15db5995bd8bc545baccd48a1c9fee90d"
+    },
+    {
+      "file": "frontend/browser-tests/replay.spec.ts-snapshots/desktop-population-win32.png",
+      "sha256": "d83bc374b0f42f6df9194f71812c504ccbf0c71533fd33b10ee32a812934e9a1"
+    },
+    {
+      "file": "frontend/browser-tests/replay.spec.ts-snapshots/desktop-summary-win32.png",
+      "sha256": "29f650c6ba62713f577b73615edf7ce75064c17b437e6294e52a387afee25760"
+    },
+    {
+      "file": "frontend/browser-tests/replay.spec.ts-snapshots/mobile-bea-win32.png",
+      "sha256": "57d3530b074cfdd8eb9b655fc2fbe2da89eae28aaa18ce3ee3e5df6f3cecdfc9"
+    },
+    {
+      "file": "frontend/browser-tests/replay.spec.ts-snapshots/mobile-day-win32.png",
+      "sha256": "7daa6b5add7d171575abde115b15f7caa5a2a177704dfdd187183bfa0f54c2af"
+    },
+    {
+      "file": "frontend/browser-tests/replay.spec.ts-snapshots/mobile-night-win32.png",
+      "sha256": "d3ffcf73402a732855cd9cd8a6d19a775352c817643cbc4e0dae6049a0aec976"
+    },
+    {
+      "file": "frontend/browser-tests/replay.spec.ts-snapshots/mobile-population-win32.png",
+      "sha256": "81de1743ebd033086a8c1d8119f97cb941eea2dabadec1443b9ebbf74355b0fa"
+    },
+    {
+      "file": "frontend/browser-tests/replay.spec.ts-snapshots/mobile-summary-win32.png",
+      "sha256": "d71fa85ae2c40bad031c27cb56ebb0d39905d1eaa619c94c9a48affde3d5c8f6"
+    }
+  ],
+  "date": "2026-10-08",
+  "referenceSha256": "a516f799b1d42aae47362d10baaa5df64869f5a41166fc892d6564a64aeb2038",
+  "status": "agent-inspected mobile overview and Safari zoom correction; pending user device review",
+  "schemaVersion": 1,
+  "worldId": "tiny-town-v1",
+  "change": "Reviewed personality descriptions, compact recorded conversations, arrival-aware bubbles and named partner controls; 12 fixed screenshots."
 }
