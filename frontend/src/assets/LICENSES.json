@@ -3,7 +3,7 @@
   "scenery": {
     "authorship": "Original generated scenery atlas made for this project with OpenAI image generation on 2026-10-08; the user's design board was supplied as the style reference.",
     "source": "art/source/scenery-atlas.png",
-    "production": "Isolated crops sampled to native pixel dimensions by scripts/build_art.py; cottage roof/front layers are separate.",
+    "production": "Isolated crops sampled to native pixel dimensions by scripts/build_art.py; cottage roof/front layers are separate. Flower, bench and table crops discard stray pixels from neighboring atlas objects.",
     "license": "Project-original generated artwork; no third-party game assets or purchased asset packs. Use under the project owner's chosen distribution terms."
   },
   "residentsAndPortraits": {

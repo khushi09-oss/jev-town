@@ -91,8 +91,21 @@ export class TownScene extends Phaser.Scene {
         c.strokeStyle = '#a59e89'; c.lineWidth = 1;
         for (let yy = 0; yy < 16; yy += 8) { c.strokeRect(x*16+(yy ? 4 : 0), y*16+yy, 8, 7); c.strokeRect(x*16+(yy ? 12 : 8), y*16+yy, 8, 7); }
       }
-      if (!path && !water && !garden && random() < .25) {
-        c.fillStyle = '#697f4c'; c.fillRect(x*16+5,y*16+5,1,4); c.fillRect(x*16+7,y*16+7,1,2);
+      if (!path && !water && !garden) {
+        // Broken grass clusters soften tile edges without changing navigable ground.
+        for(let tuft=0;tuft<3;tuft++) {
+          const px=x*16+2+Math.floor(random()*12),py=y*16+2+Math.floor(random()*12);
+          c.fillStyle=tuft%2?'#78915a':'#9bac6d';
+          c.fillRect(px,py,4,2);c.fillRect(px+1,py-2,1,3);c.fillRect(px+3,py-1,1,2);
+        }
+        for(const [dx,dy] of [[0,1],[1,0],[0,-1],[-1,0]]) {
+          if(!ground.has(`${x+dx},${y+dy}`))continue;
+          c.fillStyle='#acb57a';
+          for(let edge=0;edge<16;edge+=4) {
+            const px=x*16+(dx?dx>0?14:0:edge),py=y*16+(dy?dy>0?14:0:edge);
+            c.fillRect(px,py,dx?2:3,dy?2:3);
+          }
+        }
       }
       if (bridge) {
         c.fillStyle = '#8b6643'; c.fillRect(x*16,y*16,16,16);
@@ -103,8 +116,13 @@ export class TownScene extends Phaser.Scene {
     // Natural riverbanks, pebbles, and a timber-railed crossing.
     for (let y=0;y<640;y+=12) {
       if (y>=352 && y<400) continue;
-      c.fillStyle='#c8c09b'; c.fillRect(909,y,4,8); c.fillRect(960,y+3,4,6);
-      c.fillStyle='#738b69'; c.fillRect(903,y+4,5,4);
+      const bend=Math.round(Math.sin(y/43)*3);
+      c.fillStyle='#52764d';c.fillRect(903+bend,y,6,11);c.fillRect(961,y+2,5,8);
+      c.fillStyle='#c8c09b'; c.fillRect(907+bend,y+2,5,7); c.fillRect(960,y+3,4,6);
+      c.fillStyle='#738b69'; c.fillRect(901+bend,y+4,5,4);
+      c.fillStyle='#6c7771';c.fillRect(906+bend,y+6,5,4);c.fillRect(960,y+5,6,4);
+      c.fillStyle='#bcc3b3';c.fillRect(907+bend,y+6,3,1);c.fillRect(961,y+5,3,1);
+      c.fillStyle='#b2d4d4';c.fillRect(917+(y%5)*4,y+4,6,1);c.fillRect(945,y+8,7,1);
     }
     for (const y of [352,394]) {
       c.fillStyle='#604b37'; c.fillRect(895,y,83,4);
@@ -197,6 +215,14 @@ export class TownScene extends Phaser.Scene {
       const tx=Math.floor(random()*56),ty=Math.floor(random()*40);
       if(ground.has(`${tx},${ty}`)||occupied(tx,ty))continue;
       image('flowers',tx*16+8,ty*16+16);
+    }
+    // Dense low planting borders, all rooted outside the authoritative walkable grid.
+    for(let ty=1;ty<39;ty++)for(let tx=1;tx<56;tx++) {
+      if(ground.has(`${tx},${ty}`)||occupied(tx,ty))continue;
+      const besidePath=[[0,1],[1,0],[0,-1],[-1,0]].some(([dx,dy])=>ground.has(`${tx+dx},${ty+dy}`));
+      if(!besidePath||random()>.4)continue;
+      const x=tx*16+5+Math.floor(random()*7),y=ty*16+10+Math.floor(random()*5);
+      image('flowers',x,y).setFlipX(random()<.5);
     }
     for(const [x,y] of [[248,164],[376,164],[504,164],[632,164],[312,326],[584,326],[872,330],[312,572],[712,572],[232,402]]) {
       image('lamp',x,y);

@@ -8,6 +8,8 @@ Python chooses actions, applies effects and assigns destinations. The TypeScript
 
 Screenshots from the seeded, staged mock replay used for visual testing.
 
+The latest visual pass adds expressive eyes, layered hair and matching jacket/overall details to all 30 portraits, with fuller flower borders, grass clusters and stone-lined riverbanks. Original identities, homes and replay routes remain stable.
+
 **Daytime — select a resident to see their portrait, personality, needs and day.**
 
 ![Tiny Town during the day with Bea selected and her resident inspector open](frontend/browser-tests/replay.spec.ts-snapshots/desktop-bea-win32.png)
@@ -122,7 +124,7 @@ The handoff is mirrored locally in `docs/tiny-town`. Its Markdown and root `AGEN
 
 Fixed **1440×900** and **390×844** screenshots cover 14:00, selected Bea, 23:00, population and summary. Baselines live in `frontend/browser-tests/replay.spec.ts-snapshots`, with hashes in `docs/tiny-town/baseline.json`. They lock the agent-inspected implementation, not a claim of user-approved visual parity. Comparisons use pinned Windows/Chromium tooling.
 
-Remaining visual differences: human sprites/portraits are simpler than the concept faces; ground, garden and bridge are more visibly gridded; landscaping is less dense/organic; the specified 0.35 night overlay is gentler than the board. Native 1× fit leaves sage margins on large desktop screens. These are explicit differences, not hidden placeholder substitutions.
+Remaining visual differences: human sprites/portraits are simpler than the concept faces; ground, garden and bridge are more visibly gridded; landscaping composition is less organic; the specified 0.35 night overlay is gentler than the board. Native 1× fit leaves sage margins on large desktop screens. These are explicit differences, not hidden placeholder substitutions.
 
 ## Tests (PowerShell, from root)
 
