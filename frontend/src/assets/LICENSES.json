@@ -2,7 +2,7 @@
   "version": 1,
   "scenery": {
     "authorship": "Original generated scenery atlas made for this project with OpenAI image generation on 2026-10-08; the user's design board was supplied as the style reference.",
-    "source": "art/source/scenery-atlas.png",
+    "source": "assets/source/scenery-atlas.png",
     "production": "Isolated crops sampled to native pixel dimensions by scripts/build_art.py; cottage roof/front layers are separate. Flower, bench and table crops discard stray pixels from neighboring atlas objects.",
     "license": "Project-original generated artwork; no third-party game assets or purchased asset packs. Use under the project owner's chosen distribution terms."
   },
@@ -12,7 +12,7 @@
     "license": "Project-original authored art; no third-party game assets."
   },
   "reference": {
-    "source": "User-supplied tiny-town-handoff/mockups/design-board.png",
+    "source": "assets/reference/design-board.png (user-supplied handoff)",
     "usage": "Design reference only; never used as the replay background."
   },
   "software": [

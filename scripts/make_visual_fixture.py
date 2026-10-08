@@ -43,7 +43,6 @@ def fixture(count, forced_action=None):
 if __name__=='__main__':
     for count in (6,30):
         run=fixture(count)
-        (ROOT/f'fixtures/neighborhood-{count}.json').write_text(json.dumps(run,indent=2))
         (ROOT/f'frontend/src/fixture-{count}.json').write_text(json.dumps(run))
     for action in ('eat','work','sleep','socialize','wander'):
-        (ROOT/f'fixtures/occupancy-{action}.json').write_text(json.dumps(fixture(30,action)))
+        (ROOT/f'tests/fixtures/occupancy-{action}.json').write_text(json.dumps(fixture(30,action)))
