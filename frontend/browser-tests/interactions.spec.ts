@@ -59,7 +59,7 @@ test('legacy recordings load without named chats; malformed conversation import 
   await page.locator('#recording').setInputFiles({name:'bad-partners.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(run))});
   await expect(page.getByRole('status')).toContainText('Could not load');
   await expect(page.locator('#inspector .caption')).toContainText('Chatting');
-  for(const frame of run.frames)for(const entry of frame.residents)delete entry.interaction;
+  for(const frame of run.frames){delete frame.conversations;for(const entry of frame.residents)delete entry.interaction;}
   await page.locator('#recording').setInputFiles({name:'legacy.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(run))});
   await page.waitForFunction(()=>window.__town?.ready());
   await page.locator('#seek').fill('14.99');

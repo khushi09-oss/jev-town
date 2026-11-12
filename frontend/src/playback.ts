@@ -31,17 +31,33 @@ export class Playback {
     if (!this.arrived(index)) return [];
     return this.partners(index).filter(p => this.arrived(this.run.residents.indexOf(p)));
   }
-  position(index: number): { position: Point; facing: number; moving: boolean } {
+  dialogue(index:number) {
+    const recording=this.run.frames[this.hour].conversations?.find(c=>c.participantIds.includes(this.run.residents[index].id));
+    if(!recording)return null;
+    const arrival=Math.max(...recording.participantIds.map(id=>{
+      const journey=this.journey(this.run.residents.findIndex(p=>p.id===id));
+      return journey.stagger+journey.distance/(tokens.motion.hourPlaybackSecondsAt1x*journey.velocity);
+    }));
+    const phase=this.time===24?1:this.time-this.hour;
+    const turnIndex=phase<arrival ? null : Math.min(recording.turns.length-1,
+      Math.floor((phase-arrival)/Math.max(.001,1-arrival)*recording.turns.length));
+    return {recording,turnIndex,current:turnIndex===null?null:recording.turns[turnIndex]};
+  }
+  private journey(index:number) {
     const h = this.hour, entry = this.entry(index);
     const start = h ? this.run.frames[h - 1].residents[index].destination : this.run.initialSnapshot[index].position;
     const points = route(start, entry.destination), distance = (points.length - 1) * 16;
     const stagger = (((this.run.seed + index * 17 + h * 7) % 31 + 31) % 31) / 31 * tokens.motion.departureStaggerFraction;
-    const phase = this.time === 24 ? 1 : this.time - h;
     const available = (.95 - stagger) * tokens.motion.hourPlaybackSecondsAt1x;
     const velocity = Math.min(tokens.motion.maxWalkWorldPxPerSecond,
       Math.max(tokens.motion.baseWalkWorldPxPerSecond, distance / available));
     if (distance > available * tokens.motion.maxWalkWorldPxPerSecond)
       throw Error('Route exceeds the presentation speed cap');
+    return {points,distance,stagger,velocity};
+  }
+  position(index: number): { position: Point; facing: number; moving: boolean } {
+    const {points,distance,stagger,velocity}=this.journey(index);
+    const phase=this.time===24?1:this.time-this.hour;
     const travelled = Math.min(distance, Math.max(0, phase - stagger) * tokens.motion.hourPlaybackSecondsAt1x * velocity);
     return { ...along(points, travelled), moving: travelled < distance && phase >= stagger };
   }

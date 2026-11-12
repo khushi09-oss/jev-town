@@ -43,6 +43,7 @@ app.innerHTML=`
     <div class="header-actions"><span id="mode" class="mode"></span><button id="population-button" aria-haspopup="dialog">${icon('socialize')}<span id="population-count"></span></button><button id="summary-button" aria-label="Open day summary">${icon('chart')}</button></div></header>
   <main id="main"><section id="viewport" aria-label="Town replay"><div id="canvas-host" tabindex="0" role="application" aria-label="Town map. Arrow keys pan; select residents through the population button."></div>
     <div class="map-tools"><label>Zoom <select id="zoom" aria-label="Map zoom"><option value="0">Fit</option><option value="1">1×</option><option value="2">2×</option><option value="3">3×</option></select></label><button id="fit">Recenter</button></div>
+    <button id="speech-bubble" aria-label="Read current conversation" hidden></button>
     <div id="legend" class="legend" aria-label="Current action counts"></div><div id="status" role="status" hidden></div>
   </section><aside id="inspector" aria-label="Selected resident" hidden></aside></main>
   <footer><div class="timeline"><input id="seek" aria-label="Seek replay time" type="range" min="0" max="24" step="0.01" value="14.75"><div class="hour-labels">${Array.from({length:9},(_,i)=>`<span>${String(i*3).padStart(2,'0')}</span>`).join('')}</div></div>
@@ -50,7 +51,8 @@ app.innerHTML=`
     <button id="restart">${icon('restart')}<span>Restart</span></button><label class="loop"><input id="loop" type="checkbox">Loop</label><span id="follow-state">Observing the town</span><span id="current-time"></span>
     <label class="import-button">Load recording<input id="recording" type="file" accept=".json,application/json"></label></div></footer>
   <dialog id="population"><div class="drawer-heading"><h2>Our neighbors</h2><button data-close="population" aria-label="Close population">${icon('close')}</button></div><p class="muted">Select a resident to see how their day is going.</p><label>Sort by <select id="sort"><option value="name">Name</option><option value="trait">Personality</option><option value="action">Action</option></select></label><div id="resident-list"></div></dialog>
-  <dialog id="summary"><div class="drawer-heading"><h2>A day in Tiny Town</h2><button data-close="summary" aria-label="Close day summary">${icon('close')}</button></div><p class="muted">Recorded actions, after any confidence fallback.</p><div id="summary-content"></div></dialog>`;
+  <dialog id="summary"><div class="drawer-heading"><h2>A day in Tiny Town</h2><button data-close="summary" aria-label="Close day summary">${icon('close')}</button></div><p class="muted">Recorded actions, after any confidence fallback.</p><div id="summary-content"></div></dialog>
+  <dialog id="conversation" aria-labelledby="conversation-title"><div class="drawer-heading"><h2 id="conversation-title">A moment at the square</h2><button data-close="conversation" aria-label="Close conversation">${icon('close')}</button></div><div id="conversation-content"></div></dialog>`;
 
 let playback: Playback;
 try {
@@ -58,7 +60,7 @@ try {
 } catch { playback=new Playback(parseRun(sample30));showError('The embedded recording is invalid. Showing the local mock sample.'); }
 let selected: string|null=null,game:Phaser.Game,scene:TownScene;
 let resizeObserver:ResizeObserver;
-let lastViewKey='',lastPopulationKey='';
+let lastViewKey='',lastPopulationKey='',lastDialogueKey='';
 
 function portrait(identity:Identity,large=false) {
   const index=Number(identity.appearanceId.slice(-2));
@@ -105,6 +107,7 @@ function renderInspector() {
     <p class="personality-note">${personalities[identity.trait].description}</p>
     <section><h3>Currently</h3><div class="current-action">${icon(decision.appliedAction)}<strong>${labels[decision.appliedAction]}</strong></div><p class="caption">${activityCaption(index)}</p>
     ${partners.length?`<div class="conversation-partners" aria-label="Conversation partners">${partners.map(p=>`<button id="visit-${p.id}" data-partner="${p.id}" aria-label="Visit ${escapeHTML(p.name)}">${portrait(p)}<span>${escapeHTML(p.name)}</span></button>`).join('')}</div>`:''}</section>
+    ${playback.dialogue(index)?'<button id="read-conversation">Read conversation</button>':''}
     <section><h3>Needs</h3>${(['hunger','energy','mood'] as const).map(key=>`<div class="need"><label for="${key}-bar">${key==='hunger'?'Hunger ↑':key[0].toUpperCase()+key.slice(1)}</label><meter id="${key}-bar" min="0" max="100" value="${stats[key]}"></meter><span>${stats[key]}%</span></div>`).join('')}<p class="money">Money <strong>${stats.money}</strong></p><p class="muted small">Higher hunger means hungrier. Needs update on the hour.</p></section>
     <section><h3>Today</h3><div class="resident-timeline">${playback.run.frames.map(f=>`<span title="${f.clockHour}:00 — ${labels[f.residents[index].decision.appliedAction]}" style="background:var(--${f.residents[index].decision.appliedAction})"></span>`).join('')}</div><div class="timeline-captions"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div></section>
     <section><h3>Recorded activities</h3><ol class="events">${events.map(e=>`<li><time>${String(e.hour).padStart(2,'0')}:00</time> ${labels[e.entry.decision.appliedAction]}${partnerNames(e.entry)?' with '+partnerNames(e.entry):''} at ${places[e.entry.destination.locationId]||'home'}</li>`).join('')}</ol></section>
@@ -112,7 +115,35 @@ function renderInspector() {
   $('#close-inspector').onclick=closeInspector;
   $('#follow').onclick=()=>{scene.following=!scene.following;renderInspector();if(scene.following)scene.center(index);};
   $('#inspector').querySelectorAll<HTMLButtonElement>('[data-partner]').forEach(button=>button.onclick=()=>selectResident(playback.run.residents.find(p=>p.id===button.dataset.partner)!));
+  const read=$('#read-conversation');if(read)read.onclick=openConversation;
   if(focusId)document.getElementById(focusId)?.focus({preventScroll:true});
+}
+function openConversation() {
+  playback.playing=false;
+  renderDialogue();
+  $<HTMLDialogElement>('#conversation').showModal();
+}
+function renderDialogue() {
+  const index=playback.run.residents.findIndex(p=>p.id===selected);
+  const view=index<0?null:playback.dialogue(index);
+  const key=JSON.stringify([selected,playback.hour,view]);
+  if(key===lastDialogueKey)return;
+  lastDialogueKey=key;
+  const bubble=$('#speech-bubble');
+  bubble.hidden=!view?.current;
+  if(view?.current) {
+    const speaker=playback.run.residents.find(p=>p.id===view.current!.speakerId)!;
+    bubble.innerHTML=`${portrait(speaker)}<span class="speech-copy"><small>Scripted dialogue</small><strong>${escapeHTML(speaker.name)}</strong><span>${escapeHTML(view.current.text)}</span></span>`;
+  }
+  const clock=String(playback.run.frames[playback.hour].clockHour).padStart(2,'0');
+  $('#conversation-content').innerHTML=view ? `<p class="muted">Scripted dialogue · Recorded at ${clock}:00</p><p class="small">A free preview shaped by personalities and needs. No text model was called.</p>
+    ${view.current?`<ol class="dialogue-turns">${view.recording.turns.map((turn,i)=>{
+      const speaker=playback.run.residents.find(p=>p.id===turn.speakerId)!;
+      return `<li ${i===view.turnIndex?'aria-current="true"':''}><button data-speaker="${speaker.id}" aria-label="Visit ${escapeHTML(speaker.name)}">${portrait(speaker)}<strong>${escapeHTML(speaker.name)}</strong></button><p>${escapeHTML(turn.text)}</p>${i===view.turnIndex?'<small>Current line in the replay</small>':''}</li>`;
+    }).join('')}</ol><p class="muted small">Full saved exchange. Playback pauses while you read; close this panel and press Play to continue.</p>`:'<p class="dialogue-waiting">Waiting for all neighbors to arrive. Seek later in this hour to read their exchange.</p>'}` : '<p>No dialogue was recorded for this moment. Older recordings still replay normally.</p>';
+  $('#conversation-content').querySelectorAll<HTMLButtonElement>('[data-speaker]').forEach(button=>button.onclick=()=>{
+    $<HTMLDialogElement>('#conversation').close();selectResident(playback.run.residents.find(p=>p.id===button.dataset.speaker)!);
+  });
 }
 function startScene() {
   resizeObserver?.disconnect();
@@ -201,13 +232,15 @@ $('#recording').onchange=async()=>{
   } catch {showError('Could not load this recording. Check schema version, resident IDs, stats, and destinations. The current replay is still available.');}
   $<HTMLInputElement>('#recording').value='';
 };
+$('#speech-bubble').onclick=openConversation;
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape') { if(!$<HTMLDialogElement>('#population').open&&!$<HTMLDialogElement>('#summary').open)closeInspector();return; }
+  if(e.key==='Escape') { if(!$<HTMLDialogElement>('#population').open&&!$<HTMLDialogElement>('#summary').open&&!$<HTMLDialogElement>('#conversation').open)closeInspector();return; }
   if(e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement || e.target instanceof HTMLButtonElement || (e.target instanceof HTMLElement&&e.target.closest('dialog')))return;
   if(e.code==='Space') {e.preventDefault();$('#play').click();}
   if(e.target===$('#canvas-host')) { const movement:Record<string,[number,number]>={ArrowLeft:[-32,0],ArrowRight:[32,0],ArrowUp:[0,-32],ArrowDown:[0,32]};if(movement[e.key]){e.preventDefault();scene.pan(...movement[e.key]);} }
 });
 function renderUI() {
+  renderDialogue();
   const raw=playback.run.startHour+playback.time,clock=raw%24,h=Math.floor(clock),m=Math.floor((clock-h)*60);
   const time=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
   setText('#clock',`Day ${Math.floor(raw/24)+1} · ${time}${playback.time===24?' · complete':''}`);

@@ -51,7 +51,10 @@ export class TownScene extends Phaser.Scene {
       const row = Number(identity.appearanceId.slice(-2));
       const sprite = this.add.sprite(0, 0, 'residents', row * 74 + 16).setOrigin(.5, 31 / 32);
       sprite.setInteractive({ useHandCursor: true });
-      sprite.on('pointerup', (pointer:Phaser.Input.Pointer) => {if(pointer.getDistance()<6)this.onSelect(identity);});
+      sprite.on('pointerup', (pointer:Phaser.Input.Pointer) => {
+        // Phaser receives window pointer releases too; DOM cards must not click the map beneath them.
+        if(pointer.event.target===this.game.canvas && pointer.getDistance()<6)this.onSelect(identity);
+      });
       sprite.on('pointerover', () => {
         this.tooltip.setText(`${identity.name} · ${personalities[identity.trait].label}`).setPosition(sprite.x,sprite.y-52).setVisible(true);
       });
@@ -71,7 +74,9 @@ export class TownScene extends Phaser.Scene {
     this.tooltip = this.add.text(0,0,'',{fontFamily:'Georgia',fontSize:'14px',color:'#332a23',backgroundColor:'#f7edd8',padding:{x:6,y:4}}).setOrigin(.5,1).setDepth(10004).setVisible(false);
     this.lighting = this.add.rectangle(512, 320, 1024, 640, hex(tokens.colors.nightTint), 1).setAlpha(0).setDepth(10000);
     let drag: { x: number; y: number; scrollX: number; scrollY: number } | null = null;
-    this.input.on('pointerdown', (p: Phaser.Input.Pointer) => { drag = { x: p.x, y: p.y, scrollX: camera.scrollX, scrollY: camera.scrollY }; });
+    this.input.on('pointerdown', (p: Phaser.Input.Pointer) => {
+      if(p.event.target===this.game.canvas)drag = { x: p.x, y: p.y, scrollX: camera.scrollX, scrollY: camera.scrollY };
+    });
     this.input.on('pointermove', (p: Phaser.Input.Pointer) => {
       if (!drag || !p.isDown || Math.hypot(p.x - drag.x, p.y - drag.y) < 5) return;
       this.following = false; this.onPan(); this.cameraChanged = true;
@@ -168,7 +173,7 @@ export class TownScene extends Phaser.Scene {
       house.on('pointerover',()=>this.tooltip?.setText(b.kind==='cottage'?`Cottage ${b.id.slice(-2)} · 5 residents`:b.kind[0].toUpperCase()+b.kind.slice(1)).setPosition(x*16+w*8,y*16).setVisible(true));
       house.on('pointerout',()=>this.tooltip?.setVisible(false));
       if(b.kind==='cottage')house.on('pointerup',(pointer:Phaser.Input.Pointer)=>{
-        if(pointer.getDistance()>=6)return;
+        if(pointer.event.target!==this.game.canvas || pointer.getDistance()>=6)return;
         const sleeper=this.playback.run.residents.find((p,i)=>p.homeId===b.id&&this.playback.entry(i).decision.appliedAction==='sleep');
         if(sleeper)this.onSelect(sleeper);
       });
@@ -332,8 +337,9 @@ export class TownScene extends Phaser.Scene {
       // One speaker at a time keeps crowded conversations readable.
       const group=[identity.id,...partners.map(p=>p.id)].sort();
       const turn=this.reducedMotion?0:(Math.floor(this.playback.time*12/1.5)+this.playback.run.seed+Number(group[0].slice(-2)))%group.length;
+      const dialogue=this.playback.dialogue(i);
       this.bubbles[i].setPosition(position.x,position.y).setDepth(position.y+2)
-        .setVisible(partners.length>0 && group[turn]===identity.id);
+        .setVisible(dialogue ? dialogue.current?.speakerId===identity.id : partners.length>0 && group[turn]===identity.id);
       if(i===selectedIndex) {
         this.selection.setPosition(position.x,position.y).setDepth(position.y+.5).setVisible(true);
         this.nameplate.setText(`${identity.name} · ${personalities[identity.trait].label}`).setPosition(position.x,position.y-(partners.length?50:34)).setDepth(10003).setVisible(true);
@@ -348,5 +354,6 @@ export class TownScene extends Phaser.Scene {
     this.clampCamera();
   }
   inspect() { return this.people.map((sprite,i)=>({id:this.playback.run.residents[i].id,x:sprite.x,y:sprite.y,frame:sprite.frame.name,visible:sprite.visible,
-    chattingWith:this.playback.conversation(i).map(p=>p.id),bubbleVisible:this.bubbles[i].visible})); }
+    chattingWith:this.playback.conversation(i).map(p=>p.id),bubbleVisible:this.bubbles[i].visible,
+    dialogue:this.playback.dialogue(i)?.current ?? null})); }
 }
