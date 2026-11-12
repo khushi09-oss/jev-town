@@ -1,4 +1,4 @@
-"""Bounded, opt-in Jev vision probe. Never imports town or loads .env."""
+"""Bounded, opt-in Jev vision probe. Only explicit live mode can load project .env."""
 import argparse
 import base64
 import hashlib
@@ -12,6 +12,7 @@ import uuid
 from datetime import datetime, timezone
 
 from PIL import Image
+from dotenv import load_dotenv
 import requests
 
 URL = 'https://api.typesafe.ai/v1/systemone'
@@ -95,9 +96,11 @@ def save_report(root, report, live):
 def compare(bundle, live=False):
     root = Path(bundle).resolve()
     cases = load_cases(root)
+    if live and not os.environ.get('JEV_KEY'):
+        load_dotenv(Path(__file__).resolve().parents[1] / '.env', override=False)
     key = os.environ.get('JEV_KEY') if live else None
     if live and not key:
-        raise ValueError('JEV_KEY is missing from the process environment. This experiment never loads .env.')
+        raise ValueError('JEV_KEY is missing from the process environment and project .env.')
     report = {'mode': 'live' if live else 'mock-oracle', 'model': MODEL, 'status': 'running',
               'startedAtUTC': datetime.now(timezone.utc).isoformat(),
               'requestLimit': 6, 'requestsMade': 0, 'concurrency': 1, 'retries': 0,
@@ -153,14 +156,12 @@ def compare(bundle, live=False):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--bundle', type=Path, default=Path('.artifacts/vision'))
-    parser.add_argument('--live', action='store_true', help='Make at most six billed requests using process JEV_KEY; no .env or retries')
+    parser.add_argument('--live', action='store_true', help='Make at most six billed requests; load project .env if process JEV_KEY is absent; no retries')
     options = parser.parse_args()
-    if options.live and not os.environ.get('JEV_KEY'):
-        parser.exit(1, 'JEV_KEY is missing from the process environment. .env is never loaded.\n')
     try:
         result = compare(options.bundle, live=options.live)
     except (ValueError, KeyError, TypeError, OSError):
         # Do not echo arbitrary filenames, server bodies, payloads or credentials.
-        parser.exit(1, 'Experiment not started: check the bundle and process JEV_KEY for --live. .env is never loaded.\n')
+        parser.exit(1, 'Experiment not started: check the bundle and JEV_KEY in the environment or project .env for --live.\n')
     print(f"{result['mode']}: {result['status']}; {result['requestsMade']}/6 requests. Report saved inside the bundle.")
     if result['status'] == 'stopped': raise SystemExit(1)

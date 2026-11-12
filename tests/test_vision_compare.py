@@ -22,9 +22,11 @@ class VisionComparisonTests(unittest.TestCase):
         return root
 
     def test_mock_is_offline_and_does_not_claim_model_accuracy(self):
-        with tempfile.TemporaryDirectory() as folder, patch('scripts.vision_compare.requests.post') as post:
+        with tempfile.TemporaryDirectory() as folder, patch('scripts.vision_compare.requests.post') as post, \
+                patch('scripts.vision_compare.load_dotenv') as load:
             report = compare(self.bundle(folder))
             post.assert_not_called()
+            load.assert_not_called()
             self.assertEqual(report['requestsMade'], 0)
             self.assertTrue(all(row['correct'] is None for row in report['results']))
             self.assertEqual(report['mode'], 'mock-oracle')
@@ -57,6 +59,7 @@ class VisionComparisonTests(unittest.TestCase):
 
     def test_missing_process_key_and_invalid_answers_never_fabricate_success(self):
         with tempfile.TemporaryDirectory() as folder, patch.dict('os.environ', {}, clear=True), \
+                patch('scripts.vision_compare.load_dotenv', return_value=False), \
                 patch('scripts.vision_compare.requests.post') as post:
             with self.assertRaises(ValueError): compare(self.bundle(folder), live=True)
             post.assert_not_called()
@@ -70,6 +73,21 @@ class VisionComparisonTests(unittest.TestCase):
                 self.assertEqual(report['error'],'invalid_response')
                 self.assertIsNone(report['results'][0]['correct'])
                 self.assertEqual(post.call_count,1)
+
+    def test_live_loads_project_env_only_when_process_key_is_missing(self):
+        def fake_load(*args, **kwargs):
+            import os
+            os.environ['JEV_KEY'] = 'file-test-secret'
+        response = Mock(ok=True, status_code=200)
+        response.json.return_value = {'answers': {'neighbor': {'choice': 'A', 'confidence': .8}}}
+        with tempfile.TemporaryDirectory() as folder, patch.dict('os.environ', {}, clear=True), \
+                patch('scripts.vision_compare.load_dotenv', side_effect=fake_load) as load, \
+                patch('scripts.vision_compare.requests.post', return_value=response) as post:
+            report = compare(self.bundle(folder), live=True)
+            load.assert_called_once_with(Path(__file__).resolve().parents[1] / '.env', override=False)
+            self.assertEqual(post.call_count, 6)
+            self.assertEqual(report['status'], 'complete')
+            self.assertNotIn('file-test-secret', json.dumps(report))
 
     def test_errors_stop_without_retries_or_leaking_response(self):
         response = Mock(ok=False, status_code=429, text='test-secret raw server body')
