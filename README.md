@@ -183,7 +183,17 @@ Get-Content .artifacts/vision/report-live.json
 
 Only explicit live mode loads the project-root `.env`, when no terminal key is available. Mock mode never loads it. The experiment never imports `town.py`, prints the key or saves request headers/raw responses. Live mode makes at most **six sequential requests**, alternates condition order, uses 30-second request timeouts, follows no redirects and stops on the first error without retries. This is a request-count cap, not a guaranteed dollar cap; returned input-token usage is recorded when available. Each invocation starts a new comparison and can spend credits again.
 
-Reports record expected/chosen neighbors, correctness, confidence, elapsed request time and available input-token counts. Both conditions receive the same coordinates: the screenshot supplies redundant visual context. Three views of one mock meeting are only a smoke test, not proof that vision improves behavior. Image-only perception and broader scenes require a later experiment. No real comparison result is claimed until live mode runs successfully.
+Reports record expected/chosen neighbors, correctness, confidence, elapsed request time and available input-token counts. The matched pair receives the same coordinates: the screenshot supplies redundant visual context. Three views of one mock meeting are only a smoke test, not proof that vision improves behavior. Broader, independent scenes require a later experiment. No real comparison result is claimed until live mode runs successfully.
+
+To test **image-only perception**, reuse the same captured scenes and omit all coordinates from requests to Jev. Python keeps those coordinates only for scoring. Identities and the F/A/B/C labels remain available; this tests labeled-image spatial reasoning, not unassisted recognition of every resident.
+
+```powershell
+python scripts/vision_compare.py --image-only
+python scripts/vision_compare.py --image-only --live
+Get-Content .artifacts/vision/report-image-only-live.json
+```
+
+Image-only live mode makes at most **three billed requests**. Its separate `report-image-only-live.json` preserves the original six-call `report-live.json`; compare only reports with matching manifest/screenshot hashes. Mock image-only results remain unscored. Key loading, request validation and error limits work the same way as the matched comparison.
 
 </details>
 

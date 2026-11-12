@@ -9,6 +9,40 @@ from scripts.vision_compare import compare, expected_choice
 
 
 class VisionComparisonTests(unittest.TestCase):
+    def test_image_only_sends_no_coordinates_or_expected_answer_and_uses_three_calls(self):
+        response=Mock(ok=True,status_code=200)
+        response.json.return_value={'answers':{'neighbor':{'choice':'A','confidence':.6}}}
+        with tempfile.TemporaryDirectory() as folder, patch.dict('os.environ',{'JEV_KEY':'test-secret'}), \
+                patch('scripts.vision_compare.requests.post',return_value=response) as post:
+            root=self.bundle(folder)
+            baseline=root/'report-live.json';baseline.write_text('previous comparison')
+            report=compare(root,live=True,image_only=True)
+            self.assertEqual(post.call_count,3)
+            self.assertEqual(report['requestLimit'],3)
+            self.assertEqual(baseline.read_text(),'previous comparison')
+            self.assertTrue((root/'report-image-only-live.json').exists())
+            for call in post.call_args_list:
+                body=call.kwargs['json']
+                self.assertEqual(set(body['state']['focal']),{'id','name'})
+                self.assertTrue(all(set(p)=={'id','name'} for p in body['state']['candidates'].values()))
+                self.assertNotIn('expected',body)
+                self.assertIn(body['state']['scene'],body['assets'])
+                self.assertEqual(call.kwargs['headers']['TypeSafe-Danger-Zone-Images'],'true')
+            self.assertEqual(report['summary']['image-only']['accuracy'],1)
+
+    def test_image_only_mock_is_unscored_and_leaves_original_mock_report_intact(self):
+        with tempfile.TemporaryDirectory() as folder, patch('scripts.vision_compare.requests.post') as post, \
+                patch('scripts.vision_compare.load_dotenv') as load:
+            root=self.bundle(folder)
+            original=compare(root)
+            before=(root/'report-mock.json').read_bytes()
+            report=compare(root,image_only=True)
+            self.assertEqual((root/'report-mock.json').read_bytes(),before)
+            self.assertEqual(report['conditions'],['image-only'])
+            self.assertEqual(report['requestsMade'],0)
+            self.assertIsNone(report['summary']['image-only']['accuracy'])
+            post.assert_not_called();load.assert_not_called()
+
     def bundle(self, folder):
         import hashlib
         root = Path(folder)
