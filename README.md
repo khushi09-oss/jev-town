@@ -164,6 +164,44 @@ Low confidence applies wander and records `fellBack`. HTTP/schema errors stop by
 </details>
 
 <details>
+<summary><strong>Experimental Jev vision comparison</strong></summary>
+
+This separate developer experiment compares the same neighbor-choice question with structured coordinates alone and with an additional screenshot. It does not change the town's decisions, effects, destinations or replay. Jev's [image input is experimental](https://docs.typesafe.ai/images); this probe pins `jev-1.14.0` and enables images only for image requests.
+
+Capture three labeled views of the included seed-7 meeting, then check the workflow for free:
+
+```powershell
+node scripts/capture_vision_cases.mjs
+python scripts/vision_compare.py
+python -m unittest tests.test_vision_compare -v
+```
+
+The capture requires the frontend's installed Playwright Chromium (`npm --prefix frontend ci`, then `npm --prefix frontend exec -- playwright install chromium`). It opens `examples/town.html` locally and writes screenshots, hashes and a case manifest under ignored `.artifacts/vision/`. F marks the focal resident; A/B/C mark eligible neighbors. Python computes the nearest neighbor from recorded feet positions, breaking ties by stable resident ID.
+
+Default mode is a **mock oracle**, not Jev: it verifies the workflow, makes zero requests and leaves model accuracy/confidence unset. To run the actual comparison, keep `JEV_KEY` in the project-root `.env` and explicitly opt in. An existing terminal environment key takes priority:
+
+```powershell
+python scripts/vision_compare.py --live
+Get-Content .artifacts/vision/report-live.json
+```
+
+Only explicit live mode loads the project-root `.env`, when no terminal key is available. Mock mode never loads it. The experiment never imports `town.py`, prints the key or saves request headers/raw responses. Live mode makes at most **six sequential requests**, alternates condition order, uses 30-second request timeouts, follows no redirects and stops on the first error without retries. This is a request-count cap, not a guaranteed dollar cap; returned input-token usage is recorded when available. Each invocation starts a new comparison and can spend credits again.
+
+Reports record expected/chosen neighbors, correctness, confidence, elapsed request time and available input-token counts. The matched pair receives the same coordinates: the screenshot supplies redundant visual context. Three views of one mock meeting are only a smoke test, not proof that vision improves behavior. Broader, independent scenes require a later experiment. No real comparison result is claimed until live mode runs successfully.
+
+To test **image-only perception**, reuse the same captured scenes and omit all coordinates from requests to Jev. Python keeps those coordinates only for scoring. Identities and the F/A/B/C labels remain available; this tests labeled-image spatial reasoning, not unassisted recognition of every resident.
+
+```powershell
+python scripts/vision_compare.py --image-only
+python scripts/vision_compare.py --image-only --live
+Get-Content .artifacts/vision/report-image-only-live.json
+```
+
+Image-only live mode makes at most **three billed requests**. Its separate `report-image-only-live.json` preserves the original six-call `report-live.json`; compare only reports with matching manifest/screenshot hashes. Mock image-only results remain unscored. Key loading, request validation and error limits work the same way as the matched comparison.
+
+</details>
+
+<details>
 <summary><strong>Replay format, hosting and visual limits</strong></summary>
 
 The version-1 recording contains stable identities, initial state and 24 ordered frames: 25 boundaries. Each frame records before/after stats, chosen/applied action, confidence, fallback/error metadata and a Python destination. The browser validates the recording and reconstructs shortest routes deterministically. It never applies effects. Needs commit at each hour boundary; t=24 shows the final state.

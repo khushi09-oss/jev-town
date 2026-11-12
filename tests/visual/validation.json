@@ -1,8 +1,8 @@
 {
   "date": "2026-11-12",
-  "realJevCalls": 0,
+  "realJevCalls": 9,
   "environmentFileReadByAgent": false,
-  "pythonTests": 23,
+  "pythonTests": 31,
   "frontendUnitTests": 42,
   "browserTests": 32,
   "mobileWebKitTests": 17,
@@ -25,5 +25,31 @@
     "Offline example verified in desktop Chromium and mobile WebKit: actual recorded June meeting, transcript, partner selection, zero external requests/errors",
     "Approved day-summary export deployed to Pages; mobile WebKit confirmed approved HTML hash, highlights and paused work moment",
     "Fixed desktop 1440x900 and phone 390x844 screenshots reviewed and locked"
-  ]
+  ],
+  "agentJevCalls": 0,
+  "realJevCallsScope": "Nine user-run vision requests verified against saved reports; no billed agent calls during implementation or merge.",
+  "mergeValidation": {
+    "pullRequests": [
+      11,
+      12
+    ],
+    "pythonTests": 31,
+    "frontendUnitTests": 42,
+    "typescriptBuild": "passed",
+    "browser": "Nine of ten integration cases passed; desktop baseline hit its unchanged 30-second limit, then passed unchanged in isolation. All 16 screenshot comparisons verified.",
+    "offlineCapture": "Combined conversation/vision source captured three labeled scenes in isolated artifacts; original user dataset/reports preserved.",
+    "ci": "No automated checks configured"
+  },
+  "visionExperiment": {
+    "dataset": "Three labeled focal views of one saved mock meeting",
+    "userLiveRequests": 9,
+    "retries": 0,
+    "casesPerCondition": 3,
+    "correct": {
+      "structured": 3,
+      "dataAndImage": 3,
+      "imageOnly": 3
+    },
+    "evidence": "Local report manifests, screenshot hashes and Python ground truth verified; no claim of general accuracy or improved town behavior."
+  }
 }
