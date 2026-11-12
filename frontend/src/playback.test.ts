@@ -9,7 +9,7 @@ import world from './world.json';
 describe('versioned recording',()=>{
   it('loads older v1 recordings without inventing conversation partners',()=>{
     const legacy=structuredClone(parseRun(sample));
-    for(const frame of legacy.frames)for(const entry of frame.residents)delete entry.interaction;
+    for(const frame of legacy.frames){delete frame.conversations;for(const entry of frame.residents)delete entry.interaction;}
     const p=new Playback(parseRun(legacy));p.seek(14.99);
     expect(p.partners(0)).toEqual([]);expect(p.conversation(0)).toEqual([]);
   });
