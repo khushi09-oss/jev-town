@@ -28,6 +28,7 @@ class VisionComparisonTests(unittest.TestCase):
             self.assertEqual(report['requestsMade'], 0)
             self.assertTrue(all(row['correct'] is None for row in report['results']))
             self.assertEqual(report['mode'], 'mock-oracle')
+            self.assertEqual(report['status'], 'complete')
             self.assertIsNone(report['summary']['image']['accuracy'])
 
     def test_live_sends_six_matched_requests_and_only_images_get_opt_in(self):
@@ -87,7 +88,8 @@ class VisionComparisonTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder, patch('scripts.vision_compare.requests.post') as post:
             root = self.bundle(folder)
             data = json.loads((root / 'cases.json').read_text())
-            data['cases'][0]['image'] = '../private.png'
-            (root / 'cases.json').write_text(json.dumps(data))
-            with self.assertRaises(ValueError): compare(root, live=True)
+            for bad_path in ('../private.png', '.env'):
+                data['cases'][0]['image'] = bad_path
+                (root / 'cases.json').write_text(json.dumps(data))
+                with self.assertRaises(ValueError): compare(root, live=True)
             post.assert_not_called()

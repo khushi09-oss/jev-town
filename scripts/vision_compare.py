@@ -9,6 +9,7 @@ from pathlib import Path
 import re
 import time
 import uuid
+from datetime import datetime, timezone
 
 from PIL import Image
 import requests
@@ -97,11 +98,13 @@ def compare(bundle, live=False):
     key = os.environ.get('JEV_KEY') if live else None
     if live and not key:
         raise ValueError('JEV_KEY is missing from the process environment. This experiment never loads .env.')
-    report = {'mode': 'live' if live else 'mock-oracle', 'model': MODEL, 'status': 'complete',
+    report = {'mode': 'live' if live else 'mock-oracle', 'model': MODEL, 'status': 'running',
+              'startedAtUTC': datetime.now(timezone.utc).isoformat(),
               'requestLimit': 6, 'requestsMade': 0, 'concurrency': 1, 'retries': 0,
               'manifestSha256': hashlib.sha256((root / 'cases.json').read_bytes()).hexdigest(),
               'limitation': 'Three views of one mock meeting; redundant coordinates in both conditions. Not evidence of general vision quality or improved town behavior.',
               'results': []}
+    save_report(root, report, live)
     for index, case in enumerate(cases):
         # Counterbalance order; do not let successful results decide which requests run next.
         for condition in (['structured', 'image'] if index % 2 == 0 else ['image', 'structured']):
@@ -113,6 +116,7 @@ def compare(bundle, live=False):
                 headers = {'Authorization': f'Bearer {key}', 'Content-Type': 'application/json'}
                 if condition == 'image': headers['TypeSafe-Danger-Zone-Images'] = 'true'
                 report['requestsMade'] += 1
+                save_report(root, report, live)  # A crash leaves the in-flight attempt marked running, never complete.
                 started = time.monotonic()
                 try:
                     response = requests.post(URL, json=request_body(case, condition == 'image', root),
@@ -141,6 +145,8 @@ def compare(bundle, live=False):
             report['results'].append(row)
             save_report(root, report, live)
             if report['status'] == 'stopped': return report
+    report['status'] = 'complete'
+    save_report(root, report, live)
     return report
 
 
