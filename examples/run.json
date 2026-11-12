@@ -1517,7 +1517,8 @@
           },
           "interaction": null
         }
-      ]
+      ],
+      "conversations": []
     },
     {
       "tick": 1,
@@ -2424,7 +2425,8 @@
           },
           "interaction": null
         }
-      ]
+      ],
+      "conversations": []
     },
     {
       "tick": 2,
@@ -3331,7 +3333,8 @@
           },
           "interaction": null
         }
-      ]
+      ],
+      "conversations": []
     },
     {
       "tick": 3,
@@ -4238,7 +4241,8 @@
           },
           "interaction": null
         }
-      ]
+      ],
+      "conversations": []
     },
     {
       "tick": 4,
@@ -5145,7 +5149,8 @@
           },
           "interaction": null
         }
-      ]
+      ],
+      "conversations": []
     },
     {
       "tick": 5,
@@ -6052,7 +6057,8 @@
           },
           "interaction": null
         }
-      ]
+      ],
+      "conversations": []
     },
     {
       "tick": 6,
@@ -7015,6 +7021,64 @@
           },
           "interaction": null
         }
+      ],
+      "conversations": [
+        {
+          "id": "chat-6-npc00",
+          "source": "scripted",
+          "participantIds": [
+            "npc00",
+            "npc03",
+            "npc09",
+            "npc15"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc00",
+              "text": "Finn, come sit with us! Have you noticed the bread at the bakery?"
+            },
+            {
+              "speakerId": "npc03",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            },
+            {
+              "speakerId": "npc09",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            },
+            {
+              "speakerId": "npc15",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            }
+          ]
+        },
+        {
+          "id": "chat-6-npc18",
+          "source": "scripted",
+          "participantIds": [
+            "npc18",
+            "npc21",
+            "npc24",
+            "npc27"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc18",
+              "text": "Remy, come sit with us! Have you noticed the bread at the bakery?"
+            },
+            {
+              "speakerId": "npc21",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            },
+            {
+              "speakerId": "npc24",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            },
+            {
+              "speakerId": "npc27",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            }
+          ]
+        }
       ]
     },
     {
@@ -7931,6 +7995,34 @@
             "y": 408
           },
           "interaction": null
+        }
+      ],
+      "conversations": [
+        {
+          "id": "chat-7-npc06",
+          "source": "scripted",
+          "participantIds": [
+            "npc06",
+            "npc12"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc06",
+              "text": "Mae, come sit with us! Have you noticed the water in the fountain?"
+            },
+            {
+              "speakerId": "npc12",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            },
+            {
+              "speakerId": "npc06",
+              "text": "Let's stay a little while. The town can wait a moment."
+            },
+            {
+              "speakerId": "npc12",
+              "text": "Deal. It's good to have someone to share a break with."
+            }
+          ]
         }
       ]
     },
@@ -8866,6 +8958,36 @@
             "y": 376
           },
           "interaction": null
+        }
+      ],
+      "conversations": [
+        {
+          "id": "chat-8-npc00",
+          "source": "scripted",
+          "participantIds": [
+            "npc00",
+            "npc03",
+            "npc21",
+            "npc27"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc00",
+              "text": "Finn, come sit with us! Have you noticed the flowers by the garden?"
+            },
+            {
+              "speakerId": "npc03",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            },
+            {
+              "speakerId": "npc21",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            },
+            {
+              "speakerId": "npc27",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            }
+          ]
         }
       ]
     },
@@ -9840,6 +9962,90 @@
           },
           "interaction": null
         }
+      ],
+      "conversations": [
+        {
+          "id": "chat-9-npc06",
+          "source": "scripted",
+          "participantIds": [
+            "npc06",
+            "npc09",
+            "npc12",
+            "npc13"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc06",
+              "text": "Sam, come sit with us! Have you noticed the bread at the bakery?"
+            },
+            {
+              "speakerId": "npc09",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            },
+            {
+              "speakerId": "npc12",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            },
+            {
+              "speakerId": "npc13",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            }
+          ]
+        },
+        {
+          "id": "chat-9-npc15",
+          "source": "scripted",
+          "participantIds": [
+            "npc15",
+            "npc16",
+            "npc18",
+            "npc19"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc15",
+              "text": "Hazel, come sit with us! Have you noticed the bread at the bakery?"
+            },
+            {
+              "speakerId": "npc16",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            },
+            {
+              "speakerId": "npc18",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            },
+            {
+              "speakerId": "npc19",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            }
+          ]
+        },
+        {
+          "id": "chat-9-npc22",
+          "source": "scripted",
+          "participantIds": [
+            "npc22",
+            "npc24"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc22",
+              "text": "Uma, a quick break from work? I'd like to hear about the water in the fountain."
+            },
+            {
+              "speakerId": "npc24",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            },
+            {
+              "speakerId": "npc22",
+              "text": "Let's stay a little while. The town can wait a moment."
+            },
+            {
+              "speakerId": "npc24",
+              "text": "Deal. It's good to have someone to share a break with."
+            }
+          ]
+        }
       ]
     },
     {
@@ -10792,6 +10998,59 @@
             "y": 312
           },
           "interaction": null
+        }
+      ],
+      "conversations": [
+        {
+          "id": "chat-10-npc01",
+          "source": "scripted",
+          "participantIds": [
+            "npc01",
+            "npc04",
+            "npc07",
+            "npc10"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc01",
+              "text": "Noor, a quick break from work? I'd like to hear about the flowers by the garden."
+            },
+            {
+              "speakerId": "npc04",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            },
+            {
+              "speakerId": "npc07",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            },
+            {
+              "speakerId": "npc10",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            }
+          ]
+        },
+        {
+          "id": "chat-10-npc25",
+          "source": "scripted",
+          "participantIds": [
+            "npc25",
+            "npc26",
+            "npc28"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc25",
+              "text": "Wren, a quick break from work? I'd like to hear about the flowers by the garden."
+            },
+            {
+              "speakerId": "npc26",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            },
+            {
+              "speakerId": "npc28",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            }
+          ]
         }
       ]
     },
@@ -11756,6 +12015,64 @@
             ]
           }
         }
+      ],
+      "conversations": [
+        {
+          "id": "chat-11-npc02",
+          "source": "scripted",
+          "participantIds": [
+            "npc02",
+            "npc05",
+            "npc08",
+            "npc11"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc02",
+              "text": "Otto, let's take a quiet break and enjoy the water in the fountain."
+            },
+            {
+              "speakerId": "npc05",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            },
+            {
+              "speakerId": "npc08",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            },
+            {
+              "speakerId": "npc11",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            }
+          ]
+        },
+        {
+          "id": "chat-11-npc14",
+          "source": "scripted",
+          "participantIds": [
+            "npc14",
+            "npc17",
+            "npc23",
+            "npc29"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc14",
+              "text": "Kit, let's take a quiet break and enjoy the water in the fountain."
+            },
+            {
+              "speakerId": "npc17",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            },
+            {
+              "speakerId": "npc23",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            },
+            {
+              "speakerId": "npc29",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            }
+          ]
+        }
       ]
     },
     {
@@ -12663,7 +12980,8 @@
           },
           "interaction": null
         }
-      ]
+      ],
+      "conversations": []
     },
     {
       "tick": 13,
@@ -13570,7 +13888,8 @@
           },
           "interaction": null
         }
-      ]
+      ],
+      "conversations": []
     },
     {
       "tick": 14,
@@ -14477,7 +14796,8 @@
           },
           "interaction": null
         }
-      ]
+      ],
+      "conversations": []
     },
     {
       "tick": 15,
@@ -15401,6 +15721,31 @@
             "y": 344
           },
           "interaction": null
+        }
+      ],
+      "conversations": [
+        {
+          "id": "chat-15-npc03",
+          "source": "scripted",
+          "participantIds": [
+            "npc03",
+            "npc21",
+            "npc27"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc03",
+              "text": "Remy, come sit with us! Have you noticed the bread at the bakery?"
+            },
+            {
+              "speakerId": "npc21",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            },
+            {
+              "speakerId": "npc27",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            }
+          ]
         }
       ]
     },
@@ -16347,6 +16692,62 @@
           },
           "interaction": null
         }
+      ],
+      "conversations": [
+        {
+          "id": "chat-16-npc06",
+          "source": "scripted",
+          "participantIds": [
+            "npc06",
+            "npc09",
+            "npc12",
+            "npc15"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc06",
+              "text": "Sam, come sit with us! Have you noticed the water in the fountain?"
+            },
+            {
+              "speakerId": "npc09",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            },
+            {
+              "speakerId": "npc12",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            },
+            {
+              "speakerId": "npc15",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            }
+          ]
+        },
+        {
+          "id": "chat-16-npc18",
+          "source": "scripted",
+          "participantIds": [
+            "npc18",
+            "npc24"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc18",
+              "text": "Uma, come sit with us! Have you noticed the water in the fountain?"
+            },
+            {
+              "speakerId": "npc24",
+              "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
+            },
+            {
+              "speakerId": "npc18",
+              "text": "Let's stay a little while. The town can wait a moment."
+            },
+            {
+              "speakerId": "npc24",
+              "text": "Deal. It's good to have someone to share a break with."
+            }
+          ]
+        }
       ]
     },
     {
@@ -17263,6 +17664,34 @@
             "y": 280
           },
           "interaction": null
+        }
+      ],
+      "conversations": [
+        {
+          "id": "chat-17-npc10",
+          "source": "scripted",
+          "participantIds": [
+            "npc10",
+            "npc25"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc10",
+              "text": "Vera, a quick break from work? I'd like to hear about the bread at the bakery."
+            },
+            {
+              "speakerId": "npc25",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            },
+            {
+              "speakerId": "npc10",
+              "text": "Let's stay a little while. The town can wait a moment."
+            },
+            {
+              "speakerId": "npc25",
+              "text": "Deal. It's good to have someone to share a break with."
+            }
+          ]
         }
       ]
     },
@@ -18199,6 +18628,36 @@
           },
           "interaction": null
         }
+      ],
+      "conversations": [
+        {
+          "id": "chat-18-npc07",
+          "source": "scripted",
+          "participantIds": [
+            "npc07",
+            "npc13",
+            "npc16",
+            "npc22"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc07",
+              "text": "Eli, a quick break from work? I'd like to hear about the water in the fountain."
+            },
+            {
+              "speakerId": "npc13",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            },
+            {
+              "speakerId": "npc16",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            },
+            {
+              "speakerId": "npc22",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            }
+          ]
+        }
       ]
     },
     {
@@ -19123,6 +19582,31 @@
             "y": 408
           },
           "interaction": null
+        }
+      ],
+      "conversations": [
+        {
+          "id": "chat-19-npc01",
+          "source": "scripted",
+          "participantIds": [
+            "npc01",
+            "npc04",
+            "npc28"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc01",
+              "text": "Noor, a quick break from work? I'd like to hear about the flowers by the garden."
+            },
+            {
+              "speakerId": "npc04",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            },
+            {
+              "speakerId": "npc28",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            }
+          ]
         }
       ]
     },
@@ -20105,6 +20589,87 @@
             ]
           }
         }
+      ],
+      "conversations": [
+        {
+          "id": "chat-20-npc00",
+          "source": "scripted",
+          "participantIds": [
+            "npc00",
+            "npc02",
+            "npc05",
+            "npc08"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc00",
+              "text": "Ada, come sit with us! Have you noticed the flowers by the garden?"
+            },
+            {
+              "speakerId": "npc02",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            },
+            {
+              "speakerId": "npc05",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            },
+            {
+              "speakerId": "npc08",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            }
+          ]
+        },
+        {
+          "id": "chat-20-npc11",
+          "source": "scripted",
+          "participantIds": [
+            "npc11",
+            "npc14",
+            "npc19",
+            "npc20"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc11",
+              "text": "Rosa, let's take a quiet break and enjoy the water in the fountain."
+            },
+            {
+              "speakerId": "npc14",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            },
+            {
+              "speakerId": "npc19",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            },
+            {
+              "speakerId": "npc20",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            }
+          ]
+        },
+        {
+          "id": "chat-20-npc23",
+          "source": "scripted",
+          "participantIds": [
+            "npc23",
+            "npc26",
+            "npc29"
+          ],
+          "turns": [
+            {
+              "speakerId": "npc23",
+              "text": "Wren, let's take a quiet break and enjoy the water in the fountain."
+            },
+            {
+              "speakerId": "npc26",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            },
+            {
+              "speakerId": "npc29",
+              "text": "It's been a rough day. I'm glad you stopped to talk."
+            }
+          ]
+        }
       ]
     },
     {
@@ -21012,7 +21577,8 @@
           },
           "interaction": null
         }
-      ]
+      ],
+      "conversations": []
     },
     {
       "tick": 22,
@@ -21919,7 +22485,8 @@
           },
           "interaction": null
         }
-      ]
+      ],
+      "conversations": []
     },
     {
       "tick": 23,
@@ -22826,7 +23393,8 @@
           },
           "interaction": null
         }
-      ]
+      ],
+      "conversations": []
     }
   ]
 }
