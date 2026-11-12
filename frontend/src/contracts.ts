@@ -13,6 +13,10 @@ const decision = z.object({ chosenAction: action.nullable(), appliedAction: acti
 const resident = z.object({ id: z.string().regex(/^npc\d{2}$/), name: z.string().min(1).max(50),
   trait: z.enum(['lazy', 'social', 'workaholic']), appearanceId: z.string().regex(/^resident-\d{2}$/),
   homeId: z.string().regex(/^home-0[1-6]$/) });
+const conversation = z.object({id:z.string(),source:z.literal('scripted'),
+  participantIds:z.array(z.string().regex(/^npc\d{2}$/)).min(2).max(4),
+  turns:z.array(z.object({speakerId:z.string().regex(/^npc\d{2}$/),
+    text:z.string().trim().min(1).max(180).regex(/^[^\u0000-\u001f\u007f]*$/)}).strict()).min(2).max(4)}).strict();
 const entry = z.object({ id: z.string(), before: stats, after: stats, decision,
   destination: point.extend({ locationId: z.string(), anchorId: z.string() }),
   interaction: z.object({kind: z.literal('conversation'),
@@ -23,7 +27,8 @@ const schema = z.object({ schemaVersion: z.literal(1), runId: z.string(), seed: 
   residents: z.array(resident).min(1).max(30),
   initialSnapshot: z.array(z.object({ id: z.string(), stats, position: point })),
   frames: z.array(z.object({ tick: z.number().int(), clockHour: z.number().int(),
-    sequence: z.number().int(), residents: z.array(entry) })).length(24) });
+    sequence: z.number().int(), residents: z.array(entry),
+    conversations:z.array(conversation).max(15).optional() })).length(24) });
 export type Run = z.infer<typeof schema>;
 export type Identity = Run['residents'][number];
 export type Entry = Run['frames'][number]['residents'][number];
@@ -47,6 +52,21 @@ export function parseRun(input: unknown): Run {
   for (const [h, frame] of run.frames.entries()) {
     if (frame.tick !== h || frame.sequence !== h + 1 || frame.clockHour !== (h + run.startHour) % 24 || !sameIds(frame.residents))
       throw Error('Recording sequence or resident IDs are invalid');
+    const covered=new Set<string>();
+    for(const chat of frame.conversations ?? []) {
+      const members=[...chat.participantIds].sort();
+      if(new Set(members).size!==members.length || chat.id!==`chat-${h}-${members[0]}`)
+        throw Error('Invalid recorded conversation identity');
+      for(const id of members) {
+        const person=frame.residents.find(p=>p.id===id);
+        if(covered.has(id) || !person?.interaction ||
+            [...person.interaction.partnerIds,id].sort().join()!==members.join() ||
+            !chat.turns.some(turn=>turn.speakerId===id))
+          throw Error('Recorded dialogue must match one complete meeting');
+        covered.add(id);
+      }
+      if(chat.turns.some(turn=>!members.includes(turn.speakerId)))throw Error('Unknown dialogue speaker');
+    }
     for (const [i, p] of frame.residents.entries()) {
       const previous = h ? run.frames[h - 1].residents[i].after : run.initialSnapshot[i].stats;
       if (JSON.stringify(p.before) !== JSON.stringify(previous)) {

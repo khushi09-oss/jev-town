@@ -3,6 +3,7 @@ import json
 import os
 from .world import destination
 from .interactions import plan_interactions
+from .dialogue import scripted_conversations
 
 
 def stats(npc):
@@ -28,7 +29,8 @@ def append_frame(recording, before, after, tick):
                             'decisionSource': new.decision_source, 'errorCode': new.error_code},
                         'destination': destination(i,new.last,tick,recording['seed'])})
     plan_interactions(entries, tick, recording['seed'])
-    recording['frames'].append({'tick':tick,'clockHour':tick%24,'sequence':tick+1,'residents':entries})
+    recording['frames'].append({'tick':tick,'clockHour':tick%24,'sequence':tick+1,'residents':entries,
+                               'conversations': scripted_conversations(entries, recording['residents'], tick, recording['seed'])})
     if any(n.decision_source=='error-mock' for n in after):
         recording['mode']='mixed'
 

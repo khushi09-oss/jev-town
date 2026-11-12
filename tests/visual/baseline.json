@@ -14,7 +14,7 @@
     "Specified 0.35 night overlay is gentler than the board",
     "Native desktop fit retains sage margins"
   ],
-  "version": 5,
+  "version": 6,
   "viewports": [
     {
       "height": 900,
@@ -27,16 +27,32 @@
   ],
   "screenshots": [
     {
+      "file": "frontend/browser-tests/dialogue.spec.ts-snapshots/speech-1440-win32.png",
+      "sha256": "1ac582c0750bc4a0a9db2c4c74b362e5650897a46b80a3788bd834cb070dbed4"
+    },
+    {
+      "file": "frontend/browser-tests/dialogue.spec.ts-snapshots/speech-390-win32.png",
+      "sha256": "b7d0ec564838a779681abd6ec2e89cba1a161635ae10631927bfa1800371cc6e"
+    },
+    {
+      "file": "frontend/browser-tests/dialogue.spec.ts-snapshots/transcript-1440-win32.png",
+      "sha256": "e0965fad114400a89fcc10dc9ab4e97ec514a98bacfbf024ed7888373b01f0bb"
+    },
+    {
+      "file": "frontend/browser-tests/dialogue.spec.ts-snapshots/transcript-390-win32.png",
+      "sha256": "7dfa48bad4337a41be91b61415f1d90c41cf6940177d60580db64eae1dca34d9"
+    },
+    {
       "file": "frontend/browser-tests/interactions.spec.ts-snapshots/conversation-1440-win32.png",
-      "sha256": "20a85dbd2a9476de29f22d75e2b020396693c6d3944a5ea3f13d86bfbc6620e4"
+      "sha256": "1ac582c0750bc4a0a9db2c4c74b362e5650897a46b80a3788bd834cb070dbed4"
     },
     {
       "file": "frontend/browser-tests/interactions.spec.ts-snapshots/conversation-390-win32.png",
-      "sha256": "325dd0f571ae821d6b5e095d8714878cccb5c28d226e6517944ad7f7e562c47e"
+      "sha256": "b7d0ec564838a779681abd6ec2e89cba1a161635ae10631927bfa1800371cc6e"
     },
     {
       "file": "frontend/browser-tests/replay.spec.ts-snapshots/desktop-bea-win32.png",
-      "sha256": "fde705808dffb8105bc2eb00476c153768f5c9845a69352b8d7a8254993618c4"
+      "sha256": "5c718febb913b9ad6111926f796e21a90079ad37831c04b2b9c0a4f9b373aa64"
     },
     {
       "file": "frontend/browser-tests/replay.spec.ts-snapshots/desktop-day-win32.png",
@@ -75,10 +91,10 @@
       "sha256": "0ec5f9e0b37ea6a9121e81a1891e4514bb0ae5c5c6ecb561d1640decf3823a0e"
     }
   ],
-  "date": "2026-10-08",
+  "date": "2026-11-12",
   "referenceSha256": "a516f799b1d42aae47362d10baaa5df64869f5a41166fc892d6564a64aeb2038",
-  "status": "agent-inspected mobile overview and Safari zoom correction; pending user device review",
+  "status": "Agent-inspected desktop/mobile replay and scripted dialogue; physical phone review pending",
   "schemaVersion": 1,
   "worldId": "tiny-town-v1",
-  "change": "Reviewed applied-action day highlights, truthful tied leaders and clickable paused replay moments; only desktop/mobile summary screenshots changed."
+  "change": "Recorded scripted exchanges, readable selected-meeting speech card and paused transcript; map input ignores DOM overlay releases."
 }
