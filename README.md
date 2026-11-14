@@ -6,7 +6,7 @@ Tiny Town is a cozy little village where 30 neighbors live their own lives. Meet
 
 *A glimpse of the town, recorded from a mock simulation.*
 
-**[Play Tiny Town in your browser](https://khushi09-oss.github.io/jev-town/)** · No installation or API key needed.
+**[Play Tiny Town in your browser](https://khushi09-oss.github.io/jev-town/?v=living-simulation-1)** · No installation or API key needed.
 
 ## A look around
 
@@ -18,13 +18,18 @@ Daytime, with Bea selected:
 
 ![Tiny Town during the day with Bea's personality and conversation partners](frontend/browser-tests/interactions.spec.ts-snapshots/conversation-1440-win32.png)
 
+Give wandering neighbors a new place to pause:
+
+![Finn visiting the garden-view bench after a free scripted route change](frontend/browser-tests/visitors.spec.ts-snapshots/bench-desktop-win32.png)
+
 Nighttime, with warm windows and street lamps:
 
 ![Tiny Town at night](frontend/browser-tests/replay.spec.ts-snapshots/desktop-night-win32.png)
 
-Mobile:
+On your phone: meet neighbors and check on your bench.
 
 <img src="frontend/browser-tests/interactions.spec.ts-snapshots/conversation-390-win32.png" alt="Tiny Town on mobile with personality details, conversation partners and playback controls" width="390">
+<img src="frontend/browser-tests/visitors.spec.ts-snapshots/bench-phone-win32.png" alt="Finn taking a wandering break near the new bench, with readable mobile controls" width="390">
 
 These screenshots use a staged mock recording for visual testing. The live site and example export use a complete mock simulation.
 
