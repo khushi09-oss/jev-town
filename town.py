@@ -318,7 +318,7 @@ def plot(history, path='town.png', show=True):
         plt.close(fig)
 
 
-def main(n_npcs=30, ticks=24, *, seed=7, output_dir='.', show_chart=True):
+def main(n_npcs=30, ticks=24, *, seed=7, output_dir='.', show_chart=True, remember_from=None):
     from dataclasses import replace
     from pathlib import Path
     from simulation.identities import manifest
@@ -330,7 +330,11 @@ def main(n_npcs=30, ticks=24, *, seed=7, output_dir='.', show_chart=True):
     rng = random.Random(seed)
     town = [NPC(p['id'], hunger=rng.randint(10, 80), energy=rng.randint(30, 90),
                 trait=p['trait']) for p in identities]
-    recording = start_recording(town, identities, seed, 'jev' if KEY else 'mock')
+    day_number,memories=1,[]
+    if remember_from:
+        from simulation.memories import remember_from as load_memories
+        day_number,memories=load_memories(remember_from,identities)
+    recording = start_recording(town, identities, seed, 'jev' if KEY else 'mock',day_number=day_number,memories=memories)
     history = []
     frames = []  # what every NPC did each hour, for the animation
     for tick in range(ticks):
@@ -379,10 +383,11 @@ if __name__ == "__main__":
     parser.add_argument('--no-show', action='store_true', help='Save chart without opening a window')
     parser.add_argument('--seed', type=int, default=7)
     parser.add_argument('--output-dir', default='.')
+    parser.add_argument('--remember-from', help='Carry meeting memories from a complete memory-enabled run.json; other initial stats are generated normally')
     args = parser.parse_args()
     if args.mock:
         KEY = None
     try:
-        main(seed=args.seed, output_dir=args.output_dir, show_chart=not args.no_show)
-    except (DecisionError, ValueError) as error:
+        main(seed=args.seed, output_dir=args.output_dir, show_chart=not args.no_show,remember_from=args.remember_from)
+    except (DecisionError, ValueError, OSError, KeyError, TypeError) as error:
         parser.exit(1, f'Town stopped: {safe_message(str(error))}\n')

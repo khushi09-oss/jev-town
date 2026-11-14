@@ -9,9 +9,10 @@ from simulation.identities import manifest
 from simulation.world import destination, point
 from simulation.interactions import plan_interactions
 from simulation.dialogue import scripted_conversations
+from simulation.memories import memory_state, record_meetings
 
 
-def fixture(count, forced_action=None):
+def fixture(count, forced_action=None, with_memories=False):
     people=manifest(count)
     stats={p['id']:{'hunger':30+i%5*8,'energy':75-i%7*3,'mood':60+i%5*5,'money':40}
            for i,p in enumerate(people)}
@@ -36,15 +37,21 @@ def fixture(count, forced_action=None):
                 'destination':destination(i,action,tick,7)})
             stats[p['id']]=after
         plan_interactions(residents, tick, 7)
-        frames.append({'tick':tick,'clockHour':tick,'sequence':tick+1,'residents':residents,
-                       'conversations':scripted_conversations(residents, people, tick, 7)})
-    return {'schemaVersion':1,'runId':f'visual-sample-{count}-v1','seed':7,'mode':'mock',
+        memory_run={'dayNumber':1,'initialMemories':[],'frames':frames}
+        frame={'tick':tick,'clockHour':tick,'sequence':tick+1,'residents':residents,
+               'conversations':scripted_conversations(residents,people,tick,7,memory_state(memory_run) if with_memories else None)}
+        if with_memories:record_meetings(memory_run,frame)
+        frames.append(frame)
+    run={'schemaVersion':1,'runId':f'visual-sample-{count}-v1','seed':7,'mode':'mock',
             'fixtureKind':'staged','hours':24,'startHour':0,'worldId':'tiny-town-v1',
             'residents':[{k:v for k,v in p.items() if k in ('id','name','trait','appearanceId','homeId')} for p in people],
             'initialSnapshot':initial,'frames':frames}
+    if with_memories:run.update(dayNumber=1,initialMemories=[])
+    return run
 
 
 if __name__=='__main__':
+    (ROOT/'tests/fixtures/memories.json').write_text(json.dumps(fixture(6,'socialize',with_memories=True)))
     for count in (6,30):
         run=fixture(count)
         (ROOT/f'frontend/src/fixture-{count}.json').write_text(json.dumps(run))
