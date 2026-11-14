@@ -12,9 +12,10 @@
     "Terrain, garden and bridge remain visibly gridded",
     "Landscape composition is less organic than the concept board",
     "Specified 0.35 night overlay is gentler than the board",
-    "Native desktop fit retains sage margins"
+    "Native desktop fit retains sage margins",
+    "Revamped HUD intentionally keeps warm paper/wood surfaces at night instead of dark navigation bars"
   ],
-  "version": 7,
+  "version": 8,
   "viewports": [
     {
       "height": 900,
@@ -28,81 +29,115 @@
   "screenshots": [
     {
       "file": "frontend/browser-tests/dialogue.spec.ts-snapshots/speech-1440-win32.png",
-      "sha256": "1ac582c0750bc4a0a9db2c4c74b362e5650897a46b80a3788bd834cb070dbed4"
+      "sha256": "235dc671a5fad7b077a552d80fe8ae80db2081c03992c7ad121145709dd42ebb"
     },
     {
       "file": "frontend/browser-tests/dialogue.spec.ts-snapshots/speech-390-win32.png",
-      "sha256": "b7d0ec564838a779681abd6ec2e89cba1a161635ae10631927bfa1800371cc6e"
+      "sha256": "7e96bf7a504c0f5d08757b2aa993eb0a0d727f1d77d421b5cbf3289fbd5f1be2"
     },
     {
       "file": "frontend/browser-tests/dialogue.spec.ts-snapshots/transcript-1440-win32.png",
-      "sha256": "e0965fad114400a89fcc10dc9ab4e97ec514a98bacfbf024ed7888373b01f0bb"
+      "sha256": "8d7c0cbe877000f641511a4611f20a720aca52bb070f63249dd36edf8c844dcf"
     },
     {
       "file": "frontend/browser-tests/dialogue.spec.ts-snapshots/transcript-390-win32.png",
-      "sha256": "7dfa48bad4337a41be91b61415f1d90c41cf6940177d60580db64eae1dca34d9"
+      "sha256": "861830e3e25f36182e4d1e2d5e7089f9eb5d4edfb9de3d93ddb8684fea56696d"
     },
     {
       "file": "frontend/browser-tests/interactions.spec.ts-snapshots/conversation-1440-win32.png",
-      "sha256": "1ac582c0750bc4a0a9db2c4c74b362e5650897a46b80a3788bd834cb070dbed4"
+      "sha256": "235dc671a5fad7b077a552d80fe8ae80db2081c03992c7ad121145709dd42ebb"
     },
     {
       "file": "frontend/browser-tests/interactions.spec.ts-snapshots/conversation-390-win32.png",
-      "sha256": "b7d0ec564838a779681abd6ec2e89cba1a161635ae10631927bfa1800371cc6e"
+      "sha256": "7e96bf7a504c0f5d08757b2aa993eb0a0d727f1d77d421b5cbf3289fbd5f1be2"
     },
     {
       "file": "frontend/browser-tests/memories.spec.ts-snapshots/memories-1440-win32.png",
-      "sha256": "1e85cf1b622f25204e71c4c199dd261080fb4df9fe0e8587c549b87b8be07c9e"
+      "sha256": "7c0e4711b4aaec3d5526f90157de8df2a19af179beffdb19c6853fda8e1c84fa"
     },
     {
       "file": "frontend/browser-tests/memories.spec.ts-snapshots/memories-390-win32.png",
-      "sha256": "060514afc7a4e10fa9a7a5b5487f46ef5562b8332d5ea62fe7bb18867543c3e6"
+      "sha256": "79ab9008fab841c49132e52bc68df15398395bb0d3bf6a6f3bbe4645d5b79ac7"
     },
     {
       "file": "frontend/browser-tests/replay.spec.ts-snapshots/desktop-bea-win32.png",
-      "sha256": "5c718febb913b9ad6111926f796e21a90079ad37831c04b2b9c0a4f9b373aa64"
+      "sha256": "a9ce652421f9967c55f610756debe56f737ab2f520858885116e65c73dc3227b"
     },
     {
       "file": "frontend/browser-tests/replay.spec.ts-snapshots/desktop-day-win32.png",
-      "sha256": "d4fa8e4b71ad7a257ff08da1e646bee15f3ac2ad6b2789c3e795c85f058afcda"
+      "sha256": "2ff22bcf0d93fc07669b8a37d0fdf492432657fe7231003ae82b2f3a702ebf0f"
     },
     {
       "file": "frontend/browser-tests/replay.spec.ts-snapshots/desktop-night-win32.png",
-      "sha256": "b91ee0942d4e424e72174fda101e37e15db5995bd8bc545baccd48a1c9fee90d"
+      "sha256": "21b431f64d542d7dec3d256e0631aee16fddf800a73daaabb91f0d560c786e0a"
     },
     {
       "file": "frontend/browser-tests/replay.spec.ts-snapshots/desktop-population-win32.png",
-      "sha256": "d83bc374b0f42f6df9194f71812c504ccbf0c71533fd33b10ee32a812934e9a1"
+      "sha256": "d8df58b8c2d99ca388cfe3ac7a969f3ea256f25e846ad81be2d74a4caeadbb85"
     },
     {
       "file": "frontend/browser-tests/replay.spec.ts-snapshots/desktop-summary-win32.png",
-      "sha256": "cd60292245f0928f7a6b2fe91fd3e154e1aa6352e74f78a47f95bce39b51e467"
+      "sha256": "d2065e0e4cd603db14e61097f6e6948c2383effb9329b7f41f05c37298a40f06"
     },
     {
       "file": "frontend/browser-tests/replay.spec.ts-snapshots/mobile-bea-win32.png",
-      "sha256": "57d3530b074cfdd8eb9b655fc2fbe2da89eae28aaa18ce3ee3e5df6f3cecdfc9"
+      "sha256": "b78353b9586d6f53f53e8ac3e5ec44ed381ff0813501badc9e102fb201ccb866"
     },
     {
       "file": "frontend/browser-tests/replay.spec.ts-snapshots/mobile-day-win32.png",
-      "sha256": "7daa6b5add7d171575abde115b15f7caa5a2a177704dfdd187183bfa0f54c2af"
+      "sha256": "f97300d071ce459f57500af7631841830fff60b073042a83127ea18bf2b421e3"
     },
     {
       "file": "frontend/browser-tests/replay.spec.ts-snapshots/mobile-night-win32.png",
-      "sha256": "d3ffcf73402a732855cd9cd8a6d19a775352c817643cbc4e0dae6049a0aec976"
+      "sha256": "fd0989d9f73d7984fade622ba83590ba84407635d69edc971eda703e98c56fe6"
     },
     {
       "file": "frontend/browser-tests/replay.spec.ts-snapshots/mobile-population-win32.png",
-      "sha256": "81de1743ebd033086a8c1d8119f97cb941eea2dabadec1443b9ebbf74355b0fa"
+      "sha256": "554f90d17c2ab5483ad063a872880aada5d869e7774c2b7ed951fc0ec478bcb9"
     },
     {
       "file": "frontend/browser-tests/replay.spec.ts-snapshots/mobile-summary-win32.png",
-      "sha256": "0ec5f9e0b37ea6a9121e81a1891e4514bb0ae5c5c6ecb561d1640decf3823a0e"
+      "sha256": "2a13abda4e7deccac9f52d927c8a194ab7a1bd8cbea431f0bdb3620450894029"
+    },
+    {
+      "file": "frontend/browser-tests/visitors.spec.ts-snapshots/bench-desktop-win32.png",
+      "sha256": "d78e3f613fa4e31d4cd29c836953f893449b0c08eda16b55a3399be9f03818d3"
+    },
+    {
+      "file": "frontend/browser-tests/visitors.spec.ts-snapshots/bench-phone-win32.png",
+      "sha256": "8b602687cd9cbd4ec22003cd45c250d99f92183492a769d5d7f5a0796dc55b9d"
+    },
+    {
+      "file": "frontend/browser-tests/visitors.spec.ts-snapshots/welcome-desktop-win32.png",
+      "sha256": "e47d4c6be9dc97298d93715d95ccab96f04895294209df06f61bf8b924dcd40b"
     }
   ],
   "date": "2026-11-14",
   "referenceSha256": "a516f799b1d42aae47362d10baaa5df64869f5a41166fc892d6564a64aeb2038",
-  "status": "Desktop/mobile memory lists and offline day-two reunion inspected; physical phone review pending",
+  "status": "Desktop and phone HUD, welcome, companion list and bench response inspected; physical phone review pending",
   "schemaVersion": 1,
   "worldId": "tiny-town-v1",
-  "change": "Familiar-neighbor inspector lists and saved meeting facts; two new memory screenshots reviewed. Existing 16 visual baselines preserved."
+  "change": "World-first paper/wood HUD, welcome, day-tools dock, readable phone selection, deterministic river motion and reversible Python-authored bench detours.",
+  "designReferences": [
+    {
+      "source": "Interface In Game / Stardew Valley",
+      "url": "https://interfaceingame.com/games/stardew-valley/",
+      "take": "Compact corner HUD, small bottom toolbar and framed character dialogue; existing Tiny Town artwork retained."
+    },
+    {
+      "source": "Interface In Game / Animal Crossing",
+      "url": "https://interfaceingame.com/games/animal-crossing-new-horizons/",
+      "take": "Inspect uncluttered world-first gameplay; no artwork copied."
+    },
+    {
+      "source": "Mobbin / Airbnb",
+      "url": "https://mobbin.com/screens/4f8dca21-ac00-4bd0-88df-5e1f0b1f9554",
+      "take": "Map-dominant screen with contextual controls, structure only."
+    },
+    {
+      "source": "Mobbin / PamPam",
+      "url": "https://mobbin.com/screens/30f935ea-2a87-4aa8-afb8-d29a1ccbbf88",
+      "take": "Compact contextual map panel, structure only."
+    }
+  ]
 }

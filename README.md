@@ -1,6 +1,6 @@
 # Tiny Town
 
-Tiny Town is a cozy little village where 30 neighbors live their own lives, with no player telling them what to do. Watch them eat, work, sleep, chat and wander as their needs and personalities shape the day.
+Tiny Town is a cozy little village where 30 neighbors live their own lives. Meet them, follow their day, and give wandering neighbors a new place to pause while their needs and personalities shape their choices.
 
 ![Animated preview of 30 residents going about their day in Tiny Town](assets/tiny-town.gif)
 
@@ -9,6 +9,10 @@ Tiny Town is a cozy little village where 30 neighbors live their own lives, with
 **[Play Tiny Town in your browser](https://khushi09-oss.github.io/jev-town/)** · No installation or API key needed.
 
 ## A look around
+
+Arriving in town:
+
+![Tiny Town's welcome, floating game controls and pixel village](frontend/browser-tests/visitors.spec.ts-snapshots/welcome-desktop-win32.png)
 
 Daytime, with Bea selected:
 
@@ -33,7 +37,19 @@ These screenshots use a staged mock recording for visual testing. The live site 
 - **Uncertainty and failure are separate.** Low confidence can trigger a fallback action. API failures stop the run by default; optional mock recovery is explicitly marked. Both are recorded so the viewer can distinguish them.
 - **Simulate once, watch many times.** A full day is 30 residents × 24 hours: 720 decisions. Python saves the day, and the browser replays that recording. Pausing, seeking or replaying makes no new Jev calls.
 
-The public demo uses mock decisions. Nothing trains or learns during a run; this is a small decision-model experiment, with no claim that Jev outperforms other approaches.
+The public demo uses mock decisions. Nothing trains or learns during a run, and no comparison with other models is claimed.
+
+## Explore and shape the town
+
+Choose **Explore town** to start watching at a readable close view, or **Meet a neighbor** to follow someone as the day plays. A clickable **Around the square** moment points to residents who have actually arrived to chat. **Whole town** returns to the overview. On phones, selecting any resident opens a readable 1× view; drag the map to look around.
+
+The compact dock holds play/pause, speed and the timeline. **Day tools** opens restart, loop and recording import; Escape closes it. River highlights use the recording clock, so pausing and seeking freezes or reconstructs them too. Reduced motion keeps those highlights still.
+
+**Place a bench** offers two locations. Starting at the next recorded hour, up to two wandering neighbors per hour detour nearby. **Watch the first visitors** takes you to the first response. Social personalities get first preference when Python assigns these detours. Their actions, needs and conversations remain the recorded ones: this is an explicitly scripted route response, not a fresh Jev choice or a sitting animation.
+
+Python authors both route plans; the browser applies the selected plan to a copy of the recording. Seek backward before placement to see the original world; restart and loop replay the same placement. **Remove bench and restore routes** undoes the change. One bench is available at a time, and placements stay in the current page session. Imported JSON recordings remain watchable but have no bench plans; new CLI HTML exports include them.
+
+Exploring, bench placement and all replay controls work offline with no decision requests. A public live simulation, Jev image decisions during visits and relationship-driven choices remain future work; they will need a backend with server-only credentials and spending limits.
 
 ## Run it locally
 
@@ -84,11 +100,11 @@ Python runs the simulation. Jev chooses actions; Python applies their consequenc
 npm --prefix frontend run dev
 ```
 
-Open the URL printed by Vite. **Load recording** opens a generated `run.json`; invalid files leave the previous replay usable. `?stage=six` shows the six-resident art checkpoint.
+Open the URL printed by Vite. **Day tools → Load recording** opens a generated `run.json`; invalid files leave the previous replay usable. `?stage=six` shows the six-resident art checkpoint.
 
 Space toggles playback, Escape closes panels, and arrow keys pan the focused map. Zoom, follow, seek, speed, restart and loop all reuse the same recording. Reduced motion is supported.
 
-On phones, **Fit** shows the complete town, with space for the map tools and action legend. Choose **1×/2×/3×** and drag for close-ups; **Recenter** returns to Fit. The zoom dropdown stays readable in Safari, and resizing or rotating the browser preserves the view.
+On phones, **Fit** shows the complete town. Selecting a neighbor switches to **1×** so their sprite stays readable beside the resident panel. Choose **1×/2×/3×** and drag for close-ups; **Recenter** or **Whole town** returns to Fit. The zoom dropdown stays readable in Safari, and resizing or rotating preserves the chosen zoom.
 
 Residents now meet in small conversation groups. Select someone to see who they are meeting, then click a partner's portrait to visit them. Chat gestures start when neighbors arrive, with one speech bubble at a time per group; seeking reconstructs the same meeting. The inspector and population drawer explain each resident's personality in plain language, and hovering a resident shows their name and trait.
 
