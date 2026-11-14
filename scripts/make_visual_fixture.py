@@ -10,6 +10,7 @@ from simulation.world import destination, point
 from simulation.interactions import plan_interactions
 from simulation.dialogue import scripted_conversations
 from simulation.memories import memory_state, record_meetings
+from simulation.visitors import bench_plans
 
 
 def fixture(count, forced_action=None, with_memories=False):
@@ -55,5 +56,7 @@ if __name__=='__main__':
     for count in (6,30):
         run=fixture(count)
         (ROOT/f'frontend/src/fixture-{count}.json').write_text(json.dumps(run))
+        if count == 30:
+            (ROOT/'frontend/src/bench-plans.json').write_text(json.dumps(bench_plans(run)))
     for action in ('eat','work','sleep','socialize','wander'):
         (ROOT/f'tests/fixtures/occupancy-{action}.json').write_text(json.dumps(fixture(30,action)))
