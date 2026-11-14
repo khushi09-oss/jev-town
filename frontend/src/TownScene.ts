@@ -356,8 +356,8 @@ export class TownScene extends Phaser.Scene {
         this.selection.setPosition(position.x,position.y).setDepth(position.y+.5).setVisible(true);
         this.nameplate.setText(`${identity.name} · ${personalities[identity.trait].label}`).setPosition(position.x,position.y-(partners.length?50:34)).setDepth(10003).setVisible(true);
         if(this.following) {
-          const cam=this.cameras.main,targetX=position.x-cam.width/(2*cam.zoom),targetY=position.y-cam.height/(2*cam.zoom);
-          const ease=this.reducedMotion ? 1 : Math.min(1,delta/300);
+          const cam=this.cameras.main,targetX=position.x-cam.width/2,targetY=position.y-cam.height/2;
+          const ease=this.reducedMotion || !this.playback.playing ? 1 : Math.min(1,delta/300);
           cam.scrollX=Math.round(cam.scrollX+(targetX-cam.scrollX)*ease);cam.scrollY=Math.round(cam.scrollY+(targetY-cam.scrollY)*ease);
         }
       }

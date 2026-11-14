@@ -53,6 +53,12 @@ test('a real town moment opens its resident and keyboard day tools preserve play
   await page.keyboard.press('Escape');
   await expect(page.locator('#day-tools')).not.toHaveAttribute('open','');
   expect((await page.evaluate(()=>window.__town!.state()) as {selected:string}).selected).toBe(selected);
+  await page.getByLabel('Map zoom',{exact:true}).selectOption('2');
+  await expect.poll(async()=>{
+    const s=await page.evaluate(()=>window.__town!.state()) as {selected:string;people:{id:string;x:number;y:number}[];camera:{left:number;right:number;top:number;bottom:number}};
+    const p=s.people.find(p=>p.id===s.selected)!,c=s.camera;
+    return Math.max(Math.abs((c.left+c.right)/2-p.x),Math.abs((c.top+c.bottom)/2-p.y));
+  }).toBeLessThanOrEqual(1);
 });
 
 for(const [width,height] of [[320,900],[375,667],[390,844],[768,900],[1440,900]])test(`exploration stays readable and reachable at ${width}px`,async({page})=>{
