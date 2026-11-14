@@ -6,6 +6,8 @@
   "fixtureKind": "simulation",
   "hours": 24,
   "startHour": 0,
+  "dayNumber": 1,
+  "initialMemories": [],
   "worldId": "tiny-town-v1",
   "residents": [
     {
@@ -1518,7 +1520,8 @@
           "interaction": null
         }
       ],
-      "conversations": []
+      "conversations": [],
+      "memoryUpdates": []
     },
     {
       "tick": 1,
@@ -2426,7 +2429,8 @@
           "interaction": null
         }
       ],
-      "conversations": []
+      "conversations": [],
+      "memoryUpdates": []
     },
     {
       "tick": 2,
@@ -3334,7 +3338,8 @@
           "interaction": null
         }
       ],
-      "conversations": []
+      "conversations": [],
+      "memoryUpdates": []
     },
     {
       "tick": 3,
@@ -4242,7 +4247,8 @@
           "interaction": null
         }
       ],
-      "conversations": []
+      "conversations": [],
+      "memoryUpdates": []
     },
     {
       "tick": 4,
@@ -5150,7 +5156,8 @@
           "interaction": null
         }
       ],
-      "conversations": []
+      "conversations": [],
+      "memoryUpdates": []
     },
     {
       "tick": 5,
@@ -6058,7 +6065,8 @@
           "interaction": null
         }
       ],
-      "conversations": []
+      "conversations": [],
+      "memoryUpdates": []
     },
     {
       "tick": 6,
@@ -7079,6 +7087,116 @@
             }
           ]
         }
+      ],
+      "memoryUpdates": [
+        {
+          "residentIds": [
+            "npc00",
+            "npc03"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 6
+        },
+        {
+          "residentIds": [
+            "npc00",
+            "npc09"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 6
+        },
+        {
+          "residentIds": [
+            "npc00",
+            "npc15"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 6
+        },
+        {
+          "residentIds": [
+            "npc03",
+            "npc09"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 6
+        },
+        {
+          "residentIds": [
+            "npc03",
+            "npc15"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 6
+        },
+        {
+          "residentIds": [
+            "npc09",
+            "npc15"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 6
+        },
+        {
+          "residentIds": [
+            "npc18",
+            "npc21"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 6
+        },
+        {
+          "residentIds": [
+            "npc18",
+            "npc24"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 6
+        },
+        {
+          "residentIds": [
+            "npc18",
+            "npc27"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 6
+        },
+        {
+          "residentIds": [
+            "npc21",
+            "npc24"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 6
+        },
+        {
+          "residentIds": [
+            "npc21",
+            "npc27"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 6
+        },
+        {
+          "residentIds": [
+            "npc24",
+            "npc27"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 6
+        }
       ]
     },
     {
@@ -8023,6 +8141,17 @@
               "text": "Deal. It's good to have someone to share a break with."
             }
           ]
+        }
+      ],
+      "memoryUpdates": [
+        {
+          "residentIds": [
+            "npc06",
+            "npc12"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 7
         }
       ]
     },
@@ -8973,7 +9102,7 @@
           "turns": [
             {
               "speakerId": "npc00",
-              "text": "Finn, come sit with us! Have you noticed the flowers by the garden?"
+              "text": "Finn, good to see you again! We've shared 1 break before."
             },
             {
               "speakerId": "npc03",
@@ -8988,6 +9117,62 @@
               "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
             }
           ]
+        }
+      ],
+      "memoryUpdates": [
+        {
+          "residentIds": [
+            "npc00",
+            "npc03"
+          ],
+          "meetings": 2,
+          "lastMetDay": 1,
+          "lastMetHour": 8
+        },
+        {
+          "residentIds": [
+            "npc00",
+            "npc21"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 8
+        },
+        {
+          "residentIds": [
+            "npc00",
+            "npc27"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 8
+        },
+        {
+          "residentIds": [
+            "npc03",
+            "npc21"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 8
+        },
+        {
+          "residentIds": [
+            "npc03",
+            "npc27"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 8
+        },
+        {
+          "residentIds": [
+            "npc21",
+            "npc27"
+          ],
+          "meetings": 2,
+          "lastMetDay": 1,
+          "lastMetHour": 8
         }
       ]
     },
@@ -9976,7 +10161,7 @@
           "turns": [
             {
               "speakerId": "npc06",
-              "text": "Sam, come sit with us! Have you noticed the bread at the bakery?"
+              "text": "Mae, good to see you again! We've shared 1 break before."
             },
             {
               "speakerId": "npc09",
@@ -10045,6 +10230,125 @@
               "text": "Deal. It's good to have someone to share a break with."
             }
           ]
+        }
+      ],
+      "memoryUpdates": [
+        {
+          "residentIds": [
+            "npc06",
+            "npc09"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 9
+        },
+        {
+          "residentIds": [
+            "npc06",
+            "npc12"
+          ],
+          "meetings": 2,
+          "lastMetDay": 1,
+          "lastMetHour": 9
+        },
+        {
+          "residentIds": [
+            "npc06",
+            "npc13"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 9
+        },
+        {
+          "residentIds": [
+            "npc09",
+            "npc12"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 9
+        },
+        {
+          "residentIds": [
+            "npc09",
+            "npc13"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 9
+        },
+        {
+          "residentIds": [
+            "npc12",
+            "npc13"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 9
+        },
+        {
+          "residentIds": [
+            "npc15",
+            "npc16"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 9
+        },
+        {
+          "residentIds": [
+            "npc15",
+            "npc18"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 9
+        },
+        {
+          "residentIds": [
+            "npc15",
+            "npc19"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 9
+        },
+        {
+          "residentIds": [
+            "npc16",
+            "npc18"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 9
+        },
+        {
+          "residentIds": [
+            "npc16",
+            "npc19"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 9
+        },
+        {
+          "residentIds": [
+            "npc18",
+            "npc19"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 9
+        },
+        {
+          "residentIds": [
+            "npc22",
+            "npc24"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 9
         }
       ]
     },
@@ -11051,6 +11355,89 @@
               "text": "It's been a rough day. I'm glad you stopped to talk."
             }
           ]
+        }
+      ],
+      "memoryUpdates": [
+        {
+          "residentIds": [
+            "npc01",
+            "npc04"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 10
+        },
+        {
+          "residentIds": [
+            "npc01",
+            "npc07"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 10
+        },
+        {
+          "residentIds": [
+            "npc01",
+            "npc10"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 10
+        },
+        {
+          "residentIds": [
+            "npc04",
+            "npc07"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 10
+        },
+        {
+          "residentIds": [
+            "npc04",
+            "npc10"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 10
+        },
+        {
+          "residentIds": [
+            "npc07",
+            "npc10"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 10
+        },
+        {
+          "residentIds": [
+            "npc25",
+            "npc26"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 10
+        },
+        {
+          "residentIds": [
+            "npc25",
+            "npc28"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 10
+        },
+        {
+          "residentIds": [
+            "npc26",
+            "npc28"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 10
         }
       ]
     },
@@ -12073,6 +12460,116 @@
             }
           ]
         }
+      ],
+      "memoryUpdates": [
+        {
+          "residentIds": [
+            "npc02",
+            "npc05"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 11
+        },
+        {
+          "residentIds": [
+            "npc02",
+            "npc08"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 11
+        },
+        {
+          "residentIds": [
+            "npc02",
+            "npc11"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 11
+        },
+        {
+          "residentIds": [
+            "npc05",
+            "npc08"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 11
+        },
+        {
+          "residentIds": [
+            "npc05",
+            "npc11"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 11
+        },
+        {
+          "residentIds": [
+            "npc08",
+            "npc11"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 11
+        },
+        {
+          "residentIds": [
+            "npc14",
+            "npc17"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 11
+        },
+        {
+          "residentIds": [
+            "npc14",
+            "npc23"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 11
+        },
+        {
+          "residentIds": [
+            "npc14",
+            "npc29"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 11
+        },
+        {
+          "residentIds": [
+            "npc17",
+            "npc23"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 11
+        },
+        {
+          "residentIds": [
+            "npc17",
+            "npc29"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 11
+        },
+        {
+          "residentIds": [
+            "npc23",
+            "npc29"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 11
+        }
       ]
     },
     {
@@ -12981,7 +13478,8 @@
           "interaction": null
         }
       ],
-      "conversations": []
+      "conversations": [],
+      "memoryUpdates": []
     },
     {
       "tick": 13,
@@ -13889,7 +14387,8 @@
           "interaction": null
         }
       ],
-      "conversations": []
+      "conversations": [],
+      "memoryUpdates": []
     },
     {
       "tick": 14,
@@ -14797,7 +15296,8 @@
           "interaction": null
         }
       ],
-      "conversations": []
+      "conversations": [],
+      "memoryUpdates": []
     },
     {
       "tick": 15,
@@ -15735,7 +16235,7 @@
           "turns": [
             {
               "speakerId": "npc03",
-              "text": "Remy, come sit with us! Have you noticed the bread at the bakery?"
+              "text": "Remy, good to see you again! We've shared 1 break before."
             },
             {
               "speakerId": "npc21",
@@ -15746,6 +16246,35 @@
               "text": "I'd love to! It's always nicer sharing these little things with a neighbor."
             }
           ]
+        }
+      ],
+      "memoryUpdates": [
+        {
+          "residentIds": [
+            "npc03",
+            "npc21"
+          ],
+          "meetings": 2,
+          "lastMetDay": 1,
+          "lastMetHour": 15
+        },
+        {
+          "residentIds": [
+            "npc03",
+            "npc27"
+          ],
+          "meetings": 2,
+          "lastMetDay": 1,
+          "lastMetHour": 15
+        },
+        {
+          "residentIds": [
+            "npc21",
+            "npc27"
+          ],
+          "meetings": 3,
+          "lastMetDay": 1,
+          "lastMetHour": 15
         }
       ]
     },
@@ -16706,7 +17235,7 @@
           "turns": [
             {
               "speakerId": "npc06",
-              "text": "Sam, come sit with us! Have you noticed the water in the fountain?"
+              "text": "Sam, good to see you again! We've shared 1 break before."
             },
             {
               "speakerId": "npc09",
@@ -16732,7 +17261,7 @@
           "turns": [
             {
               "speakerId": "npc18",
-              "text": "Uma, come sit with us! Have you noticed the water in the fountain?"
+              "text": "Uma, good to see you again! We've shared 1 break before."
             },
             {
               "speakerId": "npc24",
@@ -16747,6 +17276,71 @@
               "text": "Deal. It's good to have someone to share a break with."
             }
           ]
+        }
+      ],
+      "memoryUpdates": [
+        {
+          "residentIds": [
+            "npc06",
+            "npc09"
+          ],
+          "meetings": 2,
+          "lastMetDay": 1,
+          "lastMetHour": 16
+        },
+        {
+          "residentIds": [
+            "npc06",
+            "npc12"
+          ],
+          "meetings": 3,
+          "lastMetDay": 1,
+          "lastMetHour": 16
+        },
+        {
+          "residentIds": [
+            "npc06",
+            "npc15"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 16
+        },
+        {
+          "residentIds": [
+            "npc09",
+            "npc12"
+          ],
+          "meetings": 2,
+          "lastMetDay": 1,
+          "lastMetHour": 16
+        },
+        {
+          "residentIds": [
+            "npc09",
+            "npc15"
+          ],
+          "meetings": 2,
+          "lastMetDay": 1,
+          "lastMetHour": 16
+        },
+        {
+          "residentIds": [
+            "npc12",
+            "npc15"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 16
+        },
+        {
+          "residentIds": [
+            "npc18",
+            "npc24"
+          ],
+          "meetings": 2,
+          "lastMetDay": 1,
+          "lastMetHour": 16
         }
       ]
     },
@@ -17692,6 +18286,17 @@
               "text": "Deal. It's good to have someone to share a break with."
             }
           ]
+        }
+      ],
+      "memoryUpdates": [
+        {
+          "residentIds": [
+            "npc10",
+            "npc25"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 17
         }
       ]
     },
@@ -18658,6 +19263,62 @@
             }
           ]
         }
+      ],
+      "memoryUpdates": [
+        {
+          "residentIds": [
+            "npc07",
+            "npc13"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 18
+        },
+        {
+          "residentIds": [
+            "npc07",
+            "npc16"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 18
+        },
+        {
+          "residentIds": [
+            "npc07",
+            "npc22"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 18
+        },
+        {
+          "residentIds": [
+            "npc13",
+            "npc16"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 18
+        },
+        {
+          "residentIds": [
+            "npc13",
+            "npc22"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 18
+        },
+        {
+          "residentIds": [
+            "npc16",
+            "npc22"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 18
+        }
       ]
     },
     {
@@ -19596,7 +20257,7 @@
           "turns": [
             {
               "speakerId": "npc01",
-              "text": "Noor, a quick break from work? I'd like to hear about the flowers by the garden."
+              "text": "Noor, good to see you again! We've shared 1 break before."
             },
             {
               "speakerId": "npc04",
@@ -19607,6 +20268,35 @@
               "text": "It's been a rough day. I'm glad you stopped to talk."
             }
           ]
+        }
+      ],
+      "memoryUpdates": [
+        {
+          "residentIds": [
+            "npc01",
+            "npc04"
+          ],
+          "meetings": 2,
+          "lastMetDay": 1,
+          "lastMetHour": 19
+        },
+        {
+          "residentIds": [
+            "npc01",
+            "npc28"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 19
+        },
+        {
+          "residentIds": [
+            "npc04",
+            "npc28"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 19
         }
       ]
     },
@@ -20658,7 +21348,7 @@
           "turns": [
             {
               "speakerId": "npc23",
-              "text": "Wren, let's take a quiet break and enjoy the water in the fountain."
+              "text": "Luca, good to see you again! We've shared 1 break before."
             },
             {
               "speakerId": "npc26",
@@ -20669,6 +21359,143 @@
               "text": "It's been a rough day. I'm glad you stopped to talk."
             }
           ]
+        }
+      ],
+      "memoryUpdates": [
+        {
+          "residentIds": [
+            "npc00",
+            "npc02"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 20
+        },
+        {
+          "residentIds": [
+            "npc00",
+            "npc05"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 20
+        },
+        {
+          "residentIds": [
+            "npc00",
+            "npc08"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 20
+        },
+        {
+          "residentIds": [
+            "npc02",
+            "npc05"
+          ],
+          "meetings": 2,
+          "lastMetDay": 1,
+          "lastMetHour": 20
+        },
+        {
+          "residentIds": [
+            "npc02",
+            "npc08"
+          ],
+          "meetings": 2,
+          "lastMetDay": 1,
+          "lastMetHour": 20
+        },
+        {
+          "residentIds": [
+            "npc05",
+            "npc08"
+          ],
+          "meetings": 2,
+          "lastMetDay": 1,
+          "lastMetHour": 20
+        },
+        {
+          "residentIds": [
+            "npc11",
+            "npc14"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 20
+        },
+        {
+          "residentIds": [
+            "npc11",
+            "npc19"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 20
+        },
+        {
+          "residentIds": [
+            "npc11",
+            "npc20"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 20
+        },
+        {
+          "residentIds": [
+            "npc14",
+            "npc19"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 20
+        },
+        {
+          "residentIds": [
+            "npc14",
+            "npc20"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 20
+        },
+        {
+          "residentIds": [
+            "npc19",
+            "npc20"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 20
+        },
+        {
+          "residentIds": [
+            "npc23",
+            "npc26"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 20
+        },
+        {
+          "residentIds": [
+            "npc23",
+            "npc29"
+          ],
+          "meetings": 2,
+          "lastMetDay": 1,
+          "lastMetHour": 20
+        },
+        {
+          "residentIds": [
+            "npc26",
+            "npc29"
+          ],
+          "meetings": 1,
+          "lastMetDay": 1,
+          "lastMetHour": 20
         }
       ]
     },
@@ -21578,7 +22405,8 @@
           "interaction": null
         }
       ],
-      "conversations": []
+      "conversations": [],
+      "memoryUpdates": []
     },
     {
       "tick": 22,
@@ -22486,7 +23314,8 @@
           "interaction": null
         }
       ],
-      "conversations": []
+      "conversations": [],
+      "memoryUpdates": []
     },
     {
       "tick": 23,
@@ -23394,7 +24223,8 @@
           "interaction": null
         }
       ],
-      "conversations": []
+      "conversations": [],
+      "memoryUpdates": []
     }
   ]
 }

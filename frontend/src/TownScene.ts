@@ -5,6 +5,8 @@ import world from './world.json';
 import type { Identity } from './contracts';
 import type { Point } from './contracts';
 import { personalities } from './personality';
+import type {VisitorSession} from './visitors';
+import {ambientPixels} from './ambience';
 
 const urls = import.meta.glob('./assets/*.png', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
 const hex = (color: string) => parseInt(color.slice(1), 16);
@@ -27,6 +29,9 @@ export class TownScene extends Phaser.Scene {
   reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   ready = false;
   cameraChanged = false;
+  visitorSession?:VisitorSession;
+  visitorBench?:Phaser.GameObjects.Image;
+  riverMotion?:Phaser.GameObjects.Graphics;
   private lastWidth = 0;
   private lastHeight = 0;
   private manualZoom = 0;
@@ -45,6 +50,8 @@ export class TownScene extends Phaser.Scene {
     camera.setBackgroundColor(tokens.colors.grass);
     this.drawGround();
     this.drawScenery();
+    this.riverMotion=this.add.graphics().setDepth(2);
+    this.visitorBench=this.add.image(0,0,'bench').setOrigin(.5,1).setVisible(false);
     this.playback.run.residents.forEach((identity, i) => {
       const shadow = this.add.ellipse(0, 0, 15, 5, 0x332a23, .22);
       this.shadows.push(shadow);
@@ -290,6 +297,11 @@ export class TownScene extends Phaser.Scene {
   update(_time:number,delta:number) {
     if(!this.ready)return;
     this.playback.advance(delta/1000);
+    this.riverMotion?.clear().fillStyle(0xa0c6ce,.65);
+    for(const p of ambientPixels(this.playback.time,this.reducedMotion))this.riverMotion?.fillRect(p.x,p.y,4,1);
+    const event=this.visitorSession?.event;
+    this.visitorBench?.setVisible(this.visitorSession?.visibleAt(this.playback.time) ?? false);
+    if(event)this.visitorBench?.setPosition(event.site.x,event.site.y).setDepth(event.site.y);
     this.fit();
     const hour=this.playback.run.startHour+this.playback.time;
     const night=nightAlpha(hour);
@@ -344,8 +356,8 @@ export class TownScene extends Phaser.Scene {
         this.selection.setPosition(position.x,position.y).setDepth(position.y+.5).setVisible(true);
         this.nameplate.setText(`${identity.name} · ${personalities[identity.trait].label}`).setPosition(position.x,position.y-(partners.length?50:34)).setDepth(10003).setVisible(true);
         if(this.following) {
-          const cam=this.cameras.main,targetX=position.x-cam.width/(2*cam.zoom),targetY=position.y-cam.height/(2*cam.zoom);
-          const ease=this.reducedMotion ? 1 : Math.min(1,delta/300);
+          const cam=this.cameras.main,targetX=position.x-cam.width/2,targetY=position.y-cam.height/2;
+          const ease=this.reducedMotion || !this.playback.playing ? 1 : Math.min(1,delta/300);
           cam.scrollX=Math.round(cam.scrollX+(targetX-cam.scrollX)*ease);cam.scrollY=Math.round(cam.scrollY+(targetY-cam.scrollY)*ease);
         }
       }

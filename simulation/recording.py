@@ -4,15 +4,17 @@ import os
 from .world import destination
 from .interactions import plan_interactions
 from .dialogue import scripted_conversations
+from .memories import memory_state, record_meetings
 
 
 def stats(npc):
     return {name: getattr(npc, name) for name in ('hunger', 'energy', 'mood', 'money')}
 
 
-def start_recording(town, identities, seed, mode):
+def start_recording(town, identities, seed, mode, *, day_number=1, memories=None):
     return {'schemaVersion': 1, 'runId': f'tiny-town-{seed}-{mode}-v1', 'seed': seed,
             'mode': mode, 'fixtureKind': 'simulation', 'hours': 24, 'startHour': 0,
+            'dayNumber':day_number,'initialMemories':memories or [],
             'worldId': 'tiny-town-v1', 'residents': [
                 {k: p[k] for k in ('id','name','trait','appearanceId','homeId')} for p in identities],
             'initialSnapshot': [{'id': n.name, 'stats': stats(n), 'position':
@@ -29,8 +31,10 @@ def append_frame(recording, before, after, tick):
                             'decisionSource': new.decision_source, 'errorCode': new.error_code},
                         'destination': destination(i,new.last,tick,recording['seed'])})
     plan_interactions(entries, tick, recording['seed'])
-    recording['frames'].append({'tick':tick,'clockHour':tick%24,'sequence':tick+1,'residents':entries,
-                               'conversations': scripted_conversations(entries, recording['residents'], tick, recording['seed'])})
+    frame={'tick':tick,'clockHour':tick%24,'sequence':tick+1,'residents':entries,
+           'conversations':scripted_conversations(entries,recording['residents'],tick,recording['seed'],memory_state(recording))}
+    record_meetings(recording,frame)
+    recording['frames'].append(frame)
     if any(n.decision_source=='error-mock' for n in after):
         recording['mode']='mixed'
 

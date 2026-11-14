@@ -10,10 +10,15 @@ import portraits from './assets/portraits.png?url';
 import tokens from './design-tokens.json';
 import { personalities } from './personality';
 import { dayHighlights } from './summary';
+import { familiarNeighbors } from './memories';
+import defaultBenchPlans from './bench-plans.json';
+import {VisitorSession} from './visitors';
+import type {BenchPlan} from './visitors';
 
 declare global {
   interface Window {
     __TINY_TOWN_RECORDING__?: unknown;
+    __TINY_TOWN_BENCH_PLANS__?: BenchPlan[];
     __town?: { state: () => unknown; seek: (time: number) => void; ready: () => boolean };
   }
 }
@@ -40,16 +45,20 @@ const setText = (selector: string, value: string) => {
 const app=$('#app');
 app.innerHTML=`
   <header><h1>${icon('home')} Tiny Town</h1><div class="clock" id="clock">Day 1 · 14:00</div>
-    <div class="header-actions"><span id="mode" class="mode"></span><button id="population-button" aria-haspopup="dialog">${icon('socialize')}<span id="population-count"></span></button><button id="summary-button" aria-label="Open day summary">${icon('chart')}</button></div></header>
+    <div class="header-actions"><button id="population-button" aria-haspopup="dialog">${icon('socialize')}<span id="population-count"></span></button><button id="summary-button" aria-label="Open day summary">${icon('chart')}</button></div></header>
   <main id="main"><section id="viewport" aria-label="Town replay"><div id="canvas-host" tabindex="0" role="application" aria-label="Town map. Arrow keys pan; select residents through the population button."></div>
     <div class="map-tools"><label>Zoom <select id="zoom" aria-label="Map zoom"><option value="0">Fit</option><option value="1">1×</option><option value="2">2×</option><option value="3">3×</option></select></label><button id="fit">Recenter</button></div>
     <button id="speech-bubble" aria-label="Read current conversation" hidden></button>
+    <section id="welcome" aria-label="Welcome to Tiny Town"><p class="eyebrow">Make yourself at home</p><h2>A small town.<br>A day of its own.</h2><div id="welcome-neighbors" aria-hidden="true"></div><p>Thirty neighbors, each with their own habits and familiar faces. Get closer and see who you meet.</p><div><button id="explore-town">Explore town ${icon('wander')}</button><button id="meet-neighbor">Meet a neighbor</button></div><small>A recorded world · free to explore</small></section>
+    <button id="town-moment" hidden></button>
+    <nav id="world-actions" aria-label="Explore and shape the town"><button id="explore-view">Explore</button><button id="shape-town" aria-haspopup="dialog">Place a bench</button><button id="overview">Whole town</button></nav>
     <div id="legend" class="legend" aria-label="Current action counts"></div><div id="status" role="status" hidden></div>
   </section><aside id="inspector" aria-label="Selected resident" hidden></aside></main>
   <footer><div class="timeline"><input id="seek" aria-label="Seek replay time" type="range" min="0" max="24" step="0.01" value="14.75"><div class="hour-labels">${Array.from({length:9},(_,i)=>`<span>${String(i*3).padStart(2,'0')}</span>`).join('')}</div></div>
     <div class="controls"><button id="play" aria-label="Play">${icon('play')}<span>Play</span></button><div class="speeds" aria-label="Playback speed">${[1,2,4].map(s=>`<button data-speed="${s}" aria-pressed="${s===1}">${s}×</button>`).join('')}</div>
-    <button id="restart">${icon('restart')}<span>Restart</span></button><label class="loop"><input id="loop" type="checkbox">Loop</label><span id="follow-state">Observing the town</span><span id="current-time"></span>
-    <label class="import-button">Load recording<input id="recording" type="file" accept=".json,application/json"></label></div></footer>
+    <span id="follow-state">Observing the town</span><span id="current-time"></span>
+    <details id="day-tools"><summary>Day tools</summary><div class="day-tools-content"><span id="mode" class="mode"></span><button id="restart">${icon('restart')}<span>Restart</span></button><label class="loop"><input id="loop" type="checkbox">Loop</label><label class="import-button">Load recording<input id="recording" type="file" accept=".json,application/json"></label></div></details></div></footer>
+  <dialog id="shape" aria-labelledby="shape-title"><div class="drawer-heading"><h2 id="shape-title">A place to slow down</h2><button data-close="shape" aria-label="Close bench placement">${icon('close')}</button></div><p>Add a bench along a walking route. From the next hour, up to two wandering neighbors per hour take a detour nearby.</p><p class="muted small">Free scripted route response, authored by Python. Their recorded actions and needs stay the same. No live AI calls.</p><div id="bench-sites"></div><p id="bench-feedback" role="status"></p><button id="watch-bench" hidden>Watch the first visitors</button><button id="undo-bench" hidden>Remove bench and restore routes</button></dialog>
   <dialog id="population"><div class="drawer-heading"><h2>Our neighbors</h2><button data-close="population" aria-label="Close population">${icon('close')}</button></div><p class="muted">Select a resident to see how their day is going.</p><label>Sort by <select id="sort"><option value="name">Name</option><option value="trait">Personality</option><option value="action">Action</option></select></label><div id="resident-list"></div></dialog>
   <dialog id="summary"><div class="drawer-heading"><h2>A day in Tiny Town</h2><button data-close="summary" aria-label="Close day summary">${icon('close')}</button></div><p class="muted">Recorded actions, after any confidence fallback.</p><div id="summary-content"></div></dialog>
   <dialog id="conversation" aria-labelledby="conversation-title"><div class="drawer-heading"><h2 id="conversation-title">A moment at the square</h2><button data-close="conversation" aria-label="Close conversation">${icon('close')}</button></div><div id="conversation-content"></div></dialog>`;
@@ -61,17 +70,37 @@ try {
 let selected: string|null=null,game:Phaser.Game,scene:TownScene;
 let resizeObserver:ResizeObserver;
 let lastViewKey='',lastPopulationKey='',lastDialogueKey='';
+let visitors=new VisitorSession(playback.run,window.__TINY_TOWN_BENCH_PLANS__ ??
+  (!window.__TINY_TOWN_RECORDING__ && playback.run.runId===sample30.runId ? defaultBenchPlans : []));
+function dismissWelcome(){ $('#welcome').hidden=true; }
+function exploreTown(){
+  dismissWelcome();document.body.classList.add('exploring');
+  scene.zoom(1);$<HTMLSelectElement>('#zoom').value='1';
+}
+function renderBenchPanel(){
+  $('#bench-sites').innerHTML=visitors.plans.map(site=>`<button data-bench="${site.id}" ${playback.time>=23 || visitors.event?'disabled':''}><strong>${escapeHTML(site.name)}</strong><span>${site.id==='park-gate'?'Beside the park entrance':'Along the lower garden path'}</span></button>`).join('');
+  const event=visitors.event;
+  $('#bench-feedback').textContent=event ? `${event.site.name}: bench placed. Detours begin at ${String((playback.run.startHour+event.effectiveTick)%24).padStart(2,'0')}:00. Seek back before placement to see the original town.` : visitors.plans.length ? playback.time>=23?'This day is nearly over. Seek back before the final hour to place a bench.':'Choose one of the two available sites. You can remove the bench at any time.' : 'This recording has no Python-authored bench routes. Explore the included sample or export a new day with the updated CLI.';
+  $('#undo-bench').hidden=!event;$('#watch-bench').hidden=!event;
+  $('#bench-sites').querySelectorAll<HTMLButtonElement>('[data-bench]').forEach(button=>button.onclick=()=>{
+    playback.run=visitors.place(button.dataset.bench!,playback.time);
+    lastViewKey='';lastDialogueKey='';renderBenchPanel();
+  });
+}
 
 function portrait(identity:Identity,large=false) {
   const index=Number(identity.appearanceId.slice(-2));
   const scale=large?1.5:.625;
-  return `<span class="portrait ${large?'large':''}" aria-hidden="true" style="background-image:url('${portraits}');background-size:${384*scale}px ${320*scale}px;background-position:${-(index%6)*64*scale}px ${-Math.floor(index/6)*64*scale}px"></span>`;
+  return `<span class="portrait ${large?'large':''}" aria-hidden="true" style="--portrait-col:${index%6};--portrait-row:${Math.floor(index/6)};background-image:url('${portraits}');background-size:${384*scale}px ${320*scale}px;background-position:${-(index%6)*64*scale}px ${-Math.floor(index/6)*64*scale}px"></span>`;
 }
+$('#welcome-neighbors').innerHTML=playback.run.residents.slice(0,4).map(p=>portrait(p)).join('');
 function selectResident(identity:Identity) {
+  dismissWelcome();
   selected=identity.id;scene.selected=selected;
   $('#inspector').hidden=false;$('#main').classList.add('has-inspector');
   lastViewKey='';renderInspector();
   if(scene.ready)scene.center(playback.run.residents.findIndex(p=>p.id===selected));
+  if(matchMedia('(max-width:600px)').matches){document.body.classList.add('exploring');scene.zoom(1);$<HTMLSelectElement>('#zoom').value='1';}
   $('#follow').focus();
 }
 function closeInspector() {
@@ -86,6 +115,7 @@ function activityCaption(index: number) {
   const entry=playback.entry(index),action=entry.decision.appliedAction;
   const location=places[entry.destination.locationId]||`their cottage (${playback.run.residents[index].homeId.slice(-2)})`;
   const names=partnerNames(entry);
+  if(entry.destination.anchorId.startsWith('bench-'))return `${playback.arrived(index)?'Taking a wandering break':'Walking'} near your bench in the park.`;
   if(action==='socialize' && names) {
     const active=playback.conversation(index);
     if(active.length)return `Chatting with ${active.map(p=>escapeHTML(p.name)).join(', ')} at ${location}.`;
@@ -101,6 +131,7 @@ function renderInspector() {
   const accordion=$<HTMLDetailsElement>('#decision-details')?.open;
   const focusId=document.activeElement instanceof HTMLElement && $('#inspector').contains(document.activeElement) ? document.activeElement.id : null;
   const partners=playback.partners(index);
+  const familiar=familiarNeighbors(playback.run,playback.time,index);
   const events=playback.run.frames.slice(Math.max(0,playback.hour-3),playback.hour+1).map(f=>({hour:f.clockHour,entry:f.residents[index]})).reverse();
   $('#inspector').innerHTML=`<div class="inspector-top"><div class="identity">${portrait(identity,true)}<div><h2>${escapeHTML(identity.name)}</h2><p>Resident ${index+1}</p><span class="trait">${identity.trait}</span></div></div><button id="close-inspector" aria-label="Close resident inspector">${icon('close')}</button></div>
     <button id="follow" aria-pressed="${scene.following}">${icon('follow')}<span>${scene.following?'Following':'Follow resident'}</span></button>
@@ -110,11 +141,13 @@ function renderInspector() {
     ${playback.dialogue(index)?'<button id="read-conversation">Read conversation</button>':''}
     <section><h3>Needs</h3>${(['hunger','energy','mood'] as const).map(key=>`<div class="need"><label for="${key}-bar">${key==='hunger'?'Hunger ↑':key[0].toUpperCase()+key.slice(1)}</label><meter id="${key}-bar" min="0" max="100" value="${stats[key]}"></meter><span>${stats[key]}%</span></div>`).join('')}<p class="money">Money <strong>${stats.money}</strong></p><p class="muted small">Higher hunger means hungrier. Needs update on the hour.</p></section>
     <section><h3>Today</h3><div class="resident-timeline">${playback.run.frames.map(f=>`<span title="${f.clockHour}:00 — ${labels[f.residents[index].decision.appliedAction]}" style="background:var(--${f.residents[index].decision.appliedAction})"></span>`).join('')}</div><div class="timeline-captions"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div></section>
+    ${familiar===null?'':`<section aria-labelledby="familiar-title"><h3 id="familiar-title">Familiar neighbors</h3><p class="muted small">Shared breaks from completed meeting hours.</p>${familiar.length?`<div class="familiar-neighbors">${familiar.map(memory=>`<button data-familiar="${memory.person.id}" aria-label="Visit familiar neighbor ${escapeHTML(memory.person.name)}">${portrait(memory.person)}<span><strong>${escapeHTML(memory.person.name)}</strong><small>${memory.meetings} ${memory.meetings===1?'meeting':'meetings'} · Last meeting hour: day ${memory.lastMetDay}, ${String(memory.lastMetHour).padStart(2,'0')}:00</small></span></button>`).join('')}</div>`:'<p class="memory-empty">No shared breaks remembered yet.</p>'}</section>`}
     <section><h3>Recorded activities</h3><ol class="events">${events.map(e=>`<li><time>${String(e.hour).padStart(2,'0')}:00</time> ${labels[e.entry.decision.appliedAction]}${partnerNames(e.entry)?' with '+partnerNames(e.entry):''} at ${places[e.entry.destination.locationId]||'home'}</li>`).join('')}</ol></section>
     <details id="decision-details" ${accordion?'open':''}><summary>Decision details</summary><dl><dt>Chosen action</dt><dd>${decision.chosenAction||'No valid API choice'}</dd><dt>Confidence</dt><dd>${decision.confidence===null?'Unavailable':decision.confidence.toFixed(2)}</dd><dt>Confidence fallback</dt><dd>${decision.fellBack?'Wander applied':'None'}</dd><dt>Source</dt><dd>${decision.decisionSource}</dd><dt>Error fallback</dt><dd>${escapeHTML(decision.errorCode||'None')}</dd></dl></details>`;
   $('#close-inspector').onclick=closeInspector;
   $('#follow').onclick=()=>{scene.following=!scene.following;renderInspector();if(scene.following)scene.center(index);};
   $('#inspector').querySelectorAll<HTMLButtonElement>('[data-partner]').forEach(button=>button.onclick=()=>selectResident(playback.run.residents.find(p=>p.id===button.dataset.partner)!));
+  $('#inspector').querySelectorAll<HTMLButtonElement>('[data-familiar]').forEach(button=>button.onclick=()=>selectResident(playback.run.residents.find(p=>p.id===button.dataset.familiar)!));
   const read=$('#read-conversation');if(read)read.onclick=openConversation;
   if(focusId)document.getElementById(focusId)?.focus({preventScroll:true});
 }
@@ -149,6 +182,7 @@ function startScene() {
   resizeObserver?.disconnect();
   if(game)game.destroy(true);
   scene=new TownScene(playback,selectResident,()=>{if(selected)renderInspector();});
+  scene.visitorSession=visitors;
   game=new Phaser.Game({type:Phaser.CANVAS,parent:'canvas-host',width:$('#canvas-host').clientWidth,height:$('#canvas-host').clientHeight,
     pixelArt:true,antialias:false,roundPixels:true,audio:{noAudio:true},banner:false,scene,
     scale:{mode:Phaser.Scale.NONE},fps:{target:60}});
@@ -208,11 +242,26 @@ function showError(message:string) {
   const status=$('#status');status.hidden=false;status.textContent=message;
   const retry=document.createElement('button');retry.textContent='Retry load';retry.onclick=()=>$<HTMLInputElement>('#recording').click();status.append(retry);
 }
-$('#population-button').onclick=()=>{renderPopulation();$<HTMLDialogElement>('#population').showModal();};
+$('#population-button').onclick=()=>{dismissWelcome();renderPopulation();$<HTMLDialogElement>('#population').showModal();};
+$('#explore-town').onclick=()=>{exploreTown();playback.playing=true;};
+$('#explore-view').onclick=exploreTown;
+$('#meet-neighbor').onclick=()=>{exploreTown();selectResident(playback.run.residents.find((_,i)=>playback.entry(i).decision.appliedAction==='socialize') ?? playback.run.residents[0]);scene.following=true;playback.playing=true;renderInspector();};
+$('#overview').onclick=()=>{dismissWelcome();$('#fit').click();};
+$('#shape-town').onclick=()=>{dismissWelcome();playback.playing=false;renderBenchPanel();$<HTMLDialogElement>('#shape').showModal();};
+$('#undo-bench').onclick=()=>{playback.run=visitors.reset();lastViewKey='';lastDialogueKey='';renderBenchPanel();};
+$('#watch-bench').onclick=()=>{
+  const event=visitors.event;if(!event)return;
+  const tick=event.site.frames.findIndex((changes,h)=>h>=event.effectiveTick && changes.length>0);
+  if(tick<0){$('#bench-feedback').textContent='No wandering visitors remain in this recorded day. Try placing it earlier.';return;}
+  playback.playing=false;playback.seek(tick+.99);
+  $<HTMLDialogElement>('#shape').close();exploreTown();
+  selectResident(playback.run.residents.find(p=>p.id===event.site.frames[tick][0].id)!);
+  scene.following=true;renderInspector();
+};
 $('#summary-button').onclick=()=>{renderSummary();$<HTMLDialogElement>('#summary').showModal();};
 document.querySelectorAll<HTMLButtonElement>('[data-close]').forEach(b=>b.onclick=()=>$<HTMLDialogElement>(`#${b.dataset.close}`).close());
 $('#sort').onchange=renderPopulation;
-$('#play').onclick=()=>{if(playback.time===24)playback.restart();playback.playing=!playback.playing;};
+$('#play').onclick=()=>{dismissWelcome();if(playback.time===24)playback.restart();playback.playing=!playback.playing;};
 $('#restart').onclick=()=>playback.restart();
 $('#seek').oninput=()=>playback.seek(Number($<HTMLInputElement>('#seek').value));
 $('#loop').onchange=()=>{playback.loop=$<HTMLInputElement>('#loop').checked;};
@@ -227,15 +276,16 @@ $('#recording').onchange=async()=>{
     const candidate=new Playback(run);
     for(let h=0;h<24;h++){candidate.seek(h+.5);for(let i=0;i<run.residents.length;i++)candidate.position(i);}
     candidate.restart();candidate.playing=false;
-    playback=candidate;selected=null;$('#inspector').hidden=true;$('#main').classList.remove('has-inspector');
-    lastViewKey='';lastPopulationKey='';$('#status').hidden=true;startScene();
+    playback=candidate;visitors=new VisitorSession(candidate.run,[]);dismissWelcome();selected=null;$('#inspector').hidden=true;$('#main').classList.remove('has-inspector');
+    lastViewKey='';lastPopulationKey='';$('#town-moment').dataset.key='';$('#status').hidden=true;startScene();
   } catch {showError('Could not load this recording. Check schema version, resident IDs, stats, and destinations. The current replay is still available.');}
   $<HTMLInputElement>('#recording').value='';
 };
 $('#speech-bubble').onclick=openConversation;
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape') { if(!$<HTMLDialogElement>('#population').open&&!$<HTMLDialogElement>('#summary').open&&!$<HTMLDialogElement>('#conversation').open)closeInspector();return; }
-  if(e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement || e.target instanceof HTMLButtonElement || (e.target instanceof HTMLElement&&e.target.closest('dialog')))return;
+  if(e.key==='Escape' && $<HTMLDetailsElement>('#day-tools').open){$<HTMLDetailsElement>('#day-tools').open=false;$('#day-tools summary').focus();e.preventDefault();return;}
+  if(e.key==='Escape') { if(!document.querySelector('dialog[open]'))closeInspector();return; }
+  if(e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement || e.target instanceof HTMLButtonElement || (e.target instanceof HTMLElement&&e.target.closest('dialog,summary,details')))return;
   if(e.code==='Space') {e.preventDefault();$('#play').click();}
   if(e.target===$('#canvas-host')) { const movement:Record<string,[number,number]>={ArrowLeft:[-32,0],ArrowRight:[32,0],ArrowUp:[0,-32],ArrowDown:[0,32]};if(movement[e.key]){e.preventDefault();scene.pan(...movement[e.key]);} }
 });
@@ -243,7 +293,7 @@ function renderUI() {
   renderDialogue();
   const raw=playback.run.startHour+playback.time,clock=raw%24,h=Math.floor(clock),m=Math.floor((clock-h)*60);
   const time=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
-  setText('#clock',`Day ${Math.floor(raw/24)+1} · ${time}${playback.time===24?' · complete':''}`);
+  setText('#clock',`Day ${Math.floor(raw/24)+(playback.run.dayNumber ?? 1)} · ${time}${playback.time===24?' · complete':''}`);
   setText('#current-time',time);
   document.body.classList.toggle('night',nightAlpha(clock)>.12);
   setText('#mode',playback.run.fixtureKind==='staged'?'Mock · sample':playback.run.mode==='jev'?'Jev replay':playback.run.mode==='mixed'?'Mixed replay':'Mock replay');
@@ -261,6 +311,14 @@ function renderUI() {
   const key=`${playback.run.runId}:${playback.hour}:${selected}:${playback.time===24}:${activity}`;
   if(key!==lastViewKey){lastViewKey=key;const counts=playback.counts();$('#legend').innerHTML=actions.map(a=>`<span>${icon(a)}<span>${a[0].toUpperCase()+a.slice(1)}</span><b>${counts[a]}</b></span>`).join('');if(selected)renderInspector();}
   const popKey=`${playback.run.runId}:${playback.hour}`;
+  const moment=$<HTMLButtonElement>('#town-moment');
+  const personIndex=playback.run.residents.findIndex((_,i)=>playback.arrived(i) && playback.entry(i).decision.appliedAction==='socialize' && playback.conversation(i).length>0);
+  moment.hidden=selected!==null || !$('#welcome').hidden || personIndex<0;
+  if(!moment.hidden && moment.dataset.key!==popKey){
+    moment.dataset.key=popKey;const person=playback.run.residents[personIndex];
+    moment.innerHTML=`${portrait(person)}<span><small>Around the square</small><strong>${escapeHTML(person.name)} has company</strong></span><span aria-hidden="true">→</span>`;
+    moment.onclick=()=>{exploreTown();selectResident(person);scene.following=true;renderInspector();};
+  }
   if(popKey!==lastPopulationKey && $<HTMLDialogElement>('#population').open){lastPopulationKey=popKey;renderPopulation();}
   requestAnimationFrame(renderUI);
 }

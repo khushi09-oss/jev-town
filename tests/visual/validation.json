@@ -1,45 +1,32 @@
 {
-  "date": "2026-11-12",
+  "date": "2026-11-14",
   "realJevCalls": 9,
   "environmentFileReadByAgent": false,
-  "pythonTests": 31,
-  "frontendUnitTests": 42,
-  "browserTests": 32,
-  "mobileWebKitTests": 17,
-  "visualRegressionCases": 16,
+  "pythonTests": 38,
+  "frontendUnitTests": 55,
+  "browserTests": 45,
+  "mobileWebKitTests": 27,
+  "visualRegressionCases": 21,
   "typescriptBuild": "passed",
   "dependencyAudit": "Not rerun; dependencies unchanged",
   "blockingAuditFindings": [],
-  "browserRunNote": "Full Chromium suite passed 32 checks. After camera-settling readiness was added to the new test helper, the four dialogue checks and all 16 screenshot comparisons passed again. Full WebKit run passed 16 checks; the new combined import/legacy check reached the 30-second limit and passed unchanged in an isolated rerun. Initial WebKit state mismatch exposed a stale inverse camera transform in the test setup; no assertions/timeouts were weakened. A stalled earlier Chromium runner was interrupted and restarted.",
-  "limitation": "Scripted preview, no text-model provider or persistent memory. Long travel leaves a short speaking window; paused transcript exposes the full exchange. Physical iPhone not tested. Existing concept-art differences unchanged.",
+  "browserRunNote": "Final Chromium 45/45 and WebKit 27/27 passed without retries. Iteration exposed short-phone welcome interception and paused follow drift; both were fixed at source. Network assertions allow only the local portrait atlas and retain checks for every other request. Seek assertions await rendered frames. Existing timeouts and visual thresholds are unchanged.",
+  "limitation": "Saved replay with a free authored route response, not a public live AI service. Bench edits last for the current page session; recorded actions, needs and conversations stay unchanged. Vision remains a separate opt-in experiment. Physical iPhone untested; art differences recorded in baseline.json.",
   "tested": [
-    "Adapter payloads, confidence/error fallbacks, bounded retry/redaction, effects and traits: Python mocks only",
-    "Deterministic one-script-per-group plans for occupancies 1\u201330; no script for a lone socializer or fallback wander",
-    "Seed-7 simulation and staged fixtures equal merged world data after removing additive conversations",
-    "Dialogue imports reject invalid speakers, incomplete/duplicate groups, unsupported source, empty/long/control-character lines and wrong IDs",
-    "All speakers arrive before text; paused turns freeze and seeking reconstructs identical lines; old v1 meetings invent no scripts",
-    "Keyboard transcript opens with playback paused; Escape restores inspector focus; speaker portraits select the correct resident",
-    "Reproduced mobile speech-card click-through selecting an underlying resident, then fixed canvas-target guards and passed the same assertion",
-    "Imported speaker names and dialogue rendered as text; malformed imports preserve the last valid replay",
-    "Full replay suite covers pathfinding, all-action occupancy, seek/speed/loop/restart, final boundary, needs, follow and mobile fit/pan",
-    "Offline example verified in desktop Chromium and mobile WebKit: actual recorded June meeting, transcript, partner selection, zero external requests/errors",
-    "Approved day-summary export deployed to Pages; mobile WebKit confirmed approved HTML hash, highlights and paused work moment",
-    "Fixed desktop 1440x900 and phone 390x844 screenshots reviewed and locked"
+    "Python adapter, retries, redaction, traits, effects, distinct confidence/error fallback and no-key mock mode",
+    "Memory boundaries, carry-forward validation, scripted reunions and legacy recording compatibility",
+    "Python bench plans preserve source recordings, change only wandering routes, avoid duplicate feet positions and use walkable reachable tiles",
+    "Browser bench branches affect only future hours; undo restores original routes; repeated/late/unknown placements rejected",
+    "All 30 residents in each of the five actions; route reconstruction, pause, seek, speed, loop, restart and final boundary",
+    "Native keyboard day-tools disclosure does not toggle playback; Escape preserves selected resident; 2x paused follow centers correctly",
+    "Named conversations, memory lists, imported plain-text names, malformed recordings and preserved last valid state",
+    "Phone selection switches to readable 1x; explicit overview and manual pan clamps survive rotation",
+    "Entry controls reachable at 320x900, 375x667, 390x844, 768x900 and 1440x900; mobile overview additionally checked at 430x932",
+    "Twenty-one deterministic screenshot comparisons at desktop 1440x900 and phone 390x844",
+    "Updated self-contained example: Chromium desktop and touch WebKit phone, bench response across all 24 hours, loop/restart, zero external requests and zero page errors"
   ],
   "agentJevCalls": 0,
   "realJevCallsScope": "Nine user-run vision requests verified against saved reports; no billed agent calls during implementation or merge.",
-  "mergeValidation": {
-    "pullRequests": [
-      11,
-      12
-    ],
-    "pythonTests": 31,
-    "frontendUnitTests": 42,
-    "typescriptBuild": "passed",
-    "browser": "Nine of ten integration cases passed; desktop baseline hit its unchanged 30-second limit, then passed unchanged in isolation. All 16 screenshot comparisons verified.",
-    "offlineCapture": "Combined conversation/vision source captured three labeled scenes in isolated artifacts; original user dataset/reports preserved.",
-    "ci": "No automated checks configured"
-  },
   "visionExperiment": {
     "dataset": "Three labeled focal views of one saved mock meeting",
     "userLiveRequests": 9,
@@ -51,5 +38,21 @@
       "imageOnly": 3
     },
     "evidence": "Local report manifests, screenshot hashes and Python ground truth verified; no claim of general accuracy or improved town behavior."
+  },
+  "memoryValidation": {
+    "crossDay": "Two actual seeded mock days exported; second-day initial memories match the first day, counts accumulate and the source file stays unchanged.",
+    "decisions": "Two-day regression confirms identical decisions, needs and destinations for the same seed despite carried memories.",
+    "boundary": "Exactly one update per pair in each completed conversation hour; rewind/restart restore recorded facts instead of incrementing.",
+    "midnight": "Shifted starts commit to the correct calendar day; carry-forward begins at the first midnight after a complete recording.",
+    "imports": "Reject duplicate/self/unknown pairs, malformed counts/dates/sequences, forged increments, incomplete groups and distant/non-walkable meetings; legacy replay stays usable.",
+    "offline": "Day-one desktop Chromium and day-two touch-enabled mobile WebKit exports passed: familiar-neighbor selection, reunion text, restart and zero external requests/page errors.",
+    "secrets": "Mock mode skips dotenv; malformed .env memory-source paths rejected before file contents are read."
+  },
+  "visitorExperience": {
+    "decisions": "Original recorded decisions remain authoritative; Python authors two alternate route plans.",
+    "presentation": "Welcome, compact paper/wood HUD, resident moment, phone close view and reduced-motion-aware river pixels.",
+    "cost": "No paid calls, backend, dependency or browser credential added.",
+    "persistence": "One reversible placement per page session; restart/loop replay the same event. JSON imports have no injected route plans.",
+    "delivery": "Source PR pending review; GitHub Pages has not changed."
   }
 }

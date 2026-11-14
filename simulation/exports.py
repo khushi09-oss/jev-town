@@ -2,6 +2,7 @@
 import json
 import re
 from pathlib import Path
+from .visitors import bench_plans
 
 
 def export_replay(recording, path):
@@ -24,7 +25,9 @@ def export_replay(recording, path):
     html = re.sub(r'<link[^>]*href="\./([^\"]+\.css)"[^>]*>', style, html)
     html = '\n'.join(line.rstrip() for line in html.splitlines()) + '\n'
     data = json.dumps(recording,ensure_ascii=False,allow_nan=False).replace('<','\\u003c')
-    html = html.replace('<head>', '<head><script>window.__TINY_TOWN_RECORDING__=' + data + ';</script>',1)
+    plans = json.dumps(bench_plans(recording), ensure_ascii=False).replace('<','\\u003c')
+    html = html.replace('<head>', '<head><script>window.__TINY_TOWN_RECORDING__=' + data +
+                        ';window.__TINY_TOWN_BENCH_PLANS__=' + plans + ';</script>',1)
     html = html.replace('</body>', ''.join(scripts) + '</body>')
     temporary = path.with_suffix('.html.tmp')
     temporary.write_text(html,encoding='utf-8')

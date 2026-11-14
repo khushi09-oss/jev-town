@@ -1,7 +1,7 @@
-"""Small, explicitly scripted exchanges. No model calls, effects or persistent memory."""
+"""Small scripted exchanges using saved meeting facts, without model calls or effects."""
 
 
-def scripted_conversations(entries, identities, tick, seed):
+def scripted_conversations(entries, identities, tick, seed, memories=None):
     people = {p['id']: p for p in identities}
     by_id = {p['id']: p for p in entries}
     chats = []
@@ -18,6 +18,11 @@ def scripted_conversations(entries, identities, tick, seed):
             'lazy': f"{people[ids[1]]['name']}, let's take a quiet break and enjoy the {topic}.",
             'workaholic': f"{people[ids[1]]['name']}, a quick break from work? I'd like to hear about the {topic}.",
         }[people[ids[0]]['trait']]
+        familiar=next((p for p in ids[1:] if tuple(sorted([ids[0],p])) in (memories or {})),None)
+        if familiar:
+            memory=memories[tuple(sorted([ids[0],familiar]))]
+            opening=(f"{people[familiar]['name']}, good to see you again! "
+                     f"We've shared {memory['meetings']} {'break' if memory['meetings']==1 else 'breaks'} before.")
         turns = [{'speakerId': ids[0], 'text': opening}]
         for resident_id in ids[1:]:
             needs = by_id[resident_id]['before']

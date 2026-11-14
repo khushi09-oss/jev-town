@@ -24,17 +24,19 @@ for(const viewport of [{width:375,height:667},{width:390,height:844},{width:430,
   });
 }
 
-test('mobile fit survives selection and browser viewport changes',async({page,browserName})=>{
+test('mobile selection stays readable through rotation and explicit overview still fits',async({page,browserName})=>{
   await page.setViewportSize({width:390,height:844});
   await page.goto('/');await page.waitForFunction(()=>window.__town?.ready());
   await page.getByRole('button',{name:'30 residents'}).click();await page.getByRole('button',{name:/Bea social/}).click();
   for(const viewport of [{width:390,height:680},{width:844,height:390},{width:390,height:844}]){
     await page.setViewportSize(viewport);
-    await expect.poll(async()=>{const c=(await page.evaluate(()=>window.__town!.state()) as any).camera;return Math.min(c.width/c.zoom/1024,c.height/c.zoom/640);}).toBeGreaterThanOrEqual(.999);
-    await expect.poll(async()=>{const c=(await page.evaluate(()=>window.__town!.state()) as any).camera;return c.left<=1&&c.top<=1&&c.right>=1023&&c.bottom>=639;}).toBe(true);
+    await expect.poll(async()=>((await page.evaluate(()=>window.__town!.state()) as any).camera.zoom)).toBe(1);
+    await expect.poll(async()=>{const state=await page.evaluate(()=>window.__town!.state()) as any;const p=state.people.find((p:any)=>p.id===state.selected),c=state.camera;return p.visible&&p.x>=c.left-1&&p.x<=c.right+1&&p.y>=c.top-1&&p.y<=c.bottom+1;}).toBe(true);
     await expect(page.getByRole('button',{name:'Play',exact:true})).toBeInViewport();
     await expect(page.locator('#inspector h2')).toHaveText('Bea');
   }
+  await page.getByRole('button',{name:'Whole town',exact:true}).click();
+  await expect.poll(async()=>{const c=(await page.evaluate(()=>window.__town!.state()) as any).camera;return c.left<=1&&c.top<=1&&c.right>=1023&&c.bottom>=639;}).toBe(true);
   await page.screenshot({path:`../.artifacts/mobile-${browserName}-selected.png`});
 });
 

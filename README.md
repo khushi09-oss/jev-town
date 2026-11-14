@@ -1,6 +1,6 @@
 # Tiny Town
 
-Tiny Town is a cozy little village where 30 neighbors live their own lives, with no player telling them what to do. Watch them eat, work, sleep, chat and wander as their needs and personalities shape the day.
+Tiny Town is a cozy little village where 30 neighbors live their own lives. Meet them, follow their day, and give wandering neighbors a new place to pause while their needs and personalities shape their choices.
 
 ![Animated preview of 30 residents going about their day in Tiny Town](assets/tiny-town.gif)
 
@@ -9,6 +9,10 @@ Tiny Town is a cozy little village where 30 neighbors live their own lives, with
 **[Play Tiny Town in your browser](https://khushi09-oss.github.io/jev-town/)** · No installation or API key needed.
 
 ## A look around
+
+Arriving in town:
+
+![Tiny Town's welcome, floating game controls and pixel village](frontend/browser-tests/visitors.spec.ts-snapshots/welcome-desktop-win32.png)
 
 Daytime, with Bea selected:
 
@@ -33,7 +37,19 @@ These screenshots use a staged mock recording for visual testing. The live site 
 - **Uncertainty and failure are separate.** Low confidence can trigger a fallback action. API failures stop the run by default; optional mock recovery is explicitly marked. Both are recorded so the viewer can distinguish them.
 - **Simulate once, watch many times.** A full day is 30 residents × 24 hours: 720 decisions. Python saves the day, and the browser replays that recording. Pausing, seeking or replaying makes no new Jev calls.
 
-The public demo uses mock decisions. Nothing trains or learns during a run; this is a small decision-model experiment, with no claim that Jev outperforms other approaches.
+The public demo uses mock decisions. Nothing trains or learns during a run, and no comparison with other models is claimed.
+
+## Explore and shape the town
+
+Choose **Explore town** to start watching at a readable close view, or **Meet a neighbor** to follow someone as the day plays. A clickable **Around the square** moment points to residents who have actually arrived to chat. **Whole town** returns to the overview. On phones, selecting any resident opens a readable 1× view; drag the map to look around.
+
+The compact dock holds play/pause, speed and the timeline. **Day tools** opens restart, loop and recording import; Escape closes it. River highlights use the recording clock, so pausing and seeking freezes or reconstructs them too. Reduced motion keeps those highlights still.
+
+**Place a bench** offers two locations. Starting at the next recorded hour, up to two wandering neighbors per hour detour nearby. **Watch the first visitors** takes you to the first response. Social personalities get first preference when Python assigns these detours. Their actions, needs and conversations remain the recorded ones: this is an explicitly scripted route response, not a fresh Jev choice or a sitting animation.
+
+Python authors both route plans; the browser applies the selected plan to a copy of the recording. Seek backward before placement to see the original world; restart and loop replay the same placement. **Remove bench and restore routes** undoes the change. One bench is available at a time, and placements stay in the current page session. Imported JSON recordings remain watchable but have no bench plans; new CLI HTML exports include them.
+
+Exploring, bench placement and all replay controls work offline with no decision requests. A public live simulation, Jev image decisions during visits and relationship-driven choices remain future work; they will need a backend with server-only credentials and spending limits.
 
 ## Run it locally
 
@@ -84,17 +100,29 @@ Python runs the simulation. Jev chooses actions; Python applies their consequenc
 npm --prefix frontend run dev
 ```
 
-Open the URL printed by Vite. **Load recording** opens a generated `run.json`; invalid files leave the previous replay usable. `?stage=six` shows the six-resident art checkpoint.
+Open the URL printed by Vite. **Day tools → Load recording** opens a generated `run.json`; invalid files leave the previous replay usable. `?stage=six` shows the six-resident art checkpoint.
 
 Space toggles playback, Escape closes panels, and arrow keys pan the focused map. Zoom, follow, seek, speed, restart and loop all reuse the same recording. Reduced motion is supported.
 
-On phones, **Fit** shows the complete town, with space for the map tools and action legend. Choose **1×/2×/3×** and drag for close-ups; **Recenter** returns to Fit. The zoom dropdown stays readable in Safari, and resizing or rotating the browser preserves the view.
+On phones, **Fit** shows the complete town. Selecting a neighbor switches to **1×** so their sprite stays readable beside the resident panel. Choose **1×/2×/3×** and drag for close-ups; **Recenter** or **Whole town** returns to Fit. The zoom dropdown stays readable in Safari, and resizing or rotating preserves the chosen zoom.
 
 Residents now meet in small conversation groups. Select someone to see who they are meeting, then click a partner's portrait to visit them. Chat gestures start when neighbors arrive, with one speech bubble at a time per group; seeking reconstructs the same meeting. The inspector and population drawer explain each resident's personality in plain language, and hovering a resident shows their name and trait.
 
-New recordings save short **scripted conversations** shaped by the participants' personalities and starting needs. These are a free dialogue preview, not text generated by Jev. Python records one exchange per meeting; dialogue never changes decisions or effects. Persistent memory, relationships and a paid text-model integration are future work.
+New recordings save short **scripted conversations** shaped by the participants' personalities, starting needs and saved meeting memories. These are a free dialogue preview, not text generated by Jev. Python records one exchange per meeting; dialogue never changes decisions or effects. Relationship-driven choices and a paid text-model integration are future work.
 
 Select a resident in a meeting to see the current speaker's speech card. **Read conversation** pauses the replay and opens the complete saved exchange; selecting a speaker's portrait visits that neighbor. Dialogue starts after everyone arrives. Close the panel and press Play to continue. In the seed-7 example, seek to about **09:59** and select **June**. Older recordings with no dialogue keep their original gestures and partners.
+
+**Familiar neighbors** in the inspector shows who a resident has met, how many shared breaks they remember and the last meeting hour. A group contributes one meeting per pair when its recorded hour finishes; repeat greetings use only memories from earlier completed hours. Seeking backward restores the earlier counts, and replay never creates new memories. Older recordings without memory metadata keep playing without invented familiarity.
+
+To remember meetings across days, explicitly carry a complete new recording forward:
+
+```powershell
+python town.py --mock --no-show --seed 7 --output-dir .artifacts\memory-day1
+python town.py --mock --no-show --seed 7 --remember-from .artifacts\memory-day1\run.json --output-dir .artifacts\memory-day2
+Start-Process .artifacts\memory-day2\town.html
+```
+
+Day two starts with saved familiarity and can greet a neighbor again. Only meeting memories carry over: initial needs/money are generated normally, and Jev's action inputs, effects and destinations are unchanged. This is not a full town save-game or a friendship score. Without `--remember-from`, each run starts a fresh day. A carried run starts at the first midnight after the previous recording ends; shifted-start recordings keep correct meeting dates across midnight. Recordings made before memory support can still be watched but cannot seed saved memories; generate a new first day before using this option. Mock runs stay free and skip `.env`.
 
 The **day summary** highlights the residents with the most recorded hours socializing, working and resting. Ties are shown together, with larger groups expandable. Select a portrait to jump to that resident's first matching moment and inspect it with playback paused. Highlights use the full saved day and applied actions, alongside the personality breakdown and hourly charts.
 
@@ -208,7 +236,9 @@ The version-1 recording contains stable identities, initial state and 24 ordered
 
 New recordings also include an optional per-resident `interaction`: either `null` or `{"kind":"conversation","partnerIds":["npc05"]}`. Python groups simultaneous applied socializing actions by stable ID into nearby groups of two to four, avoiding a lone final group; a sole socializer has no partners. This adds no decisions, effects or persistent friendships. The browser checks reciprocal groups and shows chats only after arrival. Older version-1 recordings without this field still load and show their recorded actions without inventing partners.
 
-Frames may also contain `conversations`: one `{id, source: "scripted", participantIds, turns}` per meeting, with two to four `{speakerId, text}` turns. Imported scripts must match a complete recorded group, include every member as a speaker, and have bounded plain-text lines. The viewer derives speaking turns from elapsed replay time after the group's final arrival; pause, seek, speed and loop reuse that same script. These lines are fictional social dialogue, never explanations of Jev's decisions. No provider credentials, text-model calls or persistent memories are involved.
+Frames may also contain `conversations`: one `{id, source: "scripted", participantIds, turns}` per meeting, with two to four `{speakerId, text}` turns. Imported scripts must match a complete recorded group, include every member as a speaker, and have bounded plain-text lines. The viewer derives speaking turns from elapsed replay time after the group's final arrival; pause, seek, speed and loop reuse that same script. These lines are fictional social dialogue, never explanations of Jev's decisions. No provider credentials or text-model calls are involved.
+
+Memory-enabled v1 recordings add `dayNumber` and `initialMemories` at the root, plus `memoryUpdates` per frame. Each fact contains a sorted pair of `residentIds`, a positive `meetings` count and `lastMetDay`/`lastMetHour`. Python records cumulative updates only for pairs in saved conversations. The viewer validates the exact increments, dates and groups, then displays updates at the next hour boundary. Carry-forward validates a complete matching-roster recording before any output is replaced. Memories are saved facts and scripted acknowledgments; they do not train Jev or explain its decisions.
 
 The world uses 64×40 tiles at 16 pixels each. Every action has 30 distinct destinations, including individual beds in six shared cottages. Four-direction sprites and matching portraits retain each resident's appearance. Selecting a sleeper reveals their home interior.
 
