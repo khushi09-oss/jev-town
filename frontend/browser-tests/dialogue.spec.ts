@@ -11,7 +11,9 @@ async function selectBea(page:Page){
   // Selection resizes the camera; WebKit can expose the previous inverse transform until its next render.
   await page.waitForFunction(()=>{
     const c=(window.__town!.state() as any).camera;
-    return Math.abs((c.right-c.left)*c.zoom-c.width)<1 && Math.abs((c.bottom-c.top)*c.zoom-c.height)<1;
+    const host=document.getElementById('canvas-host')!;
+    return c.scaleWidth===host.clientWidth && c.scaleHeight===host.clientHeight &&
+      Math.abs((c.right-c.left)*c.zoom-c.width)<1 && Math.abs((c.bottom-c.top)*c.zoom-c.height)<1;
   });
 }
 async function ready(page:Page){await page.goto('/');await page.waitForFunction(()=>window.__town?.ready());await selectBea(page);}

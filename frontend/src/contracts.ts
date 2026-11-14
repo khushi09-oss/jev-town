@@ -55,7 +55,8 @@ export function parseRun(input: unknown): Run {
   const memories=new Map<string,z.infer<typeof memory>>();
   for(const saved of run.initialMemories ?? []){
     const [a,b]=saved.residentIds,key=`${a}:${b}`;
-    if(!ids.includes(a)||!ids.includes(b)||a>=b||memories.has(key)||saved.lastMetDay>=run.dayNumber!)
+    if(!ids.includes(a)||!ids.includes(b)||a>=b||memories.has(key)||saved.lastMetDay>run.dayNumber!||
+       saved.lastMetDay===run.dayNumber && saved.lastMetHour>=run.startHour)
       throw Error('Invalid initial meeting memory');
     memories.set(key,saved);
   }
@@ -75,7 +76,7 @@ export function parseRun(input: unknown): Run {
       for(const update of frame.memoryUpdates!){
         const [a,b]=update.residentIds,key=`${a}:${b}`;
         if(!expected.delete(key)||update.meetings!==(memories.get(key)?.meetings ?? 0)+1||
-           update.lastMetDay!==run.dayNumber||update.lastMetHour!==frame.clockHour)
+           update.lastMetDay!==run.dayNumber!+Math.floor((run.startHour+h)/24)||update.lastMetHour!==frame.clockHour)
           throw Error('Meeting memory disagrees with recorded conversations');
         memories.set(key,update);
       }

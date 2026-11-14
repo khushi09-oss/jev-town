@@ -14,6 +14,20 @@ from simulation.memories import memory_state, record_meetings, validate_memories
 
 
 class MemoryTests(unittest.TestCase):
+    def test_shifted_clock_records_midnight_and_carries_to_the_next_midnight(self):
+        run=fixture(6,'socialize',with_memories=True)
+        run['startHour']=18
+        for frame in run['frames']:
+            frame['clockHour']=(18+frame['tick'])%24
+            for update in frame['memoryUpdates']:
+                update['lastMetDay']=1+(18+frame['tick'])//24
+                update['lastMetHour']=frame['clockHour']
+        with tempfile.TemporaryDirectory() as folder:
+            path=Path(folder)/'run.json';path.write_text(json.dumps(run))
+            day,memories=remember_from(path,manifest(6))
+            self.assertEqual(day,3)
+            self.assertTrue(all(p['lastMetDay']==2 for p in memories))
+
     def test_two_saved_days_preserve_memory_without_changing_decisions_or_stats(self):
         with patch.dict(os.environ,{'JEV_MOCK':'1'}):
             import town
@@ -46,6 +60,14 @@ class MemoryTests(unittest.TestCase):
             original=path.read_bytes()
             run['frames'][0]['memoryUpdates'][0]['meetings']=True
             path.write_text(json.dumps(run))
+            with self.assertRaises(ValueError):remember_from(path,manifest(6))
+            tampered=json.loads(original)
+            tampered['frames'][0]['residents'][1]['destination']['x']+=64
+            path.write_text(json.dumps(tampered))
+            with self.assertRaises(ValueError):remember_from(path,manifest(6))
+            tampered=json.loads(original)
+            tampered['frames'][0]['tick']=False
+            path.write_text(json.dumps(tampered))
             with self.assertRaises(ValueError):remember_from(path,manifest(6))
             path.write_bytes(original)
             self.assertEqual(remember_from(path,manifest(6)),(day,memories))

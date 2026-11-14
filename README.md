@@ -106,7 +106,7 @@ python town.py --mock --no-show --seed 7 --remember-from .artifacts\memory-day1\
 Start-Process .artifacts\memory-day2\town.html
 ```
 
-Day two starts with saved familiarity and can greet a neighbor again. Only meeting memories carry over: initial needs/money are generated normally, and Jev's action inputs, effects and destinations are unchanged. This is not a full town save-game or a friendship score. Without `--remember-from`, each run starts a fresh day. Recordings made before memory support can still be watched but cannot seed saved memories; generate a new first day before using this option. Mock runs stay free and skip `.env`.
+Day two starts with saved familiarity and can greet a neighbor again. Only meeting memories carry over: initial needs/money are generated normally, and Jev's action inputs, effects and destinations are unchanged. This is not a full town save-game or a friendship score. Without `--remember-from`, each run starts a fresh day. A carried run starts at the first midnight after the previous recording ends; shifted-start recordings keep correct meeting dates across midnight. Recordings made before memory support can still be watched but cannot seed saved memories; generate a new first day before using this option. Mock runs stay free and skip `.env`.
 
 The **day summary** highlights the residents with the most recorded hours socializing, working and resting. Ties are shown together, with larger groups expandable. Select a portrait to jump to that resident's first matching moment and inspect it with playback paused. Highlights use the full saved day and applied actions, alongside the personality breakdown and hourly charts.
 

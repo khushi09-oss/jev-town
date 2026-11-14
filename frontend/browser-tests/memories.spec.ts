@@ -7,7 +7,7 @@ const sample=JSON.parse(readFileSync(resolve('../tests/fixtures/memories.json'),
 async function load(page:Page,run=sample){
   await page.goto('/');await page.waitForFunction(()=>window.__town?.ready());
   await page.locator('#recording').setInputFiles({name:'memories.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(run))});
-  await page.waitForFunction(()=>(window.__town?.state() as any)?.people.length===6);
+  await page.waitForFunction(()=>window.__town?.ready() && (window.__town.state() as any).people.length===6);
   await page.locator('#population-button').click();await page.locator('[data-resident="npc00"]').click();
 }
 
@@ -54,6 +54,7 @@ test('familiar neighbor names stay text and reunion lines use previous meetings'
 for(const width of [1440,390])test(`baseline familiar neighbors at ${width}px`,async({page})=>{
   await page.setViewportSize({width,height:width===1440?900:844});await load(page);
   await page.locator('#seek').fill('2');
+  await expect(page.locator('[data-familiar="npc01"]')).toContainText('2 meetings');
   await page.locator('#familiar-title').scrollIntoViewIfNeeded();
   await expect(page.locator('[data-familiar="npc01"]')).toBeInViewport();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBe(width);

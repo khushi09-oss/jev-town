@@ -5,6 +5,16 @@ import {parseRun} from './contracts';
 import {familiarNeighbors} from './memories';
 
 describe('saved resident memories',()=>{
+  it('dates meeting memories correctly when a recording crosses midnight from a shifted start',()=>{
+    const shifted=structuredClone(sample);shifted.startHour=18;
+    for(const frame of shifted.frames){
+      frame.clockHour=(18+frame.tick)%24;
+      for(const update of frame.memoryUpdates){update.lastMetDay=1+Math.floor((18+frame.tick)/24);update.lastMetHour=frame.clockHour;}
+    }
+    const run=parseRun(shifted);
+    expect(familiarNeighbors(run,6,0)?.every(p=>p.lastMetDay===1 && p.lastMetHour===23)).toBe(true);
+    expect(familiarNeighbors(run,7,0)?.every(p=>p.lastMetDay===2 && p.lastMetHour===0)).toBe(true);
+  });
   it('starts day two with saved familiarity rather than counting playback as new meetings',()=>{
     const next=parseRun(sample);
     next.dayNumber=2;next.initialMemories=structuredClone(next.frames[23].memoryUpdates!);
