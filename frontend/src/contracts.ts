@@ -13,6 +13,9 @@ const decision = z.object({ chosenAction: action.nullable(), appliedAction: acti
 const resident = z.object({ id: z.string().regex(/^npc\d{2}$/), name: z.string().min(1).max(50),
   trait: z.enum(['lazy', 'social', 'workaholic']), appearanceId: z.string().regex(/^resident-\d{2}$/),
   homeId: z.string().regex(/^home-0[1-6]$/) });
+const memory=z.object({residentIds:z.tuple([z.string(),z.string()]),
+  meetings:z.number().int().min(1).max(1_000_000),lastMetDay:z.number().int().min(1).max(100_000),
+  lastMetHour:z.number().int().min(0).max(23)}).strict();
 const conversation = z.object({id:z.string(),source:z.literal('scripted'),
   participantIds:z.array(z.string().regex(/^npc\d{2}$/)).min(2).max(4),
   turns:z.array(z.object({speakerId:z.string().regex(/^npc\d{2}$/),
@@ -24,11 +27,12 @@ const entry = z.object({ id: z.string(), before: stats, after: stats, decision,
 const schema = z.object({ schemaVersion: z.literal(1), runId: z.string(), seed: z.number().int(),
   mode: z.enum(['mock', 'jev', 'mixed']), fixtureKind: z.enum(['staged', 'simulation']).optional(),
   hours: z.literal(24), startHour: z.number().int().min(0).max(23), worldId: z.literal('tiny-town-v1'),
+  dayNumber:z.number().int().min(1).max(100_000).optional(),initialMemories:z.array(memory).max(435).optional(),
   residents: z.array(resident).min(1).max(30),
   initialSnapshot: z.array(z.object({ id: z.string(), stats, position: point })),
   frames: z.array(z.object({ tick: z.number().int(), clockHour: z.number().int(),
     sequence: z.number().int(), residents: z.array(entry),
-    conversations:z.array(conversation).max(15).optional() })).length(24) });
+    conversations:z.array(conversation).max(15).optional(),memoryUpdates:z.array(memory).max(45).optional() })).length(24) });
 export type Run = z.infer<typeof schema>;
 export type Identity = Run['residents'][number];
 export type Entry = Run['frames'][number]['residents'][number];
@@ -46,12 +50,37 @@ export function parseRun(input: unknown): Run {
   const sameIds = (entries: { id: string }[]) => entries.length === ids.length &&
     entries.every((p, i) => p.id === ids[i]);
   if (!sameIds(run.initialSnapshot)) throw Error('Initial snapshot IDs do not match manifest');
+  const hasMemories=run.initialMemories!==undefined;
+  if(hasMemories!==(run.dayNumber!==undefined))throw Error('Incomplete memory metadata');
+  const memories=new Map<string,z.infer<typeof memory>>();
+  for(const saved of run.initialMemories ?? []){
+    const [a,b]=saved.residentIds,key=`${a}:${b}`;
+    if(!ids.includes(a)||!ids.includes(b)||a>=b||memories.has(key)||saved.lastMetDay>=run.dayNumber!)
+      throw Error('Invalid initial meeting memory');
+    memories.set(key,saved);
+  }
   const walkable = new Set(world.walkable.map(([x, y]) => `${x},${y}`));
   const onGround = (p: Point) => walkable.has(`${Math.floor(p.x / 16)},${Math.floor(p.y / 16)}`);
   if (run.initialSnapshot.some(p => !onGround(p.position))) throw Error('Invalid spawn');
   for (const [h, frame] of run.frames.entries()) {
     if (frame.tick !== h || frame.sequence !== h + 1 || frame.clockHour !== (h + run.startHour) % 24 || !sameIds(frame.residents))
       throw Error('Recording sequence or resident IDs are invalid');
+    if(hasMemories!==(frame.memoryUpdates!==undefined))throw Error('Incomplete memory updates');
+    if(hasMemories){
+      const expected=new Set<string>();
+      for(const chat of frame.conversations ?? []){
+        const members=[...chat.participantIds].sort();
+        for(let i=0;i<members.length;i++)for(let j=i+1;j<members.length;j++)expected.add(`${members[i]}:${members[j]}`);
+      }
+      for(const update of frame.memoryUpdates!){
+        const [a,b]=update.residentIds,key=`${a}:${b}`;
+        if(!expected.delete(key)||update.meetings!==(memories.get(key)?.meetings ?? 0)+1||
+           update.lastMetDay!==run.dayNumber||update.lastMetHour!==frame.clockHour)
+          throw Error('Meeting memory disagrees with recorded conversations');
+        memories.set(key,update);
+      }
+      if(expected.size)throw Error('Missing meeting memories');
+    }
     const covered=new Set<string>();
     for(const chat of frame.conversations ?? []) {
       const members=[...chat.participantIds].sort();

@@ -10,6 +10,7 @@ import portraits from './assets/portraits.png?url';
 import tokens from './design-tokens.json';
 import { personalities } from './personality';
 import { dayHighlights } from './summary';
+import { familiarNeighbors } from './memories';
 
 declare global {
   interface Window {
@@ -101,6 +102,7 @@ function renderInspector() {
   const accordion=$<HTMLDetailsElement>('#decision-details')?.open;
   const focusId=document.activeElement instanceof HTMLElement && $('#inspector').contains(document.activeElement) ? document.activeElement.id : null;
   const partners=playback.partners(index);
+  const familiar=familiarNeighbors(playback.run,playback.time,index);
   const events=playback.run.frames.slice(Math.max(0,playback.hour-3),playback.hour+1).map(f=>({hour:f.clockHour,entry:f.residents[index]})).reverse();
   $('#inspector').innerHTML=`<div class="inspector-top"><div class="identity">${portrait(identity,true)}<div><h2>${escapeHTML(identity.name)}</h2><p>Resident ${index+1}</p><span class="trait">${identity.trait}</span></div></div><button id="close-inspector" aria-label="Close resident inspector">${icon('close')}</button></div>
     <button id="follow" aria-pressed="${scene.following}">${icon('follow')}<span>${scene.following?'Following':'Follow resident'}</span></button>
@@ -110,11 +112,13 @@ function renderInspector() {
     ${playback.dialogue(index)?'<button id="read-conversation">Read conversation</button>':''}
     <section><h3>Needs</h3>${(['hunger','energy','mood'] as const).map(key=>`<div class="need"><label for="${key}-bar">${key==='hunger'?'Hunger ↑':key[0].toUpperCase()+key.slice(1)}</label><meter id="${key}-bar" min="0" max="100" value="${stats[key]}"></meter><span>${stats[key]}%</span></div>`).join('')}<p class="money">Money <strong>${stats.money}</strong></p><p class="muted small">Higher hunger means hungrier. Needs update on the hour.</p></section>
     <section><h3>Today</h3><div class="resident-timeline">${playback.run.frames.map(f=>`<span title="${f.clockHour}:00 — ${labels[f.residents[index].decision.appliedAction]}" style="background:var(--${f.residents[index].decision.appliedAction})"></span>`).join('')}</div><div class="timeline-captions"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div></section>
+    ${familiar===null?'':`<section aria-labelledby="familiar-title"><h3 id="familiar-title">Familiar neighbors</h3><p class="muted small">Shared breaks from completed meeting hours.</p>${familiar.length?`<div class="familiar-neighbors">${familiar.map(memory=>`<button data-familiar="${memory.person.id}" aria-label="Visit familiar neighbor ${escapeHTML(memory.person.name)}">${portrait(memory.person)}<span><strong>${escapeHTML(memory.person.name)}</strong><small>${memory.meetings} ${memory.meetings===1?'meeting':'meetings'} · Last meeting hour: day ${memory.lastMetDay}, ${String(memory.lastMetHour).padStart(2,'0')}:00</small></span></button>`).join('')}</div>`:'<p class="memory-empty">No shared breaks remembered yet.</p>'}</section>`}
     <section><h3>Recorded activities</h3><ol class="events">${events.map(e=>`<li><time>${String(e.hour).padStart(2,'0')}:00</time> ${labels[e.entry.decision.appliedAction]}${partnerNames(e.entry)?' with '+partnerNames(e.entry):''} at ${places[e.entry.destination.locationId]||'home'}</li>`).join('')}</ol></section>
     <details id="decision-details" ${accordion?'open':''}><summary>Decision details</summary><dl><dt>Chosen action</dt><dd>${decision.chosenAction||'No valid API choice'}</dd><dt>Confidence</dt><dd>${decision.confidence===null?'Unavailable':decision.confidence.toFixed(2)}</dd><dt>Confidence fallback</dt><dd>${decision.fellBack?'Wander applied':'None'}</dd><dt>Source</dt><dd>${decision.decisionSource}</dd><dt>Error fallback</dt><dd>${escapeHTML(decision.errorCode||'None')}</dd></dl></details>`;
   $('#close-inspector').onclick=closeInspector;
   $('#follow').onclick=()=>{scene.following=!scene.following;renderInspector();if(scene.following)scene.center(index);};
   $('#inspector').querySelectorAll<HTMLButtonElement>('[data-partner]').forEach(button=>button.onclick=()=>selectResident(playback.run.residents.find(p=>p.id===button.dataset.partner)!));
+  $('#inspector').querySelectorAll<HTMLButtonElement>('[data-familiar]').forEach(button=>button.onclick=()=>selectResident(playback.run.residents.find(p=>p.id===button.dataset.familiar)!));
   const read=$('#read-conversation');if(read)read.onclick=openConversation;
   if(focusId)document.getElementById(focusId)?.focus({preventScroll:true});
 }
@@ -243,7 +247,7 @@ function renderUI() {
   renderDialogue();
   const raw=playback.run.startHour+playback.time,clock=raw%24,h=Math.floor(clock),m=Math.floor((clock-h)*60);
   const time=`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
-  setText('#clock',`Day ${Math.floor(raw/24)+1} · ${time}${playback.time===24?' · complete':''}`);
+  setText('#clock',`Day ${Math.floor(raw/24)+(playback.run.dayNumber ?? 1)} · ${time}${playback.time===24?' · complete':''}`);
   setText('#current-time',time);
   document.body.classList.toggle('night',nightAlpha(clock)>.12);
   setText('#mode',playback.run.fixtureKind==='staged'?'Mock · sample':playback.run.mode==='jev'?'Jev replay':playback.run.mode==='mixed'?'Mixed replay':'Mock replay');
