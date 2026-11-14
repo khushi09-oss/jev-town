@@ -24,7 +24,7 @@ test('familiarity follows completed hours, survives seeks and links to a neighbo
   await page.locator('[data-familiar="npc01"]').focus();await page.keyboard.press('Enter');
   await expect(page.locator('#inspector h2')).toHaveText('Milo');
   await expect(page.locator('[data-familiar="npc00"]')).toContainText('1 meeting');
-  await page.getByRole('button',{name:'Restart',exact:true}).click();await expect(page.locator('.memory-empty')).toBeVisible();
+  await page.locator('#day-tools summary').click();await page.getByRole('button',{name:'Restart',exact:true}).click();await expect(page.locator('.memory-empty')).toBeVisible();
   expect(errors).toEqual([]);expect(requests).toEqual([]);
 });
 

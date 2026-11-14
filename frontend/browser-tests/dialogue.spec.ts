@@ -31,7 +31,7 @@ test('recorded speech freezes, seeks deterministically and makes no decision req
   const people=(before as any).people,group=sample.frames[14].conversations[0];
   const speakers=people.filter((p:any)=>group.participantIds.includes(p.id)&&p.bubbleVisible);
   expect(speakers).toHaveLength(1);expect(speakers[0].id).toBe(speakers[0].dialogue.speakerId);
-  await page.getByRole('button',{name:'Restart',exact:true}).click();await expect(page.locator('#speech-bubble')).toBeHidden();
+  await page.locator('#day-tools summary').click();await page.getByRole('button',{name:'Restart',exact:true}).click();await expect(page.locator('#speech-bubble')).toBeHidden();
   expect(errors).toEqual([]);expect(requests).toEqual([]);
 });
 

@@ -5,8 +5,8 @@ from .world import point
 def bench_plans(recording):
     traits = {p['id']: p['trait'] for p in recording['residents']}
     plans = []
-    for site_id, name, x, y in [('park-gate', 'Park gate', 44, 18),
-                                ('garden-view', 'Garden view', 48, 24)]:
+    for site_id, name, x, y in [('park-gate', 'Park gate', 44, 17),
+                                ('garden-view', 'Garden view', 48, 23)]:
         frames = []
         for frame in recording['frames']:
             candidates = sorted((p for p in frame['residents']

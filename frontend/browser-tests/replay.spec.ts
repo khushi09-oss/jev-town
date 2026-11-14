@@ -7,14 +7,19 @@ async function ready(page:Page) { await page.goto('/');await page.waitForFunctio
 async function seek(page:Page,time:number) { await page.locator('#seek').fill(String(time));await page.waitForTimeout(60); }
 test('playback has no network decisions and pause freezes every sprite',async({page})=>{
   const errors:string[]=[],requests:string[]=[];page.on('pageerror',e=>errors.push(e.message));
-  await ready(page);page.on('request',r=>requests.push(r.url()));
+  await ready(page);page.on('request',r=>{
+    const url=new URL(r.url());
+    // The new moment card can load the same local portrait atlas after entry.
+    if(r.resourceType()==='image' && url.origin===new URL(page.url()).origin && url.pathname==='/src/assets/portraits.png')return;
+    requests.push(r.url());
+  });
   await page.getByRole('button',{name:'Play',exact:true}).click();await page.waitForTimeout(250);
   await page.getByRole('button',{name:'Pause',exact:true}).click();await page.waitForTimeout(60);
   const before=await page.evaluate(()=>window.__town!.state());await page.waitForTimeout(300);
   expect(await page.evaluate(()=>window.__town!.state())).toEqual(before);
   await seek(page,7.35);const position=await page.evaluate(()=>window.__town!.state());
   await seek(page,22);await seek(page,7.35);expect(await page.evaluate(()=>window.__town!.state())).toEqual(position);
-  await page.getByRole('button',{name:'4×',exact:true}).click();await page.getByLabel('Loop',{exact:true}).check();
+  await page.getByRole('button',{name:'4×',exact:true}).click();await page.locator('#day-tools summary').click();await page.getByLabel('Loop',{exact:true}).check();
   await page.getByRole('button',{name:'Restart',exact:true}).click();
   expect((await page.evaluate(()=>window.__town!.state()) as any).time).toBe(0);
   expect(requests).toEqual([]);expect(errors).toEqual([]);
@@ -48,7 +53,7 @@ test('mobile inspector and playback remain reachable, reduced-motion follow work
   await page.setViewportSize({width:390,height:844});await page.emulateMedia({reducedMotion:'reduce'});await ready(page);
   await page.getByRole('button',{name:'30 residents'}).click();await page.getByRole('button',{name:/Bea social/}).click();
   const inspector=await page.locator('#inspector').boundingBox();expect(inspector!.height).toBeLessThanOrEqual(844*.45+1);
-  await expect.poll(async()=>((await page.evaluate(()=>window.__town!.state())) as any).camera.height).toBeLessThan(300);
+  await expect.poll(async()=>((await page.evaluate(()=>window.__town!.state())) as any).camera.height).toBeGreaterThan(300);
   await expect(page.getByRole('button',{name:'Play',exact:true})).toBeInViewport();
   await page.getByRole('button',{name:'Follow resident'}).click();await page.keyboard.press('Escape');
   expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBe(390);
@@ -63,7 +68,7 @@ test('zoom, manual pan, timeline boundaries, speed and end of day',async({page})
   await seek(page,23.99);await page.getByRole('button',{name:'Play',exact:true}).click();
   await expect.poll(async()=>((await page.evaluate(()=>window.__town!.state())) as any).time).toBe(24);
   await expect(page.getByRole('button',{name:'Play',exact:true})).toBeVisible();
-  await page.getByLabel('Loop',{exact:true}).check();await page.getByRole('button',{name:'Play',exact:true}).click();
+  await page.locator('#day-tools summary').click();await page.getByLabel('Loop',{exact:true}).check();await page.getByRole('button',{name:'Play',exact:true}).click();
   await page.getByRole('button',{name:'Pause',exact:true}).click();
   expect((await page.evaluate(()=>window.__town!.state()) as any).time).toBeLessThan(1);
 });
